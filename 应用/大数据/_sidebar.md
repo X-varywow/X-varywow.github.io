@@ -1,0 +1,7 @@
+- [回到上一级](应用/)
+- [应用/大数据](应用/大数据/)
+  - [大数据理论](应用/大数据/theory)
+  - [snowflake 介绍](应用/大数据/snowflake)
+  - [snowflake 语法](应用/大数据/snow_sql)
+  - [psql](应用/大数据/psql)
+  - [citus](应用/大数据/citus)

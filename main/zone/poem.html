@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="jupyter.css">
+  <title>README</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+  <!-- Load mathjax -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML-full,Safe"> </script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                },
+                "HTML-CSS": {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+  <!-- End of mathjax configuration -->
+</head>
+
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <p>繁体转简体：<a
+          href="https://blog.csdn.net/wds2006sdo/article/details/53583367">https://blog.csdn.net/wds2006sdo/article/details/53583367</a>
+      </p>
+      <p>数据集来源：<a
+          href="https://github.com/chinese-poetry/chinese-poetry">https://github.com/chinese-poetry/chinese-poetry</a>
+      </p>
+
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="00.-%E6%89%BE%E5%88%B0%E5%90%88%E9%80%82%E7%9A%84%E6%95%B0%E6%8D%AE">00.
+        &#25214;&#21040;&#21512;&#36866;&#30340;&#25968;&#25454;<a class="anchor-link"
+          href="#00.-%E6%89%BE%E5%88%B0%E5%90%88%E9%80%82%E7%9A%84%E6%95%B0%E6%8D%AE">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[98]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span> 
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;./json/&quot;</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;poet.tang(.*?).json&quot;</span>
+
+<span class="n">all_file</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+        <span class="n">all_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">file</span><span class="p">)</span>
+        
+<span class="c1"># print(all_file)</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="01.-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE">01. &#26597;&#30475;&#25968;&#25454;<a class="anchor-link"
+          href="#01.-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">demo</span> <span class="o">=</span> <span class="s2">&quot;./json/poet.tang.9000.json&quot;</span>
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">demo</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>[{&#39;author&#39;: &#39;韋應物&#39;, &#39;paragraphs&#39;: [&#39;度門能不訪，冒雪屢西東。&#39;, &#39;已想人如玉，遙憐馬似驄。&#39;, &#39;乍迷金谷路，稍變上陽宮。&#39;, &#39;還比相思意，紛紛正滿空。&#39;], &#39;title&#39;: &#39;雪中聞李儋過門不訪聊以寄贈&#39;, &#39;id&#39;: &#39;8df2abdf-1b4f-43d5-9bf4-bab1d9debb04&#39;}, {&#39;author&#39;: &#39;韋應物&#39;, &#39;paragraphs&#39;: [&#39;逍遙東城隅，雙樹寒葱蒨。&#39;, &#39;廣庭流華月，高閣凝餘霰。&#39;, &#39;杜門非養素，抱疾阻良讌。&#39;, &#39;孰謂無他人，思君歲云變。&#39;, &#39;官曹亮先忝，陳躅慙俊彥。&#39;, &#39;豈知晨與夜，相代不相見。&#39;, &#39;緘書問所如，詶藻當芬絢。&#39;], &#39;title&#39;: &#39;同德精舍養疾寄河南兵曹東廳掾&#39;, &#39;id&#39;: &#39;3f7ee19b-eada-416a-8932-66779e0a79f2&#39;}, {&#39;author&#39;: &#39;韋應物&#39;, &#39;paragraphs&#39;: [&#39;川上風雨來，須臾滿城闕。&#39;, &#39;岧嶢青蓮界，蕭條孤興發。&#39;, &#39;前山遽已淨，陰靄夜來歇。&#39;, &#39;喬木生夏涼，流雲吐華月。&#39;, &#39;嚴城自有限，一水非難越。&#39;, &#39;相望曙河遠，高齋坐超忽。&#39;], &#39;title&#39;: &#39;同德寺雨後寄元侍御李博士&#39;, &#39;id&#39;: &#39;f6200028-1512-4eaa-86d6-dcff74906953&#39;}]
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="02.-%E7%B9%81%E8%BD%AC%E7%AE%80%E4%BD%93">02. &#32321;&#36716;&#31616;&#20307;<a class="anchor-link"
+          href="#02.-%E7%B9%81%E8%BD%AC%E7%AE%80%E4%BD%93">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[43]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">from</span> <span class="nn">langconv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">simplify</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+    <span class="n">sentence</span> <span class="o">=</span> <span class="n">Converter</span><span class="p">(</span><span class="s1">&#39;zh-hans&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sentence</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="03.-%E8%AE%A1%E6%97%B6%E8%A3%85%E9%A5%B0%E5%99%A8">03. &#35745;&#26102;&#35013;&#39280;&#22120;<a
+          class="anchor-link" href="#03.-%E8%AE%A1%E6%97%B6%E8%A3%85%E9%A5%B0%E5%99%A8">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+
+<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">clocked</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">time_cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot; time_cost: </span><span class="si">{}</span><span class="s2"> s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_cost</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="k">return</span> <span class="n">clocked</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="04.-%E7%BB%9F%E8%AE%A1%E4%BA%BA%E5%90%8D">04. &#32479;&#35745;&#20154;&#21517;<a class="anchor-link"
+          href="#04.-%E7%BB%9F%E8%AE%A1%E4%BA%BA%E5%90%8D">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[97]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">author_d</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="nd">@clock</span>
+<span class="k">def</span> <span class="nf">handle_author</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">])</span>
+                <span class="n">author_d</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">handle_author</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">author_d</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>         
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>handle_author time_cost: 1.0263490676879883 s
+[(&#39;白居易&#39;, 3009), (&#39;杜甫&#39;, 1489), (&#39;李白&#39;, 1207), (&#39;元稹&#39;, 910), (&#39;不详&#39;, 886), (&#39;刘禹锡&#39;, 886), (&#39;齐己&#39;, 826), (&#39;贯休&#39;, 743), (&#39;易静&#39;, 721), (&#39;无名氏&#39;, 684)]
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="05.-%E7%BB%9F%E8%AE%A1%E8%AF%8D">05. &#32479;&#35745;&#35789;<a class="anchor-link"
+          href="#05.-%E7%BB%9F%E8%AE%A1%E8%AF%8D">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">jieba</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># 停用词</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./cn_stopwords.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">stop_words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="c1"># print(stop_words)</span>
+
+<span class="n">ci_d</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="nd">@clock</span>
+<span class="k">def</span> <span class="nf">handle_para</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="p">[</span><span class="n">simplify</span><span class="p">(</span><span class="n">para</span><span class="p">)</span> <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;paragraphs&#39;</span><span class="p">]]</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sentence</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">lcut</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">:</span>
+                        <span class="n">ci_d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">handle_para</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ci_d</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>    
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>handle_para time_cost: 43.18198609352112 s
+[(&#39;月&#39;, 5365), (&#39;见&#39;, 4418), (&#39;中&#39;, 3564), (&#39;更&#39;, 3171), (&#39;日&#39;, 3073), (&#39;欲&#39;, 3059), (&#39;卷&#39;, 2934), (&#39;时&#39;, 2712), (&#39;年&#39;, 2632), (&#39;馀&#39;, 2493)]
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2
+        id="06.-%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96-&amp;-%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E5%8F%A4%E8%AF%97">
+        06. &#25968;&#25454;&#25345;&#20037;&#21270; &amp; &#38543;&#26426;&#29983;&#25104;&#21476;&#35799;<a
+          class="anchor-link"
+          href="#06.-%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96-&amp;-%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E5%8F%A4%E8%AF%97">&#182;</a>
+      </h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[73]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
+
+<span class="k">def</span> <span class="nf">generate</span><span class="p">():</span>
+    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">author</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">])</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+                <span class="n">sentence</span> <span class="o">=</span> <span class="p">[</span><span class="n">simplify</span><span class="p">(</span><span class="n">para</span><span class="p">)</span> <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;paragraphs&#39;</span><span class="p">]]</span>
+                
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">db</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">cnt</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="n">author</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;para&quot;</span><span class="p">:</span><span class="n">sentence</span><span class="p">}</span>
+    
+    <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;总共生成古诗 </span><span class="si">{}</span><span class="s2"> 首&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cnt</span><span class="p">))</span>
+    
+<span class="n">generate</span><span class="p">()</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>总共生成古诗 57607 首
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[96]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">57607</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;第 </span><span class="si">{}</span><span class="s2"> 首唐诗&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span>
+        <span class="n">pprint</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">)])</span>
+        
+<span class="n">main</span><span class="p">()</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>第 2978 首唐诗
+{&#39;author&#39;: &#39;杜甫&#39;,
+ &#39;para&#39;: [&#39;方丈三韩外，崑崙万国西。&#39;,
+          &#39;建标天地阔，诣绝古今迷。&#39;,
+          &#39;气得神仙迥，恩承雨露低。&#39;,
+          &#39;相门清议众，儒术大名齐。&#39;,
+          &#39;轩冕罗天阙，琳琅识介珪。&#39;,
+          &#39;伶官诗必诵，夔乐典犹稽。&#39;,
+          &#39;健笔凌鹦鹉，铦锋莹鸊鹈。&#39;,
+          &#39;友于皆挺拔，公望各端倪。&#39;,
+          &#39;通籍踰青琐，亨衢照紫泥。&#39;,
+          &#39;灵虬传夕箭，归马散霜蹄。&#39;,
+          &#39;能事闻重译，嘉谟及远黎。&#39;,
+          &#39;弼谐方一展，班序更何跻。&#39;,
+          &#39;适越空颠踬，游梁竟惨悽。&#39;,
+          &#39;谬知终画虎，微分是醯鸡。&#39;,
+          &#39;萍泛无休日，桃阴想旧蹊。&#39;,
+          &#39;吹嘘人所羨，腾跃事仍暌。&#39;,
+          &#39;碧海真难涉，青云不可梯。&#39;,
+          &#39;顾深慙锻炼，才小辱提携。&#39;,
+          &#39;槛束哀猨叫，枝惊夜鹊栖。&#39;,
+          &#39;几时陪羽猎，应指钓璜溪。&#39;],
+ &#39;title&#39;: &#39;奉赠太常张卿二十韵&#39;}
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span> 
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,24 @@
+- [回到首页](/)
+- [机器学习](ML/)
+  - ---
+  - [基本概念](ML/基本概念)
+  - [暂时笔记](ML/tmp_note/)
+  - [学习路线](ML/roadmap)
+  - [高级算法](ML/高级/)
+  - [torch 语法](ML/torch/)
+  - [评价指标](ML/metric)
+  - [信息学中的熵](ML/信息学中的熵)
+  - ---
+  - [监督学习](ML/监督学习/)
+  - [非监督学习](ML/非监督学习/)
+  - [深度学习](ML/深度学习/)
+  - ---
+  - [NLP](ML/NLP/)
+  - [LLM](ML/llm)
+  - [CV](ML/CV/)
+  - [语音任务](ML/Audio/)
+  - ---
+  - [环境相关](ML/env)
+  - [模型部署](ML/deploy)
+  - [News](ML/News)
+  - [OTHER](ML/other)

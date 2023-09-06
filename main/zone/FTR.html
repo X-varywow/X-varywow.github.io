@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="jupyter.css">
+    <title>FTR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+    <!-- Load mathjax -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                },
+                "HTML-CSS": {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+    <!-- End of mathjax configuration -->
+</head>
+
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+        <div class="jp-Cell-inputWrapper">
+            <div class="jp-InputArea jp-Cell-inputArea">
+                <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+                <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                    <div class="CodeMirror cm-s-jupyter">
+                        <div class=" highlight hl-ipython3">
+                            <pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">cmp_to_key</span>
+
+<span class="c1"># 索引类</span>
+<span class="k">class</span> <span class="nc">Idx</span><span class="p">:</span>
+    <span class="n">HZIdx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x10000</span><span class="p">)]</span>
+    <span class="n">CMP_LEN</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">PosIdx</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">FTXDat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">TotalNum</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 将所有语料库文本合并到 DatFile</span>
+    <span class="k">def</span> <span class="nf">MergeFilesUnicode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">):</span>
+        <span class="n">Out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">DatFile</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">FileList</span><span class="p">)):</span>
+            <span class="n">Inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">FileList</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+            <span class="n">DatBuf</span> <span class="o">=</span> <span class="n">Inp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">Inp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">DatBuf</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">WriteData</span><span class="p">(</span><span class="n">DatBuf</span><span class="p">,</span> <span class="n">Out</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing &quot;</span><span class="p">,</span> <span class="n">FileList</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">Out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># 建立三个索引文件：DatFile, HZIdxFile, PosIdxFile</span>
+    <span class="k">def</span> <span class="nf">CreateIdx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">,</span> <span class="n">HZIdxFile</span><span class="p">,</span> <span class="n">PosIdxFile</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">MergeFilesUnicode</span><span class="p">(</span><span class="n">FileList</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">PosInfoFill</span><span class="p">(</span><span class="n">DatFile</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">WriteHZ</span><span class="p">(</span><span class="n">HZIdxFile</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">WriteIdx</span><span class="p">(</span><span class="n">PosIdxFile</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    
+    <span class="c1"># 将 DatBuf 中的数据，以字节流形式写到 DatFile中</span>
+    <span class="c1"># 并累计每个汉字的字频</span>
+    <span class="k">def</span> <span class="nf">WriteData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DatBuf</span><span class="p">,</span> <span class="n">Out</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">DatBuf</span><span class="p">)):</span>
+            <span class="n">GB</span> <span class="o">=</span> <span class="n">DatBuf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;gbk&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">GB</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ID</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">GB</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ID</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">GB</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">ID</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">Out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">GB</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    
+    <span class="c1"># 将 HZIdx[i] 的内容修改为 HZIdx[0] 到 HZIdx[i] 的累和</span>
+    <span class="k">def</span> <span class="nf">GetReadyHZ</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x10000</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            
+    <span class="c1"># 恢复 HZIdx 中的内容</span>
+    <span class="k">def</span> <span class="nf">RecoveryHZ</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x10000</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># 用于 cmp_to_key 的比较函数</span>
+    <span class="k">def</span> <span class="nf">cmp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">X1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_LEN</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span> <span class="ow">and</span> <span class="n">X2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_LEN</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span><span class="p">:</span>
+            <span class="n">Str1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">[</span><span class="n">X1</span><span class="p">:</span><span class="n">X1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_LEN</span><span class="p">]</span>
+            <span class="n">Str2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">[</span><span class="n">X2</span><span class="p">:</span><span class="n">X2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_LEN</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">Str1</span> <span class="o">&lt;</span> <span class="n">Str2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">Str1</span> <span class="o">&gt;</span> <span class="n">Str2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    
+    <span class="c1"># 将 self.HZIdx[i]:self.HZIdx[i + 1] 的内容排序后写到 索引文件PosIdxFile 中</span>
+    <span class="k">def</span> <span class="nf">SortWrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Out</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x10000</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">BlockBuff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+            <span class="n">BlockBuff</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">BlockBuff</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">cmp_to_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmp</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">BlockBuff</span><span class="p">)):</span>
+                <span class="n">Num</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="n">BlockBuff</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                <span class="n">Out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">Num</span><span class="p">)</span>
+                
+    <span class="c1"># 通过 DatFile 建立语料库纯文本索引数组</span>
+    <span class="k">def</span> <span class="nf">PosInfoFill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">GetReadyHZ</span><span class="p">()</span>
+
+        <span class="n">Inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">DatFile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span> <span class="o">=</span> <span class="n">Inp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">Inp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">))]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">)):</span>
+            <span class="n">GB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;gbk&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">GB</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ID</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">GB</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ID</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">GB</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">ID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">ID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">RecoveryHZ</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    
+    <span class="c1"># 将 HZIdx 中的内容，写到索引文件 HZIdxFile 中</span>
+    <span class="k">def</span> <span class="nf">WriteHZ</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">HZIdxFile</span><span class="p">):</span>
+        <span class="n">Out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">HZIdxFile</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">)):</span>
+            <span class="n">Num</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">Out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">Num</span><span class="p">)</span>
+        <span class="n">Out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    
+    <span class="c1"># 将 PosIdx 中的内容，排序后，写到索引文件 PosIdxFile 中</span>
+    <span class="k">def</span> <span class="nf">WriteIdx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PosIdxFile</span><span class="p">):</span>
+        <span class="n">Out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">PosIdxFile</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+        <span class="n">Num</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span><span class="p">)</span>
+        <span class="n">Out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">Num</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SortWrite</span><span class="p">(</span><span class="n">Out</span><span class="p">)</span>
+        <span class="n">Out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># 实例化 Idx 创建索引文件</span>
+<span class="k">def</span> <span class="nf">IdxMain</span><span class="p">():</span>
+    <span class="n">ObjIdx</span> <span class="o">=</span> <span class="n">Idx</span><span class="p">()</span>
+    <span class="n">FileList</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;res/train.001&quot;</span><span class="p">]</span>
+    <span class="n">DatFile</span> <span class="o">=</span> <span class="s2">&quot;FTR.dat&quot;</span>
+    <span class="n">HZIdxFile</span> <span class="o">=</span> <span class="s2">&quot;Unit.dat&quot;</span>
+    <span class="n">PosIdxFile</span> <span class="o">=</span> <span class="s2">&quot;Offset.dat&quot;</span>
+    <span class="n">ObjIdx</span><span class="o">.</span><span class="n">CreateIdx</span><span class="p">(</span><span class="n">FileList</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">,</span> <span class="n">HZIdxFile</span><span class="p">,</span> <span class="n">PosIdxFile</span><span class="p">)</span>
+    
+<span class="n">IdxMain</span><span class="p">()</span>
+</pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jp-Cell-outputWrapper">
+
+
+            <div class="jp-OutputArea jp-Cell-outputArea">
+
+                <div class="jp-OutputArea-child">
+
+
+                    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+                    <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+                        <pre>Processing  res/train.001
+</pre>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+        <div class="jp-Cell-inputWrapper">
+            <div class="jp-InputArea jp-Cell-inputArea">
+                <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+                <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                    <div class="CodeMirror cm-s-jupyter">
+                        <div class=" highlight hl-ipython3">
+                            <pre><span></span><span class="c1"># 全文检索FTR类</span>
+<span class="k">class</span> <span class="nc">FTR</span><span class="p">:</span>
+    <span class="n">HZIdx</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">PosIdx</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">FTXDat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">TotalNum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CMP_MAXLEN</span> <span class="o">=</span> <span class="mi">10</span>
+    
+    <span class="c1"># FTR初始化，将三个索引文件分别读取到类变量 HZIdx，FTXDat，PosIdx 中</span>
+    <span class="k">def</span> <span class="nf">FTRInit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">HZIdxFile</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">,</span> <span class="n">psIdx</span><span class="p">):</span>
+        <span class="n">Inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">HZIdxFile</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x10000</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x10000</span><span class="p">):</span>
+            <span class="n">NumByte</span> <span class="o">=</span> <span class="n">Inp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">Num</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="n">NumByte</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">Inp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="n">Inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">psIdx</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+        <span class="n">NumByte</span> <span class="o">=</span> <span class="n">Inp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">Num</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="n">NumByte</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span> <span class="o">=</span> <span class="n">Num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span><span class="p">):</span>
+            <span class="n">NumByte</span> <span class="o">=</span> <span class="n">Inp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">Num</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="n">NumByte</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">Inp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="n">Inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">DatFile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span> <span class="o">=</span> <span class="n">Inp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">Inp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    <span class="c1"># 确定含有待检索字符串区的低端位置</span>
+    <span class="k">def</span> <span class="nf">bSearchLow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">):</span>
+        <span class="n">CompRes</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">Start</span> <span class="o">&gt;=</span> <span class="n">End</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="n">nLen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nLen</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_MAXLEN</span><span class="p">:</span>
+            <span class="n">nLen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_MAXLEN</span>
+        <span class="n">CmpStr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">Start</span><span class="p">]:</span><span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">Start</span><span class="p">]</span> <span class="o">+</span> <span class="n">nLen</span><span class="p">];</span>
+        <span class="k">if</span> <span class="n">CmpStr</span> <span class="o">&gt;</span> <span class="n">Query</span><span class="p">:</span>
+            <span class="n">CompRes</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">CmpStr</span> <span class="o">&lt;</span> <span class="n">Query</span><span class="p">:</span>
+            <span class="n">CompRes</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">CompRes</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Start</span>
+
+        <span class="k">if</span> <span class="n">End</span> <span class="o">-</span> <span class="n">Start</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">CompRes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="n">mid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">Start</span> <span class="o">+</span> <span class="n">End</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">Ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bSearchLow</span><span class="p">(</span><span class="n">Start</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">Query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bSearchLow</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Ret</span>
+    
+    <span class="c1"># 确定含有待检索字符串区的高端位置</span>
+    <span class="k">def</span> <span class="nf">bSearchHigh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">):</span>
+        <span class="n">CompRes</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">Ret</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">Start</span> <span class="o">&gt;=</span> <span class="n">End</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="n">nLen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nLen</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_MAXLEN</span><span class="p">:</span>
+            <span class="n">nLen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CMP_MAXLEN</span>
+
+        <span class="n">CmpStr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">End</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span><span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">End</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">nLen</span><span class="p">];</span>
+        <span class="k">if</span> <span class="n">CmpStr</span> <span class="o">&gt;</span> <span class="n">Query</span><span class="p">:</span>
+            <span class="n">CompRes</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">CmpStr</span> <span class="o">&lt;</span> <span class="n">Query</span><span class="p">:</span>
+            <span class="n">CompRes</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">CompRes</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">End</span>
+
+        <span class="k">if</span> <span class="n">End</span> <span class="o">-</span> <span class="n">Start</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">CompRes</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="n">mid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">Start</span> <span class="o">+</span> <span class="n">End</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">Ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bSearchHigh</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bSearchHigh</span><span class="p">(</span><span class="n">Start</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">Query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Ret</span>
+    
+    <span class="c1">#求检索字串首字key[0]的有用地址范围</span>
+    <span class="k">def</span> <span class="nf">SearchFTR</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">,</span> <span class="n">FTSRet</span><span class="p">,</span> <span class="n">WindowSize</span><span class="p">,</span> <span class="n">RetNum</span><span class="p">):</span>
+        <span class="n">nPosLow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bSearchLow</span><span class="p">(</span><span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nPosLow</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">nPosHigh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bSearchHigh</span><span class="p">(</span><span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Query</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nPosLow</span><span class="p">,</span> <span class="n">nPosHigh</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">WindowSize</span><span class="p">:</span>
+                <span class="n">nFirst</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nFirst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">WindowSize</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">Query</span><span class="p">)</span> <span class="o">+</span> <span class="n">WindowSize</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span><span class="p">:</span>
+                <span class="n">nLast</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TotalNum</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nLast</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PosIdx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">Query</span><span class="p">)</span> <span class="o">+</span> <span class="n">WindowSize</span>
+            <span class="n">Ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FTXDat</span><span class="p">[</span><span class="n">nFirst</span><span class="p">:</span><span class="n">nLast</span><span class="p">]</span>
+            <span class="n">Ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span> <span class="s2">&quot;##&quot;</span><span class="p">,</span> <span class="n">Ret</span><span class="p">)</span>
+            <span class="n">FTSRet</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ret</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">RetNum</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">FTSRet</span><span class="p">):</span>
+                <span class="k">break</span>
+                
+    <span class="c1"># 全文检索 psInp（WindowSize = 20，RetNum = 100），将结果保存到 FTSRet 列表</span>
+    <span class="k">def</span> <span class="nf">Search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psInp</span><span class="p">,</span> <span class="n">FTSRet</span><span class="p">,</span> <span class="n">WindowSize</span><span class="p">,</span> <span class="n">RetNum</span><span class="p">):</span>
+        <span class="n">GB</span> <span class="o">=</span> <span class="n">psInp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;gbk&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">GB</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ID</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">GB</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ID</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">GB</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SearchFTR</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">ID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">HZIdx</span><span class="p">[</span><span class="n">ID</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">psInp</span><span class="p">,</span> <span class="n">FTSRet</span><span class="p">,</span> <span class="n">WindowSize</span><span class="p">,</span> <span class="n">RetNum</span><span class="p">)</span>
+
+<span class="c1"># 实例化 FTR 并进行全文检索</span>
+<span class="k">def</span> <span class="nf">FTSMain</span><span class="p">():</span>
+    <span class="n">ObjFTR</span> <span class="o">=</span> <span class="n">FTR</span><span class="p">()</span>
+    <span class="n">DatFile</span> <span class="o">=</span> <span class="s2">&quot;FTR.dat&quot;</span>
+    <span class="n">HZIdxFile</span> <span class="o">=</span> <span class="s2">&quot;Unit.dat&quot;</span>
+    <span class="n">psIdx</span> <span class="o">=</span> <span class="s2">&quot;Offset.dat&quot;</span>
+    <span class="n">ObjFTR</span><span class="o">.</span><span class="n">FTRInit</span><span class="p">(</span><span class="n">HZIdxFile</span><span class="p">,</span> <span class="n">DatFile</span><span class="p">,</span> <span class="n">psIdx</span><span class="p">)</span>
+    <span class="n">FTSRet</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">WindowSize</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">RetNum</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">Query</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Pls:&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Query</span> <span class="o">==</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">FTSRet</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">ObjFTR</span><span class="o">.</span><span class="n">Search</span><span class="p">(</span><span class="n">Query</span><span class="p">,</span> <span class="n">FTSRet</span><span class="p">,</span> <span class="n">WindowSize</span><span class="p">,</span> <span class="n">RetNum</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">FTSRet</span><span class="p">)):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">FTSRet</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">FTSMain</span><span class="p">()</span>
+</pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jp-Cell-outputWrapper">
+
+
+            <div class="jp-OutputArea jp-Cell-outputArea">
+
+                <div class="jp-OutputArea-child">
+
+
+                    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+                    <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+                        <pre>Pls:快来与大家分享吧。
+行万里路，你也有许多难忘的旅游经历吗？##快来与大家分享吧。##学生斗殴发生致残，监护、管理责任应由谁
+Pls:q
+</pre>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

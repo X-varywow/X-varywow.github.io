@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="jupyter.css">
+  <title>短文本情感分析</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+  <!-- Load mathjax -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML-full,Safe"> </script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+        // MathJax loaded
+            MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                    autoNumber: "AMS",
+                    useLabelIds: true
+                    }
+                },
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                },
+                "HTML-CSS": {
+                    linebreaks: { 
+                    automatic: true 
+                    }
+                }
+            });
+        
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+    }
+    init_mathjax();
+    </script>
+  <!-- End of mathjax configuration -->
+</head>
+
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h1 id="&#30701;&#25991;&#26412;&#24773;&#24863;&#20998;&#26512;&#20219;&#21153;">
+        &#30701;&#25991;&#26412;&#24773;&#24863;&#20998;&#26512;&#20219;&#21153;<a class="anchor-link"
+          href="#&#30701;&#25991;&#26412;&#24773;&#24863;&#20998;&#26512;&#20219;&#21153;">&#182;</a></h1>
+      <p><strong>任务描述</strong>： 基于机器学习方法实现电影评论文本的情感分类。 最终机器能够从大规模标注文本中获得经验，判定某一指定文本的情感极性：正面/负面</p>
+      <p><strong>数据集</strong>： 数据集已经切分为训练集和测试集， 其中训练集 25000 条， 测试集 25000 条；训练集和测试集中正面（positive） 评价和负面（negtive）评价各占一半。
+      </p>
+      <p><strong>目录结构如下</strong>：训练集和测试集分别位于 train 和 test 两个目录，每个目录下均有 pos 和 neg
+        两个子目录，分别代表正面评价的文本和负面评价的文本；每一个训练样例一个文件，文本命名方式为： id_rating.txt，其中 id 为样例唯一 id， rating 为该文本的情感极性评分，正面评价为
+        7-10分，负面评价为 0-4 分；
+        例如： [test/pos/200_8.txt]， 表示测试集中 id 为 200、评分为 8 的正面评价实例（正例）</p>
+      <p><strong>提示</strong>：</p>
+      <ol>
+        <li>本任务为典型的文本分类问题（正面/负面两类分类问题）；</li>
+        <li>可以充分使用目前流行的大规模预训练语言模型如 BERT 等； 注意分词问题（tokenization）；</li>
+        <li>虽然是两类分类问题，是否可以借鉴训练样例中给出的 rating 值来辅
+          助训练过程；</li>
+        <li>从训练集中要独立切分出部分训练例作为验证集来调整模型的超参
+          数；</li>
+        <li>模型构造时注意输入字符串序列的最大长度限制；</li>
+        <li>如果设计的分类器性能不好，是否可以考虑集成学习？ (Adaboost)；</li>
+        <li>充分发挥自己的动手能力，提升模型的测试效果~</li>
+      </ol>
+
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h1 id="&#65288;1&#65289;&#26420;&#32032;&#36125;&#21494;&#26031;&#23454;&#29616;">
+        &#65288;1&#65289;&#26420;&#32032;&#36125;&#21494;&#26031;&#23454;&#29616;<a class="anchor-link"
+          href="#&#65288;1&#65289;&#26420;&#32032;&#36125;&#21494;&#26031;&#23454;&#29616;">&#182;</a></h1>
+      <h2 id="V1.1-&#20108;&#20998;&#31867;&#23454;&#29616;">V1.1 &#20108;&#20998;&#31867;&#23454;&#29616;<a
+          class="anchor-link" href="#V1.1-&#20108;&#20998;&#31867;&#23454;&#29616;">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">findFile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="c1">#for file in os.listdir(path)[:1000]:</span>
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span>
+            <span class="c1">#print(file)</span>
+            <span class="k">yield</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">com_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">err_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">findFile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tmp</span> <span class="k">if</span> <span class="n">i</span><span class="p">])</span>
+                <span class="n">com_cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">err_cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正确读取文件:</span><span class="si">{}</span><span class="s2">   错误读取文件:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">com_cnt</span><span class="p">,</span> <span class="n">err_cnt</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+<span class="n">neg</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\train\neg&quot;</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\train\pos&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">neg</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">]</span>
+
+<span class="n">testn</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\test\neg&quot;</span><span class="p">)</span>
+<span class="n">testp</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\test\pos&quot;</span><span class="p">)</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>正确读取文件:12500   错误读取文件:0
+正确读取文件:12500   错误读取文件:0
+正确读取文件:12500   错误读取文件:0
+正确读取文件:12500   错误读取文件:0
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="k">class</span> <span class="nc">Bayes</span><span class="p">:</span>                                    <span class="c1">#改用的机器学习课写的贝叶斯，没用那个矩阵</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span> <span class="o">=</span> <span class="p">{}</span>                       <span class="c1"># pos例子的字典, key:word, val:count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span> <span class="o">=</span> <span class="p">{}</span>                       <span class="c1"># neg例子的字典</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>                         <span class="c1">#pos文本</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n1</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> 
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">p_yes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="p">)</span>
+        <span class="n">p_no</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n0</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">p_yes</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>          <span class="c1">#拉普拉斯平滑，即加 1 平滑</span>
+            <span class="n">p_no</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1">#print(&quot;p(yes):&quot;, p_yes)</span>
+        <span class="c1">#print(&quot;p(no):&quot;, p_no)</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span>  <span class="n">p_yes</span> <span class="o">&gt;=</span> <span class="n">p_no</span> <span class="k">else</span> <span class="kc">False</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Bayes</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tn</span><span class="p">,</span> <span class="n">fn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span> 
+        <span class="n">tp</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">fn</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testn</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="n">fp</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">tn</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正确率：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">tp</span><span class="o">+</span><span class="n">tn</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="o">+</span><span class="n">tn</span><span class="o">+</span><span class="n">fn</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准确率：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="p">)))</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>正确率：0.77656
+准确率：0.7312683971099813
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="&#20998;&#25968;&#35760;&#24405;&#65306;">&#20998;&#25968;&#35760;&#24405;&#65306;<a class="anchor-link"
+          href="#&#20998;&#25968;&#35760;&#24405;&#65306;">&#182;</a></h2>
+      <table>
+        <thead>
+          <tr>
+            <th>平滑</th>
+            <th>正确率</th>
+            <th>准确率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>未平滑</td>
+            <td>0.51324</td>
+            <td>0.5067958773046441</td>
+          </tr>
+          <tr>
+            <td>+1</td>
+            <td>0.77308</td>
+            <td>0.7278552833589212</td>
+          </tr>
+          <tr>
+            <td>+2</td>
+            <td>0.77656</td>
+            <td>0.7312683971099813</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="V1.2-&#24341;&#20837;TF-IDF&#29305;&#24449;&#25552;&#21462;&#65292;&#21450;&#20572;&#29992;&#35789;">V1.2
+        &#24341;&#20837;TF-IDF&#29305;&#24449;&#25552;&#21462;&#65292;&#21450;&#20572;&#29992;&#35789;<a
+          class="anchor-link"
+          href="#V1.2-&#24341;&#20837;TF-IDF&#29305;&#24449;&#25552;&#21462;&#65292;&#21450;&#20572;&#29992;&#35789;">&#182;</a>
+      </h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+
+<span class="k">def</span> <span class="nf">findFile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">findFile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span> <span class="o">=</span> <span class="s2">&quot;english&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+            
+<span class="n">neg</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\train\neg&quot;</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\train\pos&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">neg</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">]</span>
+
+<span class="n">testn</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\test\neg&quot;</span><span class="p">)</span>
+<span class="n">testp</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\test\pos&quot;</span><span class="p">)</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="k">class</span> <span class="nc">Bayes</span><span class="p">:</span>                                    <span class="c1">#改用的机器学习课写的贝叶斯，没用那个矩阵</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span> <span class="o">=</span> <span class="p">{}</span>                       <span class="c1"># pos例子的字典, key:word, val:count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span> <span class="o">=</span> <span class="p">{}</span>                       <span class="c1"># neg例子的字典</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>                         <span class="c1">#pos文本</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n1</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> 
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">p_yes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="p">)</span>
+        <span class="n">p_no</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n0</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">p_yes</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="mi">200</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>          <span class="c1">#拉普拉斯平滑，即加 1 平滑</span>
+            <span class="n">p_no</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="mi">200</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1">#print(&quot;p(yes):&quot;, p_yes)</span>
+        <span class="c1">#print(&quot;p(no):&quot;, p_no)</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span>  <span class="n">p_yes</span> <span class="o">&gt;=</span> <span class="n">p_no</span> <span class="k">else</span> <span class="kc">False</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Bayes</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tn</span><span class="p">,</span> <span class="n">fn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span> 
+        <span class="n">tp</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">fn</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testn</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="n">fp</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">tn</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正确率：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">tp</span><span class="o">+</span><span class="n">tn</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="o">+</span><span class="n">tn</span><span class="o">+</span><span class="n">fn</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准确率：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="p">)))</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>正确率：0.8314
+准确率：0.8420444224258938
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <table>
+        <thead>
+          <tr>
+            <th>平滑</th>
+            <th>正确率Acc</th>
+            <th>准确率Pre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>未平滑</td>
+            <td>0.60108</td>
+            <td>0.562895116730549</td>
+          </tr>
+          <tr>
+            <td>+1</td>
+            <td>0.80944</td>
+            <td>0.7831625183016105</td>
+          </tr>
+          <tr>
+            <td>+5</td>
+            <td>0.81656</td>
+            <td>0.790187738339689</td>
+          </tr>
+          <tr>
+            <td>+100</td>
+            <td>0.8314</td>
+            <td>0.8420444224258938</td>
+          </tr>
+          <tr>
+            <td>+250</td>
+            <td>0.83028</td>
+            <td>0.8463216173139837</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="V1.3-&#23545;-1.2-&#27979;&#31639;&#24179;&#28369;&#21442;&#25968;&#30340;&#24433;&#21709;">V1.3 &#23545;
+        1.2 &#27979;&#31639;&#24179;&#28369;&#21442;&#25968;&#30340;&#24433;&#21709;<a class="anchor-link"
+          href="#V1.3-&#23545;-1.2-&#27979;&#31639;&#24179;&#28369;&#21442;&#25968;&#30340;&#24433;&#21709;">&#182;</a>
+      </h2>
+      <p>对1.2的文本处理模块不变，改写模型及评测</p>
+
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[70]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="k">class</span> <span class="nc">Bayes</span><span class="p">:</span>                                    <span class="c1">#改用的机器学习课写的贝叶斯，没用那个矩阵</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span> <span class="o">=</span> <span class="p">{}</span>                       <span class="c1"># pos例子的字典, key:word, val:count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span> <span class="o">=</span> <span class="p">{}</span>                       <span class="c1"># neg例子的字典</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>                         <span class="c1">#pos文本</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n1</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> 
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">p_yes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="p">)</span>
+        <span class="n">p_no</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n0</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">p_yes</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>          <span class="c1">#拉普拉斯平滑，即加 1 平滑</span>
+            <span class="n">p_no</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n0</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1">#print(&quot;p(yes):&quot;, p_yes)</span>
+        <span class="c1">#print(&quot;p(no):&quot;, p_no)</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span>  <span class="n">p_yes</span> <span class="o">&gt;=</span> <span class="n">p_no</span> <span class="k">else</span> <span class="kc">False</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[71]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1">#解决中文乱码问题</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Bayes</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    
+    <span class="n">x</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">pre</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+
+        <span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tn</span><span class="p">,</span> <span class="n">fn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testp</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span> 
+                <span class="n">tp</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">fn</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testn</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                <span class="n">fp</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">tn</span> <span class="o">+=</span> <span class="mi">1</span>
+                
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">acc</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tp</span><span class="o">+</span><span class="n">tn</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="o">+</span><span class="n">tn</span><span class="o">+</span><span class="n">fn</span><span class="p">))</span>
+        <span class="n">pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span><span class="o">+</span><span class="n">fp</span><span class="p">))</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;正确率&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;准确率&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;评测曲线&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;平滑数&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">acc</span><span class="p">,</span> <span class="n">pre</span>
+    
+<span class="n">acc</span><span class="p">,</span><span class="n">pre</span> <span class="o">=</span> <span class="n">main</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mi">2</span><span class="p">)])</span>
+
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;程序运行了：</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">))</span>
+
+<span class="c1"># for x,y in zip(acc,pre):</span>
+<span class="c1">#     print(x,y)</span>
+<span class="c1"># 暂时选取 200 为最优</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+          <div class="jp-RenderedImage jp-OutputArea-output ">
+            <img src="data:image/png;base64,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
+">
+          </div>
+
+        </div>
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>程序运行了：196.99278736114502
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <p>参考资料：</p>
+      <ul>
+        <li><a
+            href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="V2.0-&#20351;&#29992;sklearn&#30340;&#22810;&#39033;&#24335;&#36125;&#21494;&#26031;">V2.0
+        &#20351;&#29992;sklearn&#30340;&#22810;&#39033;&#24335;&#36125;&#21494;&#26031;<a class="anchor-link"
+          href="#V2.0-&#20351;&#29992;sklearn&#30340;&#22810;&#39033;&#24335;&#36125;&#21494;&#26031;">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="test_demo">test_demo<a class="anchor-link" href="#test_demo">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+
+<span class="k">def</span> <span class="nf">findFile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.txt&quot;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">findFile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">ans</span>                                  <span class="c1">#ans中，一篇文章的整个字符为一项</span>
+
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span> <span class="o">=</span> <span class="s2">&quot;english&quot;</span><span class="p">)</span> 
+
+<span class="n">neg</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\train\neg&quot;</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\train\pos&quot;</span><span class="p">)</span>
+<span class="n">testn</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\test\neg&quot;</span><span class="p">)</span>
+<span class="n">testp</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;dataset\test\pos&quot;</span><span class="p">)</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">neg</span><span class="o">+</span><span class="n">pos</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testn</span><span class="o">+</span><span class="n">testp</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12500</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">12500</span><span class="p">)</span>                      
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准确率为:&quot;</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12500</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">12500</span><span class="p">))</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>准确率为: 0.82992
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="&#36825;&#26159;&#19968;&#20010;&#31034;&#20363;&#20195;&#30721;">
+        &#36825;&#26159;&#19968;&#20010;&#31034;&#20363;&#20195;&#30721;<a class="anchor-link"
+          href="#&#36825;&#26159;&#19968;&#20010;&#31034;&#20363;&#20195;&#30721;">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span> <span class="c1"># 多项式模型，进行文本分类</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>        <span class="c1">#data pretty printer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span> <span class="c1">#TF-IDF文本特征提取</span>
+
+<span class="n">newsgroups_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+
+<span class="c1">#pprint(list(newsgroups_train.target_names))</span>
+
+<span class="n">select</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alt.atheism&#39;</span><span class="p">,</span><span class="s1">&#39;comp.graphics&#39;</span><span class="p">,</span><span class="s1">&#39;misc.forsale&#39;</span><span class="p">,</span><span class="s1">&#39;rec.autos&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sci.crypt&#39;</span><span class="p">,</span><span class="s1">&#39;soc.religion.christian&#39;</span><span class="p">,</span><span class="s1">&#39;talk.politics.guns&#39;</span><span class="p">]</span>
+
+<span class="n">train</span><span class="o">=</span><span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span><span class="n">categories</span><span class="o">=</span><span class="n">select</span><span class="p">)</span>   <span class="c1"># 1.数据集导入</span>
+
+<span class="c1">#print(type(train),dir(train))                         #这是一些 python自省函数 ！！！！！！！！！！</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">data</span><span class="p">),</span><span class="nb">dir</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#print(train.target)</span>
+<span class="n">test</span><span class="o">=</span><span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="n">categories</span><span class="o">=</span><span class="n">select</span><span class="p">)</span>
+
+
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span> 
+<span class="n">train_v</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>                 <span class="c1"># 2.文本特征向量化</span>
+<span class="n">test_v</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_v</span><span class="p">,</span><span class="n">train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>                              <span class="c1"># 3.训练模型</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准确率为:&quot;</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">test_v</span><span class="p">,</span><span class="n">test</span><span class="o">.</span><span class="n">target</span><span class="p">))</span>       
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>&lt;class &#39;list&#39;&gt; [&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iadd__&#39;, &#39;__imul__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;append&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]
+[&#39;From: pmoloney@maths.tcd.ie (Paul Moloney)\nSubject: Re: some thoughts.\nKeywords: Dan Bissell\nOrganization: Somewhere in the Twentieth Century\nLines: 14\n\nbissda@saturn.wwc.edu (DAN LAWRENCE BISSELL) writes:\n\n&gt;\tNiether was he a lunatic.  Would more than an entire nation be drawn \n&gt;to someone who was crazy.\n\nFind an encyclopedia. Volume H. Now look up Hitler, Adolf. He had\nmany more people than just Germans enamoured with him.\n\nP.\n-- \n moorcockpratchettdenislearydelasoulu2iainmbanksneworderheathersbatmanpjorourke\nclive p a u l  m o l o n e y  Come, let us retract the foreskin of misconception\njames trinity college dublin  and apply the wire brush of enlightenment - GeoffM\n brownbladerunnersugarcubeselectronicblaylockpowersspikeleekatebushhamcornpizza \n&#39;]
+准确率为: 0.8714177978883861
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="jp-Cell-inputWrapper">
+    <div class="jp-InputPrompt jp-InputArea-prompt">
+    </div>
+    <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+      <h2 id="&#26597;&#30475;&#29615;&#22659;&#29256;&#26412;">&#26597;&#30475;&#29615;&#22659;&#29256;&#26412;<a
+          class="anchor-link" href="#&#26597;&#30475;&#29615;&#22659;&#29256;&#26412;">&#182;</a></h2>
+    </div>
+  </div>
+  <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell-inputWrapper">
+      <div class="jp-InputArea jp-Cell-inputArea">
+        <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+        <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+          <div class="CodeMirror cm-s-jupyter">
+            <div class=" highlight hl-ipython3">
+              <pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jp-Cell-outputWrapper">
+
+
+      <div class="jp-OutputArea jp-Cell-outputArea">
+
+        <div class="jp-OutputArea-child">
+
+
+          <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+          <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+            <pre>3.8.5 (default, Sep  3 2020, 21:29:08) [MSC v.1916 64 bit (AMD64)]
+1.19.2
+</pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+
+
+
+
+
+
+</html>
