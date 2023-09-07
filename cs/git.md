@@ -190,6 +190,23 @@ _.gitattributes_
 [LFS](https://git-lfs.com/)（large File Storage）, An open source Git extension for versioning large files
 
 
+
+## Git 规范
+
+参考：[大厂都在用的Git代码管理规范](https://mp.weixin.qq.com/s/6QxmajXJ9xuO_EpCtcaHsw)
+
+
+|分支|功能|环境|可访问|
+|---|---|--|--|
+|master|主分支，稳定版本|PRO|是|
+|develop|开发分支，最新版本|DEV	|是|
+|feature|开发分支，实现新特性||否|
+|test|测试分支，功能测试|FAT|是|
+|release|预上线分支，发布新版本|UAT|是|
+|hotfix	|紧急修复分支，修复线上bug||否|
+
+
+
 ## Github
 
 #### 1. Github 查找仓库
