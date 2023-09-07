@@ -11,5 +11,5 @@
   - [AutoEncoder](ML/深度学习/autoencoder)
   - [transformer](ML/深度学习/transformer)
   - [其它网络](ML/深度学习/model)
-  - [强化学习](ML/深度学习/RL)
+  - [强化学习](ML/深度学习/rl)
   - [ppo](ML/深度学习/ppo)

@@ -256,6 +256,7 @@ $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
 | 4个空格       | \quad       |               |             |
 | $\le$         | \le         | $\ge$         | \ge         |
 | $\approx$     | \approx     | $\equiv$      | \equiv      |
+|$\sim$|\sim|||
 | $\iff$        | \iff        |               |             |
 | $\cdot$       | \cdot       | $\cdots$      | \cdots      |
 | $\times$      | \times      | $\div$        | \div        |

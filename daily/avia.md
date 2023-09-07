@@ -521,12 +521,11 @@ vtoonify 炼丹？
 
 `0906`
 
-media 行业，咨询
+十张个角度图片，生成数字人3D 模型。单张图片生成的等更多需要 3D建模师 精修；
 
-- [ ] mp 矩阵
+- [x] github 清理
 
-facial transformation matrix
-
+熟悉战力；ELO
 
 
 
