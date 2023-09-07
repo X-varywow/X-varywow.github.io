@@ -12,4 +12,4 @@
   - [transformer](ML/深度学习/transformer)
   - [其它网络](ML/深度学习/model)
   - [强化学习](ML/深度学习/rl)
-  - [ppo](ML/深度学习/ppo)
+  - [PPO](ML/深度学习/PPO)
