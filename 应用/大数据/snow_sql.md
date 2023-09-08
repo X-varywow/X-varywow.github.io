@@ -583,12 +583,13 @@ select system$stream_has_data('MYSTREAM');
 ```sql
 -- 通过临时表减少实际需要的中间表
 with cte1 as (
-
+-- 这里语句结束不加 ;
 ),
 cte2 as (
   select *
   from cte1
-)
+) 
+-- 这里不加, 后面接着 select
 select *
 from cte2;
 ```
