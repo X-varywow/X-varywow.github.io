@@ -21,3 +21,4 @@ A successor to transformer for LLM
 
 参考资料：
 - https://mp.weixin.qq.com/s/zJsb2vdpEwqXEUgqHmpInA
+- https://mp.weixin.qq.com/s/H8HxdkZqY31UPcfwJ8ArVg

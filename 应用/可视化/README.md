@@ -14,7 +14,7 @@
 - 课程项目1 30%：交互/配置式可视化设计 `5.17`
 - 课程项目2 40%：编程式可视化设计 `6.21`
 
-笔记访问地址：[ProcessOn 思维导图](https://www.processon.com/mindmap/621d7b5af346fb07121e2bf2)
+笔记访问地址：[ProcessOn 思维导图](https://www.processon.com/view/link/621d7c591efad4681490eaa6)
 
 > 第一次作业：
 > - 要以问题为驱动，不宜数据驱动

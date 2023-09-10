@@ -95,6 +95,6 @@ https://github.com/Significant-Gravitas/Auto-GPT
 
 （1）当模型预测不准时，并且没有改进思路。可以查看预测不准的数据是什么样子，然后对数据筛选或寻找原因。
 
-
+（2）[Kaggle 通用方法](https://zhuanlan.zhihu.com/p/27424282)
 
 
