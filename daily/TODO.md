@@ -1,11 +1,13 @@
 
+不对劲，elo 反推有偏差，是精度的问题？
+
+
 被绕来绕去的 sql 烦过，才知道 jupyter notebook 多好用。
 
 **出境信息**
 
 jenkins, rancher
 
-scipy.stats
 
 blog-ELO
 

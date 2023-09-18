@@ -33,6 +33,28 @@ coalesce(arg1, arg2, ...) 返回第一个 不为null的值
 psql 取 json 中的数据：(json_row->>'user_id') 
 
 
+
+
+
+```sql
+-- 生成10个 0 到 2000 的随机数
+SELECT floor(random() * 2001) AS random_number
+FROM generate_series(1, 10) AS s;
+
+-- 校验
+select max(random_number), min(random_number)
+from (
+	SELECT floor(random() * 3)+1 AS random_number
+	FROM generate_series(1, 10000) AS fo
+) as foo;
+
+
+-- 生成随机数并转化为字符串：
+select CAST( (floor(random() * 3)+1)*10000 + floor(random() * 2001) AS VARCHAR);
+```
+
+
+
 ---------
 
 参考资料：
