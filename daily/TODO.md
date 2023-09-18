@@ -1,4 +1,16 @@
 
+被绕来绕去的 sql 烦过，才知道 jupyter notebook 多好用。
+
+**出境信息**
+
+jenkins, rancher
+
+scipy.stats
+
+blog-ELO
+
+feishu docs
+
 
 事情都处理完了，就是主机老是响很烦，百度云还在 SVIP, 下载
 
@@ -6,7 +18,6 @@
 - [ ] https://www.bilibili.com/video/BV14u41147YH/ blender 课程
 - [ ] DCTNET 部署测试训练，就是最终方案；那个 sd_design 就挺好的效果，需要生成素材。（弄好，再抠图拼接）
 - [ ] 补算法， p2p 等；浏览器，UNET；图像翻译 blog
-- [ ] 出境信息
 
 
 UNET
@@ -23,6 +34,7 @@ http://giantpandacv.com/
 
 - [ ] DFL 开始跑
 - [ ] 最多训 2 版大的 DFL
+- [ ]  python statsmodels
 
 https://github.com/iperov/DeepFaceLive
 

@@ -18,3 +18,5 @@
 Discrete Cosine Transform, DCT
 
 [详解离散余弦变换（DCT）](https://zhuanlan.zhihu.com/p/85299446)
+
+

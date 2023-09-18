@@ -253,7 +253,10 @@ $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
 | $\forall$     | \forall     | $\exists$     | \exists     |
 | $\lnot$       | \lnot       |               |             |
 | $\nabla$      | \nabla      | $\partial$    | \partial    |
-| 4个空格       | \quad       |               |             |
+| 4个空格        | \quad       |     空格       |     a\ b    |
+| 换行           | \\\\          |               |             |
+|                |             |               |             |
+| $\neq$         | \neq         |         |        |
 | $\le$         | \le         | $\ge$         | \ge         |
 | $\approx$     | \approx     | $\equiv$      | \equiv      |
 |$\sim$|\sim|||
