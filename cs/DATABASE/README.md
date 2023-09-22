@@ -66,5 +66,17 @@ from students;
 
 
 
+```sql
+delete from table_name where ...;
+
+insert into table_name ()
+values 
+(col1, col2, col3...),
+(),
+...
+
+
+```
+
 
 
