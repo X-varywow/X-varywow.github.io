@@ -768,6 +768,7 @@ https://docs.snowflake.com/en/sql-reference/external-functions
 
 https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-creating
 
+snowflake 中使用 python：
 
 ```sql
 -- 需要指定参数类型

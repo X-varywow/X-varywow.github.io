@@ -9,8 +9,6 @@ uvicorn --host "0.0.0.0" --port 8888 "dataai.main:app"
 
 ## dataai-eks-prod
 
-https://test.dataai.bigbeargames.net/dataai-realtime-feature-mtp/health-check
-
 根据 GET 得：访问 IP `18.209.144.235:443`，部署在美国的服务器， 与 sagemaker 同一片区域
 
 端口 443 ？？？

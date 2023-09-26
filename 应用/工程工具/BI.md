@@ -12,27 +12,41 @@ Business Intelliigence
 
 Traffic 流量
 
+`GTV` Gross Transaction，总交易金额（是衡量企业业务规模和交易活跃度的重要指标）
 
-CTR 点击率 = 点击量/展示数
+
+`CTR` 点击率 = 点击量/展示数
 （过低：主题相关性不高、主图不够吸引）
 
 
-CVR 转化率 = 转化量/点击量，表示用户点击广告后能多少转化成功。
+`CVR` 转化率 = 转化量/点击量，表示用户点击广告后能多少转化成功。
 
 
-CPM 每千次曝光成本
+`CPM` 每千次曝光成本
 
 
-CPI 每下载成本
+`CPI` 每下载成本
 
 CRM 客户关系管理，对客户分群等操作，定制化广告投放
 
 
-DAU daily active user, 日活跃用户数量
+`DAU` daily active user, 日活跃用户数量
 
 
-ARPU average revenue per user, 每用户平均收入
+`ARPU` average revenue per user, 每用户平均收入
+
+`ARPPU` 每付费用户的平均收益
 
 
+## 常用工具
 
-参考资料：https://bettywutalk.com/blog/advertising-terms/
+`数数 ThinkingData`，游戏数据引擎，用于：广告投放、精细运营等，内部sql查询或可视化标签查询，然后可视化图表，**就这么个带着大数据操作、标签操作的可视化分析平台**。
+
+
+>埋点数据是会经常缺失的，与服务端数据不同，埋点先是保存在内存中，用户退出游戏等操作容易导致缺失。
+
+
+-------------
+
+参考资料：
+- https://bettywutalk.com/blog/advertising-terms/

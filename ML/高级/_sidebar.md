@@ -6,3 +6,4 @@
   - [pso](ML/高级/pso)
   - [MonteCarlo](ML/高级/MonteCarlo)
   - [搜索相关](ML/高级/搜索相关)
+  - [元胞自动机](ML/高级/元胞自动机)

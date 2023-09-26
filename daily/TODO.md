@@ -1,29 +1,25 @@
-工程问题：
-（1）生产环境执行 sql 操作需要小心谨慎，服务器资源占用过多会有问题，
 
-（2）线上服务变动，不要操作唯一依赖，服务不可用。处理方法：（1）关流量（2）在新服务接入之前，保留原始服务
-
-不要将唯一的服务给停掉，，
+- [ ] 建模图片，上传
+- [ ] 检查腾讯云超额 
 
 
-不对劲，elo 反推有偏差，是精度的问题？
-
-https://zhuanlan.zhihu.com/p/32907455
+https://zhuanlan.zhihu.com/p/32907455 补充心理学
 
 
-被绕来绕去的 sql 烦过，才知道 jupyter notebook 多好用。
+优雅:我们可以把复杂情况下仍表现健壮的简单系统称为优雅.优雅在任何游戏种都是最理想的特性之一,因为它意味着你做的游戏简单易懂,却又充满了有趣的自发复杂性
 
-**出境信息**
+git rebase git fetch 
 
-jenkins, rancher
+poe 工具
 
+位图算法，leetcode 找找
 
-blog-ELO
-
-feishu docs
+https://www.cnblogs.com/54chensongxia/p/11591979.html
 
 
 事情都处理完了，就是主机老是响很烦，百度云还在 SVIP, 下载
+
+
 
 
 - [ ] https://www.bilibili.com/video/BV14u41147YH/ blender 课程
@@ -46,12 +42,6 @@ http://giantpandacv.com/
 - [ ] DFL 开始跑
 - [ ] 最多训 2 版大的 DFL
 - [ ]  python statsmodels
-
-https://github.com/iperov/DeepFaceLive
-
-discord
-
-跑 ghost
 
 bili 论文解读
 
