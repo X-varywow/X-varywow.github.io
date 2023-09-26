@@ -4,6 +4,7 @@
   - [3d](应用/建模/3d)
   - [0822vtuber](应用/建模/0822vtuber)
   - [3d 建模](应用/建模/3d建模)
+  - [blender](应用/建模/blender)
   - [空间姿态](应用/建模/空间姿态)
   - [live2d](应用/建模/live2d)
   - [live2d教程](应用/建模/live2dbase)
