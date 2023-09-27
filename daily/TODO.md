@@ -1,16 +1,46 @@
-括号错位问题，造成的报错报到其它地方去了，报错是对的，少个括号真的不明显；
 
-log 中类型问题，psql 使用 ::interger 进行类型转化，才不会报错；
+```bash
+git clone address -b test
+cd 
+git branch
+git fetch origin pro
+# 将 pro merge 到当前本地分支
+git merge origin/pro
 
-sql 中打包进入 json 的都是字符串类型，需要格式转化。
+:wq
+```
+
+
+
+假设检验、排除验证；控制变量，剔除混淆因素，拉齐
+
+贡献度，查找影响因素
+
+callhot 逻辑树 漏斗分析
+
+因果推断，归因分析
+
+sharp  value ep  重要性分析 维度分解
+
+数值策划，服务与体验，体验：均值，方差，分布
+
+uplift T casued tree model
+
+
+
+
+
+
+
+
 
 
 
 
 数学分析、泛函分析、数学建模，都需要学习一下
 
-支持 DLSS 3.5 和全景光线追踪的 赛博朋克2077：往日之影
-
+- [ ] 2077 夜之城
+- [ ] 原 4.1
 - [ ] 二刷-林超通识课
 - [ ] 置身事内，读完
 - [ ] 检查腾讯云超额 
@@ -28,9 +58,6 @@ poe 工具
 位图算法，leetcode 找找
 
 https://www.cnblogs.com/54chensongxia/p/11591979.html
-
-
-事情都处理完了，就是主机老是响很烦，百度云还在 SVIP, 下载
 
 
 - [ ] DCTNET 部署测试训练，就是最终方案；那个 sd_design 就挺好的效果，需要生成素材。（弄好，再抠图拼接）

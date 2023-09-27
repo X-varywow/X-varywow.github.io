@@ -11,6 +11,10 @@ git 是一个开源的分布式版本控制系统。
 
 ```bash
 git --version
+
+
+# 查看帮助信息
+git
 ```
 
 ## 配置
@@ -36,7 +40,13 @@ git init 'project_name'   #创建目录并初始化
 
 ##### 2. 检出仓库
 ```bash
-git clone 'address'  #获取一个仓库的文件
+# 获取一个仓库的文件
+git clone 'address' -b branch_name
+
+# 获取远程最新分支，不会自动合并本地分支
+git fetch origin branch_name
+
+
 ```
 
 ##### 3. 工作流
@@ -111,13 +121,27 @@ git checkout -b feature_x
 git push orign branch_name
 ```
 
+回退版本：
+
+```bash
+# 查看历史提交记录，记住 id 用于 reset
+git log
+
+
+git reset
+```
+
+[参考资料：reset](https://www.runoob.com/git/git-reset.html)
+
+
+
 ##### 7.更新与合并
 ```bash
 #更新本地仓库至最新改动
 
 git pull
 ```
-##### 8.其它指令
+## 其它操作
 
 1. 差异化比较，红色表示删除的，绿色表示添加的
 

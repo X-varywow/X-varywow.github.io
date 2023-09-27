@@ -870,3 +870,28 @@ select to_varchar(2);
 select '2';
 ```
 
+
+
+-----------
+
+> sql 中 group by 1 表示按第一列进行分组
+
+
+<p class = "pyellow">生产环境还是要小心，多检查 pipeline 的状态</p>
+
+
+坑， task create or replace 之后要 resume，
+
+```sql
+-- 检查 schedule， state 是 started 就行
+SHOW TASKS LIKE 'task_name;
+```
+
+-----------
+
+括号错位问题，造成的报错报到其它地方去了，报错是对的，少个括号真的不明显；
+
+log 中类型问题，psql 使用 ::interger 进行类型转化，才不会报错；
+
+sql 中打包进入 json 的都是字符串类型，需要格式转化。
+

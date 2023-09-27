@@ -39,6 +39,46 @@ pre {
 </br>
 
 
+## _环境变量_
+
+
+查看 python 路径
+
+```python
+import sys
+sys.path
+
+sys.path.append("..") # 使其能从父级导入模块
+```
+
+查看版本（控制台中）
+
+```bash
+python -V
+```
+
+[Linux添加PYTHONPATH方法以及3种修改环境变量方法](https://blog.csdn.net/c20081052/article/details/79715132)
+
+```bash
+export PYTHONPATH=$PYTHONPATH:/Users/yourname/yourpath
+```
+
+
+os.environ 是一个环境变量的字典
+
+```python
+# 指定为开发环境
+os.environ['APP_ENV'] = 'dev'
+```
+
+
+
+
+
+</br>
+</br>
+
+
 ## _Jupyter 魔法命令_
 
 ```python
@@ -257,27 +297,6 @@ print(f(3)) # -> [1, 2, 3]
 </br>
 
 ## _other_
-
-查看 python 路径
-
-```python
-import sys
-sys.path
-
-sys.path.append("..") # 使其能从父级导入模块
-```
-
-查看版本（控制台中）
-
-```bash
-python -V
-```
-
-[Linux添加PYTHONPATH方法以及3种修改环境变量方法](https://blog.csdn.net/c20081052/article/details/79715132)
-
-```bash
-export PYTHONPATH=$PYTHONPATH:/Users/yourname/yourpath
-```
 
 
 查看信息
