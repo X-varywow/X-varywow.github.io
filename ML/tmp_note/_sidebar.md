@@ -6,3 +6,4 @@
   - [数学基础](ML/tmp_note/math)
   - [线代基础](ML/tmp_note/math-LA)
   - [概统基础](ML/tmp_note/math-ST)
+  - [数据科学](ML/tmp_note/数据科学)

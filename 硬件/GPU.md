@@ -37,8 +37,6 @@ Deep Learning Super Sampling: AI-Powered Performance Multiplier Boosts Frame Rat
 
 支持 DLSS 3.5 和全景光线追踪的 赛博朋克2077：往日之影， `2023.09.27`
 
-很少有新技术首先用在游戏上的，，
-
 
 光线追踪，采用了递归式光线追踪，指定光线的递归层数，光线在场景中多次碰撞，实时追踪渲染。这比传统的光线投射更准确、拟真。
 

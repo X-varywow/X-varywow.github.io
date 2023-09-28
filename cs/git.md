@@ -5,7 +5,7 @@
 
 git 是一个开源的分布式版本控制系统。
 
-## 安装
+## 安装&配置
 
 [git官网](https:#git-scm.com/)
 
@@ -17,7 +17,6 @@ git --version
 git
 ```
 
-## 配置
 ```bash
 git config --list
 
@@ -26,7 +25,7 @@ git config --global user.name 'name'
 git config --global user.email 'email@address'
 ```
 
-- [git提示“warning: LF will be replaced by CRLF”的解决办法](https:#blog.csdn.net/u012757419/article/details/105614028/)
+[git提示“warning: LF will be replaced by CRLF”的解决办法](https://blog.csdn.net/u012757419/article/details/105614028/)
 
 
 ## 基本操作
@@ -134,13 +133,49 @@ git reset
 [参考资料：reset](https://www.runoob.com/git/git-reset.html)
 
 
+git rebase **修改分支提交的历史**，将一个分支的提交应用到另一个分支上，避免大量的合并提交。
+
+场景：两个分支 master 和 feature，
+
+```bash
+# 将 master 上的改动拉到本地 feature 分支
+git checkout feature
+
+git rebase master
+```
+
+推荐资料：https://www.freecodecamp.org/chinese/news/the-ultimate-guide-to-git-merge-and-git-rebase/
+
+
 
 ##### 7.更新与合并
 ```bash
 #更新本地仓库至最新改动
 
-git pull
+git pull orgin branch_name
 ```
+
+将远端不同分支合并到本地当前分支：
+
+```bash
+git clone address -b test
+cd repo_name
+git branch
+git fetch origin pro
+
+# 将 pro merge 到当前本地分支
+git merge origin/pro
+
+:wq
+```
+
+
+
+
+
+
+
+
 ## 其它操作
 
 1. 差异化比较，红色表示删除的，绿色表示添加的

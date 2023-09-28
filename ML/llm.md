@@ -142,6 +142,13 @@ flash-attention for higher efficiency and lower memory usage. 但是需要相同
 - 中心意思上 Qwen 还是不会偏离的
 - 使用起来，Qwen-7B 只有 GPT-3.5 Turbo 60% 的效果
 
+</br>
+
+## _后续_
+
+2023-09-28
+
+[Qwen-14B-Chat](https://modelscope.cn/models/qwen/Qwen-14B-Chat/summary)
 
 -------------------
 

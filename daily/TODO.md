@@ -1,39 +1,32 @@
 
-```bash
-git clone address -b test
-cd 
-git branch
-git fetch origin pro
-# 将 pro merge 到当前本地分支
-git merge origin/pro
 
-:wq
-```
+https://zhuanlan.zhihu.com/p/573883337
 
 
 
-假设检验、排除验证；控制变量，剔除混淆因素，拉齐
-
-贡献度，查找影响因素
-
-callhot 逻辑树 漏斗分析
-
-因果推断，归因分析
-
-sharp  value ep  重要性分析 维度分解
-
-数值策划，服务与体验，体验：均值，方差，分布
-
-uplift T casued tree model
+有的话就去，为什么不行动呢？行动起来
 
 
 
+lstm 好久以前的模型了？？？
+
+工作生活中，很多都和数学建模相关
+
+
+美国经济学家乔舒亚·D·安格里斯特（Joshua D. Angrist）和吉多·W·因本斯（Guido W. Imbens），因为在因果关系分析方面的方法论的卓越贡献，荣膺2021年诺贝尔经济学奖。David Card把因果推断应用于劳动经济学，研究了教育年限对收入的影响，与他们分享了该奖项。
 
 
 
+https://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/index.html#%E5%86%85%E5%AE%B9
+
+固化的路线，有很多好处，但确实有大问题。
+
+如装一个桌子，按照说明书来，很容易顺着固化的路线，失去远见的能力。如4个桌腿的孔位导致有着固定的位置，顺着说明书只看到了当前的孔位，导致了孔位不对需要重装。如果摒弃说明书，一般是会根据全局来确定路线的。
+
+一些启示：就是察觉到顺着一条固化的路线时，试着从全局上思考，短暂摒弃这条路线。
 
 
-
+以有涯随无涯，殆矣。关注重点领域的知识，事情，不然没时间啊
 
 
 

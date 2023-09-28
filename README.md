@@ -254,9 +254,9 @@ $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
 | $\lnot$       | \lnot       |               |             |
 | $\nabla$      | \nabla      | $\partial$    | \partial    |
 | 4个空格        | \quad       |     空格       |     a\ b    |
-| 换行           | \\\\          |               |             |
+| 换行           | \\\\        |             |             |
 |                |             |               |             |
-| $\neq$         | \neq         |         |        |
+| $\neq$         | \neq        |         |        |
 | $\le$         | \le         | $\ge$         | \ge         |
 | $\approx$     | \approx     | $\equiv$      | \equiv      |
 |$\sim$|\sim|||
@@ -265,7 +265,7 @@ $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
 | $\times$      | \times      | $\div$        | \div        |
 | $\lor$        | \lor        | $\land$       | \land       |
 | $\Rightarrow$ | \Rightarrow | $\rightarrow$ | \rightarrow |
-
+|$\nRightarrow$ |\nRightarrow |               |             |
 
 
 #### 3.5 矩阵方阵

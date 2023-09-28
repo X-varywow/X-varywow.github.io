@@ -884,7 +884,11 @@ select '2';
 
 ```sql
 -- 检查 schedule， state 是 started 就行
-SHOW TASKS LIKE 'task_name;
+SHOW TASKS LIKE 'task_name';
+
+-- % 为 通配符
+-- 匹配以 tmp 为子串的字符串
+SHOW TASKS LIKE '%tmp%';
 ```
 
 -----------
