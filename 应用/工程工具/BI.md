@@ -46,6 +46,21 @@ CRM 客户关系管理，对客户分群等操作，定制化广告投放
 >埋点数据是会经常缺失的，与服务端数据不同，埋点先是保存在内存中，用户退出游戏等操作容易导致缺失。
 
 
+
+</br>
+
+## _other_
+
+Predicted lifetime value (pLTV)
+
+- https://www.appsflyer.com/glossary/pltv/
+
+
+
+
+
+
+
 -------------
 
 参考资料：

@@ -242,30 +242,30 @@ $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
 
 #### 3.4 特殊符号
 
-| 特殊符号      | 命令        | 特殊符号      | 命令        |
-| ------------- | ----------- | ------------- | ----------- |
-| $\infty$      | \infty      |               |
-| $\cup$        | \cup        | $\cap$        | \cap        |
-| $\subset$     | \subset     | $\subseteq$   | \subseteq   |
-| $\supset$     | \supset     |               |             |
-| $\in$         | \in         | $\notin$      | \notin      |
-| $\varnothing$ | \varnothing |               |             |
-| $\forall$     | \forall     | $\exists$     | \exists     |
-| $\lnot$       | \lnot       |               |             |
-| $\nabla$      | \nabla      | $\partial$    | \partial    |
-| 4个空格        | \quad       |     空格       |     a\ b    |
-| 换行           | \\\\        |             |             |
-|                |             |               |             |
-| $\neq$         | \neq        |         |        |
-| $\le$         | \le         | $\ge$         | \ge         |
-| $\approx$     | \approx     | $\equiv$      | \equiv      |
-|$\sim$|\sim|||
-| $\iff$        | \iff        |               |             |
-| $\cdot$       | \cdot       | $\cdots$      | \cdots      |
-| $\times$      | \times      | $\div$        | \div        |
-| $\lor$        | \lor        | $\land$       | \land       |
-| $\Rightarrow$ | \Rightarrow | $\rightarrow$ | \rightarrow |
-|$\nRightarrow$ |\nRightarrow |               |             |
+| 特殊符号       | 命令         | 特殊符号      | 命令        |
+| -------------- | ------------ | ------------- | ----------- |
+| $\infty$       | \infty       |               |
+| $\cup$         | \cup         | $\cap$        | \cap        |
+| $\subset$      | \subset      | $\subseteq$   | \subseteq   |
+| $\supset$      | \supset      |               |             |
+| $\in$          | \in          | $\notin$      | \notin      |
+| $\varnothing$  | \varnothing  |               |             |
+| $\forall$      | \forall      | $\exists$     | \exists     |
+| $\lnot$        | \lnot        |               |             |
+| $\nabla$       | \nabla       | $\partial$    | \partial    |
+| 4个空格        | \quad        | 空格          | a\ b        |
+| 换行           | \\\\         |               |             |
+|                |              |               |             |
+| $\neq$         | \neq         |               |             |
+| $\le$          | \le          | $\ge$         | \ge         |
+| $\approx$      | \approx      | $\equiv$      | \equiv      |
+| $\sim$         | \sim         |               |             |
+| $\iff$         | \iff         |               |             |
+| $\cdot$        | \cdot        | $\cdots$      | \cdots      |
+| $\times$       | \times       | $\div$        | \div        |
+| $\lor$         | \lor         | $\land$       | \land       |
+| $\Rightarrow$  | \Rightarrow  | $\rightarrow$ | \rightarrow |
+| $\nRightarrow$ | \nRightarrow |               |             |
 
 
 #### 3.5 矩阵方阵

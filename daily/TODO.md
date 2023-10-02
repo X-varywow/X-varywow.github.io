@@ -32,12 +32,6 @@ https://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/ind
 
 数学分析、泛函分析、数学建模，都需要学习一下
 
-- [ ] 2077 夜之城
-- [ ] 原 4.1
-- [ ] 二刷-林超通识课
-- [ ] 置身事内，读完
-- [ ] 检查腾讯云超额 
-
 
 https://zhuanlan.zhihu.com/p/32907455 补充心理学
 

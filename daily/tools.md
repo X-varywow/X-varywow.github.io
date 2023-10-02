@@ -106,6 +106,7 @@ vscode:
 - 设置：自动保存
 - workbench>tree indent: 20
 - audio: 0
+- Editor: Format On Save
 
 插件 EditorConfig for VS Code 统一代码样式
 
