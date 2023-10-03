@@ -32,3 +32,24 @@ Preinstallation Environment，带有限服务的、最小 Win32 子系统，基�
 
 Darwin 是苹果公司开发的 UNIX 系统，是苹果所有系统的基础（包括 macOS）
 
+
+------------
+
+win11 是个大坑，不仅仅性能跑分比 win10 低。不设置 pin 直接登录界面死循环（至少几年了）。就像这个功能设计者买棺材需要亲人的入土证明，导致亲人入不了土还需要新开一个亲人的入土证明。
+
+shift + 重启
+
+[官方Windows 10镜像的靠谱下载点](https://zhuanlan.zhihu.com/p/81005418)
+
+
+[U盘被分成2个盘怎么合并?](https://www.disktool.cn/content-center/usb-is-divided-into-two-disk-how-to-merge-369.html)
+
+```bash
+diskpart
+
+lis dis
+
+sel dis 3
+
+clean
+```

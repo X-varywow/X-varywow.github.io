@@ -1,67 +1,11 @@
 
 
-https://zhuanlan.zhihu.com/p/573883337
-
-
-
-有的话就去，为什么不行动呢？行动起来
-
-
-
-lstm 好久以前的模型了？？？
-
-工作生活中，很多都和数学建模相关
-
-
-美国经济学家乔舒亚·D·安格里斯特（Joshua D. Angrist）和吉多·W·因本斯（Guido W. Imbens），因为在因果关系分析方面的方法论的卓越贡献，荣膺2021年诺贝尔经济学奖。David Card把因果推断应用于劳动经济学，研究了教育年限对收入的影响，与他们分享了该奖项。
-
-
-
-https://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/index.html#%E5%86%85%E5%AE%B9
-
-固化的路线，有很多好处，但确实有大问题。
-
-如装一个桌子，按照说明书来，很容易顺着固化的路线，失去远见的能力。如4个桌腿的孔位导致有着固定的位置，顺着说明书只看到了当前的孔位，导致了孔位不对需要重装。如果摒弃说明书，一般是会根据全局来确定路线的。
-
-一些启示：就是察觉到顺着一条固化的路线时，试着从全局上思考，短暂摒弃这条路线。
-
-
-以有涯随无涯，殆矣。关注重点领域的知识，事情，不然没时间啊
-
-
-
-数学分析、泛函分析、数学建模，都需要学习一下
-
-
-https://zhuanlan.zhihu.com/p/32907455 补充心理学
-
-
-优雅:我们可以把复杂情况下仍表现健壮的简单系统称为优雅.优雅在任何游戏种都是最理想的特性之一,因为它意味着你做的游戏简单易懂,却又充满了有趣的自发复杂性
-
-git rebase git fetch 
-
-poe 工具
-
-位图算法，leetcode 找找
-
-https://www.cnblogs.com/54chensongxia/p/11591979.html
-
-
 - [ ] DCTNET 部署测试训练，就是最终方案；那个 sd_design 就挺好的效果，需要生成素材。（弄好，再抠图拼接）
 - [ ] 补算法， p2p 等；浏览器，UNET；图像翻译 blog
-
 
 UNET
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
-
-
-http://zh.gluon.ai/chapter_convolutional-neural-networks/resnet.html
-
-https://zhuanlan.zhihu.com/p/593795159
-
-
-http://giantpandacv.com/
 
 - [ ] DFL 开始跑
 - [ ] 最多训 2 版大的 DFL
