@@ -12,7 +12,7 @@ Business Intelliigence
 
 Traffic 流量
 
-`GTV` Gross Transaction，总交易金额（是衡量企业业务规模和交易活跃度的重要指标）
+`GTV` Gross Transaction Value，总交易金额（是衡量企业业务规模和交易活跃度的重要指标）
 
 
 `CTR` 点击率 = 点击量/展示数
@@ -35,7 +35,7 @@ CRM 客户关系管理，对客户分群等操作，定制化广告投放
 
 `ARPU` average revenue per user, 每用户平均收入
 
-`ARPPU` 每付费用户的平均收益
+`ARPPU` average revenue per paying user, 每付费用户的平均收益
 
 
 ## 常用工具

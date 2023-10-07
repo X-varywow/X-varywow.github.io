@@ -75,7 +75,32 @@ values
 (),
 ...
 
+```
 
+> join 相关
+
+
+https://www.runoob.com/sql/sql-join.html
+
+
+<img src='https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png' style="zoom:60%">
+
+
+</br></br>
+
+_性能优化_
+
+
+[SQL 性能优化1](https://www.cnblogs.com/youzhibing/p/11909821.html)
+
+```sql
+-- 使用 exists 替代 dsitinct
+select distinct t1.* from t2 left join tb t1 on t1.id = t2.id;
+
+select * from t1 where exists(select id from t2 where t1.id = t2.id);
+
+
+-- 减少临时表
 ```
 
 

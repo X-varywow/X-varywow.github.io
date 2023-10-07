@@ -252,7 +252,6 @@ $$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
 | $\varnothing$  | \varnothing  |               |             |
 | $\forall$      | \forall      | $\exists$     | \exists     |
 | $\lnot$        | \lnot        |               |             |
-| $\nabla$       | \nabla       | $\partial$    | \partial    |
 | 4个空格        | \quad        | 空格          | a\ b        |
 | 换行           | \\\\         |               |             |
 |                |              |               |             |
@@ -399,8 +398,17 @@ $$\Vert x \Vert_2$$
 
 3. argmax
 `\arg\max_{c_{k}}` 
-显示为：
+呈现为
 $$\arg\max_{c_{k}}$$
+
+
+4. 偏导 `\partial`
+```
+\frac{\partial V_\pi(s_t)}{\partial \theta} = \
+E_{A_t \sim \pi}[Q_\pi (s_t, A_t) \frac{\partial log(\pi(A_t|s_t;\theta))}{\partial \theta}]
+```
+呈现为
+$$\frac{\partial V_\pi(s_t)}{\partial \theta} = E_{A_t \sim \pi}[Q_\pi (s_t, A_t) \frac{\partial log(\pi(A_t|s_t;\theta))}{\partial \theta}]$$
 
 
 

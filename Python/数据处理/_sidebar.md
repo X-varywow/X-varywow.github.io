@@ -8,3 +8,4 @@
   - bokeh
   - pyecharts
   - seaborn
+  - [Vizro](Python/数据处理/vizro)

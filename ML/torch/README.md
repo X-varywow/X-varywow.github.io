@@ -1,5 +1,6 @@
 
-torch
+
+学习完 《鱼书》（对神经网络有了解，知道 torch 应该做些什么），再来看 torch 语法
 
 
 https://pytorch.org/tutorials/beginner/introyt/introyt1_tutorial.html
