@@ -1,11 +1,38 @@
 
 
-## ResNet
+## _ResNet 残差网络_
 
 解决神经网络中的退化问题，在神经网络的每一层引入了一个直连通道。
 
 
-## 注意力机制
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------
+
+参考资料：
+- [动手学深度学习 5.11](http://zh.gluon.ai/chapter_convolutional-neural-networks/resnet.html)
+
+
+
+
+
+
+
+</br></br>
+
+## _注意力机制_
 
 
 
@@ -20,10 +47,6 @@ Attention 机制就是为了解决“信息过长，信息丢失”的问题。
 
 
 [内容理解、内容生成](https://blog.csdn.net/weixin_46838716/article/details/125094419)
-
-[归因分析(Attribution Analysis)模型解析](https://www.jianshu.com/p/a1fa42c5cc42)
-
-[预测模型，怎么做才够精准](https://zhuanlan.zhihu.com/p/400598645)
 
 强化学习搭配推荐系统
 
