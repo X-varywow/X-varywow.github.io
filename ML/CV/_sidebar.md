@@ -11,6 +11,7 @@
   - [SD 实践](ML/CV/sd_pra)
   - [SDXL](ML/CV/SDXL)
   - [first-order-model](ML/CV/FOMM)
+  - [VGG](ML/CV/vgg)
   - [yolo](ML/CV/yolo)
   - [CLIP](ML/CV/CLIP)
   - [faceswap](ML/CV/faceswap/)

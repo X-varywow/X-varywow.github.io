@@ -1,3 +1,14 @@
+https://developer.aliyun.com/article/929008
+
+https://zhuanlan.zhihu.com/p/62774810
+
+调试学习
+
+机器学习下一步，时序网络？动手学？
+
+DL/README
+
+
 
 https://www.fast.ai/
 
@@ -33,7 +44,6 @@ beautyGAN 实现 脸型调整，妆造迁移
 - opencv https://wizardforcel.gitbooks.io/py-ds-intro-tut/content/opencv.html
 - 只狼强化学习 https://www.bilibili.com/video/BV1by4y1n7pe/
 - qlearning  https://github.com/enhuiz/flappybird-ql
-- 手写一个 VGG
 - 弄个京东自动抢购的，茅
 - chatGPT，弄个机器人；new bing
 - 弄个关键词，自动写诗的？
@@ -172,54 +182,6 @@ https://github.com/LorisYounger/VPet
 
 https://www.live2d.com/zh-CHS/download/sample-data/ 中有个通过形状动画扩展模型的可动区域，实现不依赖参数的自由动作。
 
-
-## 语音
-
-[silero-models](https://github.com/snakers4/silero-models) 文本转语音，语音转文本；还支持 ssml；
-
-声音非常真实，音质很高，语气较丧。在 cpu 也能很快推理。可见，使用好的数据集会有很好的效果。
-
-轻量级，gpt 说 vits 效果更好
-
-[colab demo](https://colab.research.google.com/github/snakers4/silero-models/blob/master/examples_tts.ipynb)
-
-
-https://github.com/Plachtaa/VALL-E-X
-
-语音最近也要迭代一下，（valle vits 几个对比，整理）
-
-
-
-改进 audio-service
-
-
-```python
-
-# svc 中 load 实现
-def load_model(self):
-    # get model configuration
-    self.net_g_ms = SynthesizerTrn(
-        self.hps_ms.data.filter_length // 2 + 1,
-        self.hps_ms.train.segment_size // self.hps_ms.data.hop_length,
-        **self.hps_ms.model)
-    _ = utils.load_checkpoint(self.net_g_path, self.net_g_ms, None)
-    if "half" in self.net_g_path and torch.cuda.is_available():
-        _ = self.net_g_ms.half().eval().to(self.dev)
-    else:
-        _ = self.net_g_ms.eval().to(self.dev)
-
-
-# unload 在 Svc 中实现
-model.unload_model()
-model = None
-torch.cuda.empty_cache()
-return sid.update(choices = [],value=""),"模型卸载完毕!"
-
-
-# vits 实现方式？
-del net_g
-gc.collect()
-```
 
 transformer
 - https://mp.weixin.qq.com/s/gvL6CjQWzhI5hBclBZk2qA
