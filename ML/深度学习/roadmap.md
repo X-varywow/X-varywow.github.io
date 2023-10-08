@@ -38,7 +38,7 @@
 
 《深度学习：从基础到实践》地毯书
 
-
+https://www.bilibili.com/video/BV1b7411T7DA/
 
 
 [是先学pytorch还是深度学习，应该怎么去学？](https://www.bilibili.com/video/BV1eg4y1w7fd/)

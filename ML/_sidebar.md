@@ -3,7 +3,6 @@
   - ---
   - [基本概念](ML/基本概念)
   - [暂时笔记](ML/tmp_note/)
-  - [学习路线](ML/roadmap)
   - [高级算法](ML/高级/)
   - [torch 语法](ML/torch/)
   - [评价指标](ML/metric)

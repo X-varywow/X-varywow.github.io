@@ -21,6 +21,29 @@ VGG， 一种经典的深度神经网络，2014 年提出
 - 3层全连接层导致参数过多
 
 
+
+网络结构：
+
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231008224619.png">
+
+</br></br></br>
+
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231008225104.png">
+
+</br></br></br>
+
+参数数量：
+
+
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231008224620.png">
+
+
+
+
+
+
+
+
 </br>
 
 ## _代码实现_
@@ -76,6 +99,8 @@ class VGG(nn.Module):
         )
 
         self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
+
+        # 分类层，全连接层
         self.classifier = nn.Sequential(
             nn.Linear(512*7*7, 4096),
             nn.ReLU(),
@@ -98,8 +123,47 @@ print(model)
 # 太简洁优雅了，
 ```
 
-虽然很简洁，但是 VGG 这个自动学习机，一大堆参数训下来，就变成一个十足的黑盒了，
 
+实现2：
+
+```python
+cfgs = {
+    'vgg11': [64, 'M', 128, 'M', 256, 256, 'M', 512, 512, 'M', 512, 512, 'M'],
+    'vgg13': [64, 64, 'M', 128, 128, 'M', 256, 256, 'M', 512, 512, 'M', 512, 512, 'M'],
+    'vgg16': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 'M', 512, 512, 512, 'M', 512, 512, 512, 'M'],
+    'vgg19': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 256, 'M', 512, 512, 512, 512, 'M', 512, 512, 512, 512, 'M'],
+}
+
+cfg = cfgs['vgg16']
+
+def make_features(cfg: list):
+    layers = []
+    in_channels =  3
+
+    for v in cfg:
+        if v == "M":
+            layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
+        else:
+            conv2d = nn.Conv2d(in_channels, v, kernel_size=3, padding=1)
+            layers += [conv2d, nn.ReLU(True)]
+            in_channels = v
+    return nn.Sequential(*layers)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+------------------
+
+虽然结构很简洁，但是 VGG 这个自动学习机，一大堆参数训下来，就变成一个十足的黑盒了，
 
 
 
@@ -117,4 +181,5 @@ print(model)
 参考资料：
 - [一文读懂VGG网络](https://zhuanlan.zhihu.com/p/41423739)
 - [使用Pytorch搭建VGG网络——以VGG11为例](https://www.cnblogs.com/xmd-home/p/14793221.html)
+- [基于pytorch搭建VGGNet神经网络用于花类识别](https://developer.aliyun.com/article/929008)
 - chatgpt
