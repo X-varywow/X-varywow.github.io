@@ -5,9 +5,20 @@ Python 数据处理首页
 
 -------------
 
+关于 `GPU加速`
+
 使用 [cuDF - GPU DataFrame Library](https://github.com/rapidsai/cudf)
 
 使用 [cuML - GPU Machine Learning Algorithms](https://github.com/rapidsai/cuml)
+
+-------------
+
+关于 `protobuf`
+
+google 开发的一套用于数据存储，网络通信时用于协议编解码的工具库。
+
+是一种二进制的数据格式，相比 XML 和 JSON 具有更高的传输、打包和解包速率
+
 
 -------------
 

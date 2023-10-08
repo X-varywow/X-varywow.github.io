@@ -20,7 +20,7 @@ CPU、GPU 性能排行榜：https://www.topcpu.net/
 | 4080 | 1199$ | 8613.50 |     |
 
 
-CUDA 参考 ML/common/CUDA
+CUDA 参考 [ML/CUDA相关](ML/cuda)
 
 
 ## _DLSS_

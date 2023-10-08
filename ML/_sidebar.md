@@ -19,6 +19,7 @@
   - [语音任务](ML/Audio/)
   - ---
   - [环境相关](ML/env)
+  - [CUDA相关](ML/cuda)
   - [模型部署](ML/deploy)
   - [News](ML/News)
   - [OTHER](ML/other)

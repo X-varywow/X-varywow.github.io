@@ -6,4 +6,5 @@
   - [k8s](应用/工程工具/k8s)
   - [EKS](应用/工程工具/EKS)
   - [jumpserver](应用/工程工具/jumpserver)
+  - [nginx](应用/工程工具/nginx)
   - [工程细节](应用/工程工具/工程细节)
