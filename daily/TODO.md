@@ -2,7 +2,16 @@ https://developer.aliyun.com/article/929008
 
 https://zhuanlan.zhihu.com/p/62774810
 
+https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
+
+二部图、一构图、grapg embeding, pyg 时序预测
+
 调试学习
+
+
+EM 算法拟合混合高斯
+
+
 
 机器学习下一步，时序网络？动手学？
 
