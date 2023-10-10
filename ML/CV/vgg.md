@@ -179,7 +179,6 @@ def make_features(cfg: list):
 ----------
 
 参考资料：
-- [一文读懂VGG网络](https://zhuanlan.zhihu.com/p/41423739)
 - [使用Pytorch搭建VGG网络——以VGG11为例](https://www.cnblogs.com/xmd-home/p/14793221.html)
 - [基于pytorch搭建VGGNet神经网络用于花类识别](https://developer.aliyun.com/article/929008)
 - chatgpt

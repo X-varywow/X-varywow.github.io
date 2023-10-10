@@ -1,29 +1,21 @@
 
 核心结论放前，具体数据分条目、可视化图形在后
 
-微信读书上，西瓜书有了
-
 算法工程师：
 https://zhuanlan.zhihu.com/p/495479206
 
 
+https://www.msra.cn/zh-cn/news/features/icml-2023
+
 置信区间，，
 
-cs224n
-
-
 https://developer.aliyun.com/article/929008
-
-https://zhuanlan.zhihu.com/p/62774810
 
 https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
 
 grapg embeding, pyg 时序预测
 
 调试学习
-
-
-EM 算法拟合混合高斯
 
 
 
@@ -44,10 +36,6 @@ UNET
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
 
-- [ ] DFL 开始跑
-- [ ] 最多训 2 版大的 DFL
-- [ ]  python statsmodels
-
 bili 论文解读
 
 - [ ] 整理归档，ASR 课程笔记
@@ -57,11 +45,6 @@ bili 论文解读
 
 https://tianchi.aliyun.com/competition/entrance/531961/rankingList
 
-
-https://www.tonyisstark.com/1708.html
-
-
-beautyGAN 实现 脸型调整，妆造迁移
 
 
 - opencv https://wizardforcel.gitbooks.io/py-ds-intro-tut/content/opencv.html
@@ -90,7 +73,6 @@ beautyGAN 实现 脸型调整，妆造迁移
   - [ ]  Machine Learning with Python
 
 - [ ] opensearch 日志平台
-- [ ] 6字节后端
 - [ ] 学习 alpha 公开的 MuZero 算法
 - [ ] https://github.com/zhiyiYo/Alpha-Gobang-Zero
 - [ ] 有空多去看 pytorch 文档
@@ -105,11 +87,6 @@ https://github.com/linyiLYi/snake-ai 用于 ML 动手的小实践， CNN
 LIVE2D 做动画，软件硬件，GOGOGO；加入搞机玩家
 
 
---------------------
-
-
-https://khoj.dev/
-
 pixie+deca
 
 
@@ -121,8 +98,6 @@ https://docs.warudo.app/warudo/v/en/mocap/mediapipe 集大成者
 https://github.com/nladuo/live2d-chatbot-demo
 
 
-
-[MLP-Mixer](https://keras.io/examples/vision/mlp_image_classification/#the-mlpmixer-model)
 
 
 近大远小，类似这个：

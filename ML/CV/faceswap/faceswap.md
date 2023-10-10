@@ -15,8 +15,6 @@ deepfakes 公司开发的，**在两个特定的人身上交换脸**，缺乏泛
 
 autoencoder 参考：[AutoEncoder](ML/深度学习/autoencoder)
 
-> 训练需要太久了 12h ~ weeks
-
 
 
 ## 环境准备
@@ -30,9 +28,7 @@ tensorflow 个大坑货 [tensorflow GPU 支持](https://tensorflow.google.cn/ins
 - cudnn 680MB   https://developer.nvidia.com/rdp/cudnn-download
 
 
-油猴插件
-
-很慢，如果用 face swap 自己的安装程序
+很慢，如果用 face swap 自己的安装程序。之后还要修改系统环境变量
 
 
 ```bash
@@ -69,7 +65,11 @@ python faceswap.py gui
 
 
 
+## other
 
+训练需要太久了 12h ~ weeks
+
+tkinter 虽然界面丑了点，还是可以用的。
 
 
 -------------

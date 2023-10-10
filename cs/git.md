@@ -28,7 +28,7 @@ git config --global user.email 'email@address'
 [git提示“warning: LF will be replaced by CRLF”的解决办法](https://blog.csdn.net/u012757419/article/details/105614028/)
 
 
-## 基本操作
+## 基本操作 ⭐
 ##### 1. 创建新仓库
 
 ```bash
@@ -45,7 +45,8 @@ git clone 'address' -b branch_name
 # 获取远程最新分支，不会自动合并本地分支
 git fetch origin branch_name
 
-
+# 获取远程最新分支，并合并到本地分支
+git pull origin branch_name
 ```
 
 ##### 3. 工作流
@@ -255,14 +256,14 @@ _.gitattributes_
 参考：[大厂都在用的Git代码管理规范](https://mp.weixin.qq.com/s/6QxmajXJ9xuO_EpCtcaHsw)
 
 
-|分支|功能|环境|可访问|
-|---|---|--|--|
-|master|主分支，稳定版本|PRO|是|
-|develop|开发分支，最新版本|DEV	|是|
-|feature|开发分支，实现新特性||否|
-|test|测试分支，功能测试|FAT|是|
-|release|预上线分支，发布新版本|UAT|是|
-|hotfix	|紧急修复分支，修复线上bug||否|
+| 分支    | 功能                      | 环境 | 可访问 |
+| ------- | ------------------------- | ---- | ------ |
+| master  | 主分支，稳定版本          | PRO  | 是     |
+| develop | 开发分支，最新版本        | DEV  | 是     |
+| feature | 开发分支，实现新特性      |      | 否     |
+| test    | 测试分支，功能测试        | FAT  | 是     |
+| release | 预上线分支，发布新版本    | UAT  | 是     |
+| hotfix  | 紧急修复分支，修复线上bug |      | 否     |
 
 
 
