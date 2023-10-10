@@ -1,10 +1,16 @@
+
+核心结论放前，具体数据分条目、可视化图形在后
+
+
+
+
 https://developer.aliyun.com/article/929008
 
 https://zhuanlan.zhihu.com/p/62774810
 
 https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
 
-二部图、一构图、grapg embeding, pyg 时序预测
+grapg embeding, pyg 时序预测
 
 调试学习
 
