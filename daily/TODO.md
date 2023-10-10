@@ -1,7 +1,15 @@
 
 核心结论放前，具体数据分条目、可视化图形在后
 
+微信读书上，西瓜书有了
 
+算法工程师：
+https://zhuanlan.zhihu.com/p/495479206
+
+
+置信区间，，
+
+cs224n
 
 
 https://developer.aliyun.com/article/929008

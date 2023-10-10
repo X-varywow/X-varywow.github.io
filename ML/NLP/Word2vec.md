@@ -315,9 +315,21 @@ model.wv.most_similar(positive=['French', 'England'], negative=['wine'],topn=3)
 ```
 
 
+## 7. 后续
+
+~~2年后，20231010，当时在学校觉得没多大用。~~
+
+读到这篇文章：[万物皆Embedding，从经典的word2vec到深度学习基本操作item2vec](https://zhuanlan.zhihu.com/p/53194407)
+
+word2vec 后 embedding 的思想从 NLP 扩散到了各个机器学习领域，比如可以对用户行为序列进行 embedding。
+
+传统的搜广推，数据的稀疏性，导致需要对 user 和 item 进行 embedding 后才能有效的训练。
+
+
+
+----------
+
 参考资料：
 - https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html
-
-参考论文：
-- [Efficient Estimation of Word Representations in Vector Space](http://cn.arxiv.org/pdf/1301.3781v3.pdf)
-- [Distributed Representations of Words and Phrases and their Compositionality](https://papers.nips.cc/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf)
+- Paper：[Efficient Estimation of Word Representations in Vector Space](http://cn.arxiv.org/pdf/1301.3781v3.pdf)
+- Paper：[Distributed Representations of Words and Phrases and their Compositionality](https://papers.nips.cc/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf)

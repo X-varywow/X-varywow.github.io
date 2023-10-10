@@ -92,6 +92,8 @@ def target_point(dai, ball, d = R):
 
 矩阵与图：https://thepalindrome.org/p/matrices-and-graphs
 
+[调和矩阵，拉普拉斯矩阵](https://zh.wikipedia.org/zh-hans/%E8%B0%83%E5%92%8C%E7%9F%A9%E9%98%B5)
+
 推荐：3B1W
 
 
