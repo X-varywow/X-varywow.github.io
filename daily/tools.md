@@ -78,6 +78,7 @@ ExplorerPatcher
 
 ## common
 
+谷歌翻译，用于文档翻译
 
 飞书文档
 

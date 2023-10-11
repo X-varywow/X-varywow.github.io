@@ -24,6 +24,12 @@ vim frps.ini
 
 -------------
 
+另一个内网穿透工具：ngrok ，配置部署相对较简单
+
+
+
+-------------
+
 参考：
 - https://blog.csdn.net/syxzsyxz1/article/details/121459459
 - [frp实现内网穿透以及配置Jupyter Notebook远程连接](https://bingqiangzhou.github.io/2020/06/18/DailyJungle-FrpAndJupyterNotebookRemoteConfig.html)

@@ -88,3 +88,4 @@ elo偏向于先验，重点落在赛前玩家的实际数据（暂定为a），�
 - [评分和排名算法](https://leovan.me/cn/2022/05/rating-and-ranking-algorithms/)，介绍了常见的投票算法和评分系统
 - [阮一峰，基于用户投票的排名算法（一）：Delicious和Hacker News](https://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html)
 - [竞技类游戏的匹配原理是什么？微软的TrueSkill是一个很好的案例！](https://www.bilibili.com/read/cv2195828/)
+- [游戏匹配机制介绍 (elo, trueskill, matchmaking, ranking...)](https://www.douban.com/note/773629799)

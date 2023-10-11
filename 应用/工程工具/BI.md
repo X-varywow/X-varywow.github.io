@@ -8,7 +8,7 @@ Business Intelliigence
 [公司如何从0搭建BI系统？](https://www.zhihu.com/question/61986530)
 
 
-## 常见指标
+## 常见名词
 
 Traffic 流量
 
@@ -36,6 +36,10 @@ CRM 客户关系管理，对客户分群等操作，定制化广告投放
 `ARPU` average revenue per user, 每用户平均收入
 
 `ARPPU` average revenue per paying user, 每付费用户的平均收益
+
+
+`CE` conversion event, 转化事件，在广告投放中会通过设置转化事件来衡量广告的效果和ROI(投资回报率)，并根据转化事件的数量和质量来优化广告投放策略。
+
 
 
 ## 常用工具
