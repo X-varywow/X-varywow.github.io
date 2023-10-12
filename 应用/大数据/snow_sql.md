@@ -275,6 +275,19 @@ qualify count(1) over (partition by user_id) >= 10
 ```
 
 
+6. 使用 array_agg
+
+参考：https://docs.snowflake.com/en/sql-reference/functions/array_agg
+
+array_agg() 将一列输出转化为数组
+
+```sql
+SELECT ARRAY_AGG(O_ORDERKEY) WITHIN GROUP (ORDER BY O_ORDERKEY ASC)
+FROM orders 
+WHERE O_TOTALPRICE > 450000;
+```
+
+
 
 
 #### 2.2.3 function & procedure
@@ -384,7 +397,6 @@ call test_sp_dynamic('t001');
 
 - 创建临时表
 - 加载数据 https://docs.snowflake.com/en/user-guide/data-load-overview.html
-- array_agg() 将一列输出转化为数组，https://docs.snowflake.com/en/sql-reference/functions/array_agg.html
 
 
 ## 三、高级应用
@@ -467,10 +479,17 @@ we recommend:
 
 
 
-### 3.3 Snowpark
+### 3.3 Snowpark & connector
 
 
-参考官方文档：https://docs.snowflake.com/en/developer-guide/snowpark/index.html
+参考官方文档：
+- https://docs.snowflake.com/en/developer
+- https://docs.snowflake.com/en/developer-guide/snowpark/index.html
+- [Using Snowpark for Python with Amazon SageMaker](https://medium.com/snowflake/using-snowpark-for-python-with-amazon-sagemaker-44ec7fdb4381)
+
+
+------------
+
 snowpark提供了一个直观的 API，用于查询和处理数据管道中的数据。
 使用此库，您可以构建在 Snowflake 中处理数据的应用程序，而无需将数据移动到运行应用程序代码的系统。
 
@@ -478,9 +497,74 @@ snowpark提供了一个直观的 API，用于查询和处理数据管道中的�
 - supports pushdown for all operations, including Snowflake UDFs
 - not require a separate cluster outside of Snowflake for computations. All of the computations are done within Snowflake.
 
-具体操作请参考：
-- 适用于 Python 的 Snowpark 开发人员指南
-- Snowpark Python: Bringing Enterprise-Grade Python Innovation to the Data Cloud
+
+----------
+
+安装方法：
+
+```bash
+# 使用官方文档中的 3.8 会有个 cffi 报错
+conda create --name py310_env --override-channels -c https://repo.anaconda.com/pkgs/snowflake python=3.10 numpy pandas
+
+conda activate py310_env
+
+pip install snowflake-snowpark-python
+
+pip install "snowflake-snowpark-python[pandas]"
+
+pip install notebook
+
+jupyter notebook
+```
+
+使用方法：
+
+```python
+from snowflake.snowpark import Session
+from snowflake.snowpark.functions import col
+
+# Create a new session, using the connection properties specified in a file.
+session = Session.builder.configs(connection_parameters).create()
+
+# Create a DataFrame that contains the id, name, and serial_number
+# columns in the “sample_product_data” table.
+df = session.table("sample_product_data").select(
+    col("id"), col("name"), col("name"), col("serial_number")
+)
+
+# Show the results 
+df.show()
+
+session.close()
+```
+
+更多方法：
+
+```python
+dataFrame = session.table(table_name).filter(col['col1'] == val)
+
+session.add_packages("numpy", "pandas", "xgboost==1.5.0")
+
+session.add_requirements("mydir/requirements.txt") 
+```
+
+```python
+import pandas as pd
+pd.set_option('display.max_rows', 50)
+pd.set_option('display.max_columns', 100)
+
+df = session.table("tb_name")
+df.show()
+```
+
+
+
+
+
+
+
+
+
 
 ### 3.4 Pipeline & task
 

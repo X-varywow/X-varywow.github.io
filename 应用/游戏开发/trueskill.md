@@ -7,7 +7,47 @@ https://trueskill.org/
 
 </br>
 
-## _基础理论_
+## _基础组件_
+
+
+贝叶斯网络（概率统计的应用、进行不确定性推理和数值分析的工具）
+
+<img src="http://math.itdiffer.com/images/bayesnetwork01.png" style="zoom:50%">
+
+图中每个点表示一个特征，那么：
+- 无关（独立）， A and C, B and C
+- 相关, 如 A -> B , 这个关系用条件概率表示为 P(B|A), 类似有 P(D|B,C)
+- 条件无关（条件独立），D 认为有条件地独立于 A，P(D|B, A) = P(D|B)
+
+上述图，称为 概率图模型 （Probabilistic Graphical Model, PGM）
+
+在概率图模型中，每个结点表示一个随机变量，结点之间的边表示各随机变量的依赖关系。所以，图表示联合概率分布
+
+
+
+
+
+
+因子图
+
+- 贝叶斯网络中的一个因子（函数）对应因子图中的一个结点
+- 将边际条件概率表示为变量
+- 因子节点向其他节点发送信息，这些消息有助于简化计算
+
+
+
+
+
+
+
+
+
+
+
+
+</br>
+
+## _trueskill_
 
 
 主要迭代过程：
@@ -29,33 +69,24 @@ $$v(t,\alpha) := \frac{\Nu(t-\alpha;0,1)}{\Phi(t-\alpha)}$$
 $$w(t, \alpha) := v(t, \alpha)\cdot (v(t, \alpha) + (t-\alpha))$$
 
 
-------
-
-补充：
-
-EP 算法，将后验概率分布表示为一组因子的乘积形式，并通过迭代的方式更新每个因子的参数，使得乘积的近似结果与真实的后验分布尽可能接近。一种常用的概率图模型推断算法
-
-
-
-</br>
-
-## _trueskill2_
-
-trueskill 提供了一个 动态 K 因子，使用贝叶斯推断，相对 elo 几个改进：
-- 收敛较快
-- 原生支持团队
-- 更合理的平局处理
 
 
 
 
 </br>
 
-## _Trueskill through time_
+## _TTT_
 
+Trueskill through time
 
-不足：
+代码仓库：https://github.com/glandfried/TrueSkillThroughTime.py
+
+----------
+
+原始trueskill不足：
+
 推断结果依赖于 输入数据的顺序
+
 无法做到信息传递（如A 击败了 B,  但是 B 后续表现上看，已经完全脱离了原本水平）
 
 
@@ -94,11 +125,22 @@ $$m_{f(s_i^{t-1},s_i^t)\rightarrow s_i^{t-1}}(s_i^{t-1}) = \int_{-\infty}^{\in
 根据时序计算到收敛，
 
 
+</br>
+
+## _trueskill2_
+
+trueskill 提供了一个 动态 K 因子，使用贝叶斯推断，相对 elo 几个改进：
+- 收敛较快
+- 原生支持团队
+- 更合理的平局处理
+
+
+
 
 ----------
 
 参考资料：
 - https://trueskillthroughtime.readthedocs.io/en/latest/
-- https://github.com/glandfried/TrueSkillThroughTime.py
 - [Trueskill 原理简介](https://zhuanlan.zhihu.com/p/48737998)
 - [《TureSkill2评分机制详解》](https://zhuanlan.zhihu.com/p/568689092) ⭐️
+- [Trueskill原理与应用（ppt）](https://zhuanlan.zhihu.com/p/560942120)

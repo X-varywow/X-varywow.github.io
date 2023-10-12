@@ -17,6 +17,7 @@ grapg embeding, pyg 时序预测
 
 调试学习
 
+https://github.com/chao325/MaoTai_GUIT
 
 
 机器学习下一步，时序网络？动手学？
