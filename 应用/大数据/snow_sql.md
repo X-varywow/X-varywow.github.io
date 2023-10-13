@@ -558,6 +558,23 @@ df.show()
 ```
 
 
+```python
+# 对于运算量较小、且逻辑相对复杂的操作，snowpark 是具有优势的
+df = session.sql(SQL)
+pddf = df.to_pandas()
+```
+
+```python
+# 不进行 collect() 会是一个 snowpark.dataframe 类型
+df = session.sql("select * from t1 limit 10;").collect()
+
+type(df)         # -> list
+type(df[0])      # -> snowflake.snowpark.row.Row
+
+
+df[0].as_dict().keys()  # col keys
+```
+
 
 
 

@@ -2,6 +2,23 @@
 
 基于贝叶斯推断的评分系统，微软开发用以替代 elo 评分系统
 
+</br>
+
+传统 elo 缺点：
+- 初期的收敛问题
+- 10局 1500 分与 100局 1500 分一般具有较大实力偏差
+- n 对 n 处理不够精准
+
+</br>
+
+trueskill 改进：
+- 不依赖固定K因子，提供了动态K 因子
+- 解决收敛慢
+- 支持团队
+- 更合理的平局处理
+
+
+
 https://trueskill.org/
 
 
@@ -40,14 +57,23 @@ https://trueskill.org/
 
 
 
-
-
-
-
-
 </br>
 
 ## _trueskill_
+
+记 玩家的真实水平 skill 为 $s$，认为玩家的水平服从正态分布：
+
+$$P(s) = N(s; \mu, \sigma^2)$$
+
+认为玩家的发挥在真实水平 s 附近波动，其中 $\beta$ 用来衡量玩家发挥的起伏变化(认为局内发挥影响因素，适用每个玩家, 技能链，作为玩家分层标准)
+
+$$P(p|s) = N(s, \beta ^2)$$
+
+
+初始化每个玩家 $\mu = 25$, $\sigma = \frac{25}{3}$
+
+----------
+
 
 
 主要迭代过程：
@@ -56,7 +82,15 @@ $$\mu_w \leftarrow \mu_w + \frac{\sigma_w^2 }{c_{ij}}\cdot v(\frac{\mu_w -�
 
 $$\mu_l \leftarrow \mu_l - \frac{\sigma_l^2 }{c_{ij}}\cdot v(\frac{\mu_w - \mu_l}{c_{ij}},\frac{\epsilon}{c_{ij}}) \quad and \quad \sigma_l \leftarrow  \sigma_l\sqrt{1-\frac{\sigma_l^2}{c_{ij}^2} \cdot w (\frac{\mu_w - \mu_l}{c_{ij}},\frac{\epsilon}{c_{ij}})}$$
 
------
+</br>
+
+(用的因子图表示，中间消息传递等比较复杂，，，)
+
+(消息传递算法，是一种把连续模型中消息，近似表示成高斯的一种近似推理算法)
+
+
+
+----------
 
 说明：
 
@@ -69,7 +103,13 @@ $$v(t,\alpha) := \frac{\Nu(t-\alpha;0,1)}{\Phi(t-\alpha)}$$
 $$w(t, \alpha) := v(t, \alpha)\cdot (v(t, \alpha) + (t-\alpha))$$
 
 
+-----
 
+匹配规则：
+
+计算比赛平局的几率
+
+rank 值计算： $ rank = \mu - k*\sigma$
 
 
 
