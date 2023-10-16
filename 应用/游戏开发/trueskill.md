@@ -12,7 +12,8 @@
 </br>
 
 trueskill 改进：
-- 不依赖固定K因子，提供了动态K 因子
+- 不依赖固定K因子，提供了动态 K 因子，解决新手问题
+- 引入贝叶斯推断（先验、后验、似然，来提供更多的信息）
 - 解决收敛慢
 - 支持团队
 - 更合理的平局处理
@@ -65,12 +66,32 @@ https://trueskill.org/
 
 $$P(s) = N(s; \mu, \sigma^2)$$
 
-认为玩家的发挥在真实水平 s 附近波动，其中 $\beta$ 用来衡量玩家发挥的起伏变化(认为局内发挥影响因素，适用每个玩家, 技能链，作为玩家分层标准)
+
+
+认为玩家的发挥在真实水平 s 附近波动，
 
 $$P(p|s) = N(s, \beta ^2)$$
 
 
-初始化每个玩家 $\mu = 25$, $\sigma = \frac{25}{3}$
+
+参数说明：
+
+| Name                  |  Notation  | Description                                                                                                   |
+| --------------------- | :--------: | ------------------------------------------------------------------------------------------------------------- |
+| Mean                  |   $\mu$    | The average skill of a player                                                                                 |
+| Variance              |  $\sigma$  | The level of uncertainly in the player's skill                                                                |
+| Length of skill chain |  $\beta$   | The diff between two means that ensures the stronger player has 80% win probability against the weaker player |
+| Dynamics factor       |   $\tau$   | Determines a fixed amount that is added to a rating's variance each time it is updated                        |
+| Draw probability      | $\epsilon$ | Determines whether a certain performance difference  should qualify as win or draw                            |
+
+
+$$P(p|s) = N(s, \beta ^2)$$
+
+
+一般情况下，初始化每个玩家 $\mu = 25$, $\sigma = \frac{25}{3}$
+
+
+战力为：$ R = \mu - 3 \times \sigma$，初始时可认为每个玩家战力 0
 
 ----------
 
@@ -143,7 +164,7 @@ extending the Gaussian density filtering to running full expectation propagation
 
 记 $ p_{ij}^t(k)$ 为玩家发挥表现，$s_1$ 和 $s_2$ 为玩家能力，则 $p_1 \sim N(s_1, \beta^2)$
 
-记 $y_{ij}^t(k)$ 为比赛结果，i, j 为 player, t 为 time, $\epsilon$用来判断平局,
+记 $y_{ij}^t(k)$ 为比赛结果，i, j 为 player, t 为 time,
 
 
 $$y_{ij}^t(k) = \begin{cases}
@@ -182,5 +203,6 @@ trueskill 提供了一个 动态 K 因子，使用贝叶斯推断，相对 elo �
 参考资料：
 - https://trueskillthroughtime.readthedocs.io/en/latest/
 - [Trueskill 原理简介](https://zhuanlan.zhihu.com/p/48737998)
-- [《TureSkill2评分机制详解》](https://zhuanlan.zhihu.com/p/568689092) ⭐️
+- [《TureSkill2评分机制详解》](https://zhuanlan.zhihu.com/p/568689092) ⭐️ 全面的理论介绍
+- [computing-your-skill](https://www.moserware.com/2010/03/computing-your-skill.html) ⭐️ 贝叶斯思想、边缘概率思想，很有趣的介绍
 - [Trueskill原理与应用（ppt）](https://zhuanlan.zhihu.com/p/560942120)

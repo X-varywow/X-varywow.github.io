@@ -6,6 +6,15 @@
 import pandas as pd
 import numpy as np
 
+# 更改显示情况
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+
+# 按时间升序，以显示
+res = pddf.sort_values(by='CREATED_AT')
+res
+
+
 data = pd.read_csv("train.csv")
 
 #see the first 10 rows
@@ -58,6 +67,30 @@ df.columns=['grammer', 'score', 'cycle']
 #将所有列倒序排列
 df_desc = df.iloc[:, ::-1]
 ```
+
+
+```python
+pddf['rank'] = None
+pddf['d_next'] = None
+pddf['d_max'] = None
+
+for index, row in pddf.iterrows():
+    arr = eval(row["RES"])[::-1]
+    pddf.at[index, "RES"] = arr
+    rank = arr.index(row["SCORE"])
+    next_rank = max(0, rank-1)
+    max_rank = 0
+    pddf.at[index, "rank"] = rank + 1
+    pddf.at[index, "d_next"] = arr[next_rank] - arr[rank]
+    pddf.at[index, "d_max"] = arr[max_rank] - arr[rank]
+
+pddf
+```
+
+
+
+
+
 
 
 
