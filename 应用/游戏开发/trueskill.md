@@ -196,6 +196,12 @@ trueskill 提供了一个 动态 K 因子，使用贝叶斯推断，相对 elo �
 - 更合理的平局处理
 
 
+----------
+
+https://github.com/OpenDebates/openskill.py
+
+比 trueskill 计算更快
+
 
 
 ----------
@@ -205,4 +211,5 @@ trueskill 提供了一个 动态 K 因子，使用贝叶斯推断，相对 elo �
 - [Trueskill 原理简介](https://zhuanlan.zhihu.com/p/48737998)
 - [《TureSkill2评分机制详解》](https://zhuanlan.zhihu.com/p/568689092) ⭐️ 全面的理论介绍
 - [computing-your-skill](https://www.moserware.com/2010/03/computing-your-skill.html) ⭐️ 贝叶斯思想、边缘概率思想，很有趣的介绍
+- [The Math Behind TrueSkill](https://www.moserware.com/assets/computing-your-skill/The%20Math%20Behind%20TrueSkill.pdf)
 - [Trueskill原理与应用（ppt）](https://zhuanlan.zhihu.com/p/560942120)
