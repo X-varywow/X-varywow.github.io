@@ -30,7 +30,7 @@ https://trueskill.org/
 
 贝叶斯网络（概率统计的应用、进行不确定性推理和数值分析的工具）
 
-<img src="http://math.itdiffer.com/images/bayesnetwork01.png" style="zoom:50%">
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231016223754.png" style="zoom:50%">
 
 图中每个点表示一个特征，那么：
 - 无关（独立）， A and C, B and C

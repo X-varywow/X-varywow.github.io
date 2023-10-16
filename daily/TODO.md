@@ -1,4 +1,4 @@
-应用、游戏开发、图片
+
 
 核心结论放前，具体数据分条目、可视化图形在后
 
@@ -17,8 +17,6 @@ https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
 grapg embeding, pyg 时序预测
 
 调试学习
-
-https://github.com/chao325/MaoTai_GUIT
 
 
 机器学习下一步，时序网络？动手学？
@@ -87,9 +85,6 @@ https://github.com/linyiLYi/snake-ai 用于 ML 动手的小实践， CNN
 
 
 LIVE2D 做动画，软件硬件，GOGOGO；加入搞机玩家
-
-
-pixie+deca
 
 
 前端应用程序开发：https://github.com/Moonvy/OpenPromptStudio
