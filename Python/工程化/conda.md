@@ -105,6 +105,42 @@ dependencies:
 prefix: ~/anaconda3/envs/dualstylegan_env
 ```
 
+</br>
+
+## _! 与 %_
+
+打通kernel, conda, !, %run {}
+
+`!cmd` : 新建一个子shell 执行 cmd, cmd 执行完，这个子 shell 也就消失了
+
+要想在当前的shell 生效，需要使用 `%cmd`
+
+```python
+# 可以看到使用 ！的环境会有问题，而下面这行不会（中间有个自动的转魔法方法）
+!pip show torch
+pip show torch
+```
+
+https://jakevdp.github.io/PythonDataScienceHandbook/01.05-ipython-and-shell-commands.html
+
+常见用法：
+
+```python
+# cmd 中创建虚拟环境
+# 将虚拟环境正确安装到一个新的 kernel
+
+prepare_command = f"./model/stylegan/prepare_data.py --out ./data/{project_name}/lmdb/ --n_worker 4 --size 1024 ./data/{project_name}/images/"
+
+%run {prepare_command}
+
+# 这可以更加工程化，可说明；相当把整个 bash 流程都可以搬到 jupyter 上。
+```
+pip install oscrypto git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895ae1edd9e503cfb352e635a8
+
+
+
+
+</br>
 
 ## _other_
 
@@ -114,6 +150,9 @@ prefix: ~/anaconda3/envs/dualstylegan_env
 ```bash
 ipython kernel install --user --name vt
 ```
+
+（这个好像是从默认的环境装载 kernel, 从当前虚拟环境装载要使用方式二）
+
 
 方式二：
 ```bash
