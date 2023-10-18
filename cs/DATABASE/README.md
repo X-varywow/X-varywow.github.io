@@ -3,23 +3,6 @@
 
 大数据相关，[请参考](应用/大数据/)
 
-</br>
-
-_基本语言_
-
-- `DML`  (data manipulation language)
-  - select
-  - update
-  - insert
-  - delete
-- `DDL`  (data definition language)
-  - create
-  - alter
-  - drop
-  - truncate
-- `DCL`  (data control language)
-  - grant
-  - revoke
 
 
 </br>

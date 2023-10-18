@@ -1,6 +1,6 @@
 ## 一、基础sql
 
-数据库相关，[请参考](/cs/DATABASE/)
+SQL COMMAND，[请参考](cs/DATABASE/base)
 
 ## 二、基础语法
 

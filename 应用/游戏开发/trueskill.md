@@ -133,6 +133,16 @@ $$w(t, \alpha) := v(t, \alpha)\cdot (v(t, \alpha) + (t-\alpha))$$
 rank 值计算： $ rank = \mu - k*\sigma$
 
 
+-----------
+
+使用第三方库：https://trueskill.org/
+
+精度报错：FloatingPointError: Cannot calculate correctly, set backend to "mpmath"
+
+解决方法：`setup(backend="mpmath")`
+
+
+
 
 </br>
 

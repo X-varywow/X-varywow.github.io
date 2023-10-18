@@ -1,5 +1,51 @@
 
 
+
+## _概率统计_
+
+`cdf` cumulative distribution function，累计分布函数
+
+`pdf` probability density function，概率密度函数
+
+`ppf` the inverse function of cdf，逆累计分布函数
+
+
+
+</br>
+
+## _偏态分布_
+
+可通过峰度和偏度的计算，衡量偏态的程度。
+
+
+```python
+import numpy as np
+from scipy.stats import skewnorm
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(1, 1)
+a = 4
+mean, var, skew, kurt = skewnorm.stats(a, moments='mvsk')
+
+x = np.linspace(skewnorm.ppf(0.01, a),
+                skewnorm.ppf(0.99, a), 100)
+ax.plot(x, skewnorm.pdf(x, a),
+       'r-', lw=5, alpha=0.6, label='skewnorm pdf')
+rv = skewnorm(a)
+ax.plot(x, rv.pdf(x), 'k-', lw=2, label='frozen pdf')
+vals = skewnorm.ppf([0.001, 0.5, 0.999], a)
+np.allclose([0.001, 0.5, 0.999], skewnorm.cdf(vals, a))
+r = skewnorm.rvs(a, size=1000)
+ax.hist(r, density=True, bins='auto', histtype='stepfilled', alpha=0.2)
+ax.set_xlim([x[0], x[-1]])
+ax.legend(loc='best', frameon=False)
+plt.show()
+```
+
+
+
+
+</br>
+
 ## _数据变换_
 
 对数据的变换操作，是 **使其尽可能符合我们的假设**
@@ -101,40 +147,6 @@ best_lambda, transformed_data
 
 seaborn scipy.stats
 
-
-
-
-
-
-</br>
-
-## _偏态分布_
-
-可通过峰度和偏度的计算，衡量偏态的程度。
-
-
-```python
-import numpy as np
-from scipy.stats import skewnorm
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots(1, 1)
-a = 4
-mean, var, skew, kurt = skewnorm.stats(a, moments='mvsk')
-
-x = np.linspace(skewnorm.ppf(0.01, a),
-                skewnorm.ppf(0.99, a), 100)
-ax.plot(x, skewnorm.pdf(x, a),
-       'r-', lw=5, alpha=0.6, label='skewnorm pdf')
-rv = skewnorm(a)
-ax.plot(x, rv.pdf(x), 'k-', lw=2, label='frozen pdf')
-vals = skewnorm.ppf([0.001, 0.5, 0.999], a)
-np.allclose([0.001, 0.5, 0.999], skewnorm.cdf(vals, a))
-r = skewnorm.rvs(a, size=1000)
-ax.hist(r, density=True, bins='auto', histtype='stepfilled', alpha=0.2)
-ax.set_xlim([x[0], x[-1]])
-ax.legend(loc='best', frameon=False)
-plt.show()
-```
 
 
 --------------

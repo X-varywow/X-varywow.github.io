@@ -1,6 +1,11 @@
 
 最近这工作， sql 相关, snowpark 相关，业务，需要整理一下了
 
+snowflake DML 整理
+
+代码中 setup ， __all__ 等方法 
+
+https://github.com/PWhiddy/PokemonRedExperiments
 
 
 核心结论放前，具体数据分条目、可视化图形在后

@@ -3,7 +3,7 @@
 
 PostgreSQL 是一个免费的对象-关系数据库服务器，本页面只介绍 psql 特殊语法
 
-其它数据库相关，[请参考](/cs/DATABASE/)
+SQL COMMAND，[请参考](cs/DATABASE/base)
 
 ## 连接
 
