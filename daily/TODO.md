@@ -1,4 +1,14 @@
 
+[微软EconML](https://zhuanlan.zhihu.com/p/361162817)
+
+shap.dependence_plot
+
+CausalForestDML
+
+from econml.cate_interpreter import SingleTreeCateInterpreter
+
+补充集成学习
+
 最近这工作， sql 相关, snowpark 相关，业务，需要整理一下了
 
 snowflake DML 整理
