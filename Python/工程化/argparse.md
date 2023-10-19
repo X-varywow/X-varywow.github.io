@@ -43,10 +43,13 @@ parser.add_argument("--seed", type=int, default=None, help=\
 # STEP3: 解析参数
 args = parser.parse_args()
 
+
+# arg.var_name 即可完成使用
+args.enc_model_fpath
+
+
 # vars() 返回对象object的属性和属性值的字典对象。
 arg_dict = vars(args)
-
-print(args.enc_model_fpath)
 
 
 # Hide GPUs from Pytorch to force CPU processing

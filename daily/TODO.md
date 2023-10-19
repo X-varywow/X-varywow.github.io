@@ -1,4 +1,8 @@
 
+r = model.rating
+
+后续直接使用 r() 执行
+
 [微软EconML](https://zhuanlan.zhihu.com/p/361162817)
 
 shap.dependence_plot
