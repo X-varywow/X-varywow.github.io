@@ -200,6 +200,7 @@ MessagePassing 是一个用于定于图神经网络中消息传递操作的基�
 ------------
 
 参考资料：
+- [PYG 官方文档](https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html)
 - [图神经网络（Graph Neural Networks，GNN）综述](https://zhuanlan.zhihu.com/p/75307407)
 - [「AI大咖谈」DLP-KDD最佳论文作者谈「图神经网络」的特点、发展与应用](https://zhuanlan.zhihu.com/p/259494288)
 - [深度学习中不得不学的Graph Embedding方法](https://www.zhihu.com/tardis/zm/art/64200072)

@@ -5,7 +5,7 @@
   - [matplotlib](Python/数据处理/matplotlib)
   - [数据分析](Python/数据处理/数据分析)
   - [statsmodels](Python/数据处理/statsmodels)
-  - bokeh
+  - [bokeh](Python/数据处理/bokeh)
   - pyecharts
   - seaborn
   - [Vizro](Python/数据处理/vizro)

@@ -4,10 +4,14 @@
 - [x] snowflake sql 相关
 - [x] 飞书文档清一下，过去的太抽象了。sql 确实不难，就是容易写复杂; cxz xt
 - [x] python 一切皆对象
-- [ ] pandas 相关
+- [x] pandas 相关
 
 
+https://github.com/ByteByteGoHq/system-design-101
 
+RLHF 框架
+
+cs/database 图片
 
 
 trueskill 源码学习
@@ -28,8 +32,6 @@ from econml.cate_interpreter import SingleTreeCateInterpreter
 https://github.com/PWhiddy/PokemonRedExperiments
 
 
-核心结论放前，具体数据分条目、可视化图形在后
-
 算法工程师：
 https://zhuanlan.zhihu.com/p/495479206
 
@@ -40,9 +42,6 @@ https://www.msra.cn/zh-cn/news/features/icml-2023
 
 https://developer.aliyun.com/article/929008
 
-https://pytorch-geometric.readthedocs.io/en/latest/get_started/colabs.html
-
-grapg embeding, pyg 时序预测
 
 调试学习
 
@@ -136,8 +135,6 @@ https://github.com/ardha27/AI-Waifu-Vtuber/
 wallpaper 原理，unity 无边框全屏
 
 
-- [ ] blog - 0822vtuber
-
 https://github.com/wangshub
 
 https://jalammar.github.io/illustrated-transformer/
@@ -161,7 +158,6 @@ https://yang-song.net/blog/2021/score/
 深度学习入门
 
 
-- [ ] 找特效贴图类代码做参考，3web 是另一套
 - [ ] https://www.cloudskillsboost.google/journeys/118
 
 
@@ -183,8 +179,6 @@ https://github.com/RimoChan/Vtuber_Tutorial
 
 https://developers.googleblog.com/2023/05/introducing-mediapipe-solutions-for-on-device-machine-learning.html
 
-考虑自己写整个流程，别人的效果不好，旧的。
-
 https://codepen.io/mediapipe/details/KKgVaPJ
 
 https://github.com/google/mediapipe/blob/v0.9.1/docs/solutions/face_mesh.md Face Effect Example
@@ -192,10 +186,6 @@ https://github.com/google/mediapipe/blob/v0.9.1/docs/solutions/face_mesh.md Face
 
 - [ ] 高级算法，卡尔曼滤波，bili 学一下
 - [ ] 下载：https://github.com/yeemachine/kalidoface/releases，（这个效果应该是最好了，）用笔记本（或手机当摄像头）
-
-
-- [ ] 3web 做成应用，测试一下。
-- [ ] 更新 3web
 
 
 https://blog.csdn.net/qq_42139931/article/details/122038862 VRM 模型导出

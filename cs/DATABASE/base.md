@@ -1,9 +1,8 @@
 
 ## QUERY
 
-- select
-- ,,,
 
+<img src="https://github.com/ByteByteGoHq/system-design-101/blob/main/images/sql-execution-order.jpg" style="zoom:50%">
 
 
 
