@@ -69,6 +69,19 @@ https://www.runoob.com/sql/sql-join.html
 <img src='https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png' style="zoom:60%">
 
 
+> 表 & 视图
+
+[Difference Between View and Table](https://www.geeksforgeeks.org/difference-between-view-and-table/)
+
+视图图是 SQL 查询的结果，它是一个虚拟表。
+
+<u>视图更像是存储的查询，所以执行速度比较慢。</u>
+
+
+
+
+
+
 </br></br>
 
 _性能优化_

@@ -9,5 +9,5 @@
   - [C语言](cs/C/)
   - [Linux](cs/Linux/)
   - [Git 使用指南](cs/git)
-  - [数据库](cs/DATABASE/)
+  - [Database](cs/DATABASE/)
   - [计算机网络工程](cs/网工/)

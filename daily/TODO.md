@@ -1,7 +1,17 @@
 
-r = model.rating
+1020
+- [x] snowpark
+- [x] snowflake sql 相关
+- [x] 飞书文档清一下，过去的太抽象了。sql 确实不难，就是容易写复杂; cxz xt
+- [x] python 一切皆对象
+- [ ] pandas 相关
 
-后续直接使用 r() 执行
+
+
+
+
+trueskill 源码学习
+
 
 [微软EconML](https://zhuanlan.zhihu.com/p/361162817)
 
@@ -12,10 +22,6 @@ CausalForestDML
 from econml.cate_interpreter import SingleTreeCateInterpreter
 
 补充集成学习
-
-最近这工作， sql 相关, snowpark 相关，业务，需要整理一下了
-
-snowflake DML 整理
 
 代码中 setup ， __all__ 等方法 
 

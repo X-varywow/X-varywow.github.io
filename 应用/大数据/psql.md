@@ -7,15 +7,32 @@ SQL COMMAND，[请参考](cs/DATABASE/base)
 
 ## 连接
 
-### GUI
-
-- pgadmin
-- navicat
+- 命令行方式
+- GUI 方式
+  - pgadmin
+  - navicat
 
 ## 命令行
 
+```bash
+/usr/local/opt/postgresql@14/bin/psql --help
 
-/d+ psql_table_name 显示索引，分片等
+/usr/local/opt/postgresql@14/bin/psql -h your_host -p your_port -U your_user -d your_database
+```
+
+| 命令                         | 说明                      |
+| ---------------------------- | ------------------------- |
+| \l                           | list of databases         |
+| \d                           | list of relations, schema |
+| \d table_name                |                           |
+| \d+ table_name               | 列出表的信息              |
+| \c database_name             | connected to database     |
+| set search_path to path_name |                           |
+|                              |                           |
+
+
+
+
 
 
 ## psql 语法
