@@ -2,7 +2,7 @@
 ## QUERY
 
 
-<img src="https://github.com/ByteByteGoHq/system-design-101/blob/main/images/sql-execution-order.jpg" style="zoom:50%">
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231022224708.png"  style="zoom:50%;">
 
 
 

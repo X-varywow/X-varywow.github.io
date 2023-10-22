@@ -1,18 +1,7 @@
 
-1020
-- [x] snowpark
-- [x] snowflake sql 相关
-- [x] 飞书文档清一下，过去的太抽象了。sql 确实不难，就是容易写复杂; cxz xt
-- [x] python 一切皆对象
-- [x] pandas 相关
-
-
 https://github.com/ByteByteGoHq/system-design-101
 
 RLHF 框架
-
-cs/database 图片
-
 
 trueskill 源码学习
 
