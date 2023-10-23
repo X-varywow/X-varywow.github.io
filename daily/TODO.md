@@ -1,8 +1,6 @@
 
 https://github.com/ByteByteGoHq/system-design-101
 
-- [ ] 带纸
-
 使用 bert 处理文本信息
 
 kaggle
@@ -26,17 +24,6 @@ from econml.cate_interpreter import SingleTreeCateInterpreter
 代码中 setup ， __all__ 等方法 
 
 https://github.com/PWhiddy/PokemonRedExperiments
-
-
-算法工程师：
-https://zhuanlan.zhihu.com/p/495479206
-
-
-https://www.msra.cn/zh-cn/news/features/icml-2023
-
-置信区间，，
-
-https://developer.aliyun.com/article/929008
 
 
 调试学习
@@ -147,9 +134,6 @@ https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 
 https://blog.csdn.net/Raina_qing/article/details/106374584
 
-https://zhuanlan.zhihu.com/p/558937247
-
-https://yang-song.net/blog/2021/score/
 
 深度学习入门
 
@@ -165,9 +149,7 @@ https://github.com/RimoChan/Vtuber_Tutorial
 
 [虚拟桌宠模拟器](https://github.com/LorisYounger/VPet) csharp
 
-- [ ] 脚本
-- [ ] vt
-- [ ] 语音
+
 - [ ] https://windland-neotix.vercel.app/ +  chatgpt + 重开
 
 
@@ -179,14 +161,8 @@ https://codepen.io/mediapipe/details/KKgVaPJ
 
 https://github.com/google/mediapipe/blob/v0.9.1/docs/solutions/face_mesh.md Face Effect Example
 
-
-- [ ] 高级算法，卡尔曼滤波，bili 学一下
 - [ ] 下载：https://github.com/yeemachine/kalidoface/releases，（这个效果应该是最好了，）用笔记本（或手机当摄像头）
 
-
-https://blog.csdn.net/qq_42139931/article/details/122038862 VRM 模型导出
-
-https://github.com/LorisYounger/VPet
 
 
 https://www.live2d.com/zh-CHS/download/sample-data/ 中有个通过形状动画扩展模型的可动区域，实现不依赖参数的自由动作。

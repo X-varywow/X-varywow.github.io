@@ -91,6 +91,14 @@ https://gitee.com/shenmo7192/genshin-voice-unpacker
 
 unpacker vgmstream
 
+`3D 模型`
+
+https://blog.csdn.net/qq_42139931/article/details/122038862
+
+
+
+
+
 ## auto_genshin
 
 需求:

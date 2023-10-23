@@ -54,3 +54,7 @@ GAN 有着非常多的变种：DCGAN、WGAN 等
 属于无监督生成模型
 
 如 Stable Diffusion (2022 年的深度学习文本到图像生成模型), [wiki](https://zh.wikipedia.org/zh-cn/Stable_Diffusion)。
+
+[大一统视角理解扩散模型](https://zhuanlan.zhihu.com/p/558937247)
+
+[Generative Modeling by Estimating Gradients of the Data Distribution](https://yang-song.net/blog/2021/score/)
