@@ -142,9 +142,17 @@ pip install oscrypto git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895
 
 </br>
 
-## _other_
+## _kernel_
 
-（1）将虚拟环境写入 jupyter 的 kernel 上：
+
+（1）查看kernel
+
+```bash
+jupyter kernelspec list
+```
+
+
+（2）将虚拟环境写入 jupyter 的 kernel 上：
 
 方式一：
 ```bash
@@ -162,7 +170,12 @@ python -m ipykernel install --user --name=test
 
 
 
-（2）conda-pack 环境打包：
+</br>
+
+## _other_
+
+
+（1）conda-pack 环境打包：
 
 ```bash
 # 多种方式
@@ -204,7 +217,7 @@ source myenv/bin/deactivate
 参考：[conda-pack 官网](https://conda.github.io/conda-pack/)
 
 
-（3）conda-forge
+（2）conda-forge
 
 conda-forge 是一个社区驱动的 conda 包管理器的镜像源
 

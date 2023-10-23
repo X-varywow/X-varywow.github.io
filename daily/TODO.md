@@ -1,6 +1,13 @@
 
 https://github.com/ByteByteGoHq/system-design-101
 
+- [ ] 带纸
+
+使用 bert 处理文本信息
+
+kaggle
+
+
 RLHF 框架
 
 trueskill 源码学习

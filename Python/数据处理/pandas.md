@@ -315,6 +315,31 @@ for index, row in pddf.iterrows():
 pddf
 ```
 
+eg2. 机器学习中数据集划分
+
+```python
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+X = df.drop("SCORE", axis = 1)
+y = df["SCORE"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+train_df = pd.concat([X_train, y_train], axis=1)
+
+# 对 label 编码
+from sklearn.preprocessing import LabelEncoder
+user_id_encoder = LabelEncoder()
+user_id_encoder.fit_transform(train_df['USER_ID'])
+train_df['USER_ID'] = seed_id_encoder.transform(train_df['USER_ID'])
+
+
+
+
+train_df.to_csv('train.csv', index=True)
+```
+
+
 
 -----------
 

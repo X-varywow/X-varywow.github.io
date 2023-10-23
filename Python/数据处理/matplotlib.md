@@ -6,50 +6,60 @@
 
 ### _tutorial-demo:_
 
-DEMO1:
+
+（1）定义数据
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 解决中文乱码问题
-plt.rcParams['font.family']=['Microsoft YaHei']
+# 定义 x, y 
+x = np.linspace(900, 2100, 1000)
+y = 1.0 / (1 + 10 ** ((x - 1500) / 400))
 
+# 定义方式一
+x = np.arange(1,11)
+y = 2*x+5
+
+```
+
+（2）设置
+
+```python
+# 字体设置，中文乱码
+plt.rcParams['font.family']=['Microsoft YaHei']
 ## setting global settings
 plt.rcParams.update({'font.size': 10,'lines.linewidth': 3})
 
 # 调高分辨率，将默认的 100dpi 调为 300dpi
 plt.figure(dpi=300)
-
-x=np.arange(1,11)
-y=2*x+5
-plt.title('测试')
-plt.xlabel('xlabel')
-plt.plot(x,y)
-plt.show()
 ```
 
-DEMO2:
 
+（3）画图
 ```python
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
+# 方式一
+plt.plot(x, y)
+plt.xlabel('combat power')
+plt.ylabel('except win rate')
+plt.title('VS 1500')
 
-x = np.linspace(0, 2*np.pi, 100)
-y = np.cos(x)
+plt.xticks(np.arange(900, 2200, 100))
+plt.yticks(np.arange(0, 1.0, 0.1))
+plt.grid(True)
+plt.show()
 
+# 方式二
 fig, ax = plt.subplots()
 ax.plot(x, y, color = "green")
-
 #fig.savefig("figure.pdf")
 fig.show()
 ```
 
 
-DEMO3: 桌球路线绘图
 
-```python
+
+DEMO2: 桌球路线绘图
 ```python
 from pprint import pprint
 import matplotlib.pyplot as plt
