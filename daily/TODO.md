@@ -1,15 +1,7 @@
 
 https://github.com/ByteByteGoHq/system-design-101
 
-使用 bert 处理文本信息
-
-kaggle
-
-
 RLHF 框架
-
-trueskill 源码学习
-
 
 [微软EconML](https://zhuanlan.zhihu.com/p/361162817)
 
@@ -20,8 +12,6 @@ CausalForestDML
 from econml.cate_interpreter import SingleTreeCateInterpreter
 
 补充集成学习
-
-代码中 setup ， __all__ 等方法 
 
 https://github.com/PWhiddy/PokemonRedExperiments
 

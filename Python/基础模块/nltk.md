@@ -36,6 +36,5 @@ tokens
 
 
 **推荐阅读：**
-- [word2vec Gensim NLTK 关系、用法](https://zhuanlan.zhihu.com/p/97769185)
 - [15分钟入门NLP神器—Gensim](https://www.jianshu.com/p/9ac0075cc4c0)
 - [一文读懂BERT–原理篇](https://blog.csdn.net/jiaowoshouzi/article/details/89073944)

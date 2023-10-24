@@ -38,6 +38,37 @@ python install .
 
 需要先编译成 c 文件，之后再编译成.so文件(Linux平台)或.pyd文件(Windows平台)，才能作为模块 import 导入使用。
 
+
+-------
+
+参考 http://github.com/sublee/trueskill 中 steup 使用
+
+```python
+# include __about__.py
+# about 中是这样格式：__version__ = '0.4.5'
+
+
+__dir__ = os.path.dirname(__file__)
+about = {}
+with open(os.path.join(__dir__, 'trueskill', '__about__.py')) as f:
+    exec(f.read(), about)
+
+setup(
+    name='trueskill',
+    version=about['__version__'],
+    license=about['__license__'],
+    author=about['__author__'],
+    ...
+)
+```
+
+
+exec(f.read(), about) 这种用法，6
+
+
+
+
+
 --------
 
 参考资料：

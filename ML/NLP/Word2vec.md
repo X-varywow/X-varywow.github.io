@@ -327,6 +327,54 @@ word2vec 后 embedding 的思想从 NLP 扩散到了各个机器学习领域，�
 
 
 
+item2vec 示例：
+
+```python
+import numpy as np
+from gensim.models import Word2Vec
+import multiprocessing
+
+cpu_count = multiprocessing.cpu_count()
+
+class Item2Vec:
+    def __init__(self, vector_size=100, window=5, min_count=1, num_workers = 4):
+        self.vector_size = vector_size
+        self.window = window
+        self.min_count = min_count
+        self.workers = num_workers
+        self.model = None
+
+    def fit(self, sequences):
+        # 构建训练数据
+        data = []
+        for seq in sequences:
+            data.append([str(item) for item in seq])
+        
+        # 训练 item2vec 模型
+        self.model = Word2Vec(data, vector_size=self.vector_size, window=self.window, min_count=self.min_count, workers=self.workers)
+
+    def recommend_items(self, item, topn=5):
+        if item not in self.model.wv:
+            return []
+        
+        similar_items = self.model.wv.most_similar(str(item), topn=topn)
+        return [int(item) for item, _ in similar_items]
+
+# 示例用法
+sequences = [[1, 2, 3, 4, 5], [2, 3, 4, 5, 6], [3, 4, 5, 6, 7]]
+item2vec = Item2Vec(vector_size=100, window=5, min_count=1, num_workers=cpu_count)
+item2vec.fit(sequences)
+
+recommendations = item2vec.recommend_items(3, topn=3)
+print(recommendations)
+```
+
+>语料的构建是一个关键的问题
+
+
+
+
+
 ----------
 
 参考资料：
