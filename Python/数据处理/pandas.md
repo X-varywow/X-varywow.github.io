@@ -145,14 +145,14 @@ print(new_df)
 
 ## _选择&常见操作_
 
-获取单列，`df.a` 与 `df['a']` 等效
+（1）获取单列，`df.a` 与 `df['a']` 等效
 
 
-获取行，用 [ ] 切片行，如 `df[1:]`
+（2）获取行，用 [ ] 切片行，如 `df[1:]`
 
 
 
-df.iloc() 通过整数位置来访问和选择数据
+（3）`df.iloc()` 通过整数位置来访问和选择数据
 
 ```python
 # 选取 10-20 行
@@ -162,7 +162,7 @@ df.iloc[10:20]
 df.iloc[:, [1,2,5]]
 ```
 
-df.loc() 通过标签来访问和选择数据
+（4）`df.loc()` 通过标签来访问和选择数据
 
 ```python
 # 选取 index = 1 这一行数据
@@ -183,6 +183,12 @@ df_desc = df.iloc[:, ::-1]
 # 最大、最小
 df.nlargest(n, 'value')
 df.nsmallest(n, 'value')
+```
+
+转化为 list 进行操作
+
+```python
+x = raw2['_KEY'].to_list()
 ```
 
 

@@ -19,28 +19,9 @@ y = 2*x+5
 
 ```
 
-（2）设置
-
-```python
-# 字体设置，中文乱码
-plt.rcParams['font.family']=['Microsoft YaHei']
-## setting global settings
-plt.rcParams.update({'font.size': 10,'lines.linewidth': 3})
-
-# 查看字体
-from matplotlib.font_manager import FontManager
-sorted([f.name for f in FontManager().ttflist])
 
 
-plt.rc('font',family='Nimbus Roman') 
-
-
-# 调高分辨率，将默认的 100dpi 调为 300dpi
-plt.figure(dpi=300)
-```
-
-
-（3）画图
+（2）画图
 ```python
 # 方式一
 plt.plot(x, y)
@@ -59,12 +40,15 @@ ax.plot(x, y, color = "green")
 fig.show()
 ```
 
-（4）更多操作
+（3）更多操作
+
 ```python
 import datetime
 
-# 绘制 一条垂线
+# 绘制垂线
 plt.axvline(x=datetime.date(2023, 9, 17), color='r', linestyle='--')
+# 绘制水平线
+plt.axhline(y=0.8, color='r', linestyle='--')
 
 # 添加标签
 plt.plot(..., label="name")
@@ -78,6 +62,26 @@ plt.grid(True)
 
 # 保存图片，默认 png
 plt.savefig('foo',dpi=600)
+
+
+# 调高分辨率，将默认的 100dpi 调为 300dpi
+# 需放在 plot() 前面
+plt.figure(dpi=300)
+```
+
+字体
+
+```python
+# 字体设置，中文乱码
+plt.rcParams['font.family']=['Microsoft YaHei']
+## setting global settings
+plt.rcParams.update({'font.size': 10,'lines.linewidth': 3})
+
+# 查看字体
+from matplotlib.font_manager import FontManager
+sorted([f.name for f in FontManager().ttflist])
+
+plt.rc('font',family='Nimbus Roman') 
 ```
 
 

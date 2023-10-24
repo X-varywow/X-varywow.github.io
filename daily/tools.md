@@ -9,12 +9,15 @@ iterm2
 
 搜狗输入法
 
+| 快捷键                           | 说明     |
+| -------------------------------- | -------- |
+| `command` + `shift` + `3`        | 截全屏   |
+| `command` + `shift` + `4`        | 截屏     |
+| `command` + `shift` + `5`        |          |
+| `command` + `space`              | 聚焦搜索 |
+| `command` + `m`, `command` + `w` |          |
 
-`command` + `shift` + `5`
 
-`command` + `space`
-
-`command` + `m`, `command` + `w`
 
 >mac 确实不好用，系统限制多，软件兼容性没 windows, 卡卡的关闭还要好久。m1 弄个 live2d 打开模型直接CPU吃满；只是下限高，所以很多人说 mac 好，
 

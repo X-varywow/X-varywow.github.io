@@ -80,6 +80,7 @@ function myfun(var1, var2){
 ```js
 const message = function() {
   console.log("This message is shown after 3 seconds");
+  console.log(JSON.stringify(res))
 }
 
 setTimeout(message, 3000);

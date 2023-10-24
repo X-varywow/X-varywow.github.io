@@ -2,6 +2,8 @@
 
 CausalForestDML
 
+[Customer Segmentation.ipynb](https://github.com/py-why/EconML/blob/main/notebooks/CustomerScenarios/Case%20Study%20-%20Customer%20Segmentation%20at%20An%20Online%20Media%20Company.ipynb)
+
 
 
 -------------
