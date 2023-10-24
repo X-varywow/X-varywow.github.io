@@ -7,3 +7,5 @@
   - [隐马尔可夫模型](ML/监督学习/hmm)
   - [集成学习](ML/监督学习/集成学习)
   - [LightGBM](ML/监督学习/lgbm)
+  - [工具包：EconML](ML/监督学习/econml)
+  - [工具包：sklearn](ML/监督学习/sklearn)

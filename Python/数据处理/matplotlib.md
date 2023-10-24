@@ -1,10 +1,6 @@
-﻿参考资料：
-- [官方文档](https://matplotlib.org/stable/contents.html)
-- [官方示例](https://matplotlib.org/stable/gallery/index.html)
-- [官方 cheatsheet](https://matplotlib.org/cheatsheets/)
-- [pyplot turtorial](https://matplotlib.org/stable/tutorials/introductory/pyplot.html)
+﻿
 
-### _tutorial-demo:_
+### _简单示例_
 
 
 （1）定义数据
@@ -17,7 +13,7 @@ import matplotlib.pyplot as plt
 x = np.linspace(900, 2100, 1000)
 y = 1.0 / (1 + 10 ** ((x - 1500) / 400))
 
-# 定义方式一
+# 定义方式二
 x = np.arange(1,11)
 y = 2*x+5
 
@@ -30,6 +26,14 @@ y = 2*x+5
 plt.rcParams['font.family']=['Microsoft YaHei']
 ## setting global settings
 plt.rcParams.update({'font.size': 10,'lines.linewidth': 3})
+
+# 查看字体
+from matplotlib.font_manager import FontManager
+sorted([f.name for f in FontManager().ttflist])
+
+
+plt.rc('font',family='Nimbus Roman') 
+
 
 # 调高分辨率，将默认的 100dpi 调为 300dpi
 plt.figure(dpi=300)
@@ -46,7 +50,6 @@ plt.title('VS 1500')
 
 plt.xticks(np.arange(900, 2200, 100))
 plt.yticks(np.arange(0, 1.0, 0.1))
-plt.grid(True)
 plt.show()
 
 # 方式二
@@ -56,7 +59,26 @@ ax.plot(x, y, color = "green")
 fig.show()
 ```
 
+（4）更多操作
+```python
+import datetime
 
+# 绘制 一条垂线
+plt.axvline(x=datetime.date(2023, 9, 17), color='r', linestyle='--')
+
+# 添加标签
+plt.plot(..., label="name")
+plt.legend()
+
+# 旋转 x 坐标
+plt.xticks(rotation=-60)
+
+# 绘制网格
+plt.grid(True)
+
+# 保存图片，默认 png
+plt.savefig('foo',dpi=600)
+```
 
 
 DEMO2: 桌球路线绘图
@@ -108,7 +130,7 @@ plt.plot([x[0], x[2], x[4], x[3]], [y[0],y[2],y[4], y[3]])
 plt.title(num)
 plt.show()
 ```
-```
+
 
 ## _subplots_
 
@@ -140,10 +162,10 @@ for ball in balls:
         ax2.annotate(ball["number"], (ball["x"], ball["y"]))
 ```
 
+</br>
 
+## _更多图形_
 
-
-##### 最重要的plot()
 `plt.plot(x,y,format_string,**kwargs)`
 - `format_string`,控制曲线的格式字符串，可选
 - `**kwargs`,第二组或更多`(x,y,format_string)`，可选
@@ -177,10 +199,11 @@ for ball in balls:
 | `plt.cohere()`   | 绘制相关性函数   |
 | `plt.step()`     | 绘制步阶图       |
 
-**_other_**
-1. `sorted([f.name for f in matplotlib.font_manager.fontManager.ttflist])`，查看电脑字体
-2. `plt.savefig('foo',dpi=600)`，默认输出png文件
-3. `plt.grid(True)`，显示网格
+
+</br>
+
+## _other_
+
 
 
 设置坐标轴：
@@ -195,10 +218,15 @@ ax.xaxis.set_major_locator(locator)
 # 坐标轴数字格式为百分式
 formatter = ticker.PercentFormatter(xmax=5)
 ax.xaxis.set_major_formatter(formatter)
-
 ```
 
-_May.2021_
+
+
+</br>
+
+## _May.2021_
+
+
 
 ```python
 #感知机中画图
@@ -276,3 +304,11 @@ def vis(self):
             
     plt.show()
 ```
+
+------------
+
+参考资料：
+- [官方文档](https://matplotlib.org/stable/contents.html)
+- [官方示例](https://matplotlib.org/stable/gallery/index.html)
+- [官方 cheatsheet](https://matplotlib.org/cheatsheets/)
+- [pyplot turtorial](https://matplotlib.org/stable/tutorials/introductory/pyplot.html)

@@ -3,11 +3,7 @@ https://github.com/ByteByteGoHq/system-design-101
 
 RLHF 框架
 
-[微软EconML](https://zhuanlan.zhihu.com/p/361162817)
-
 shap.dependence_plot
-
-CausalForestDML
 
 from econml.cate_interpreter import SingleTreeCateInterpreter
 

@@ -218,6 +218,10 @@ pd.isnull(object)
 # 填充
 df.fillna(value)
 
+df = df.replace(r'\\N',np.nan)
+
+# 计算非零比例
+np.count_nonzero((y_pred>=y_test)) / y_test.shape[0]
 
 
 # 删除特征
@@ -247,6 +251,16 @@ df.sort_values(axis=0,ascending=True)
 res = pddf.sort_values(by='CREATED_AT')
 res
 ```
+
+groupby() shift()
+
+
+
+
+
+
+
+
 
 ### 连接&合并
 
