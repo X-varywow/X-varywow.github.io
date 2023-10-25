@@ -1,4 +1,7 @@
 
+https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#speed-is-your-friend
+
+
 https://github.com/ByteByteGoHq/system-design-101
 
 RLHF 框架

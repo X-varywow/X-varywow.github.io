@@ -10,6 +10,8 @@ https://github.com/mmmmmm44/VTuber-Python-Unity
 这套方案：查看配置项方便多了，不像 kalidokit ，都不知道配的什么
 
 
+https://www.youtube.com/watch?v=NYuAU4QUjB8
+
 ## python 端
 
 文件结构：

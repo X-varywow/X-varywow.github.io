@@ -21,6 +21,8 @@ https://www.jenkins.io/
 
 https://www.jenkins.io/zh/doc/pipeline/tour/getting-started/
 
+[回滚操作](https://segmentfault.com/a/1190000039164950)，回滚对于线上服务是一个必要的选项，能最大减少重新构建的时间。不然人为改动代码，再检查发布又消耗一段时间
+
 
 ## Maven
 

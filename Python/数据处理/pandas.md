@@ -287,6 +287,13 @@ df1['value2'] = merged_df['value2']  # 新增 value2 列
 print(df1)
 ```
 
+### 移位
+
+```python
+df.shift(2)
+# 除索引外的列，往下移两位，默认用 NaN 填充缺失的
+```
+
 
 
 
