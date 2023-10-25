@@ -1,28 +1,14 @@
+
 `NumPy` is the fundamental package for **scientific computing** in Python.
 
+------
 
-参考资料：
-- [Numpy官网 初学者文档](https://numpy.org/doc/stable/user/absolute_beginners.html)
-- [Numpy官网 文档](https://numpy.org/doc/stable/reference/)
-- [菜鸟教程 - Numpy](https://www.runoob.com/numpy/numpy-tutorial.html)
-
-
-### 1. 安装 Numpy
-使用包管理器安装
-
-```cmd
+```bash
 pip install numpy
 ```
-或
-```cmd
-conda install numpy
-```
-（可选）使用 pip 查看信息
-```python
-pip show numpy
-```
 
-### 2. Numpy 数组
+
+### Numpy 数组
 
 | 属性        | 说明                       |
 | ----------- | -------------------------- |
@@ -98,16 +84,7 @@ np.ones([2,2])          #-->array([[1., 1.],1., 1.]])
 np.linspace(1,10,4)     #-->array([ 1.,  4.,  7., 10.])
 ```
 
-
-### 3. random函数
-1. `np.random.uniform(low,high,size)`
-产生均匀分布数组
-2. `np.random.normal(loc,scale,size)`
-产生正态分布数组，`loc`均值，`scale`标准差
-3. `np.random.poisson(lam,size)`
-产生泊松分布数组，`lam`随机事件发生概率
-
-### 4. 统计函数
+### 统计函数
 1. `np.sum(a,axis=None)`
 2. `np.mean(a,axis=None)`，计算期望
 3. `np.average(a,axis=None,weights=None)`，计算加权平均
@@ -121,10 +98,24 @@ np.linspace(1,10,4)     #-->array([ 1.,  4.,  7., 10.])
 8. `array.max()`
 9. `array.cumsum()`，指定轴求累计和
 
-### 5. 梯度函数
-1. `np.gradient(f)`,计算斜率
+### 特殊函数
 
-### 6. 文件读写
+`np.gradient(f)` 计算斜率
+
+
+`np.random.uniform(low,high,size)` 产生均匀分布数组
+
+
+`np.random.normal(loc,scale,size)` 产生正态分布数组，`loc`均值，`scale`标准差
+
+`np.random.poisson(lam,size)` 产生泊松分布数组，`lam`随机事件发生概率
+
+
+np.stack() 堆叠
+
+
+
+### 文件读写
 
 **一维或二维**
 1. `np.savetxt(frame,array,fmt,delimiter=None)`
@@ -237,6 +228,12 @@ def way2():
 # 性能是其 20 倍
 ```
 
-------------
 
-np.stack() 堆叠
+
+-----------
+
+
+参考资料：
+- [Numpy官网 初学者文档](https://numpy.org/doc/stable/user/absolute_beginners.html)
+- [Numpy官网 文档](https://numpy.org/doc/stable/reference/)
+- [菜鸟教程 - Numpy](https://www.runoob.com/numpy/numpy-tutorial.html)

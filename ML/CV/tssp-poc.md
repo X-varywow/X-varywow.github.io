@@ -22,6 +22,11 @@ https://blog.csdn.net/cliukai/article/details/102467502
 
 [Milvus实战｜ 以图搜视频系统](https://zhuanlan.zhihu.com/p/139847892)
 
+
+去掉 VGG16 的全连接层和最后的 softmax 分类层，只保留卷积层。将卷积层的输出展平为特征向量，可用于各种图像处理和分类的任务
+
+
+
 https://github.com/JackLCL/search-video-demo
 
 https://github.com/milvus-io/bootcamp

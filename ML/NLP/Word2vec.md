@@ -5,6 +5,8 @@
 
 这种方式在 2018 年之前比较主流，但是随着 BERT、GPT2.0 的出现，这种方式已经不算效果最好的方法了。
 
+> 基本就是 NLP 预训练任务的发展历史了，从最开始的预训练词嵌入 word2vec, 到后来的第二代预训练：预训练上下文编码器 GPT / BERT
+
 **训练模式：**
 - `CBOW` (Continuous Bag-of-Words Model)
   - 通过上下文来预测当前值。
@@ -24,9 +26,6 @@
 **优化方法：**
 - 负例采样
 - 层序Softmax
-
-参考资料：
-- [easyai-Word2vec](https://easyai.tech/ai-definition/word2vec/)
 
 ## 2. 介绍2
 
@@ -381,3 +380,4 @@ print(recommendations)
 - https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html
 - Paper：[Efficient Estimation of Word Representations in Vector Space](http://cn.arxiv.org/pdf/1301.3781v3.pdf)
 - Paper：[Distributed Representations of Words and Phrases and their Compositionality](https://papers.nips.cc/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf)
+- [easyai-Word2vec](https://easyai.tech/ai-definition/word2vec/)

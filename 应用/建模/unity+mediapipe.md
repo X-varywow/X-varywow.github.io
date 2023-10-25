@@ -12,6 +12,9 @@ https://github.com/mmmmmm44/VTuber-Python-Unity
 
 https://www.youtube.com/watch?v=NYuAU4QUjB8
 
+https://codepen.io/mediapipe/details/KKgVaPJ
+
+
 ## python 端
 
 文件结构：

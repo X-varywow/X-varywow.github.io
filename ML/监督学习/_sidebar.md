@@ -9,3 +9,4 @@
   - [LightGBM](ML/监督学习/lgbm)
   - [工具包：EconML](ML/监督学习/econml)
   - [工具包：sklearn](ML/监督学习/sklearn)
+  - [工具包：shap](ML/监督学习/shap)

@@ -152,7 +152,11 @@ study.optimize(objective, n_trials=100)
 
 ## _使用 shap_
 
-对机器学习模型进行解释，解释特征的贡献值等
+对机器学习黑盒模型进行解释，给出特征的贡献值等
+
+更多参考：[ML/监督学习/工具包：shap](ML/监督学习/shap)
+
+
 
 ```python
 def lgbm_predict(df):
@@ -196,5 +200,3 @@ shap.plots.bar(shap_values)
 - [Kaggle神器LightGBM最全解读！](https://cloud.tencent.com/developer/article/1758058)
 - https://optuna.org/
 - [optuna 文档](https://zh-cn.optuna.org/index.html)
-- [用 SHAP 可视化解释机器学习模型实用指南(上)](https://mp.weixin.qq.com/s?__biz=Mzk0OTI1OTQ2MQ==&mid=2247500066&idx=1&sn=fe878ccbbd1299366ada3ec9f622a402&chksm=c3599c88f42e159eef4da04751df3ed93aa3a0d53ad4d07c1a06036a9cd0bbb85c011afaa82d&scene=21#wechat_redirect)
-- [用 SHAP 可视化解释机器学习模型实用指南(下)](https://cloud.tencent.com/developer/article/1888981)

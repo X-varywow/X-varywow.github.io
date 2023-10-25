@@ -9,6 +9,12 @@
 - https://blogs.nvidia.com/blog/2022/03/25/what-is-a-transformer-model/
 
 
+https://mp.weixin.qq.com/s/gvL6CjQWzhI5hBclBZk2qA
+
+https://jalammar.github.io/illustrated-transformer/
+
+https://zhuanlan.zhihu.com/p/54356280
+
 
 很多经典的模型比如BERT、GPT-2都是基于Transformer的思想。
 
@@ -33,7 +39,6 @@ $$(softmax_1(x))_i = \frac{exp(x_i)}{1 + \sum_jexp(x_j)}$$
 
 
 分母上加 1 将改变注意力单元，不再使用真实的权重概率向量，而是使用加起来小于 1 的权重。其动机是该网络可以学习提供高权重，这样调整后的 softmax 非常接近概率向量。同时有一个新的选项来提供 all-low 权重（它们提供 all-low 输出权重），这意味着它可以选择不对任何事情具有高置信度。
-
 
 
 

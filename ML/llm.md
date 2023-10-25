@@ -150,6 +150,12 @@ flash-attention for higher efficiency and lower memory usage. 但是需要相同
 
 [Qwen-14B-Chat](https://modelscope.cn/models/qwen/Qwen-14B-Chat/summary)
 
+2023-10-25
+
+Qwen 使用 qlora 微调: https://mp.weixin.qq.com/s/2VuZOwe6rf3uAYyoXXPloQ
+
+4080 目前还是闲着，，，
+
 -------------------
 
 参考资料：

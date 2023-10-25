@@ -31,5 +31,6 @@ LLM 具备涌现能力（Emergent Ability），即当模型参数和数据规模
 - youtube:[NLP Tutorial with Python & NLTK](https://www.youtube.com/watch?v=X2vAabgKiuM)
 - [全面拥抱Transformer：自然语言处理三大特征抽取器（CNN/RNN/TF）比较](https://zhuanlan.zhihu.com/p/54743941) ⭐️，很好的比较性综述
 - [通向AGI之路：大型语言模型（LLM）技术精要](https://zhuanlan.zhihu.com/p/597586623) ⭐️
+- [NLP预训练模型综述](https://blog.csdn.net/Raina_qing/article/details/106374584) [Paper](https://arxiv.org/abs/2003.08271) ⭐️
 - [关于ChatGPT的思考](http://fancyerii.github.io/2023/02/20/about-chatgpt/)
 - [LLM时代NLP研究何去何从？](https://mp.weixin.qq.com/s/6hP3Ra2_gq9JYBIjCzeU3g)
