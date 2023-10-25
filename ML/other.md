@@ -97,4 +97,6 @@ https://github.com/Significant-Gravitas/Auto-GPT
 
 （2）[Kaggle 通用方法](https://zhuanlan.zhihu.com/p/27424282)
 
+（3）了解一个领域，去看综述很有用；杂七杂八的短文，有时不如去上一门专业的课程或一本专业书。
+
 

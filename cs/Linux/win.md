@@ -6,10 +6,11 @@
 
 参考资料：[windows注册表](https://blog.csdn.net/wz_cow/article/details/88835569)
 
-右键菜单对应的注册表位置：
-- 计算机\HKEY_CLASSES_ROOT\\*\shell
-- 计算机\HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\
-- `新建选项卡` 计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Discardable\PostSetup\ShellNew
+- 右键菜单对应的注册表位置：
+  - 计算机\HKEY_CLASSES_ROOT\\*\shell
+  - 计算机\HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\
+- 新建选项卡 
+  - 计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Discardable\PostSetup\ShellNew
 
 
 ---------------
@@ -34,17 +35,19 @@
 
 ## _windows命令_
 
-| 命令   | 描述         |
-| ------ | ------------ |
-| `cls`  |              |
-| `help` |              |
-| `dir`  |              |
-| `TREE` | 显示目录结构 |
-| `COPY` |              |
-| `MOVE` |              |
-| `DEL`  |              |
-| `MD`   | 创建文件夹   |
-| `RD`   | 删除文件夹   |
+| 命令             | 描述                  |
+| ---------------- | --------------------- |
+| `cd`             | 查看当前路径（鸡肋）  |
+| `cls`            | 清空窗口              |
+| `help`           |                       |
+| `dir`            |                       |
+| `TREE`           | 显示目录结构          |
+| `COPY`           |                       |
+| `MOVE`           |                       |
+| `DEL`            |                       |
+| `MD`             | 创建文件夹            |
+| `RD`             | 删除文件夹            |
+| `echo %COMSPEC%` | 查看使用的是什么shell |
 
 ## _批处理文件_
 - 一次性运行一批CMD命令，可以写在文本文档中

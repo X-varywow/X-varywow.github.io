@@ -6,8 +6,6 @@ https://github.com/ByteByteGoHq/system-design-101
 - [ ] blog ML/DL/transformer 整理
 
 
-了解一个领域，去看综述很有用
-
 RLHF 框架
 
 https://github.com/PWhiddy/PokemonRedExperiments
@@ -15,14 +13,7 @@ https://github.com/PWhiddy/PokemonRedExperiments
 
 调试学习
 
-
-机器学习下一步，时序网络？动手学？
-
-DL/README
-
 https://www.fast.ai/
-
-ML 学习路线 整合删除
 
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
