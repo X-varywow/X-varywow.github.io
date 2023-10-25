@@ -14,6 +14,10 @@ https://www.youtube.com/watch?v=NYuAU4QUjB8
 
 https://codepen.io/mediapipe/details/KKgVaPJ
 
+https://docs.warudo.app/warudo/v/en/mocap/mediapipe
+
+https://github.com/RimoChan/Vtuber_Tutorial
+
 
 ## python 端
 
