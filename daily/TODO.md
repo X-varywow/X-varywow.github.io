@@ -1,6 +1,13 @@
 
 DML 模型
 
+holocubic, 作用：显示时钟，图片，温度信息
+
+就这样了， autofish 的代码看起来有点晦涩
+
+ML/DL/ROADMAP
+
+huawei ai tutorial
 
 https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#speed-is-your-friend
 

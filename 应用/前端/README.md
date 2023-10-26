@@ -41,7 +41,7 @@
 - https://limestart.cn/
 - https://go.itab.link/
 - https://www.tidio.com/ ⭐
-- https://hume.ai/
+- https://hume.ai/ ⭐ （简洁，莫兰迪风格）
 - https://www.modelscope.cn/home
 - 原神先行展示页
 - [Nice Admin 一个较好的数据统计展示界面](https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/)
