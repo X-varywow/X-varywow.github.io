@@ -37,6 +37,8 @@ x \quad (x>0)\\
 
 但是，梯度为 0 会导致神经元“死亡”（无法参与学习），于是引入了 Leaky ReLU:
 
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231026231755.png">
+
 
 
 

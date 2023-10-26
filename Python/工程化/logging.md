@@ -127,6 +127,15 @@ logger.error("This is an error message")
 logger.critical("This is a critical message")
 ```
 
+</br>
+
+示例：
+
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231026231754.png">
+
+</br>
+
+
 更多语法参考：https://github.com/Delgan/loguru
 
 
