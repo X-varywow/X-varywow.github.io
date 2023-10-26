@@ -55,4 +55,3 @@ Point(*list_name)
 
 参考资料：
 - [官方文档](https://docs.python.org/zh-cn/3.11/library/dataclasses.html)
-- https://mp.weixin.qq.com/s/YZs8Ysa1z5LMRAlR0ajbww
