@@ -218,6 +218,10 @@ train["Age"] = train["Age"].apply(age_fun)
 # 删除存在 NA/null 数据的行
 df.dropna()
 
+# 利用 subset 来指定要检查的列
+# inplace 表示在原始对象上直接修改
+df.dropna(subset= ['NAME'], inplace = True)
+
 #检查空值
 pd.isnull(object)
 
@@ -279,6 +283,8 @@ df2 = pd.DataFrame({'key2': ['B', 'C', 'D'], 'value2': [4, 5, 6]})
 
 # 根据 key 进行关联
 merged_df = pd.merge(df1, df2, left_on='key1', right_on='key2', how='left')
+
+pd.merge(multi_data, multi_out, how='left', on = ['DT', 'USER_ID'])
 
 # 在 df1 上新增 df2 的数据
 merged_df['value2'].fillna(0, inplace=True)  # 将缺失值填充为 0
