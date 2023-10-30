@@ -37,10 +37,8 @@ df = pd.DataFrame()
 # Columns: []
 # Index: []
 
-pandas.DataFrame(
-    data, 
-    columns=['distance', 'collision_cos_theta', 'spin_x', 'spin_y', 'strength']
-)
+# 创建方式1
+df = pandas.DataFrame([[k,v] for k,v in d.items()], columns=['k','v'])
 ```
 
 ```python
@@ -183,6 +181,11 @@ df_desc = df.iloc[:, ::-1]
 # 最大、最小
 df.nlargest(n, 'value')
 df.nsmallest(n, 'value')
+
+# 选取 daraframe 中 ratio 最大、最小的行
+max_row = fres.loc[fres['ratio'].idxmax()]
+min_row = fres.loc[fres['ratio'].idxmin()]
+
 ```
 
 转化为 list 进行操作
