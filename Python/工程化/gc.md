@@ -20,6 +20,18 @@ gc.disable()
 gc.collect(generation=2)
 ```
 
+pandas 被删除的列可能站着内存空间，
+
+```python
+for col in [
+    'MAX_SCORE',
+    'MAX_DAUB_SCORE',
+    'MAX_BONUS']:
+    del data[col]
+
+gc.collect()
+```
+
 
 
 -----------

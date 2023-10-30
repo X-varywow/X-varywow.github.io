@@ -459,6 +459,7 @@ from t2;
 ```
 
 
+
 (3) 使用 MERGE INTO 将源表合并到目标表
 ```sql
 MERGE INTO target_table t
@@ -475,6 +476,18 @@ WHEN MATCHED THEN
 select to_varchar(2);
 
 select '2';
+
+select '2'::int;
+```
+
+(5) 使用 exclude & json 取数据方法
+
+```sql
+select 
+    *exclude(EXT_JSON_CONTENT),
+    EXT_JSON_CONTENT:a as a,
+    EXT_JSON_CONTENT:b as b
+from t;
 ```
 
 
