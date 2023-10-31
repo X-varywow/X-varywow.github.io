@@ -143,23 +143,10 @@ STEP2：milvus 检索
 本地起服务，connections.connect("default", host="localhost", port="19530") 连接到 19530 端口
 
 
-
-
-
-
-
-
-
-
 ## way8 光流网络
 
 
 光流网络（Optical Flow Networks）：光流是描述相邻帧之间运动信息的向量场。通过计算视频中的光流，可以提取视频的运动信息。可以使用光流网络来计算光流，并将光流作为视频特征之一。
-
-
-### 文档
-
-参考 应用/工程根据/milvus
 
 
 

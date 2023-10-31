@@ -1,9 +1,9 @@
 
-## VToonify 简介
+## preface
 
 > state-of-the-art methods in high-quality portrait style transfer and flexible style control.
 
-> 借鉴了：[toonify](https://deepai.org/machine-learning-model/toonify) StyleGAN Pixel2style2pixel(psp) 
+借鉴了：[toonify](https://deepai.org/machine-learning-model/toonify) StyleGAN Pixel2style2pixel(psp) 
 
 
 [github repo](https://github.com/williamyang1991/VToonify)
@@ -307,11 +307,38 @@ We first analyze the translation equivariance in StyleGAN which constitutes our 
 
 ## 工作流
 
+#### 1. 工作流1
+
 数据集获取：
 [iCartoonFace](https://paperswithcode.com/dataset/icartoonface)
 [google cartoonset](https://google.github.io/cartoonset/download.html)
 
 `vtoonify_model Model` 有着一个对功能的封装 gradio 中使用
+
+#### 2. sd 工作流
+
+使用 sd 生成十几张卡通图片，放去 vtoonify。 [SD 模型地址](https://civitai.com/models/95736/cartoon-portrait)
+
+
+```bash
+source activate pytorch_p310
+
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+cd stable-diffusion-webui/
+
+sudo amazon-linux-extras install epel -y 
+sudo yum-config-manager --enable epel
+sudo yum install git-lfs -y
+
+# 下载 SD 底模 + LORA 微调
+wget https://civitai.com/api/download/models/94640 -O ./models/Stable-diffusion/majicmixRealistic_v6.safetensors
+wget https://civitai.com/api/download/models/102236 -O ./models/Lora/cartoon_portrait_v1.safetensors
+
+# 用的 CUDA 118 不是120
+./webui.sh --share
+```
+
+
 
 
 
@@ -393,12 +420,24 @@ RuntimeError: CUDA error: device-side assert triggered
 
 
 
+## other 
 
---------------------------
 
-other
+```bash
+pip install gdown
+gdown https://drive.google.com/drive/folders/1YvFj33Bfum4YuBeqNNCYLfiBrD4tpzg7 -O ./checkpoint/anime --folder
+gdown https://drive.google.com/drive/folders/1JmimgKR_Xo-lR8n35e_V9wEicSUaJqMz -O ./checkpoint/fantasy --folder
+gdown https://drive.google.com/drive/folders/1d0Lb-B7ozphXLywRjVLXQI0PTC5PESfn -O ./checkpoint/impasto --folder
+```
+
+
 
 百度做的类似功能，四周变异更大
 
 https://ai.baidu.com/tech/imageprocess/selfie_anime
+
+
+----------
+
+数据十分重要，另外，神经网络黑盒十分抽象，，，
 

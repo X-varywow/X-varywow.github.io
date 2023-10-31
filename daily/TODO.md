@@ -1,14 +1,7 @@
 
 [Wonder3D](https://github.com/xxlong0/Wonder3D), 2d 图片变 3d
 
-pandas 简洁的 sql 操作，，好太多了，还可以把运算过程放在云端
-
-
-DML 模型
-
 holocubic, 作用：显示时钟，图片，温度信息
-
-就这样了， autofish 的代码看起来有点晦涩
 
 ML/DL/ROADMAP
 
@@ -28,7 +21,6 @@ https://www.fast.ai/
 
 bili 论文解读
 
-- [ ] VAE 完善
 - electron开发，代替 TODO，自定义背景，等
 
 
