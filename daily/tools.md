@@ -87,7 +87,7 @@ ExplorerPatcher
 
 xmind
 
-微信读书
+微信读书，NeatReader
 
 多按键的鼠标，定义多个按键功能，eg. 复制、粘贴、左右删除
 

@@ -17,7 +17,10 @@ pd.set_option('display.max_columns', None)
 
 ## _数据结构_
 
-- Series
+_Series_
+
+
+`Series` 操作类似字典类型，含：保留字 `in` 操作、`.get(key,default=None)` 方法
 
 ```python
 pd.Series([1,2,3]，index=[0,1,2])
@@ -28,7 +31,8 @@ pd.Series([1,2,3]，index=[0,1,2])
 # dtype: int64
 ```
 
-- DataFrame
+
+_DataFrame_
 
 ```python
 df = pd.DataFrame()
@@ -37,8 +41,14 @@ df = pd.DataFrame()
 # Columns: []
 # Index: []
 
-# 创建方式1
-df = pandas.DataFrame([[k,v] for k,v in d.items()], columns=['k','v'])
+# 从 list 中创建
+df = pd.DataFrame([[k,v] for k,v in d.items()], columns=['k','v'])
+
+# 从 dict 中创建
+df = pd.DataFrame({
+    'col1': [],
+    'col2': []
+})
 ```
 
 ```python
@@ -194,8 +204,12 @@ min_row = fres.loc[fres['ratio'].idxmin()]
 x = raw2['_KEY'].to_list()
 ```
 
+从data 中筛选不在 test 的数据：
 
-- `Series`操作类似字典类型，含：保留字`in`操作、`.get(key,default=None)`方法
+```python
+train = data[~data.index.isin(test.index.tolist())]
+```
+
 
 
 ### 自定义函数
@@ -247,10 +261,8 @@ df.drop('feature_variable_name', axis=1)
 ### 运算&排序 
 
 1. **算术运算**根据行列索引，补齐后运算，运算默认产生浮点数。
-2. 补齐时缺项填充NaN(空值)
-3. 不同维度数据间运算为广播运算
-4. `+` 或 `b.add(a,fill_value=NaN)`
-5. **比较运算**
+2. 不同维度数据间运算为广播运算
+3. `+` 或 `b.add(a,fill_value=NaN)`
 
 
 ```python
@@ -265,7 +277,15 @@ res = pddf.sort_values(by='CREATED_AT')
 res
 ```
 
-groupby() shift()
+groupby() 
+
+
+移位：
+
+```python
+df.shift(2)
+# 除索引外的列，往下移两位，默认用 NaN 填充缺失的
+```
 
 
 
@@ -294,13 +314,6 @@ merged_df['value2'].fillna(0, inplace=True)  # 将缺失值填充为 0
 df1['value2'] = merged_df['value2']  # 新增 value2 列
 
 print(df1)
-```
-
-### 移位
-
-```python
-df.shift(2)
-# 除索引外的列，往下移两位，默认用 NaN 填充缺失的
 ```
 
 
