@@ -82,7 +82,7 @@ pip install --editable ./
 
 sudo amazon-linux-extras install epel -y 
 sudo yum-config-manager --enable epel
-sudo yum install git-lfs
+sudo yum install git-lfs -y
 ```
 
 方式2：

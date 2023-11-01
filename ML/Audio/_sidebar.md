@@ -1,5 +1,5 @@
 - [回到上一级](ML/)
-- [ML/语音任务](ML/Audio/)
+- [ML/Audio](ML/Audio/)
   - [音频基础](ML/Audio/音频基础)
   - [ASR-课程笔记](ML/Audio/CLASS/)
   - [ASR-实用](ML/Audio/whisper_asr)

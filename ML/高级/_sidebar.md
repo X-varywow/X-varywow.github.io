@@ -2,7 +2,6 @@
 - [ML/高级](ML/高级/)
   - [VAE](ML/高级/vae)
   - [BP 反向传播](ML/高级/bp)
-  - [卷积](ML/高级/卷积)
   - [EP 期望传播](ML/高级/ep)
   - [pso](ML/高级/pso)
   - [MonteCarlo](ML/高级/MonteCarlo)

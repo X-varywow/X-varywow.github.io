@@ -59,6 +59,7 @@ class LSTMCell(Module):
     def forward(self, x: torch.Tensor, h: torch.Tensor, c: torch.Tensor):
         ifgo = self.hidden_lin(h) + self.input_lin(x)
         ifgo = ifgo.chunk(4, dim = -1)
+
         ifgo = [self.layer_norm[i](ifgo[i]) for i in range(4)]
         i, f, g, o = ifgo
         
@@ -104,7 +105,8 @@ class LSTM(Module):
 实现方式2：
 
 ```python
-from torch.nn as nn
+import torch.nn as nn
+import torch.optim as optim
 
 class LSTMModel(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, output_size):
@@ -116,9 +118,6 @@ class LSTMModel(nn.Module):
         out, _ = self.lstm(x)
         out = self.fc(out[:, -1, :])
         return out
-```
-```python
-import torch.optim as optim
 
 # 定义超参数
 input_size = 10

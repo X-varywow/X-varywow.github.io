@@ -6,6 +6,22 @@
 https://pytorch.org/tutorials/beginner/introyt/introyt1_tutorial.html
 
 
+---------
+
+```python
+import torch
+print(torch.__version__)
+print(torch.version.cuda)
+print(torch.backends.cudnn.version())
+print(torch.cuda.is_available())
+```
+
+
+
+
+
+
+
 ----------
 
 参考资料:

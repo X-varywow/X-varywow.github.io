@@ -15,7 +15,7 @@
   - [NLP](ML/NLP/)
   - [LLM](ML/llm)
   - [CV](ML/CV/)
-  - [语音任务](ML/Audio/)
+  - [Audio](ML/Audio/)
   - ---
   - [环境相关](ML/env)
   - [CUDA相关](ML/cuda)

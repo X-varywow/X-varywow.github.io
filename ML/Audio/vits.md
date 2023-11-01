@@ -45,7 +45,7 @@
     - cleaned (这是 txt 对应的音素)
   - val
 - monotonic_align
-  - cpython 相关，单调对齐搜索，不太懂
+  - 使用 cpython 实现的单调对齐搜索
 - text
   - 负责 filelists 的处理
   - 特殊文本符号的处理
@@ -88,26 +88,22 @@
 
 [colab vits demo](https://colab.research.google.com/drive/1CO61pZizDj7en71NQG_aqqKdGaA_SaBf)
 
-```python
-!git clone https://github.com/jaywalnut310/vits.git
-%cd vits
-!pip install -r requirements.txt
+```bash
+git clone https://github.com/jaywalnut310/vits.git
 
-!sudo yum install espeak -y
+cd vits
+pip install -r requirements.txt
 
-%cd monotonic_align
-!mkdir monotonic_align
-!python setup.py build_ext --inplace
+sudo yum install espeak -y
 
-%cd ..
-!pip install gdown
-!gdown 'https://drive.google.com/uc?id=11aHOlhnxzjpdWDpsz1vFDCzbeEfoIxru'
-!gdown 'https://drive.google.com/uc?id=1q86w74Ygw2hNzYP9cWkeClGT5X25PvBT'
+cd monotonic_align
+mkdir monotonic_align
+python setup.py build_ext --inplace
 ```
 
 训练先要对 音频处理 ，参考 README ， preprocess.py
 
-```python
+```bash
 # Cython-version Monotonoic Alignment Search
 cd monotonic_align
 python setup.py build_ext --inplace
@@ -121,9 +117,42 @@ python preprocess.py --text_index 2 --filelists filelists/vctk_audio_sid_text_tr
 python train_ms.py -c configs/vctk_base.json -m vctk_base
 ```
 
+总体：音频原始数据固定格式保存，然后音频处理保存音素filelist。配置 config, 准备好 mp3 和 txt 就可以开始训练了 
+
+
+
+额外：
+
+
+```bash
+pip install gdown
+
+# pretrained_vctk.pth (152M)
+gdown 'https://drive.google.com/uc?id=11aHOlhnxzjpdWDpsz1vFDCzbeEfoIxru'
+
+# pretrained_ljs.pth (139M)
+gdown 'https://drive.google.com/uc?id=1q86w74Ygw2hNzYP9cWkeClGT5X25PvBT'
+```
+
+```bash
+# ljsspeech 数据集
+wget https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
+tar -jxvf LJSpeech-1.1.tar.bz2
+
+# vctk 数据集
+wget https://datashare.ed.ac.uk/download/DS_10283_3443.zip
+sudo yum install p7zip
+7za x DS_10283_3443.zip
+7za x VCTK-Corpus-0.92.zip
+```
+
+
+
+
 -----------
 
-使用 ryan speech 数据集，重跑训练流程。（不涉及重采样、划分数据集）
+使用 ryan 数据集，处理并生成训练数据：
+
 
 </br>
 
@@ -362,37 +391,6 @@ length_scale 控制整体语速, 越大长度越长，语速越慢
 
 
 VITS 是一个由音素直接映射为波形的端到端模型，
-
-
-## 0413
-
-ryan 数据集下，sh 漏音问题
-
-```python
-def get_text(text):
-    # 转成 由 symbols idx 组成的列表
-    text_norm = text_to_sequence(text, ["english_cleaners2"])
-    
-    # if hps.data.add_blank:
-    # add_blank
-    text_norm = commons.intersperse(text_norm, 0)
-
-    # convert to tensor
-    text_norm = torch.LongTensor(text_norm)
-    return text_norm
-
-get_text(text).unsqueeze(0) 放到 infer 里
-```
-
-不是 sh 没出现在训练音频中。再多训练看一下，或单词替换一下
-
-## 0414
-
-自建数据集的多说话人训练成功，解决单说话人漏音问题；
-
-yourtts 是对 vits 的改进；
-
-?> 似乎 valle 的效果更好
 
 使用 [so-vits-svc](https://github.com/svc-develop-team/so-vits-svc/tree/4.0-v2) 进行声音克隆，[hugging face demo](https://huggingface.co/spaces/zomehwh/sovits-models)
 

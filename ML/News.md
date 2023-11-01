@@ -35,3 +35,12 @@ WizardLM 使用了一个 Evol-Instruct 的算法来生成和改写指令数据�
 
 流浪地球2 用的 deepfacelab 实现年轻版吴京。。。
 
+</br>
+
+`20231101`
+
+
+[ChatGLM3](https://github.com/THUDM/ChatGLM3)，网页版还挺好看的，周末玩一下
+
+[Wonder3D](https://github.com/xxlong0/Wonder3D), 2d 图片变 3d
+
