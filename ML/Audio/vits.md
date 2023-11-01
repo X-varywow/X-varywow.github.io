@@ -2,18 +2,6 @@
 
 ## Preface
 
-参考：
-- [原作者码仓](https://github.com/jaywalnut310/vits)
-- [细读经典：VITS，用于语音合成带有对抗学习的条件变分自编码器](https://zhuanlan.zhihu.com/p/419883319)
-- [知乎；vits 发展历程](https://zhuanlan.zhihu.com/p/474601997)
-- [COQUI AI 的实现](https://github.com/coqui-ai/TTS/blob/f237e4ccd9f2fd2b0cb5e136dfe0e20cc32bf898/TTS/tts/models/vits.py)
-- [VITS论文阅读](https://blog.csdn.net/zzfive/article/details/127061469)
-  - [vits官方gituhb项目--数据处理](https://blog.csdn.net/zzfive/article/details/127336473)
-  - [vits官方gituhb项目--模型训练](https://blog.csdn.net/zzfive/article/details/127503913)
-  - [vits官方gituhb项目--模型构建](https://blog.csdn.net/zzfive/article/details/127540768)
-- [基于cVAE+Flow+GAN的效果最好语音合成VITS模型代码逐行讲解](https://www.bilibili.com/video/BV1VG411h75N/)
-
------------
 
 1，VITS 框架包含两个子系统：基于 VAE 的变声系统以及基于 Flow 的语音合成系统；VAE 擅长捕捉句子整体的韵律特征，而 Flow 擅长重建音频的细节特征；将两者整合，进行多任务训练，实现参数与优势共享。
 
@@ -57,10 +45,11 @@
   - textaudioloader
   - TextAudioCollate
   - TextAudioSpeakerLoader
-  - DistributedBucketSampler
+  - DistributedBucketSampler，构造分桶数据
 - losses.py
   - feature_loss, discriminator_loss, generator_loss, kl_loss
 - mel_processing.py
+  - 频谱图信息处理
 - `models.py`
   - StochasticDurationPredictor 随机时长预测器
   - DurationPredictor
@@ -73,15 +62,16 @@
   - MultiPeriodDiscriminator
   - SynthesizerTrn
 - `modules.py`
-  - LayerNorm, ConvReluNorm, DDSConv
-- preprocess
+  - LayerNorm, ConvReluNorm, DDSConv, WN, ResBlock, ConvFlow 等
+- `preprocess.py`
+  - 处理训练数据文本
 - `train.py, train_ms.py`
 - transforms.py
   - piecewise_rational_quadratic_transform
   - unconstrained_rational_quadratic_spline
   - rational_quadratic_spline
 - utils.py
-  - checkpoint、plot等
+  - load_checkpoint, save_checkpoint, plot 等
 
 
 ## 训练流程
@@ -151,7 +141,7 @@ sudo yum install p7zip
 
 -----------
 
-使用 ryan 数据集，处理并生成训练数据：
+使用 ryan 数据集，处理并生成训练数据（用到 whisper 做语音识别）：
 
 
 </br>
@@ -429,3 +419,18 @@ global step: 119200,
 
 lr: 0.00019754009828923033
 ```
+
+
+
+------------
+
+参考资料
+- [原作者码仓](https://github.com/jaywalnut310/vits)
+- [细读经典：VITS，用于语音合成带有对抗学习的条件变分自编码器](https://zhuanlan.zhihu.com/p/419883319)
+- [知乎；vits 发展历程](https://zhuanlan.zhihu.com/p/474601997)
+- [COQUI AI 的实现](https://github.com/coqui-ai/TTS/blob/f237e4ccd9f2fd2b0cb5e136dfe0e20cc32bf898/TTS/tts/models/vits.py)
+- [VITS论文阅读](https://blog.csdn.net/zzfive/article/details/127061469)
+  - [vits官方gituhb项目--数据处理](https://blog.csdn.net/zzfive/article/details/127336473)
+  - [vits官方gituhb项目--模型训练](https://blog.csdn.net/zzfive/article/details/127503913)
+  - [vits官方gituhb项目--模型构建](https://blog.csdn.net/zzfive/article/details/127540768)
+- [基于cVAE+Flow+GAN的效果最好语音合成VITS模型代码逐行讲解](https://www.bilibili.com/video/BV1VG411h75N/)

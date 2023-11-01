@@ -1,6 +1,10 @@
 
 - [ ] chatglm3
-- [ ] vits 源码学习
+- [ ] vits 源码学习(整理自用上传到 github)
+  - [x] 对文件结构
+  - [x] sequential 构造
+  - [x] 训练报错，，解决
+  - [ ] get_logger 优化 loguru
 - [ ] 课程笔记整理
 - [ ] transformer
 - [ ] lstm code 实现
@@ -8,6 +12,97 @@
 - [ ] 多读 torch 文档
 
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
+
+
+
+----------
+
+vits 是对 cuda 等版本无要求的
+
+封装有些多层
+
+
+vits 报错
+
+估计版本问题，TypeError: mel() takes 0 positional arguments but 5 were given
+
+mel = librosa_mel_fn(sr = sampling_rate, n_fft = n_fft, n_mels = num_mels, fmin = fmin, fmax = fmax)
+
+---------
+
+File "/home/ec2-user/anaconda3/envs/pytorch_p310/lib/python3.10/site-packages/torch/serialization.py", line 291, in __exit__
+self.file_like.write_end_of_file()
+RuntimeError: [enforce fail at inline_container.cc:337] . unexpected pos 320 vs 240
+
+晕了，这个的原因是存储空间不足
+
+--------
+
+UserWarning: stft with return_complex=False is deprecated. In a future pytorch release, stft will return complex tensors for all inputs, and return_complex=False will raise an error.
+Note: you can still call torch.view_as_real on the complex output to recover the old return format. (Triggered internally at /opt/conda/conda-bld/pytorch_1686274778240/work/aten/src/ATen/native/SpectralOps.cpp:862.)
+  return _VF.stft(input, n_fft, hop_length, win_length, window,  # type: ignore[attr-defined]
+
+这个详细信息在 librosa 的 mel spectrogram 中，被封起来了
+
+--------
+
+  File "/home/ec2-user/anaconda3/envs/pytorch_p310/lib/python3.10/site-packages/torch/serialization.py", line 283, in __init__
+    super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
+RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory
+
+重新弄
+
+---------
+
+重新弄之后，新的报错
+
+
+ft
+    return _VF.stft(input, n_fft, hop_length, win_length, window,  # type: ignore[attr-defined]
+RuntimeError: stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release.
+
+
+
+output = torch.stft(input, n_fft=2048, return_complex=True)
+
+----------
+
+修复之后：RuntimeError: mat1 and mat2 shapes cannot be multiplied (80x513 and 64x513)
+
+报错报晕了，还是按原本 requirements 跑一遍
+
+colab 都跑不了这个,
+
+使用 return_complex=False 解决，原本是因为 return_complex=True ,,,
+
+之后还是这个报错：RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory
+
+------------
+
+读 spec 文件的时候发生报错，难道是第一个报错修复引起的？
+
+librosa_mel_fn(sr = sampling_rate, n_fft = n_fft, n_mels = num_mels, fmin = fmin, fmax = fmax)
+
+#就是这里出的错，指向这个： DUMMY1/LJ018-0084.spec.pt
+#MALE 
+#估计是文件循坏什么的，其它训练数据好好的
+
+-----------
+
+重新弄数据集，其他：中途语法错误，爆显存
+
+终于通了!!!
+
+这下载数据解压还能错误，1% 的运气？
+
+
+
+
+
+
+
+
+
 
 
 holocubic, 作用：显示时钟，图片，温度信息

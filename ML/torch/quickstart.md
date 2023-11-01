@@ -159,7 +159,7 @@ print("Saved PyTorch Model State to model.pth")
 ## 5. 模型加载
 
 ```python
-model = NeuralNetwork()
+model = NeuralNetwork().to(device)
 model.load_state_dict(torch.load("model.pth"))
 ```
 
@@ -188,6 +188,14 @@ with torch.no_grad():
     predicted, actual = classes[pred[0].argmax(0)], classes[y]
     print(f'Predicted: "{predicted}", Actual: "{actual}"')
 ```
+
+
+
+
+
+</br>
+
+_other_
 
 ```python
 # 有序的，决定了前向传播等顺序

@@ -64,6 +64,11 @@ librosa.display.specshow(wave, sr=sr, x_axis="time", y_axis="hz")
 plt.colorbar()
 ```
 
+stft(short-time fourier transform) 是一种将信号分解为时域和频域信息的方法，它将信号分成多个时间窗口，并对每个窗口进行傅里叶变换
+
+stft 返回值是一个复数张量，表示信号的 STFT 结果。
+
+
 <img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20230329235354.png">
 
 > 梅尔频率倒谱系数（MFCC）

@@ -6,6 +6,6 @@
   - [数据分析](Python/数据处理/数据分析)
   - [statsmodels](Python/数据处理/statsmodels)
   - [bokeh](Python/数据处理/bokeh)
-  - pyecharts
-  - seaborn
+  - [pyecharts](Python/数据处理/pyecharts)
+  - [seaborn](Python/数据处理/seaborn)
   - [Vizro](Python/数据处理/vizro)
