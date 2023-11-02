@@ -35,6 +35,9 @@ conda install -n env_name numpy
 
 conda remove --name myenv numpy
 
+# 删除整个环境
+conda remove --name myenv --all -y
+
 
 # (4) requirements.txt环境导出&创建
 pip freeze > requirements.txt

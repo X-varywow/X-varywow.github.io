@@ -1,7 +1,7 @@
 - [回到上一级](ML/)
 - [ML/深度学习](ML/深度学习/)
   - [常见层级](ML/深度学习/net)
-  - [激活函数](ML/深度学习/ActivationFunction)
+  - [激活函数](ML/深度学习/activatefunc)
   - ----
   - [卷积神经网络](ML/深度学习/CNN)
   - [循环神经网络](ML/深度学习/RNN)

@@ -89,6 +89,12 @@ with Progress() as progress:
         time.sleep(0.02)
 ```
 
+显示效果：
+
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231102174750.png">
+
+</br>
+
 demo1: so-vits-svc 中使用
 
 ```python
@@ -109,6 +115,8 @@ def process_all_speakers():
 ## _rich 其它用法_
 
 相当于给 普通IO 套了一层 UI
+
+参考：https://rich.readthedocs.io/en/stable/introduction.html
 
 ```python
 from rich import print

@@ -78,11 +78,51 @@ plt.rcParams['font.family']=['Microsoft YaHei']
 plt.rcParams.update({'font.size': 10,'lines.linewidth': 3})
 
 # 查看字体
-from matplotlib.font_manager import FontManager
-sorted([f.name for f in FontManager().ttflist])
+from matplotlib import font_manager
+sorted([f.name for f in font_manager.fontManager.ttflist])
+
+# f.fname 可以查看路径
 
 plt.rc('font',family='Nimbus Roman') 
+
+
+# win 端比较好看的字体
+plt.rcParams['font.family']=['Bookman Old Style']
 ```
+
+DEMO1: 子图绘制并调整长宽
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 创建一个包含x值的数组
+x = np.linspace(-10, 10, 100)
+
+# 计算sigmoid函数的值
+sigmoid = 1 / (1 + np.exp(-x))
+
+# 计算tanh函数的值
+tanh = np.tanh(x)
+
+# 创建一个1行2列的subplot，第一个subplot用于绘制sigmoid函数，第二个subplot用于绘制tanh函数
+fig, axs = plt.subplots(1, 2, figsize=(12, 4))
+
+# 绘制sigmoid函数
+axs[0].plot(x, sigmoid)
+axs[0].set_title('Sigmoid')
+
+# 绘制tanh函数
+axs[1].plot(x, tanh)
+axs[1].set_title('Tanh')
+
+# 调整subplot之间的间距
+plt.subplots_adjust(wspace=0.3)
+
+# 显示图形
+plt.show()
+```
+
 
 
 DEMO2: 桌球路线绘图
