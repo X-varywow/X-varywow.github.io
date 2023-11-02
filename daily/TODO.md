@@ -1,4 +1,3 @@
-kmeans 原理，二进制汉明距离，，
 
 hugg 两个库
 
@@ -7,11 +6,6 @@ hugg 两个库
 - [ ] 系统论的书
 - [ ] MHA
 - [ ] chatglm3
-- [ ] vits 源码学习(整理自用上传到 github)
-  - [x] 对文件结构
-  - [x] sequential 构造
-  - [x] 训练报错，，解决
-  - [ ] get_logger 优化 loguru
 - [ ] transformer
 - [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档

@@ -2,7 +2,8 @@
 
 这是基于 docsify 的文档，主要是简洁，目录结构清晰，知识整理方便。
 
-<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20220811225606.png" style ="zoom:45%">
+
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231102232323.png" style="zoom:60%">
 
 !> 说明：该博客的结构总是为树型，导航每个栏目为一个大分类
 
