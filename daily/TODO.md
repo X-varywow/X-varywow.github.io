@@ -7,9 +7,9 @@
   - [ ] get_logger 优化 loguru
 - [ ] 课程笔记整理
 - [ ] transformer
-- [ ] lstm code 实现
 - [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档
+- [ ] SVC 训练流程
 
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
 

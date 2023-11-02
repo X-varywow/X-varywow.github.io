@@ -4,5 +4,5 @@
   - [tensor](ML/torch/tensor)
   - [data](ML/torch/data)
   - [autograd](ML/torch/autograd)
-  - [学习率 lr_scheduler](ML/torch/lr)
   - [优化器 optimizer](ML/torch/optimizer)
+  - [学习率 lr_scheduler](ML/torch/lr)

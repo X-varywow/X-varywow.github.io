@@ -21,6 +21,9 @@ Optimizer，即优化损失函数的方法
 - `Adam`
   - Adaptive Moment Estimation，能计算每个参数的自适应学习率
   - 2015 年提出，融合了 Momentum 和 AdaGrad 的方法
+- `AdamW`
+  - 相比于 Adam, 主要的改进在权重衰减的处理上
+  - 传统的 Adam 算法在更新参数时会对权重进行衰减，但是这种衰减方式不符合 L2 正则化的定义，可能会导致模型收敛不理想。而 AdamW 算法则将权重衰减应用到了梯度更新的步骤中，使得模型的收敛性更好
 
 
 </br>
@@ -33,8 +36,23 @@ Adam 方法更加实用，
 - 若网络较为复杂，或想模型快速收敛，应该使用自适应学习策略
 
 
+-----------
+
+- optim.Adagrad
+- optim.Adam
+- optim.AdamW
+- optim.ASGD
+- optim.SGD
+
+
+
+
+
+
 ------------
 
 参考资料：
+- [torch-optim](https://pytorch.org/docs/stable/optim.html)
 - [从梯度下降到 Adam！一文看懂各种神经网络优化算法](https://www.cvmart.net/community/detail/5691)
 - http://www.360doc.com/content/22/1031/20/32196507_1054056657.shtml
+- chatgpt

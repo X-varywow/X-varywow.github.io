@@ -361,6 +361,107 @@ app.launch()
     
 ```
 
+## 代码细分(tmp)
+
+从训练来看
+
+```python
+# train.py
+
+def main():
+
+hps 获取配置信息
+
+torch.multiprocessing
+
+  def run():
+    torch.distributed.init_process_group(backend='nccl', init_method='env://', world_size=n_gpus, rank=rank)
+    torch.manual_seed(hps.train.seed)
+    torch.set_device(rank)
+    TextAudioLoader
+    DistributedBucketSampler 将数据分桶，近似长度的在一个桶
+    train_loader = DataLoader(train_dataset, num_workers=8, shuffle=False, pin_memory=True,
+      collate_fn=collate_fn, batch_sampler=train_sampler)
+
+    # 创建网络
+    net_g = SynthesizerTrn(
+        len(symbols),
+        hps.data.filter_length // 2 + 1,
+        hps.train.segment_size // hps.data.hop_length,
+        **hps.model).cuda(rank)
+    net_d = MultiPeriodDiscriminator(hps.model.use_spectral_norm).cuda(rank)
+
+    # AdamW 优化器
+    optim_g = torch.optim.AdamW(
+        net_g.parameters(), 
+        hps.train.learning_rate, 
+        betas=hps.train.betas, 
+        eps=hps.train.eps)
+    optim_d = torch.optim.AdamW(
+        net_d.parameters(),
+        hps.train.learning_rate, 
+        betas=hps.train.betas, 
+        eps=hps.train.eps)
+
+    # DDP 分布训练
+    net_g = DDP(net_g, device_ids=[rank])
+    net_d = DDP(net_d, device_ids=[rank])
+
+    #指数衰减调整学习策略
+    torch.optim.lr_scheduler.ExponentialLR
+
+    # 混合精度，提高训练速度
+    scaler = GradScaler(enabled=hps.train.fp16_run)
+
+    for epoch:
+      train_and _evalute()
+      scheduler.step()
+
+def train_and_evaluate():
+  net.train()
+
+  for batch_idx, (x, x_lengths, spec, spec_lengths, y, y_lengths) in enumerate(train_loader):
+    with autocast():
+      mel
+      y_mel
+      y_hat_mel
+      y_d_hat_r, y_d_hat_g, _, _ = net_d(y, y_hat.detach())
+      discriminator_loss(y_d_hat_r, y_d_hat_g)
+
+
+
+
+
+```
+
+
+MultiPeriodDiscriminator 判别网络
+
+SynthesizerTrn 合成网络
+
+
+
+
+
+
+
+
+
+
+
+
+
+## bert_vits
+
+后端声学模型使用的 bert
+
+https://github.com/fishaudio/Bert-VITS2
+
+
+
+
+
+
 
 
 
