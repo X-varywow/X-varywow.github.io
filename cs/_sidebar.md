@@ -10,4 +10,3 @@
   - [Linux](cs/Linux/)
   - [Git 使用指南](cs/git)
   - [Database](cs/DATABASE/)
-  - [计算机网络工程](cs/网工/)

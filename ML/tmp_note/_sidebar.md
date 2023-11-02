@@ -12,3 +12,5 @@
   - [特征工程](ML/tmp_note/特征工程)
   - [时序问题](ML/tmp_note/时序问题)
   - [推荐系统](ML/tmp_note/推荐系统)
+  - ---
+  - [huggingface](ML/tmp_note/huggingface)

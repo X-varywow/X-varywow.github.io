@@ -31,6 +31,9 @@ curl -e 'https://google.com?q=example' https://www.example.com
 curl -H 'Accept-Language: en-US' https://google.com
 
 # -u 设置服务器认证的用户名和密码。
+
+# -L 指定 curl 跟随重定向，用于跳转下载且不好找下载地址的地方，救大了
+curl -L https://ibm.ent.box.com/shared/static/z1wgl1stco8ffooyatzdwsqn2psd9lrr -o /content/so-vits-svc/hubert/checkpoint_best_legacy_500.pt
 ```
 
 </br>
@@ -51,7 +54,7 @@ wget https://civitai.com/api/download/models/102236 -O ./models/Lora/cartoon_por
 | ------- | -------------------- |
 | -q      | 安静模式，不显示输出 |
 | -O file | 写到file文件中       |
-| -o file |  追加写到file文件中                    |
+| -o file | 追加写到file文件中   |
 
 
 ---------

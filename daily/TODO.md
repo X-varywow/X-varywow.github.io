@@ -1,18 +1,28 @@
+kmeans 原理，二进制汉明距离，，
 
+hugg 两个库
+
+- [ ] 课程笔记整理
+- [ ] 更新 develop
+- [ ] 系统论的书
+- [ ] MHA
 - [ ] chatglm3
 - [ ] vits 源码学习(整理自用上传到 github)
   - [x] 对文件结构
   - [x] sequential 构造
   - [x] 训练报错，，解决
   - [ ] get_logger 优化 loguru
-- [ ] 课程笔记整理
 - [ ] transformer
 - [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档
-- [ ] SVC 训练流程
+- [x] SVC 训练流程
+  - [ ] 十分钟语料？？？
+- [ ] 整理 SVC
 
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
 
+
+https://github.com/ultralytics/yolov5/issues/8914 这外国人这么好，，，
 
 
 ----------
@@ -95,6 +105,56 @@ librosa_mel_fn(sr = sampling_rate, n_fft = n_fft, n_mels = num_mels, fmin = fmin
 
 这下载数据解压还能错误，1% 的运气？
 
+
+--------
+
+倒霉，今天的 sovitssvc 又是报错的一天。
+
+已经解决三四个了，现在这个错有点意思，记录一下
+
+RuntimeError: CUDA error: CUBLAS_STATUS_NOT_INITIALIZED when calling `cublasCreate(handle)`
+
+可能原因1：爆显存，修改configs 中 diffusion.yaml batch_size，应该不是，显存才到 1800
+
+多运行几遍，是个新的报错：
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/so-vits-svc/preprocess_hubert_f0.py", line 172, in <module>
+    parallel_process(filenames, num_processes, f0p, args.use_diff, mel_extractor, device)
+  File "/home/ec2-user/SageMaker/so-vits-svc/preprocess_hubert_f0.py", line 128, in parallel_process
+    task.result()
+  File "/home/ec2-user/anaconda3/envs/python3/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/home/ec2-user/anaconda3/envs/python3/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+RuntimeError: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+从后往前导不出来，看代码哪里可能出错，
+
+定位到 c = hmodel.encoder(wav16k) 这行代码不能正确运行，不会又是模型下载损坏？
+
+用的是 GPU
+
+speech_encoder = hps["model"]["speech_encoder"]
+hmodel = utils.get_speech_encoder(speech_encoder, device=device)
+c = hmodel.encoder(wav16k)
+
+多进程问题？？？
+
+有的不会报错，运行几条才报错
+
+-------
+
+修改为单进程之后报错换了个位置，同样的报错，，，
+
+去掉 cpu(), 去掉 tqdm
+
+。。。弄不好
 
 
 

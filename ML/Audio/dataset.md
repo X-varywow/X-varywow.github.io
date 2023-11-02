@@ -37,6 +37,10 @@ tar -zxvf hi_fi_tts_v0.tar.gz
 # https://huggingface.co/datasets/Roh/ryanspeech/blob/main/ryanspeech.py
 wget https://huggingface.co/datasets/Roh/ryanspeech/resolve/main/data/train.tar.gz
 tar -zxvf train.tar.gz
+
+# 对于 7z 文件
+sudo yum install p7zip -y
+7za x contentvec768l12.7z
 ```
 ------------
 

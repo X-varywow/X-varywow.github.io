@@ -1,7 +1,10 @@
 
-[svc-develop-team/so-vits-svc](https://github.com/svc-develop-team/so-vits-svc)
+## preface
 
 An implementation of the combination of Soft-VC and VITS
+
+码仓：[svc-develop-team/so-vits-svc](https://github.com/svc-develop-team/so-vits-svc)
+
 
 [sovits4.0一键训练/推理脚本.ipynb](https://colab.research.google.com/drive/1hGt9XowC07NGmXxKNJvY5N64uMdd435M)
 
@@ -16,16 +19,16 @@ https://www.bilibili.com/video/BV1H24y187Ko/ (纯工程应用向，实用性强)
 
 [colab demo1](https://colab.research.google.com/drive/1WjOZFyJVdP7-uozL5TKDekqnSB4rmMm-)
 
-?> 评价：很强，实用性强；AI 孙燕姿用的也是这个模型。试了一下，10分钟高质量语音就能出来一个较好的音色；so-vits 社区也挺活跃的，0417 最近还在更新。
+实用性及效果很强；[AI 孙燕姿](https://www.bilibili.com/video/BV1Rm4y187N1/) 用的也是这个模型。
+
+试了一下，10分钟高质量语音就能出来一个较好的音色；社区与文档也好。
 
 
-[AI 孙燕姿](https://www.bilibili.com/video/BV1Rm4y187N1/) sovits 还是牛啊
 
 
+## 训练流程
 
-## (1) 环境准备
-
-### 1.1 svc
+#### （1）环境准备
 
 `requirements.txt`
 
@@ -69,40 +72,46 @@ cd fairseq
 pip install --editable ./
 ```
 
+终于到了 fairseq，又是报错意料之中
+
 >说明：具有一定不可重复性，fairseq 当时出了问题，clone 过来的，并把二级文件移到了一级
-
-
-### 1.2 git lfs
-
-方式1：
-```bash
-#which amazon-linux-extras
-#sudo yum install -y amazon-linux-extras
-#amazon-linux-extras list
-
-sudo amazon-linux-extras install epel -y 
-sudo yum-config-manager --enable epel
-sudo yum install git-lfs -y
-```
-
-方式2：
-```bash
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
-
-sudo yum install git-lfs
-
-git lfs install
-
-# 之后的 git 会自动对大文件 git lfs
-```
-
-
-
-## (2) 训练流程
 
 !> 对数据集命名，路径有较强的格式要求
 
-### 2.1 audio-slicer 部分
+```
+数据集准备
+
+raw
+├───speaker0
+│   ├───xxx1-xxx1.wav
+│   ├───...
+│   └───Lxx-0xx8.wav
+└───speaker1
+    ├───xx2-0xxx2.wav
+    ├───...
+    └───xxx7-xxx007.wav
+
+此外还需要编辑config.json
+
+"n_speakers": 10
+
+"spk":{
+    "speaker0": 0,
+    "speaker1": 1,
+}
+```
+
+```bash
+conda install -c conda-forge faiss-gpu
+pip install loguru
+pip install rich
+```
+
+
+
+#### （2）数据处理1 audio-slicer
+
+过程：使用 audio-slicer 将长的音频切片
 
 参考 [官方 repo](https://github.com/openvpi/audio-slicer)
 
@@ -123,7 +132,7 @@ zip -r c.zip Scharphie
 aws s3 sync /home/ec2-user/SageMaker/audio-slicer/Scharphie s3://dataai-warehouse-stages/machine-learning/matchmaking/hzx_models/dataset_clip_44k/Scharphie
 ```
 
-### 2.2 so-vits-svc 部分
+#### （3）数据处理2 采样率等
 
 ```bash
 # 1. 配好环境
@@ -141,15 +150,18 @@ rm -rf ~/SageMaker/so-vits-svc/logs/44k
 # 5. 下载预训练模型
 sudo amazon-linux-extras install epel -y 
 sudo yum-config-manager --enable epel
-sudo yum install git-lfs
-
+sudo yum install git-lfs -y
+# 更新后好像要下载到 pretrain 文件夹
 cd ~/SageMaker/so-vits-svc/logs
 git clone https://huggingface.co/Himawari00/so-vits-svc4.0-pretrain-models 44k
 
 # 6. pipeline
 cd ..
+# 生成 wav
 python resample.py
+# 生成 filelist cofig
 python preprocess_flist_config.py
+
 python preprocess_hubert_f0.py
 # 之后 dataset/44k/Schariphie 每个音频会对应4个：.wav, .spec.pt, .f0.npy, .soft.pt
 
@@ -157,7 +169,40 @@ python preprocess_hubert_f0.py
 python train.py -c configs/config.json -m 44k
 ```
 
-### 2.3 代码细节
+------------
+
+
+语音不同后端用到的不同 encoder，需要预下载
+
+- contentvec (recommended)
+- hubertsoft
+- whisper-ppg
+- cnhubertlarge
+- dphubert
+- wavLM
+
+
+
+```bash
+# contentvec
+wget -P pretrain/ https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt -O checkpoint_best_legacy_500.pt
+# Alternatively, you can manually download and place it in the hubert directory
+```
+
+之后的默认参数 hubert_f0 时也需要下个东西：
+
+```bash
+wget https://github.com/yxlllc/RMVPE/releases/download/230917/rmvpe.zip
+unzip rmvpe.zip 
+mv model.pt ./pretrain/rmvpe.pt
+```
+
+
+
+
+
+
+## 文件结构
 
 
 dataset_raw  原始音频
@@ -239,7 +284,7 @@ def compute_f0_dio(wav_numpy, p_len=None, sampling_rate=44100, hop_length=512):
 
 （3）Process spectrogram: spec_path = filename.replace(".wav", ".spec.pt")
 
-## (3) 参数说明
+## 参数说明
 
 > 常用推理：-n {RAW2} -m {MODEL} -c {CONFIG} -s {SPEAKER} -a -fmp
 
@@ -314,7 +359,7 @@ if download_after_inference:
   files.download(wav_output)
 ```
 
-## (4) 推理
+## 推理
 
 ```shell
 python inference_main.py -m "logs/44k/G_30400.pth" -c "configs/config.json" -s "nen" -n "君の知らない物語-src.wav" -t 0
@@ -379,48 +424,20 @@ python zz_webui.py
 ```
 
 
+## other 
 
-## (5) Tricks
+[diffusion-SVC](https://github.com/CNChTu/Diffusion-SVC)
 
-### 数据方面
-
-数据尽量不要带着音响效果
-
-语音尽量去除底噪和混响
-
-音频质量＞音频数量
-
-UVR5来分离人声和伴奏
-
-sovits 推荐干声 1-2h，结果影响：数据集质量，轮次，数量;
+应该是后端部分，mel 频谱特征使用 diffusion 的方式扩散生成
 
 
-### 参数方面
-
-
-未添加聚类，聚类达到效果？
-
-
-效果： 2h 可达成目标音色。
-
-
-视频1 
-
-混响想过去干净，数据集质量要求；
-
-去掉和声
-
-自动 f0 预测，语音时自动变调
-
-
-## (6) other 
 
 ### 6.1 复用模型
 
 [hugging face models](https://huggingface.co/models?search=so-vits-svc-4.0)
 
-19 个 
-较好的模型：
+
+19 个 较好的模型：
 - https://huggingface.co/xgdhdh/so-vits-svc-4.0/tree/main （caster）(morgan)(saber)
 - https://huggingface.co/therealvul/so-vits-svc-4.0/tree/main (很多)(含 kmeans)（done）
 - https://huggingface.co/TachibanaKimika/so-vits-svc-4.0-models/tree/main (kiriga)*10
@@ -429,8 +446,6 @@ sovits 推荐干声 1-2h，结果影响：数据集质量，轮次，数量;
 - https://huggingface.co/Nardicality/so-vits-svc-4.0-models/tree/main (biden)*3
 - https://huggingface.co/RAYTRAC3R/so-vits-svc-4.0/tree/main
 
-
-一个中文的声库：https://huggingface.co/Wangs-official/Medium5AI-Sovits
 
 
 ### 6.2 keep_ckpts 实现
@@ -512,16 +527,38 @@ class svc:
 清楚了些，除了本身的 vits+ softvc 模型，还有 hubert 用于提取特征， cluster 用于减少音色泄露， enhancer。
 
 
+### Tricks
 
-## huggingface models
+#### 数据方面
 
-- [x] https://huggingface.co/xgdhdh/so-vits-svc-4.0/tree/main （caster）(morgan)(saber)
-- [x] https://huggingface.co/therealvul/so-vits-svc-4.0/tree/main (很多)(含 kmeans)（done）
-- [x] https://huggingface.co/TachibanaKimika/so-vits-svc-4.0-models/tree/main (kiriga)(asia)*10 一般是 5k 条
-- [x] https://huggingface.co/melicat/so-vits-svc-4.0/tree/main （chenzhuoxuan）
-- [x] https://huggingface.co/marcoc2/so-vits-svc-4.0-models/tree/main （gaga）*10
-- [x] https://huggingface.co/Nardicality/so-vits-svc-4.0-models/tree/main (biden)*3 非常好
-- [x] https://huggingface.co/RAYTRAC3R/so-vits-svc-4.0/tree/main
+数据尽量不要带着音响效果
+
+语音尽量去除底噪和混响
+
+音频质量＞音频数量
+
+UVR5来分离人声和伴奏
+
+sovits 推荐干声 1-2h，结果影响：数据集质量，轮次，数量;
+
+
+#### 参数方面
+
+
+未添加聚类，聚类达到效果？
+
+效果： 2h 可达成目标音色。
+
+
+视频1 
+
+混响想过去干净，数据集质量要求；
+
+去掉和声
+
+自动 f0 预测，语音时自动变调
+
+
 
 -----------
 

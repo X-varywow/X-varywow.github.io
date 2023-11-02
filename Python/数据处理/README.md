@@ -19,6 +19,13 @@ google 开发的一套用于数据存储，网络通信时用于协议编解码�
 
 是一种二进制的数据格式，相比 XML 和 JSON 具有更高的传输、打包和解包速率
 
+好多次报错要降版本:
+
+```bash
+pip uninstall protobuf
+pip install protobuf==3.20.3
+```
+
 
 -------------
 
