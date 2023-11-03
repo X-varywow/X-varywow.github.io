@@ -3,7 +3,6 @@
   - [librosa](ML/Audio/tools/librosa)
   - [soundfile](ML/Audio/tools/soundfile)
   - [ipython](ML/Audio/tools/ipython)
-  - [gradio](ML/Audio/tools/gradio)
   - [moviepy](ML/Audio/tools/moviepy)
   - [ffmpeg](ML/Audio/tools/ffmpeg)
   - [demucs](ML/Audio/tools/demucs)

@@ -9,3 +9,4 @@
   - --------
   - [tensorboard](ML/torch/tensorboard)
   - [huggingface](ML/torch/huggingface)
+  - [gradio](ML/torch/gradio)

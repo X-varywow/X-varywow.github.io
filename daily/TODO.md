@@ -6,6 +6,10 @@
 - [ ] transformer att
 
 
+https://huggingface.co/docs/transformers/model_doc/bark
+
+https://huggingface.co/docs/transformers/model_doc/vits
+
 diffusion audio 效果？
 
 语音相关：
@@ -253,7 +257,6 @@ bili 论文解读
 
 - [ ] 右侧添加一个单页面的 目录
 - [ ] 整理 torch 文档到 blog
-- [ ] bark
 
 
 前端应用程序开发：https://github.com/Moonvy/OpenPromptStudio
