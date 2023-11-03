@@ -13,6 +13,7 @@
   - ------
   - [并发](Python/工程化/concurrent)
   - [性能分析](Python/工程化/cprofile)
+  - [代码规范](Python/工程化/pylint)
   - [类型注解](Python/工程化/typing)
   - [数据持久化](Python/工程化/json)
   - [高精度](Python/工程化/mpmath)

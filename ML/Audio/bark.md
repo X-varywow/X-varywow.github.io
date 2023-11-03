@@ -8,6 +8,8 @@ bark 效果不是很好，展示做得好而已。
 部署 bark；效果不是很好，文档不全；算了，
 
 
+https://huggingface.co/docs/transformers/main/en/model_doc/bark
+
 ```python
 from transformers import BarkModel
 import torch

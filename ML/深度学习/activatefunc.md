@@ -119,4 +119,5 @@ Maxout 激活函数并不是一个固定的函数，不像Sigmod、Relu、Tanh�
 参考资料：
 - [深度学习笔记：如何理解激活函数？（附常用激活函数）](https://zhuanlan.zhihu.com/p/364620596)
 - [深度学习领域最常用的10个激活函数](https://www.jiqizhixin.com/articles/2021-02-24-7)
+- 地毯书，17章：激活函数
 - chatgpt

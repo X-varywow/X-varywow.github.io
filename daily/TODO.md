@@ -4,7 +4,18 @@
 - [ ] hugg 两个库
 - [ ] 找音频训练
 - [ ] transformer att
+- [ ] fork svc 并修改
+- [ ] 文件结构， vits 改为子级，再加上 edgetts
 
+md 中图片居中
+
+<div align="center">
+
+https://github.com/PlayVoice/so-vits-svc-5.0 两份代码差异好大
+
+https://github.com/MaxMax2016
+
+UVR5去混响
 
 https://huggingface.co/docs/transformers/model_doc/bark
 

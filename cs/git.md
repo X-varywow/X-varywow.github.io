@@ -243,9 +243,27 @@ _.gitattributes_
 - 文件属性设置
 - 文件属性过滤
 
+demo1:
+
 ```bash
 *.unitypackage filter=lfs diff=lfs merge=lfs -text
 ```
+
+demo2:
+
+```bash
+* text=auto eol=lf
+```
+
+- \* 表示匹配所有文件
+- text=auto 自动检测文件类型为文本文件，则进行处理
+- eol=lf 将文件的行尾标志转换为 LF 换行符
+
+
+> windows 使用 CR回车符 LR换行符 作为换行标志，而 unix/linux 使用 LF 作为换行标志
+
+------------
+
 
 [LFS](https://git-lfs.com/)（large File Storage）, An open source Git extension for versioning large files
 

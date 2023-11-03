@@ -69,6 +69,18 @@ torch.arange(start, end, step=1)
 torch.range()
 ```
 
+```python
+# 转为 numpy.array
+tensor.numpy()
+```
+
+
+
+
+
+
+
+
 ## 张量运算
 
 [course_02](https://www.bilibili.com/video/BV1wQ4y1q7Bm/)
