@@ -42,6 +42,8 @@ conda remove --name myenv --all -y
 # (4) requirements.txt环境导出&创建
 pip freeze > requirements.txt
 pip install -r requirements.txt
+
+conda env export > environment.yml
 ```
 
 

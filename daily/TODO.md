@@ -1,17 +1,32 @@
 
-hugg 两个库
+- [x] sovits 流程跑通
+- [ ] tensorboard 使用
+- [ ] hugg 两个库
+- [ ] 找音频训练
+- [ ] transformer att
+
+
+diffusion audio 效果？
+
+语音相关：
+- [ ] 多语种 tts 部分
+- [ ] svc 找语音新音色
+- [ ] 界面支持对话
+- [ ] 源码整合改进
+
 
 - [ ] 课程笔记整理
 - [ ] 更新 develop
 - [ ] 系统论的书
 - [ ] MHA
 - [ ] chatglm3
-- [ ] transformer
 - [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档
-- [x] SVC 训练流程
-  - [ ] 十分钟语料？？？
-- [ ] 整理 SVC
+
+
+
+日志报错：Segmentation fault，然后服务直接挂掉了，弄个定时任务告警
+
 
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
 
@@ -150,6 +165,60 @@ c = hmodel.encoder(wav16k)
 
 。。。弄不好
 
+------------
+
+Day2 CUDA_LAUNCH_BLOCKING=1
+
+还是这个报错
+
+  File "/home/ec2-user/SageMaker/so-vits-svc/preprocess_hubert_f0.py", line 172, in <module>
+    parallel_process(filenames, num_processes, f0p, args.use_diff, mel_extractor, device)
+  File "/home/ec2-user/SageMaker/so-vits-svc/preprocess_hubert_f0.py", line 128, in parallel_process
+    task.result()
+  File "/home/ec2-user/anaconda3/envs/python3/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/home/ec2-user/anaconda3/envs/python3/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+RuntimeError: CUDA error: CUBLAS_STATUS_NOT_INITIALIZED when calling `cublasCreate(handle)`
+
+
+不至于啊，只是个数据预处理救这么个错，，
+
+将进程切换到 8 报错：
+
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+
+UserWarning: resource_tracker: There appear to be 16 leaked semaphore objects to clean up at shutdown
+
+某个进程报错，还有 16个未信号量
+
+切换到单进程，使用 top 看看是不是资源的问题
+
+会占用满 CPU， 估计是  tensor 运算放到 CPU 导致的
+
+RuntimeError: CUDA error: CUBLAS_STATUS_NOT_INITIALIZED when calling `cublasCreate(handle)`
+
+
+----------
+
+检查到 cudnn 不兼容：
+
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (8, 9, 2) but found runtime version (8, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN.Looks like your LD_LIBRARY_PATH contains incompatible version of cudnnPlease either remove it from the path or install cudnn (8, 9, 2)
+
+回退 torch 至 2.0.1
+
+用的版本
+2.0.1
+11.8
+8700
+
+还是占着 CPU 在 跑；
+
+按照它的环境装一遍，内部 torch cuda cudnn 是兼容的，就解决了
+
+今天的可能原因：装的 torch 版本与 预置的 cudnn 不兼容
+
+一定预装 require
 
 
 

@@ -1,8 +1,11 @@
 - [回到上一级](ML/)
-- [ML/torch 语法](ML/torch/)
+- [ML/torch&tools](ML/torch/)
   - [QuickStart](ML/torch/quickstart)
   - [tensor](ML/torch/tensor)
   - [data](ML/torch/data)
   - [autograd](ML/torch/autograd)
   - [优化器 optimizer](ML/torch/optimizer)
   - [学习率 lr_scheduler](ML/torch/lr)
+  - --------
+  - [tensorboard](ML/torch/tensorboard)
+  - [huggingface](ML/torch/huggingface)

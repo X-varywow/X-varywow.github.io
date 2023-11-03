@@ -10,7 +10,7 @@
   - [监督学习](ML/监督学习/)
   - [非监督学习](ML/非监督学习/)
   - [深度学习](ML/深度学习/)
-  - [torch](ML/torch/)
+  - [torch&tools](ML/torch/)
   - ---
   - [NLP](ML/NLP/)
   - [LLM](ML/llm)
