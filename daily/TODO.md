@@ -1,4 +1,10 @@
 
+nsf hifigan
+
+contentvec
+
+
+
 - [x] sovits 流程跑通
 - [ ] tensorboard 使用
 - [ ] hugg 两个库
@@ -10,8 +16,6 @@
 https://github.com/PlayVoice/so-vits-svc-5.0 两份代码差异好大
 
 https://github.com/MaxMax2016
-
-UVR5去混响
 
 https://huggingface.co/docs/transformers/model_doc/bark
 

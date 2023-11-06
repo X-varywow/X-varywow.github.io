@@ -10,7 +10,7 @@ node -v
 
 ```bash
 # 初始化项目
-node init 
+npm init 
 ```
 
 修改 package.json
@@ -33,9 +33,12 @@ node init
 }
 ```
 
-之后可以这样启服务：
 
 ```bash
+# 安装依赖
+npm install
+
+# 启动服务
 npm run serve
 ```
 

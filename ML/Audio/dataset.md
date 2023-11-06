@@ -22,7 +22,7 @@ tar -jxvf LJSpeech-1.1.tar.bz2
 
 # vctk 数据集
 wget https://datashare.ed.ac.uk/download/DS_10283_3443.zip
-sudo yum install p7zip
+sudo yum install p7zip -y
 7za x DS_10283_3443.zip
 7za x VCTK-Corpus-0.92.zip
 # 对于 zip 文件，还可以使用 unzip，不适用于大文件？

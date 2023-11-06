@@ -1,5 +1,5 @@
 
-## preface
+## _preface_
 
 An implementation of the combination of Soft-VC and VITS
 
@@ -25,62 +25,28 @@ https://www.bilibili.com/video/BV1H24y187Ko/ (纯工程应用向，实用性强)
 
 
 
+</br>
 
-## 训练流程
+## _训练流程_
 
-#### （1）环境准备
-
-`requirements.txt`
-
-```txt
-Cython==0.29.21
-librosa==0.9.1
-matplotlib
-numpy==1.23.0
-phonemizer==2.2.1
-tensorboard==2.3.0
-torch
-torchvision
-torchaudio
-Unidecode==1.1.1
-gradio
-git+https://github.com/huggingface/datasets.git
-git+https://github.com/huggingface/transformers.git
-ffmpeg
-openai-whisper
-moviepy==1.0.3
-
-praat-parselmouth
-pyworld
-omegaconf
-hydra-core
-sacrebleu
-torchcrepe
-```
+（1）环境准备
 
 ```bash
-source activate python3
-cd ~/SageMaker/vitssvc
+cd so-vits-svc
 
-pip install --upgrade pip setuptools numba
+source activate
+conda activate pytorch_p310
+pip install --upgrade pip setuptools numpy numba
 pip install -r requirements.txt
 
+# 可选
 sudo yum install espeak -y
-ipython kernel install --user --name vitssvc
-
-cd fairseq
-pip install --editable ./
+ipython kernel install --user --name svc
 ```
 
-终于到了 fairseq，又是报错意料之中
-
->说明：具有一定不可重复性，fairseq 当时出了问题，clone 过来的，并把二级文件移到了一级
-
-!> 对数据集命名，路径有较强的格式要求
+（2）原始数据准备
 
 ```
-数据集准备
-
 raw
 ├───speaker0
 │   ├───xxx1-xxx1.wav
@@ -90,104 +56,55 @@ raw
     ├───xx2-0xxx2.wav
     ├───...
     └───xxx7-xxx007.wav
-
-此外还需要编辑config.json
-
-"n_speakers": 10
-
-"spk":{
-    "speaker0": 0,
-    "speaker1": 1,
-}
 ```
 
-```bash
-conda install -c conda-forge faiss-gpu
-pip install loguru
-pip install rich
-```
+若数据为长音频，推荐使用以下工具进行处理:
+
+- UVR5来分离人声和伴奏，去混响
+- 使用 audio-slicer 将长音频切片，参考： [官方 repo](https://github.com/openvpi/audio-slicer)
 
 
 
-#### （2）数据处理1 audio-slicer
 
-过程：使用 audio-slicer 将长的音频切片
-
-参考 [官方 repo](https://github.com/openvpi/audio-slicer)
-
+（3）处理原始数据
 
 ```bash
-# 1.上传 44k 原始音频
-
-# 2. 同步一下
-aws s3 cp /home/ec2-user/SageMaker/audio-slicer/Scharphie.wav s3://dataai-warehouse-stages/machine-learning/matchmaking/hzx_models/dataset_raw_44k_long/Scharphie.wav
-
-# 3. 修改 audio-slicer 的 main.py
-python main.py
-
-# 4. 打包 check 一下
-zip -r c.zip Scharphie
-
-# 5. 同步一下
-aws s3 sync /home/ec2-user/SageMaker/audio-slicer/Scharphie s3://dataai-warehouse-stages/machine-learning/matchmaking/hzx_models/dataset_clip_44k/Scharphie
-```
-
-#### （3）数据处理2 采样率等
-
-```bash
-# 1. 配好环境
-
-# 2. dataset_raw 
-rm -rf ~/SageMaker/so-vits-svc/dataset_raw/ryan
-cp -r /home/ec2-user/SageMaker/audio-slicer/Scharphie ~/SageMaker/so-vits-svc/dataset_raw/Scharphie
-
-# 3. 清理 dataset
-rm -rf ~/SageMaker/so-vits-svc/dataset/44k/ryan
-
-# 4. logs/44k
-rm -rf ~/SageMaker/so-vits-svc/logs/44k
-
-# 5. 下载预训练模型
-sudo amazon-linux-extras install epel -y 
-sudo yum-config-manager --enable epel
-sudo yum install git-lfs -y
-# 更新后好像要下载到 pretrain 文件夹
-cd ~/SageMaker/so-vits-svc/logs
-git clone https://huggingface.co/Himawari00/so-vits-svc4.0-pretrain-models 44k
-
-# 6. pipeline
-cd ..
-# 生成 wav
+# dataset_raw -> dataset
 python resample.py
-# 生成 filelist cofig
-python preprocess_flist_config.py
 
-python preprocess_hubert_f0.py
-# 之后 dataset/44k/Schariphie 每个音频会对应4个：.wav, .spec.pt, .f0.npy, .soft.pt
+# flist config
+# vol_aug，响度嵌入，使声音的响度依据输入而不依赖训练数据。
+python preprocess_flist_config.py --speech_encoder vec768l12 --vol_aug
 
-# 7. 开始训练
-python train.py -c configs/config.json -m 44k
+# hubert 特征
+python preprocess_hubert_f0.py --use_diff --num_processes 8
 ```
 
-------------
+之后在 dataset/44k 文件夹下，
 
 
-语音不同后端用到的不同 encoder，需要预下载
+一个音频8个文件：
+- wav
+- spec.pt
+- aug_mel
+- aug_vol
+- f0
+- mel
+- soft
+- vol
 
-- contentvec (recommended)
-- hubertsoft
-- whisper-ppg
-- cnhubertlarge
-- dphubert
-- wavLM
 
+（4）下载预训练模型
 
+--1
 
 ```bash
 # contentvec
 wget -P pretrain/ https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt -O checkpoint_best_legacy_500.pt
 # Alternatively, you can manually download and place it in the hubert directory
 ```
+
+--2
 
 之后的默认参数 hubert_f0 时也需要下个东西：
 
@@ -198,7 +115,116 @@ mv model.pt ./pretrain/rmvpe.pt
 ```
 
 
+--3
 
+预训练底模下载
+
+预训练底模文件： G_0.pth D_0.pth 放在logs/44k目录下
+
+扩散模型预训练底模文件： model_0.pt 放在logs/44k/diffusion目录下
+
+
+```bash
+wget https://huggingface.co/datasets/ms903/Diff-SVC-refactor-pre-trained-model/resolve/main/Diffusion-SVC/shallow_512_30/model_0.pt
+
+mv model_0.pt ./logs/44k/diffusion/
+```
+
+或者去：
+
+https://huggingface.co/Sucial/so-vits-svc4.1-pretrain_model/tree/main
+
+--4
+
+使用扩散会需要 nsf_hifigan
+
+```bash
+wget https://github.com/openvpi/vocoders/releases/download/nsf-hifigan-v1/nsf_hifigan_20221211.zip
+unzip nsf_hifigan_20221211.zip
+```
+
+
+
+
+
+（5）开始训练
+
+使用的 A10G 24GB 显卡，将 batch 修改为 20
+
+```bash
+python train.py -c configs/config.json -m 44k
+
+# （可选）扩散模型
+python train_diff.py -c configs/diffusion.yaml
+```
+
+
+
+
+
+
+
+## _模型说明_
+
+参考：https://zhuanlan.zhihu.com/p/630115251
+
+encoder 特征编码器
+
+vocoder 声码器
+
+
+
+
+## _speech encoder_
+
+- contentvec (recommended)
+  - vec768l12
+    - 4.1 版本默认（能直观感受到训练速度慢了很多）
+  - vec256l9
+    - 应该是 4.0 版本默认的编码器（换到 4.1 需要修改 config）
+- hubertsoft
+- whisper-ppg
+- cnhubertlarge
+- dphubert
+- whisper-ppg-large
+- wavlmbase+
+
+
+负责提取特征， contentvec 感觉只是个普通的文本表示模型，甚至不如 word2vec
+
+------------
+
+ContentVec模型在语音合成中的应用主要是用于文本到语音的转换过程中，将输入的文本转化为对应的语音信号。
+
+在语音合成中，ContentVec模型首先将输入的文本进行分词和词性标注，然后根据每个词的词频或TF-IDF权重，构建一个词向量。这些词向量可以表示文本的内容信息。接下来，将这些词向量输入到语音合成模型中，通过模型的训练和优化，生成对应的语音信号。
+
+与ContentVec模型相比，Hubert模型是一种基于Transformer架构的语音合成模型。它不仅可以将文本转化为语音信号，还可以直接从原始音频中提取语音特征，并进行语音合成。Hubert模型通过自监督学习的方式，学习到语音和文本之间的对应关系，从而实现文本到语音的转换。
+
+相比之下，ContentVec模型更注重于文本的内容表示，而Hubert模型更注重于语音特征的提取和语音合成。Hubert模型可以更准确地捕捉语音的语调、音色等特征，从而生成更自然流畅的语音。而ContentVec模型则更适用于处理大量的文本数据，用于文本的内容表示和分析。
+
+
+
+
+-------
+
+f0_predictor has the following options
+
+crepe
+dio
+pm
+harvest
+rmvpe
+fcpe
+
+
+
+1. 支持响度嵌入
+
+preprocess_flist_config 时 vol_aug，使声音的响度依据输入而不依赖训练数据。 是需要的;
+
+2. 引入浅扩散机制
+
+将原始输出音频转为 mel谱图，显著改善电音、底噪等问题
 
 
 
@@ -537,7 +563,6 @@ class svc:
 
 音频质量＞音频数量
 
-UVR5来分离人声和伴奏
 
 sovits 推荐干声 1-2h，结果影响：数据集质量，轮次，数量;
 
@@ -563,4 +588,5 @@ sovits 推荐干声 1-2h，结果影响：数据集质量，轮次，数量;
 -----------
 
 参考资料：
-- [soft-vc repo](https://github.com/bshall/soft-vc)
+- https://github.com/bshall/soft-vc
+- chat-gpt
