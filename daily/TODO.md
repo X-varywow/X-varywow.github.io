@@ -1,5 +1,9 @@
 
-snowflake 界面 sql style js 修改，
+整理 python/数据库 ./ml
+
+
+
+snowflake 界面 sql style js 修改，仿照 vscode 黑色
 
 训练出来挺好的，响度有些问题
 
