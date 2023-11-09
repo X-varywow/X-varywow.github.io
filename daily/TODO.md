@@ -1,7 +1,9 @@
 
 整理 python/数据库 ./ml
 
+https://xieyufei.com/2021/11/09/Chrome-Plugin.html
 
+chat-gpt4 turbo 有必要弄了，
 
 snowflake 界面 sql style js 修改，仿照 vscode 黑色
 

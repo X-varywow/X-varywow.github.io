@@ -71,6 +71,34 @@ select CAST( (floor(random() * 3)+1)*10000 + floor(random() * 2001) AS VARCHAR);
 ```
 
 
+## 建表规范
+
+
+
+```sql
+-- 创建表 + 主键索引
+create table "scheme_name"."table_name"(
+  "id" int8 not null
+  "col2" int2,
+  "json_type" jsonb,
+  constraint "pkey_name" primary key ("id", "col2")
+);
+
+-- 二级索引
+create index "index_name" on "table_name" using btree ("class", "student_name");
+
+
+
+-- 列注释
+comment on column "scheme_name"."table_name"."col_name" is 'introduction';
+
+-- 分片
+set citus.shard_count = 32;
+select create_distributed_table('table_name', 'col_name');
+```
+
+> 分片可以将整体的数据集划分为多个部分。这是为了解决大规模数据存储和处理的问题，常用于分布式数据库和分布式存储系统中。
+
 
 ---------
 

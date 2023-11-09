@@ -89,7 +89,24 @@ Python 中异常也是一个对象，所有异常的基类都是 Exception。捕
 
 当 try 中出现了异常就会转到 except 中执行。
 
+```python
+try:
+  pass
+except Exception as e:
+  # raise
+  print(e)
+```
+
+
 关于assert?
+
+```python
+# 只有 x = 1 时才会继续向下执行
+assert x == 1 
+
+```
+
+
 
 
 >(11) Python中is和==的区别
