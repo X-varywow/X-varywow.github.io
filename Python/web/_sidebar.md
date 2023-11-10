@@ -3,7 +3,9 @@
   - [uvicorn](Python/web/uvicorn)
   - [fastapi](Python/web/fastapi)
   - [socket](Python/web/socket)
-  - [flask](Python/web/socket)
+  - [flask](Python/web/flask)
   - django
   - sanic
-  - psycopg
+  - [psycopg](Python/web/psycopg)
+  - [pika&mq](Python/web/pika&mq)
+  - [tenacity](Python/web/tenacity)

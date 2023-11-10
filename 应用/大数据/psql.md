@@ -68,6 +68,13 @@ from (
 
 -- 生成随机数并转化为字符串：
 select CAST( (floor(random() * 3)+1)*10000 + floor(random() * 2001) AS VARCHAR);
+
+
+
+-- 更新多列值
+update t1
+set c1 = {}, c2 = {}
+where user_id = {};
 ```
 
 

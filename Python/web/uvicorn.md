@@ -6,11 +6,13 @@ Uvicorn 目前支持 HTTP/1.1 和 WebSockets。
 
 异步标准网关接口
 
-参考：https://python.freelycode.com/contribution/detail/1827
+ASGI（Asynchronous Server Gateway Interface）是一种Python的Web服务器接口规范。
+
+它是在WSGI（Web Server Gateway Interface）的基础上发展而来，旨在解决Python Web应用程序在高并发场景下的性能问题。
+
+
 
 ## 2. 基础语法
-
-参考：[官方文档](https://www.uvicorn.org/)
 
 ```bash
 pip install uvicorn
@@ -42,3 +44,9 @@ uvicorn example:app
 
 # --reload  enable auto-reload
 ```
+
+----------
+
+参考资料：
+- https://python.freelycode.com/contribution/detail/1827
+- [官方文档](https://www.uvicorn.org/)

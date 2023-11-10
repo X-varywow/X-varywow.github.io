@@ -22,8 +22,22 @@ def make_network_request():
     return response.json()
 ```
 
+```python
+@retry(stop=(stop_after_delay(10) | stop_after_attempt(5)))
+def stop_after_10_s_or_5_retries():
+    print("Stopping after 10 seconds or 5 retries")
+    raise Exception
+```
+
+
+
+
+
+
+
 
 ----------
 
 参考资料：
+- https://tenacity.readthedocs.io/en/latest/
 - chatgpt
