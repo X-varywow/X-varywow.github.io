@@ -8,6 +8,11 @@
 - 超时处理
 - 支持异步操作
 
+-----------
+
+```bash
+pip install tenacity
+```
 
 
 

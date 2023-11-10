@@ -1,6 +1,8 @@
 
 消息队列，死锁等，工程化很多东西都是通用的，如何避免分布式死锁
 
+kfaka
+
 APP_ENV
 
 https://yanbin.blog/python-multi-envs-configurations/
@@ -13,7 +15,7 @@ python 自动管理 config ，根据环境不同起服务的工具
 
 https://xieyufei.com/2021/11/09/Chrome-Plugin.html
 
-chat-gpt4 turbo 有必要弄了，
+chat-gpt4 turbo 有必要弄了，https://github.com/Yidadaa/ChatGPT-Next-Web
 
 snowflake 界面 sql style js 修改，仿照 vscode 黑色
 

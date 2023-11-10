@@ -8,5 +8,6 @@
   - ---
   - [C语言](cs/C/)
   - [Linux](cs/Linux/)
-  - [Git 使用指南](cs/git)
+  - [Git 语法](cs/git_lan)
+  - [Git 相关](cs/git_more)
   - [Database](cs/DATABASE/)
