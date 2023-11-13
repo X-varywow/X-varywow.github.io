@@ -14,6 +14,8 @@ git 是一个开源的分布式版本控制系统。
 git init          #将当前目录初始化成仓库
 
 git init 'project_name'   #创建目录并初始化
+
+git init --initial-branch=master
 ```
 
 ## 2.检出

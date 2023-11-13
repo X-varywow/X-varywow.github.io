@@ -71,6 +71,16 @@ os.environ 是一个环境变量的字典
 os.environ['APP_ENV'] = 'dev'
 ```
 
+其它方式：
+
+```bash
+# 方式 1，使用 configparser
+export APP_ENV = dev
+
+# 方式2, 使用 argparse
+python script.py --env=dev
+```
+
 
 
 

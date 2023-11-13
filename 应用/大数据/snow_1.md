@@ -226,6 +226,9 @@ order by k;
 -- 1.   1                   2
 ```
 
+
+</br>
+
 3. 使用 row_number()
 
 Returns a unique row number for each row within a window partition.
@@ -268,6 +271,8 @@ from trades;
 >- rank() 会跳过 rank，重复时为同 rank
 
 
+</br>
+
 4. 使用lag
 
 同一表中不同行
@@ -280,17 +285,26 @@ ORDER BY emp_id, year;
 ```
 
 
-5. 使用 QUALIFY
+</br>
+
+5. 使用 QUALIFY ⭐️
+
+参考：https://docs.snowflake.com/en/sql-reference/constructs/qualify
 
 QUALIFY 对窗口函数的作用就像 HAVING 对聚合函数和 GROUP BY 子句的作用一样。
 
 ```sql
 -- 筛选记录数 >=10 的所有用户的所有记录
 select * from table_name
-where
-qualify count(1) over (partition by user_id) >= 10
+where ,,,
+qualify count(1) over (partition by user_id) >= 10;
+
+-- 取用户最新的一条记录
+select * from t1
+qualify row_number() over (partition by user_id order by created_at desc) = 1;
 ```
 
+</br>
 
 6. 使用 array_agg
 

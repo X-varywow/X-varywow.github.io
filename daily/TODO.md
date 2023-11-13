@@ -1,15 +1,5 @@
 
-消息队列，死锁等，工程化很多东西都是通用的，如何避免分布式死锁
 
-kfaka
-
-APP_ENV
-
-https://yanbin.blog/python-multi-envs-configurations/
-
-PIKA
-
-python 自动管理 config ，根据环境不同起服务的工具
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
 
