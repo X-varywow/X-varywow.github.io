@@ -78,6 +78,17 @@ where user_id = {};
 ```
 
 
+```sql
+-- 获取时间
+
+select date_part('hour', t);
+
+```
+
+
+
+
+
 ## 建表规范
 
 

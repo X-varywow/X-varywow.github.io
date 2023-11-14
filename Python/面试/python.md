@@ -91,14 +91,31 @@ Python 中异常也是一个对象，所有异常的基类都是 Exception。捕
 
 ```python
 try:
-  pass
+    pass
 except Exception as e:
-  # raise
-  print(e)
+    # raise
+    print(e)
+```
+
+demo: sql 事务处理
+
+
+```python 
+with pg_pool.connection() as conn:
+    conn.autocommit = False
+    try:
+        for i in range(n):
+            conn.execute(sql)
+    except:
+        conn.rollback()
+        raise
+    else:
+        conn.commit()
 ```
 
 
-关于assert?
+
+#关于assert
 
 ```python
 # 只有 x = 1 时才会继续向下执行
