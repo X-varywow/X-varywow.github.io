@@ -1,5 +1,9 @@
 
+https://daisyui.com/ 还挺好看
 
+left join 多条记录问题
+
+时间从  python 往 citus 写时，就得是 string 格式，会自动识别成 时间格式
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
 

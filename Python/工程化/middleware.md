@@ -1,4 +1,31 @@
+位于应用程序的核心逻辑和底层系统之间，用于处理请求、响应和数据流转等中间步骤。
 
+## _cache_
+
+```python
+import cachetools
+
+# 条目数为 500， 超时时间为 0.2s
+ttl_cache = cachetools.TTLCache(maxsize=500, ttl=0.2)
+
+cache_k = f"{uid}"
+v = ttl_cache.get(cache_k)
+if v:
+    var = v
+```
+
+- FIFO cache
+- LFU cache
+- LRU cache
+- MRU cache
+- RR cache
+- TTL cache
+- TLRU cache
+
+
+
+
+</br>
 
 ## _pika_
 

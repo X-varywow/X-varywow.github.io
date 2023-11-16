@@ -18,6 +18,7 @@
   - [类型注解](Python/工程化/typing)
   - [数据持久化](Python/工程化/json)
   - [高精度](Python/工程化/mpmath)
+  - [中间件](Python/工程化/middleware)
   - [定时任务](Python/工程化/scheduler)
   - [垃圾回收](Python/工程化/gc)
   - [单元测试](Python/工程化/unit_test)

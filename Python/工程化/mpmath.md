@@ -22,6 +22,21 @@ number types:
 - mpc, complex float
 - matrix
 
+------------
+
+其它具有类似功能的模块：decimal, 
+
+```python
+import decimal
+
+a = decimal.Decimal('0.10')
+b = decimal.Decimal('0.20')
+
+c = a + b
+print(c)        # 0.30
+```
+
+
 
 
 

@@ -7,5 +7,4 @@
   - django
   - sanic
   - [psycopg](Python/web/psycopg)
-  - [pika&mq](Python/web/pika&mq)
   - [tenacity](Python/web/tenacity)
