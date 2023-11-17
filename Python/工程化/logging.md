@@ -127,6 +127,19 @@ logger.error("This is an error message")
 logger.critical("This is a critical message")
 ```
 
+
+设置输出的日志级别：
+```python
+from loguru import logger
+
+logger.remove()
+logger.add(sys.stderr, level="WARNING")
+```
+
+
+
+
+
 </br>
 
 示例：

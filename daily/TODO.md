@@ -1,4 +1,6 @@
 
+psycopg
+
 https://daisyui.com/ 还挺好看
 
 left join 多条记录问题

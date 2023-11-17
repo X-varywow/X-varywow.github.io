@@ -2,11 +2,13 @@
 
 ## _cache_
 
+缓存是一种用于临时存储计算结果的技术，以避免在后续计算中重复执行相同的计算。使用缓存可以提高应用程序的性能和响应速度。
+
 ```python
 import cachetools
 
-# 条目数为 500， 超时时间为 0.2s
-ttl_cache = cachetools.TTLCache(maxsize=500, ttl=0.2)
+# 最大键值对为 500， 超时时间为 0.2s
+ttl_cache = cachetools.TTLCache(maxsize=1024, ttl=0.2)
 
 cache_k = f"{uid}"
 v = ttl_cache.get(cache_k)
@@ -15,13 +17,35 @@ if v:
 ```
 
 - FIFO cache
-- LFU cache
-- LRU cache
-- MRU cache
-- RR cache
+- LFU cache (least frequently used)
+- LRU cache (least recently used)
+- MRU cache (most recently used)
+- RR cache (random replacement)
 - TTL cache
-- TLRU cache
+- TLRU cache (Time-aware LRU)
 
+
+-------------
+
+自定义缓存策略：
+
+```python
+import cachetools
+
+class MyCache(cachetools.Cache):
+    def __init__(self, maxsize):
+        super().__init__(maxsize = maxsize)
+    
+    def __getitem__(self, key, cache_getitem = dict.__getitem__):
+        return cache_getitem(self, key)
+
+    def __setitem__(self, key, value, cache_setitem = dict.__setitem__):
+        if len(self) >= self.maxsize:
+            self.popitem(last=False)
+        cache_setitem(self, key, value)
+
+cache = MyCache(maxsize=100)
+```
 
 
 
@@ -62,3 +86,8 @@ channel.start_consuming()
 cur.close()
 conn.close()
 ```
+
+--------------
+
+参考资料：
+- [cachetools库简介以及详细使用](https://developer.aliyun.com/article/1207758)

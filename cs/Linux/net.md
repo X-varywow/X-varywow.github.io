@@ -36,6 +36,21 @@ curl -H 'Accept-Language: en-US' https://google.com
 curl -L https://ibm.ent.box.com/shared/static/z1wgl1stco8ffooyatzdwsqn2psd9lrr -o /content/so-vits-svc/hubert/checkpoint_best_legacy_500.pt
 ```
 
+DEMO, 测试 api:
+
+```bash
+curl --location --request POST 'http://you_api/path' \
+--header 'authorization: 123' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "data": "your_format"
+}'
+```
+
+
+
+
+
 </br>
 
 ## _wget_
