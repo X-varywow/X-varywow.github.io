@@ -4,6 +4,10 @@ PostgreSQL database adapter for Python
 1.3k star https://github.com/psycopg/psycopg
 
 
+</br>
+
+## _cursor_
+
 
 ```python
 import psycopg
@@ -43,8 +47,95 @@ with psycopg.connect("dbname=test user=postgres") as conn:
 ```
 
 
+</br>
+
+## _ConnectionPool_
+
+使用连接池，避免反复连接（频繁的连接和断开会导致大量的资源浪费）
 
 
+```python
+import time
+import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from psycopg_pool import ConnectionPool
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s"
+)
+logging.getLogger("psycopg.pool").setLevel(logging.INFO)
+
+# 默认连接池的最小连接数为 4
+pool = ConnectionPool(min_size=2) 
+
+pool.wait()
+logging.info("pool ready")
+
+def square(n):
+    with pool.connection() as conn:
+        time.sleep(1)
+        rec = conn.execute("SELECT %s * %s", (n, n)).fetchone()
+        logging.info(f"The square of {n} is {rec[0]}.")
+
+with ThreadPoolExecutor(max_workers=4) as executor:
+    futures = [executor.submit(square, n) for n in range(4)]
+    for future in as_completed(futures):
+        future.result()
+```
+
+
+ConnectionPool 基于同步模型，
+
+AsyncConnectionPool 是基于异步实现的连接池，在 async with 的异步上下文中使用，能支持大量的并发请求。
+
+
+
+
+</br>
+
+## _COPY_
+
+
+写数据：
+
+```python
+records = [(10, 20, "hello"), (40, None, "world")]
+
+with cursor.copy("COPY sample (col1, col2, col3) FROM STDIN") as copy:
+    for record in records:
+        copy.write_row(record)
+```
+
+读数据：
+
+```python
+with cur.copy("COPY (VALUES (10::int, current_date)) TO STDOUT") as copy:
+    copy.set_types(["int4", "date"])
+    for row in copy.rows():
+        print(row)  # (10, datetime.date(2046, 12, 24))
+```
+
+https://www.psycopg.org/psycopg3/docs/basic/copy.html
+
+
+
+</br>
+
+## _transactions_
+
+
+```python 
+with pg_pool.connection() as conn:
+    conn.autocommit = False
+    try:
+        for i in range(n):
+            conn.execute(sql)
+    except:
+        conn.rollback()
+        raise
+    else:
+        conn.commit()
+```
 
 
 
@@ -52,3 +143,4 @@ with psycopg.connect("dbname=test user=postgres") as conn:
 
 参考资料：
 - [psycopg官方文档](https://www.psycopg.org/psycopg3/docs/basic/usage.html)
+- https://www.psycopg.org/psycopg3/docs/advanced/pool.html

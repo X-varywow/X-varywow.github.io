@@ -1,9 +1,10 @@
+灵笼
 
-psycopg
+qianduan / tmp
 
-https://daisyui.com/ 还挺好看
+https://www.escapelife.site/
 
-left join 多条记录问题
+opensearch python 插件，快速得到结果
 
 时间从  python 往 citus 写时，就得是 string 格式，会自动识别成 时间格式
 
@@ -56,10 +57,6 @@ diffusion audio 效果？
 
 
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
-
-
-https://github.com/ultralytics/yolov5/issues/8914 这外国人这么好，，，
-
 
 
 holocubic, 作用：显示时钟，图片，温度信息

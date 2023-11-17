@@ -69,6 +69,12 @@ https://www.runoob.com/sql/sql-join.html
 <img src='https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png' style="zoom:60%">
 
 
+</br>
+
+左连接，保留左边全部行，按左边行顺序与右边比较连接条件做连接，<u>一对多会产生多条连接记录</u>
+
+
+
 > 表 & 视图
 
 [Difference Between View and Table](https://www.geeksforgeeks.org/difference-between-view-and-table/)
