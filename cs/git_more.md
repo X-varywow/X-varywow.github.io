@@ -121,9 +121,13 @@ demo2:
 
 
 
-## Git 规范
+## 相关规范
 
 参考：[大厂都在用的Git代码管理规范](https://mp.weixin.qq.com/s/6QxmajXJ9xuO_EpCtcaHsw)
+
+</br>
+
+_分支规范_
 
 
 | 分支    | 功能                      | 环境 | 可访问 |
@@ -134,6 +138,25 @@ demo2:
 | test    | 测试分支，功能测试        | FAT  | 是     |
 | release | 预上线分支，发布新版本    | UAT  | 是     |
 | hotfix  | 紧急修复分支，修复线上bug |      | 否     |
+
+</br>
+
+_Commit Message 规范_
+
+`<type>(<scope>):<subject>`, 如 [fix]\(a.py) divide by 0
+
+常见 type 类型：
+- feat: 新增功能
+- fix: 修复 bug
+- refactor: 不修复 bug 不添加特性的代码更改
+- perf: 改进性能
+- test: 测试相关
+- chore: 对构建过程或辅助工具和库（如文档）的更改
+- delete
+- modify
+- revert
+
+
 
 
 

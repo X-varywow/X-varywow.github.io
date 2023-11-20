@@ -134,8 +134,22 @@ explain analyze
 参考 [citus 性能优化 官方文档](https://docs.citusdata.com/en/stable/performance/performance_tuning.html)
 
 
+## 6. Advanced
+
+`pgbouncer` 是一个用于PostgreSQL数据库连接池的轻量级 **连接池代理**。它允许多个客户端应用程序共享一个或多个数据库连接，从而有效地管理数据库连接并提高数据库性能。主要是连接池管理、负载均衡、故障转移
+
+`Patroni` 是一个开源的PostgreSQL高可用性解决方案。它是使用Python编写的，基于ZooKeeper和etcd等分布式协调服务来提供自动故障转移和自动恢复的功能。
+
+**主从复制架构**，其中一个节点被选为主节点，其余节点作为从节点。如果主节点宕机，Patroni会自动将其中一个从节点提升为新的主节点，以确保数据库的连续可用性。（这种思想与冗余还是有些异同，就叫主从吧）
+
+
+Citus 12 新特性：基于 scheme 的分片，支持 PG16, 从任意节点查询时的负载均衡
+
+
+
 ----------
 
 参考资料：
 - https://www.bilibili.com/video/BV1h84y1B73E/
 - [citus 官方文档](https://docs.citusdata.com/)
+- chatgpt
