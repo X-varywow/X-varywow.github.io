@@ -339,6 +339,87 @@ pd.read_excel('filename.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
 ```
 
 
+### 使用 csv
+
+使用原生方法读取 csv 文件：
+
+```python
+i = 1
+with open('citus.csv') as f:
+    for line in f.readlines()[1:]:
+        print(line.split(","))
+        i += 1
+        if i== 10:
+            break
+```
+
+但读取出来，换行等符号都在，很多不方便；使用 csv 模块：
+
+
+```python
+import csv
+
+i = 0
+with open('citus.csv') as f:
+    reader = csv.reader(f)
+    header = next(reader)
+
+    for row in reader:
+        print(row)
+        i += 1
+        if i == 10:
+            break
+```
+
+
+使用 csv 要比 df.iterrows() + row.to_list() 快很多（在如下csv导到postgre过程）
+
+
+
+
+
+```python
+import psycopg
+from rich.progress import Progress
+import pandas as pd
+from rich.progress import track
+
+# session 从远端1 获取数据并分成10份保存
+df = session.sql(SQL).to_pandas()
+
+num_rows = df.shape[0]
+
+chunk_size = -(-num_rows//10)
+
+for i in range(10):
+    start_row = i*chunk_size
+    end_row = start_row + chunk_size
+    df_part = df.iloc[start_row:min(end_row, num_rows)]
+    csv_file = f'part{i+1}.csv'
+    df_part.to_csv(csv_file, index = False) 
+
+
+# 连接 远端2 将数据写入
+with psycopg.connect(PG_CONFIG) as conn:
+    with conn.cursor() as cur:
+
+        for i in range(10):
+
+            csv_file = f'part{i+1}.csv'
+            with open(csv_file) as f:
+                reader = csv.reader(f)
+                header = next(reader)
+                # df = pd.read_csv(csv_file)
+                # task = progress.add_task(f"{csv_file}", total=df.shape[0])
+                with cur.copy("COPY scheme_name.table_name (user_id, created_at) FROM STDIN") as copy:
+                    for row in track(reader,description=f"{csv_file}"):
+                        copy.write_row(row)
+                        # progress.update(task, advance=1)
+```
+
+
+
+
 
 </br>
 

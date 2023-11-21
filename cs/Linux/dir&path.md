@@ -67,6 +67,7 @@ ln -s log2013.log link2013   # 软链接
 
 ?> `mkdir -p filename` 强制创建 <br>
 `rm -f filename` 强制删除 <br>
+`rm rating*` 移除 rating 开头所有文件
 
 </br>
 

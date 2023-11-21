@@ -26,8 +26,20 @@ INSERT INTO employees
 INSERT overwrite INTO employees_copy
 select *
 from employees;
-
 ```
+
+```sql
+-- 删除 t1 所有数据
+delete from t1;
+
+
+-- truncate 通常会比 delete 更快，因为不会扫描整个表
+-- restart identity 重置该表的序列计数器（如果它包含任何自增主键）
+truncate table t1 restart identity;
+```
+
+
+
 
 
 

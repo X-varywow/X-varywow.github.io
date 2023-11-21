@@ -5,6 +5,10 @@ PostgreSQL 是一个免费的对象-关系数据库服务器，本页面只介�
 
 SQL COMMAND，[请参考](cs/DATABASE/base)
 
+
+
+
+
 ## 连接
 
 - 命令行方式
@@ -31,6 +35,39 @@ SQL COMMAND，[请参考](cs/DATABASE/base)
 |                              |                           |
 
 
+
+## 建表规范
+
+
+
+```sql
+-- 创建表 + 主键索引
+create table "scheme_name"."table_name"(
+  "id" int8 not null
+  "col2" int2,
+  "json_type" jsonb,
+  constraint "pkey_name" primary key ("id", "col2")
+);
+
+-- 二级索引
+create index "index_name" on "table_name" using btree ("class", "student_name");
+
+
+
+-- 列注释
+comment on column "scheme_name"."table_name"."col_name" is 'introduction';
+
+-- 分片
+set citus.shard_count = 32;
+select create_distributed_table('table_name', 'col_name');
+```
+
+分片可以将整体的数据集划分为多个部分。这是为了解决大规模数据存储和处理的问题，常用于分布式数据库和分布式存储系统中。
+
+
+> psql 的分区是指一张大表被水平切分为多份小的、独立的表；citus 的分片与 psql 的分区在实现方式上有所不同；</br>
+> 一张表是否是分区表取决于它是否在citus集群外已经被定义为分区表，即使 citus 设置成分片 32，内部也可没有分区。
+> 
 
 
 
@@ -82,40 +119,20 @@ where user_id = {};
 -- 获取时间
 
 select date_part('hour', t);
-
 ```
-
-
-
-
-
-## 建表规范
-
 
 
 ```sql
--- 创建表 + 主键索引
-create table "scheme_name"."table_name"(
-  "id" int8 not null
-  "col2" int2,
-  "json_type" jsonb,
-  constraint "pkey_name" primary key ("id", "col2")
-);
+-- 新增字段
+alter table t1 add column user_id bigint;
 
--- 二级索引
+-- 新增索引
 create index "index_name" on "table_name" using btree ("class", "student_name");
-
-
-
--- 列注释
-comment on column "scheme_name"."table_name"."col_name" is 'introduction';
-
--- 分片
-set citus.shard_count = 32;
-select create_distributed_table('table_name', 'col_name');
 ```
 
-> 分片可以将整体的数据集划分为多个部分。这是为了解决大规模数据存储和处理的问题，常用于分布式数据库和分布式存储系统中。
+
+
+
 
 
 ---------
@@ -123,3 +140,4 @@ select create_distributed_table('table_name', 'col_name');
 参考资料：
 - [psql 中文文档](https://docs.postgresql.tw/)
 - [psql 菜鸟教程](https://www.runoob.com/postgresql/postgresql-tutorial.html)
+- chatgpt

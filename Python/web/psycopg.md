@@ -4,6 +4,8 @@ PostgreSQL database adapter for Python
 1.3k star https://github.com/psycopg/psycopg
 
 
+psql citus 相关请参考： [应用/大数据/psql](/应用/大数据/psql)
+
 </br>
 
 ## _cursor_
@@ -101,7 +103,7 @@ AsyncConnectionPool 是基于异步实现的连接池，在 async with 的异步
 ```python
 records = [(10, 20, "hello"), (40, None, "world")]
 
-with cursor.copy("COPY sample (col1, col2, col3) FROM STDIN") as copy:
+with cursor.copy("COPY out_table_name (col1, col2, col3) FROM STDIN") as copy:
     for record in records:
         copy.write_row(record)
 ```
@@ -115,7 +117,7 @@ with cur.copy("COPY (VALUES (10::int, current_date)) TO STDOUT") as copy:
         print(row)  # (10, datetime.date(2046, 12, 24))
 ```
 
-https://www.psycopg.org/psycopg3/docs/basic/copy.html
+参考：https://www.psycopg.org/psycopg3/docs/basic/copy.html
 
 
 
@@ -136,6 +138,84 @@ with pg_pool.connection() as conn:
     else:
         conn.commit()
 ```
+
+
+
+</br>
+
+## _多线程连接池_
+
+方式一：
+
+[concurrent.futures 官方文档](https://docs.python.org/zh-cn/3/library/concurrent.futures.html)
+
+```python
+import traceback
+from psycopg_pool import ConnectionPool
+from concurrent.futures import ALL_COMPLETED, ThreadPoolExecutor, wait
+from loguru import logger
+import time
+
+class my_pool:
+    def __init__(self, ...):
+        self.pool = ConnectionPool(...)
+        con_thread = threading.Thread(target=self._warm_up)
+        con_thread.setDaemon(True)
+        con_thread.start()
+
+    def _warm_up(self):
+        while True:
+            with self.pool.connection() as conn:
+                conn.autocommit = True
+                try:
+                    with conn.cursor() as cursor:
+                        cursor.execute("SELECT 1")
+                except:
+                    error = traceback.format_exc()
+                    logger.error(f"PostgresConnection _warm_up citus failed by: {error}")
+            time.sleep(1)
+
+    def query(self, sql, row_to_dict=False):
+        res = []
+        with self.pool.connection() as conn:
+            conn.autocommit = True
+            try:
+                with conn.cursor(row_factory=dict_row) if row_to_dict else conn.cursor() as cursor:
+                    cursor.execute(sql)
+                    res = cursor.fetchall()
+            except:
+                error = traceback.format_exc()
+                logger.error(f"PostgresConnection query citus with sql: {sql} failed by: {error}")
+        return res
+
+EXECUTOR = ThreadPoolExecutor(max_workers=32)
+
+pool = my_pool(**config)
+
+def parallel_query(sqls):
+    futures = [EXECUTOR.submit(pool.query, sql) for sql in sqls]
+    done, _ = wait(futures, return_when=ALL_COMPLETED, timeout=3)
+    res = []
+    for future in done:
+        res = future.result()
+        if res:
+            res.append(result)
+    return res
+```
+
+</br>
+
+
+方式二：使用 DBUtils，[官方文档](https://webwareforpython.github.io/DBUtils/main.html)
+
+```python
+
+```
+
+
+
+
+
 
 
 
