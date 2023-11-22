@@ -143,7 +143,7 @@ with pg_pool.connection() as conn:
 
 </br>
 
-## _多线程连接池_
+## _多线程&连接池_
 
 方式一：
 
@@ -160,6 +160,8 @@ class my_pool:
     def __init__(self, ...):
         self.pool = ConnectionPool(...)
         con_thread = threading.Thread(target=self._warm_up)
+
+        # 3.10 已弃用
         con_thread.setDaemon(True)
         con_thread.start()
 
@@ -205,6 +207,18 @@ def parallel_query(sqls):
 
 </br>
 
+<u>使用多线程而不是多进程，有着更小的 IO 开销（线程之间共享内存空间，成本更低的上下文切换）</u>
+
+测试了一下，性能提升了10倍，对于一批1000次点查的 SQL
+
+
+> daemon 表示一个进程是否是守护进程；主线程中创建的线程默认为 daemon = False </br>
+> 3.10 使用 con_thread.daemon = True 而不是 con_thread.setDaemon(True)
+
+
+
+
+</br>
 
 方式二：使用 DBUtils，[官方文档](https://webwareforpython.github.io/DBUtils/main.html)
 

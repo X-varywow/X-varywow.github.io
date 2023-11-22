@@ -4,6 +4,30 @@
 
 -----------
 
+
+
+
+<u>python 3.10 语法特性：</u>
+
+(1) 更方便的上下文管理
+
+```python
+with (
+    psycopg.connect(PG_CONFIG) as conn,
+    conn.cursor() as cur
+):
+    cur.execute("select * from test_perf.user_v1 limit 10")
+    res = cur.fetchall()
+    print(res)
+```
+
+终于不用一层套一层地去写上下文的 with 了
+
+
+
+
+------------
+
 一些皆是对象
 
 ```python

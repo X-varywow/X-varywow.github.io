@@ -201,6 +201,9 @@ if __name__ == '__main__':
 
 [如何在进程并发的时候使用 tqdm 进度条](https://gist.github.com/alexeygrigorev/79c97c1e9dd854562df9bbeea76fc5de)
 
+实例：[psycopg 连接池+多线程查询](/Python/web/psycopg?id=多线程amp连接池)
+
+
 
 ## threading
 
