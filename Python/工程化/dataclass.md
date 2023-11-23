@@ -1,14 +1,16 @@
 
 
-Python 3.7 引入的一个装饰器，用于简化类的创建和使用过程。
+_dataclasses_
+
+Python 3.7 引入的一个装饰器，<u>用于简化类的创建和使用过程</u>。
 
 自动生成一些常见的方法，如构造函数、属性访问器、repr() 和比较方法等。
 
 
-`dataclasses` 用来替代 `nametuple`
+---------
 
 
-旧方法：
+旧方法1, nametuple：
 
 ```python
 from typing import NamedTuple
@@ -20,13 +22,23 @@ u = User("John", "Doe", b'tfeL+uD...\xd2')
 print(f"Size: {sys.getsizeof(u)}")
 ```
 
-
-
-
-新方法：
+旧方法2，定义对象属性：
 
 ```python
-from dataclasses import dataclass
+class Book:
+    def __init__(self, name: str, price: float, author:str = "li"):
+        self.name = name
+        self.price = price
+        self.author = author
+```
+
+
+---------------
+
+新方法, dataclass：
+
+```python
+from dataclasses import dataclass, asdict, astuple
 
 @dataclass
 class Point:
@@ -46,6 +58,8 @@ a = Point(*list_name)
 a.x 
 a.x = 3
 
+# 将对象转化为 dict 并返回
+asdict(a)
 ```
 
 
@@ -56,6 +70,12 @@ a.x = 3
 - frozen = True , 冻结类的实例，使其变为不可变类型
 - order = True, 生成 `__lt__()`、`__le__()`、`__gt__()`、`__ge__()` 方法，使类的实例可以进行比较。
 
+
+--------
+
+pydantic 感觉是 dataclass 的一个改进：支持数据验证、序列化等
+
+请参考左侧目录
 
 
 

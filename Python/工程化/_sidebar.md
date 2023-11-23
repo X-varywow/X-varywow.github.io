@@ -4,6 +4,7 @@
   - [asynico](Python/工程化/asynico)
   - [conda](Python/工程化/conda)
   - [dataclass](Python/工程化/dataclass)
+  - [pydantic](Python/工程化/pydantic)
   - [logging](Python/工程化/logging)
   - [pathlib](Python/工程化/pathlib)
   - [shutil](Python/工程化/shutil)

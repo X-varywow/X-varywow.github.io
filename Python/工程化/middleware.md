@@ -87,6 +87,15 @@ cur.close()
 conn.close()
 ```
 
+</br>
+
+## _kafka-python_
+
+
+https://huzzefakhan.medium.com/apache-kafka-in-python-d7489b139384
+
+
+
 --------------
 
 参考资料：

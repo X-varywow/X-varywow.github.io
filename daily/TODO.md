@@ -1,14 +1,12 @@
 
+现在主要问题就是，数据库同步 func 远端的问题，然后整理绕昏了的代码。
+
 多线程连接池 图片
 
 
 https://github.com/valinet/ExplorerPatcher/wiki/All-features
 
 qianduan / tmp
-
-https://www.escapelife.site/
-
-opensearch python 插件，快速得到结果
 
 时间从  python 往 citus 写时，就得是 string 格式，会自动识别成 时间格式
 

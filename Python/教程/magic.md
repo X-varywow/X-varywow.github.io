@@ -10,7 +10,9 @@
 
 ### repr & str
 
-`__repr__` & `__str__`
+用于定义一个对象的字符串表示形式。
+
+str 和 repr 没啥区别，<u>str 目标是易于理解，repr 目标是准确一致</u>
 
 ```python
 class Complex:

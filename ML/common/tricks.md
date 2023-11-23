@@ -76,7 +76,9 @@ Ablation Study的结果可以帮助研究人员更好地理解神经网络模型
 这些方法和实验可以与Ablation Study结合使用，以提供更全面和准确的分析结果，帮助我们更好地理解和优化神经网络模型。
 
 
-`混合精度`
+</br>
+
+## _混合精度_
 
 eg. 16 位表示中的计算梯度比 32 位格式快得多，并且还节省了大量内存。这种策略在内存或计算受限的情况下非常有益。
 
@@ -84,6 +86,15 @@ eg. 16 位表示中的计算梯度比 32 位格式快得多，并且还节省了
 
 
 
+</br>
+
+## _TensorRT_
+
+
+通过对神经网络进行层合并、权重精度校减（如FP32到FP16或INT8的转换）、内核自动调谐等优化手段，TensorRT 能加速在英伟达GPU上运行的深度学习推断任务。
+
+
+[tensorRT 加速 stable diffusion](https://nvidia.custhelp.com/app/answers/detail/a_id/5487/~/tensorrt-extension-for-stable-diffusion-web-ui)
 
 -----------
 

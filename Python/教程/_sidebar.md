@@ -6,4 +6,5 @@
   - [面向对象](Python/教程/oop)
   - [魔法方法](Python/教程/magic)
   - [Intermediate Python](Python/教程/intermediate)
+  - [What's New](Python/教程/new)
   - [other](Python/教程/other)
