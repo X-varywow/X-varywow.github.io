@@ -177,6 +177,50 @@ df.count()
 # filter 等操作不会同步到 snowflake 远端
 ```
 
+更多的数据转换方法：
+
+https://medium.com/snowflake/your-cheatsheet-to-snowflake-snowpark-dataframes-using-python-e5ec8709d5d7
+
+
+
+</br>
+
+## _实例：向 citus 集群导数据_
+
+```python
+import psycopg
+from rich.progress import Progress
+import pandas as pd
+
+PG_CONFIG = "host=,, port=,, dbname=,, passward=,"
+
+SQL = f"""
+select * from t1
+"""
+statement = session.sql(SQL)
+
+n = 0
+for i, df in enumerate(statement.to_pandas_batches()):
+    batch_file_name = f"batch_{i}.csv"
+    df.to_csv(batch_file_name, index=False)
+    n = i
+
+with (
+    psycopg.connect(PG_CONFIG) as conn,
+    conn.cursor() as cur,
+    cur.copy("COPY target_table (col1, col2) FROM STDIN") as copy,
+    Progress() as progress
+):
+    task = progress.add_task("[red]Copy into Citus", total=n+1)
+    for i in range(n):
+        csv_file = f'batch_{i}.csv'
+        with open(csv_file) as f:
+            reader = csv.reader(f)
+            header = next(reader)
+            for row in track(reader, description=f"{csv_file}"):
+                copy.write_row(row)
+        progress.update(task, advance=1)
+```
 
 
 

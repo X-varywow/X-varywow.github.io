@@ -1,4 +1,5 @@
-## 1. 样式的引入
+
+## _样式引入_
 
 **外部样式**
 
@@ -29,7 +30,9 @@ body {background-image:url("images/back40.gif");}
 优先级：内联样式 > 内部样式 > 外部样式
 
 
-## 2. 选择器
+</br>
+
+## _选择器_
 
 
 **id 选择器**，可以为标有特定 id 的 HTML 元素指定特定的样式。
@@ -53,7 +56,9 @@ p.center {text-align:center;}
 **后代选择器** 以 ` ` 空格隔开
 
 
-## 3. 常用属性
+</br>
+
+## _常用属性_
 
 各种属性：
 - background
@@ -105,11 +110,8 @@ p.center {text-align:center;}
 - [弹性盒子](https://www.runoob.com/css3/css3-flexbox.html)
 
 
-</br>
 
-## _一些框架_
+----------
 
-bootstrap
-
-[Tailwind CSS](https://tailwindcss.com/)
+> 使用 UI 框架，可以更快地开发，参考左侧 bootstrap | ui 框架
 
