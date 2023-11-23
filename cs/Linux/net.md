@@ -36,19 +36,6 @@ curl -H 'Accept-Language: en-US' https://google.com
 curl -L https://ibm.ent.box.com/shared/static/z1wgl1stco8ffooyatzdwsqn2psd9lrr -o /content/so-vits-svc/hubert/checkpoint_best_legacy_500.pt
 ```
 
-DEMO, 测试 api:
-
-```bash
-curl --location --request POST 'http://you_api/path' \
---header 'authorization: 123' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "data": "your_format"
-}'
-```
-
-
-
 
 
 </br>
@@ -70,6 +57,51 @@ wget https://civitai.com/api/download/models/102236 -O ./models/Lora/cartoon_por
 | -q      | 安静模式，不显示输出 |
 | -O file | 写到file文件中       |
 | -o file | 追加写到file文件中   |
+
+
+
+</br>
+
+## _API测试工具_
+
+DEMO, 使用 curl 测试 api:
+
+```bash
+curl --location --request POST 'http://you_api/path' \
+--header 'authorization: 123' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "data": "your_format"
+}'
+```
+
+
+DEMO, 使用 python 测试 api:
+
+```python
+import requests
+import json
+
+data = json.dumps({'col1':1})
+
+response = requests.request("POST", url , headers=headers, data=data)
+print(response.text)
+```
+
+
+
+
+
+使用 api 测试工具：apifox, postman 等，会方便很多
+
+https://www.postman.com/
+
+https://apifox.com/
+
+
+
+
+
 
 
 ---------

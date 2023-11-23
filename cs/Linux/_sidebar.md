@@ -3,7 +3,7 @@
   - [文件和目录管理](cs/Linux/dir&path)
   - [系统用户与用户组管理](cs/Linux/user&group)
   - [空间&设备管理](cs/Linux/device)
-  - [网络](cs/Linux/net)
+  - [网络&API](cs/Linux/net)
   - [其它命令](cs/Linux/other)
   - [vim](cs/Linux/vim)
   - [shell脚本](cs/Linux/shell)
