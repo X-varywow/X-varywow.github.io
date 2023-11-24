@@ -150,6 +150,7 @@ Command Mode (press Esc to enable)
 | ctrl + enter   | 运行                   |
 | shift + enter  | 运行并切换到下个代码块 |
 | option + enter | 运行并新增到下个代码块 |
+| shift + tab    | 显示方法相关信息       |
 
 
 - 编辑模式，Esc 或者在单元格外部

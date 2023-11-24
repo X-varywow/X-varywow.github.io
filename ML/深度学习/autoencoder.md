@@ -1,6 +1,6 @@
 
 
-## _1.preface_
+## _preface_
 
 
 AE 自编码器，无监督式学习模型
@@ -14,7 +14,7 @@ MAE 介绍：[如何看待何恺明最新一作论文Masked Autoencoders？](htt
 
 </br>
 
-## _2.代码实例_
+## _代码实例_
 
 ```python
 import torch

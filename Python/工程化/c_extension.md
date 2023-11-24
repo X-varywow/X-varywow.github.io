@@ -23,6 +23,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ```
 
+## _c 扩展_
+
+参考：https://docs.python.org/zh-cn/3/extending/index.html
+
 
 
 ----------

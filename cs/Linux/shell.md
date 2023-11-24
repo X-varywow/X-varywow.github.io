@@ -10,6 +10,14 @@
 
 shell 语言属于脚本语言，需要通过解释执行。
 
+```bash
+# 查看当前 shell
+echo $SHELL
+
+# shell 进程名称 
+echo $0
+```
+
 
 
 ## （1）shell基础
@@ -18,10 +26,6 @@ shell 语言属于脚本语言，需要通过解释执行。
 
 ```bash
 #!/bin/bash
-
-# Filename: test1-2.sh
-# Author: huoty
-# CreateDate: 2015-08-21 13:35:00
 
 echo "What is your name?"
 read PERSON

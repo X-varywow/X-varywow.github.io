@@ -1,6 +1,10 @@
 
 多线程连接池 图片
 
+llm ，弄个微信机器人，
+
+https://www.nature.com/
+
 GO VUE 前后端联动
 
 https://lilianweng.github.io/
@@ -9,8 +13,6 @@ https://lilianweng.github.io/
 https://github.com/valinet/ExplorerPatcher/wiki/All-features
 
 qianduan / tmp
-
-时间从  python 往 citus 写时，就得是 string 格式，会自动识别成 时间格式
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
 
@@ -23,9 +25,6 @@ chat-gpt4 turbo 有必要弄了，https://github.com/Yidadaa/ChatGPT-Next-Web
 - [ ] hugg 两个库
 - [ ] 找音频训练
 - [ ] transformer att
-
-
-仿照 leetcode 样式继续修改 sf
 
 https://github.com/PlayVoice/so-vits-svc-5.0 两份代码差异好大
 

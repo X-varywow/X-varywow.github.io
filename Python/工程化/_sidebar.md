@@ -23,4 +23,4 @@
   - [定时任务](Python/工程化/scheduler)
   - [垃圾回收](Python/工程化/gc)
   - [单元测试](Python/工程化/unit_test)
-  - [C 扩展](Python/工程化/use_c)
+  - [C 扩展](Python/工程化/c_extension)

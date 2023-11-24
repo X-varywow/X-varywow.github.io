@@ -66,8 +66,6 @@ $$\frac{\partial V_\pi(s_t)}{\partial \theta} = E_{A_t \sim \pi}[Q_\pi (s_t, A_t
 --------
 
 
-0907 tmp_note
-
 基本只能局部最优，
 
 对于离散空间和连续空间，分别采取什么策略？
@@ -75,11 +73,6 @@ $$\frac{\partial V_\pi(s_t)}{\partial \theta} = E_{A_t \sim \pi}[Q_\pi (s_t, A_t
 action critic 两个网络，行动价值，状态价值；
 
 > 这些东西基本都是通的，都是全局和局部的权衡，经济学中的机会成本，RL 中的状态价值。
-
-
-
-
-身边懂的比较少
 
 
 

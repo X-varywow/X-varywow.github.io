@@ -57,7 +57,7 @@ cache = MyCache(maxsize=100)
 
 ```python
 import pika
-import psycopg2
+import psycopg
 
 # 连接到消息队列
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -67,7 +67,7 @@ channel = connection.channel()
 channel.queue_declare(queue='my_queue')
 
 # 连接到PostgreSQL数据库
-conn = psycopg2.connect(database="your_database", user="your_user", password="your_password", host="your_host", port="your_port")
+conn = psycopg.connect(database="your_database", user="your_user", password="your_password", host="your_host", port="your_port")
 cur = conn.cursor()
 
 # 定义消息处理函数
