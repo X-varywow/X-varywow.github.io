@@ -15,10 +15,3 @@
 - QPS：Queries Per Second，每秒查询数。
 
 - RT：Response Time，响应时间，指的是业务从客户端发起到客户端接收的时间。
-
-
-
----------------------
-
-参考资料：
-- https://mp.weixin.qq.com/s/cSwWapqFhxu9zafzPUeVEw

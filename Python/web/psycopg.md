@@ -6,7 +6,18 @@ PostgreSQL database adapter for Python
 
 psql citus 相关请参考： [应用/大数据/psql](/应用/大数据/psql)
 
-</br>
+------------
+
+关于使用 sqlachemy 还是 psycopg
+
+sqlachemy 提供了一个强大的对象关系映射（ORM），用于简化数据库操作，减少编写原生 SQL 语句。
+
+psycopg 可直接编写 SQL 进行数据库操作，最大化性能，是 python 中最常用的 postgresql 适配器。
+
+
+
+------------
+
 
 ## _cursor_
 

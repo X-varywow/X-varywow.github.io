@@ -2,12 +2,13 @@
 
 书的更新日期：Jul 11, 2020.
 
-> blueprint -(伪代码)
-> parentheses -(括号)
+> blueprint -(伪代码)</br>
+> parentheses -(括号)</br>
 > clause -(从句)
 
-_\*args and \*\*kwargs_
--------------------------
+## _\*args and \*\*kwargs_
+
+
 When you do not know beforehand how many arguments can be passed to your function,
 use it:
 ```python
@@ -35,15 +36,17 @@ test_args_kwargs(**kwargs)
 #-->arg3 3
 ```
     
- `*args` is used to send a non-keyworded variable length argument list to the function.
- `**kwargs` allows you to pass **keyworded** variable length of arguments to a function.
- The **order** is `some_func(fargs, *args, **kwargs)`
- 
- The most common use case is when making function decorators.
+`*args` is used to send a non-keyworded variable length argument list to the function.
+
+`**kwargs` allows you to pass **keyworded** variable length of arguments to a function.
+
+The **order** is `some_func(fargs, *args, **kwargs)`
+
+The most common use case is when making function decorators.
 
 
-*Debugging*
-----------------
+## _Debugging_
+
 You can run a script from the commandline using the **Python debugger**(pdb). Here is an example:
 `$ python -m pdb my_script.py`
 Running from inside a script:
@@ -65,17 +68,19 @@ You would **enter the debugger pattern** as soon as you run it. Now it’s time 
 - `s`: execute the current line and stop at the first possible occasion
 - `n`: continue execution until the next line in the current function is reached or it returns
 
-_Generators_
--------------------
-According to Wikipedia, an iterator is an object that enables a programmer to traverse a container, particularly lists. 
-###### 可迭代对象
-An **iterable** is any object in Python which has an `__iter__` or a `__getitem__` method
-defined which returns an iterator or can take indexes.
-###### 迭代器
-An **iterator** is any object in Python which has a  `__next__` method defined. 
 
-###### 迭代
-When we use a loop to loop over something it is called **iteration**.
+## _Generators_
+
+
+According to Wikipedia, an iterator is an object that enables a programmer to traverse a container, particularly lists. 
+
+
+<u>可迭代对象</u>, An **iterable** is any object in Python which has an `__iter__` or a `__getitem__` method
+defined which returns an iterator or can take indexes.
+
+<u>迭代器</u>, An **iterator** is any object in Python which has a  `__next__` method defined. 
+
+<u>迭代</u>, When we use a loop to loop over something it is called **iteration**.
 
 ###### 生成器
 - **Generators** are iterators, but you can only iterate over them once.
@@ -111,8 +116,8 @@ next(my_iter)
 # 用iter()函数
 ```
 
-_Map, Filter and Reduce_
------------------------------
+## _Map, Filter and Reduce_
+
 
 菜鸟教程链接：[map](https://www.runoob.com/python/python-func-map.html) [filter](https://www.runoob.com/python/python-func-filter.html) [reduce](https://www.runoob.com/python/python-func-reduce.html)
 
@@ -163,8 +168,12 @@ for num in list:
 from functools import reduce
 product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
 ```
-_Decorators_
----------------
+
+
+
+
+## _Decorators_
+
 
 Decorators are a significant part of Python. In simple words: they are functions which modify the functionality of other functions. They help to make our code shorter and more Pythonic.
 
@@ -283,8 +292,8 @@ print(func())
 
 ```
 
-_Mutation_
-------------------
+## _Mutation_
+
 ```python
 foo = ['hi']
 print(foo)
@@ -315,8 +324,8 @@ add_to(3)
 #在Python中当函数被定义时，默认参数只会运算⼀次
 ```
 
-_Enumerate_
------------------
+## _Enumerate_
+
 
 ```python
 my_list = ['apple', 'banana', 'grapes', 'pear']
@@ -330,8 +339,9 @@ for index,name in enumerate(my_list,1):
 # 4 pear
 ```
 
-_Object introspection_
----------------
+## _Object introspection_
+
+
 ```python
 dir(object)
 # It returns a list of attributes and methods belonging to an object
@@ -343,8 +353,8 @@ id(object)
 # It returns the unique ids of various objects.
 ```
 
-_异常处理_
--------------
+## _异常处理_
+
 ```python
 try:
     file = open('test.txt', 'rb')
@@ -355,8 +365,8 @@ except Exception:
 # try/else 在try不出现异常时触发
 ```
 
-_Classes_
---------------
+## _Classes_
+
 ```python
 class Cal(object):
     # pi is a class variable
@@ -386,8 +396,8 @@ b.pi
 # Output: 50
 ```
 
-_Function caching_
-----------------------
+## _Function caching_
+
 ```python
 from functools import lru_cache
 @lru_cache(maxsize=32)
@@ -403,8 +413,8 @@ fib.cache_clear()
 #使用lru_cache可以使这段代码的运行时间从53.6s变为0s(笔者自测)
 ```
 
-结语
---------------
+## 结语
+
 本文漏掉了`set结构` `Ternary Operators(三元运算符）` `装饰器的高级应用` 
 `Global & Return`(尽量return多值代替global)
 `__slots__魔法` `Virtual Environment` `Collections`

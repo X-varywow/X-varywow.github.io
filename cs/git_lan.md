@@ -21,7 +21,8 @@ git init --initial-branch=master
 ## 2.检出
 ```bash
 # 获取一个仓库的文件
-git clone 'address' -b branch_name
+# 添加 local_name 可以直接命名本地检出的项目
+git clone 'address' -b branch_name local_name
 
 # 获取远程最新分支，不会自动合并本地分支
 git fetch origin branch_name

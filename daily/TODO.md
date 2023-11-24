@@ -1,7 +1,9 @@
 
-现在主要问题就是，数据库同步 func 远端的问题，然后整理绕昏了的代码。
-
 多线程连接池 图片
+
+GO VUE 前后端联动
+
+https://lilianweng.github.io/
 
 
 https://github.com/valinet/ExplorerPatcher/wiki/All-features
@@ -12,11 +14,8 @@ qianduan / tmp
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
 
-https://xieyufei.com/2021/11/09/Chrome-Plugin.html
-
 chat-gpt4 turbo 有必要弄了，https://github.com/Yidadaa/ChatGPT-Next-Web
 
-snowflake 界面 sql style js 修改，仿照 vscode 黑色
 
 训练出来挺好的，响度有些问题
 
@@ -96,8 +95,5 @@ https://github.com/wangshub
 https://medium.com/dissecting-bert/dissecting-bert-part-1-d3c3d495cdb3
 
 http://nlp.seas.harvard.edu/2018/04/03/attention.html
-
-
-https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 
 https://www.cloudskillsboost.google/journeys/118
