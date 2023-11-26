@@ -1,7 +1,4 @@
 
-多线程连接池 图片
-
-llm ，弄个微信机器人，
 
 https://www.nature.com/
 
@@ -15,8 +12,6 @@ https://github.com/valinet/ExplorerPatcher/wiki/All-features
 qianduan / tmp
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
-
-chat-gpt4 turbo 有必要弄了，https://github.com/Yidadaa/ChatGPT-Next-Web
 
 
 训练出来挺好的，响度有些问题

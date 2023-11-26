@@ -222,6 +222,8 @@ def parallel_query(sqls):
 
 测试了一下，性能提升了10倍，对于一批1000次点查的 SQL
 
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231125165120.png">
+
 
 > daemon 表示一个进程是否是守护进程；主线程中创建的线程默认为 daemon = False </br>
 > 3.10 使用 con_thread.daemon = True 而不是 con_thread.setDaemon(True)
