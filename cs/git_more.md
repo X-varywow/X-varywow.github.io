@@ -143,7 +143,7 @@ _分支规范_
 
 _Commit Message 规范_
 
-`<type>(<scope>):<subject>`, 如 [fix]\(a.py) divide by 0
+`<type>(<scope>):<subject>`, 如 fix\(a.py): divide by 0
 
 常见 type 类型：
 - feat: 新增功能
