@@ -242,8 +242,10 @@ df.dropna(subset= ['NAME'], inplace = True)
 #检查空值
 pd.isnull(object)
 
-# 填充
-df.fillna(value)
+# 填充所有列/单列
+df = df.fillna(0)
+df['col1'] = df['col1'].fillna(0)
+
 
 df = df.replace(r'\\N',np.nan)
 

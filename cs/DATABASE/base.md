@@ -38,7 +38,7 @@ delete from t1;
 truncate table t1 restart identity;
 ```
 
-
+仍会保留结构定义和表本身
 
 
 
@@ -56,6 +56,8 @@ truncate table t1 restart identity;
 ```sql
 drop table table_name;
 ```
+
+> drop 命令用于<u>删除整个表及其结构</u>，与 DML 中的 delete truncate 不同。
 
 
 

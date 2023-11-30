@@ -3,8 +3,11 @@
 
 logging -- 灵活的事件日志系统
 
+日志，是对软件执行时所发生事件的一种追踪方式。
 
-（1）使用基本的 logging
+
+### （1）使用基本的 logging
+
 ```python
 import logging
 
@@ -17,8 +20,11 @@ logging.critical('This is a critical message')
 ```
 
 
-（2）使用basicConfig
+### （2）使用basicConfig
+
 ```python
+# 将日志写入到文件中
+
 logging.basicConfig(
     filename='application.log',
     level=logging.WARNING,
@@ -30,7 +36,8 @@ logging.error("Some serious error occurred.")
 # [12:52:35] {<stdin>:1} ERROR - Some serious error occurred.
 ```
 
-（3）高级
+### （3）高级
+
 ```python
 FORMAT = '%(asctime)s %(clientip)-15s %(user)-8s %(message)s'
 logging.basicConfig(format=FORMAT)
@@ -41,14 +48,22 @@ logger.warning('Protocol problem: %s', 'connection reset', extra=d)
 #-->2006-02-08 22:20:02,165 192.168.0.1 fbloggs  Protocol problem: connection reset
 ```
 
-（4）使用 logging 组件
+### （4）使用 logging 组件
 
 - Logger
 - Handler
 - Filter
 - Formatter
 
-（5）异步日志操作
+</br>
+
+
+_logging.handlers_ 
+
+日志处理程序，https://docs.python.org/zh-cn/3.9/library/logging.handlers.html#module-logging.handlers
+
+
+### （5）异步日志操作
 
 ```python
 import logging
@@ -82,6 +97,7 @@ log_listener.start()
 -------------
 参考资料：
 - [官方文档](https://docs.python.org/zh-cn/3.9/library/logging.html)
+- [logging-cookbook](https://docs.python.org/zh-cn/3.9/howto/logging-cookbook.html#logging-cookbook)
 - chatgpt
 
 
