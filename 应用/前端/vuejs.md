@@ -1,20 +1,12 @@
 
 Vue 是一套用于构建用户界面的 JavaScript 框架。提供了模版语法帮助快速开发界面。
 
+[官方文档](https://cn.vuejs.org/guide/introduction.html) 已经很全面了，这里用作临时笔记
+
+
+
 ### 1. 引入
-```html
-<!-- 开发环境版本，包含了有帮助的命令行警告 -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-```
 
-```html
-<!-- 生产环境版本，优化了尺寸和速度 -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-```
-
--------------------------
-
-`2022.12`（上面的方式是一年前的）
 
 ```bash
 #创建一个 vue 应用

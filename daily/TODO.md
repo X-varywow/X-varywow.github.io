@@ -1,4 +1,10 @@
 
+EDGE 浏览器 copilot 666, 还能自定生成页面摘要
+
+https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA
+
+
+
 
 https://www.nature.com/
 

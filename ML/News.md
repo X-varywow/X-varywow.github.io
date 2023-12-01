@@ -44,3 +44,13 @@ WizardLM 使用了一个 Evol-Instruct 的算法来生成和改写指令数据�
 
 [Wonder3D](https://github.com/xxlong0/Wonder3D), 2d 图片变 3d
 
+</br>
+
+`20231201`
+
+Keras3.0, 多框架机器学习，支持 tensorflow, pytorch, jax 作为后端
+
+看了美团博客的几篇最新文章，全是深度学习:
+- vision-transformer 多模态用于UI交互意图识别；
+- fusion、attenation学习上下文用于提高 CTR
+

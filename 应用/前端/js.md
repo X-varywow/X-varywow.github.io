@@ -139,6 +139,8 @@ locateFile 是一个函数名，在这里是可以省略的。
 
 [浏览器插件制作教程1](https://xieyufei.com/2021/11/09/Chrome-Plugin.html)
 
+简单样例：https://github.com/ppz-pro/chrome-filter
+
 
 </br>
 

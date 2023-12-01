@@ -1,3 +1,47 @@
+
+
+## _preface_
+
+
+Transformer 引入的自注意力机制能够有效 <u>捕捉序列信息中长距离依赖关系</u>，相比于以往的 RNNs, 它在处理长序列时的表现更好
+
+
+
+- 序列处理问题，传统的循环神经网络(RNNs)、长短时记忆网络(LSTMs)等模型存在一些限制。 transformer 被设计用来解决这些问题。
+- 自注意力机制（关键创新），使得模型在处理序列数据时能够同时关注序列中的不同位置，不必像传统模型一样逐步处理
+- 编码器，解码器
+- 多头注意力，对注意力机制的扩展，每个头都学习关注输入序列的不同部分，然后这些不同头的输出合并起来
+- 其它基本模块：残差连接（允许信息直接通过跳跃连接传递）、层归一化（稳定训练过程）、位置编码
+
+
+</br>
+
+## _注意力机制_
+
+直接字面意思理解
+
+- Query , 是一个特征向量，描述注意的内容
+- Keys, 输入元素键向量
+- Values，输入元素值向量
+- Score funcion，将查询和键作为输入，输出得分/注意力权重，通常用简单的相似度度量来实现（点积或MLP）
+
+
+
+$$ \alpha_i = \frac{exp(f_{attn}(key_i, query))}{\sum_jexp(f_{attn}(key_j, query))}, \quad out = \sum_i\alpha_i \cdot value_i$$
+
+
+自注意力机制，核心：缩放点积注意力，使序列中的任何元素都可以关注任何其它元素，同时提高效率
+
+Scaled Dot Product Attention 计算方法：
+
+$$Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt d})V$$
+
+Q K V 的矩阵尺寸都是 T*d, T 为序列长度，d 为查询键的维度
+
+
+
+-------------
+
 参考资料：
 - 学校课程
 - [论文原文：Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf)
@@ -7,6 +51,8 @@
 - [【Transformer模型】曼妙动画轻松学，形象比喻贼好记](https://www.bilibili.com/video/BV1MY41137AK)
 - [手推transformer](https://www.bilibili.com/video/BV1UL411g7aX)
 - https://blogs.nvidia.com/blog/2022/03/25/what-is-a-transformer-model/
+- https://www.zhihu.com/question/445556653/answer/3254012065
+- chatgpt
 
 
 https://mp.weixin.qq.com/s/gvL6CjQWzhI5hBclBZk2qA
@@ -18,7 +64,6 @@ https://zhuanlan.zhihu.com/p/54356280
 
 很多经典的模型比如BERT、GPT-2都是基于Transformer的思想。
 
-## 注意力机制
 
 <img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20220614001859.png">
 
@@ -221,7 +266,7 @@ out = attn(q, k, v, mask = mask) # (2, 8, 2048, 64)
 
 
 
-## 相关工作
+## _other_
 
 [Attention机制竟有bug?](https://mp.weixin.qq.com/s/cSwWapqFhxu9zafzPUeVEw)
 
