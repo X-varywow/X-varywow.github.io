@@ -1,3 +1,4 @@
+
 位于应用程序的核心逻辑和底层系统之间，用于处理请求、响应和数据流转等中间步骤。
 
 ## _cachetools_
@@ -14,6 +15,8 @@ cache_k = f"{uid}"
 v = ttl_cache.get(cache_k)
 if v:
     var = v
+
+ttl_cache[cache_k] = new_v
 ```
 
 - FIFO cache

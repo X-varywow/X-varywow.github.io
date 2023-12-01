@@ -48,13 +48,16 @@ https://open.feishu.cn/document/common-capabilities/message-card/message-cards-c
 BUTTON primary, default
 
 
-## 消息体说明
+## card
 
 总体：
 ```python
 card = json.dumps({
-    "elements": []
-    "header": {}
+    "elements": [],
+    "header": {},
+    "config": {
+        "wide_screen_mode": True
+    }
 })
 ```
 
@@ -74,6 +77,25 @@ LINK_INFO = {
 
 
 
+at 指定人员 https://www.cnblogs.com/mxcl/p/16359730.html
+
+
+在 card 中使用方法：（以组件化加入到 card/elements 中）
+
+```python
+AT_SOMEONE = {
+  "tag": "markdown",
+  "content": "<at id=open_id>h</at>"
+}
+```
+
+
+
+## _多列布局_
+
+https://open.feishu.cn/document/common-capabilities/message-card/message-cards-content/column-set
+
+
 
 
 
@@ -83,11 +105,3 @@ LINK_INFO = {
 
 <font color='#f66'> 不支持自定义，只支持 red green 
 
-
-
-
-
--------
-
-
-实例：python 定时任务，从 sf 拉数据，制作监控

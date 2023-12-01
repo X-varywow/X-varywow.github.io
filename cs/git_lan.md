@@ -65,15 +65,12 @@ git push origin 'branch'
 
 ```bash
 #创建一个叫做“feature_x”的分支，并切换过去：
-
 git checkout -b feature_x
 
 #切换回主分支：
-
 git checkout master
 
 #再把新建的分支删掉：
-
 git branch -d feature_x
 ```
 
@@ -96,9 +93,6 @@ git branch -d localBranchName
 git push origin --delete remoteBranchName
 
 
-# 创建一个分支，并切换回去
-git checkout -b feature_x
-
 # 推送至远程分支，没有就创建
 git push orign branch_name
 ```
@@ -109,8 +103,11 @@ git push orign branch_name
 
 
 ```bash
-#更新本地仓库至最新改动
+# 默认拉取本地对应的远端最新代码
+git pull
 
+
+#更新本地仓库至最新改动
 git pull orgin branch_name
 ```
 

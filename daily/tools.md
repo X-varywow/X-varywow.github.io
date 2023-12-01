@@ -111,6 +111,9 @@ vscode:
 - workbench>tree indent: 20
 - audio: 0
 - Editor: Format On Save
+- LCPR: leetcode
+
+> 使用 console.log(document.cookie) 可直接获取网页的 cookie
 
 插件 EditorConfig for VS Code 统一代码样式
 

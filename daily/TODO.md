@@ -67,9 +67,6 @@ https://github.com/ByteByteGoHq/system-design-101
 - [ ] blog ML/DL/transformer 整理
 - [ ] 整理归档，ASR 课程笔记
 
-https://www.fast.ai/
-
-
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
 
 bili 论文解读

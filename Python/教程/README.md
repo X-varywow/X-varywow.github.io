@@ -45,3 +45,21 @@ a??
 vars()
 
 ```
+
+
+-----------
+
+传参新方法
+
+
+```python
+param = {
+    'uid': uid,
+    'rid': rid,
+}
+
+def main(uid, rid):
+    pass
+
+main(**param)
+```
