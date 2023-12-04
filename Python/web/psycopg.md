@@ -225,9 +225,16 @@ def parallel_query(sqls):
 <img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20231125165120.png">
 
 
-> daemon 表示一个进程是否是守护进程；主线程中创建的线程默认为 daemon = False </br>
-> 3.10 使用 con_thread.daemon = True 而不是 con_thread.setDaemon(True)
+?> daemon 表示一个进程是否是守护进程；主线程中创建的线程默认为 daemon = False </br>
+守护线程，在主程序退出时不会等待守护线程的完全，相当于一个优先级低的线程，常用于：程序自检、清理。
 
+
+3.10 使用 con_thread.daemon = True 而不是 con_thread.setDaemon(True)
+
+```python
+# 简洁写法
+threading.Thread(target=worker, daemon=True).start()
+```
 
 
 

@@ -10,5 +10,6 @@
   - [nltk](Python/基础模块/nltk)
   - [os](Python/基础模块/os)
   - [pillow](Python/基础模块/pillow)
+  - [queue](Python/基础模块/queue)
   - [struct](Python/基础模块/struct)
   - [sys](Python/基础模块/sys)

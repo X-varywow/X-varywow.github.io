@@ -404,6 +404,38 @@ end;
 call get_entry_fee(2, 5);
 ```
 
+
+
+使用包
+
+```sql
+create function add_one_to_inputs(x number(10, 0), y number(10, 0))
+returns number(10, 0)
+language python
+runtime_version = 3.8
+packages = ('pandas')
+handler = 'add_one_to_inputs'
+as $$
+import pandas
+
+def add_one_to_inputs(df):
+  return df[0] + df[1] + 1
+
+add_one_to_inputs._sf_vectorized_input = pandas.DataFrame
+$$;
+```
+
+
+
+
+
+
+
+
+
+
+
+
 ### 2.4 动态构建 SQL 语句
 
 ```sql
