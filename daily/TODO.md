@@ -1,6 +1,9 @@
 
 弄个自动化控制，强化学习工具，先把界面弄出来
 
+https://chuangshi.qq.com/read/47755491/14
+
+https://docs.python.org/zh-cn/3/library/unittest.mock.html
 
 
 

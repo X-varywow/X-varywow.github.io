@@ -6,6 +6,9 @@
 
 ```python
 python -m cProfile -s tottime your_program.py
+
+# 重定向 -> test.txt
+python -m cProfile -s tottime ZZZ_log.py > test.txt
 ```
 
 - tottime，指的是函数本身的运行时间，扣除了子函数的运行时间

@@ -406,7 +406,7 @@ call get_entry_fee(2, 5);
 
 
 
-使用包
+5. 使用包
 
 ```sql
 create function add_one_to_inputs(x number(10, 0), y number(10, 0))
@@ -425,10 +425,41 @@ add_one_to_inputs._sf_vectorized_input = pandas.DataFrame
 $$;
 ```
 
+6. 使用 session 联通
 
 
+https://docs.snowflake.com/en/developer-guide/snowpark/python/creating-sprocs
 
 
+```sql
+create procedure procedure_name()
+    returns Table()
+    language python
+    runtime_version = 3.8
+    packages =('snowflake-snowpark-python')
+    handler = 'main'
+    as '# The Snowpark package is required for Python Worksheets. 
+# You can add more packages by selecting them using the Packages control and then importing them.
+
+import snowflake.snowpark as snowpark
+from snowflake.snowpark.functions import col
+
+def main(session: snowpark.Session): 
+    # Your code goes here, inside the "main" handler.
+    tableName = ''information_schema.packages''
+    dataframe = session.table(tableName).filter(col("language") == ''python'')
+
+    # Print a sample of the dataframe to standard output.
+    dataframe.show()
+
+    # Return value will appear in the Results tab.
+    return dataframe';
+
+
+call procedure_name();
+
+drop procedure procedure_name();
+```
 
 
 

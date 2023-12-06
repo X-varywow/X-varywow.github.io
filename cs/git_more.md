@@ -164,38 +164,31 @@ _Commit Message 规范_
 
 #### 1. Github 查找仓库
 
-1. 按照项目名/仓库名搜索（大小写不敏感）
-`in:name xxx`
 
-2. 按照README搜索（大小写不敏感）
-`in:readme xxx`
+大小写不敏感，
 
-3. 按照description搜索（大小写不敏感）
-`in:description xxx`
+| 命令                        | 说明                  |
+| --------------------------- | --------------------- |
+| in:name xxx                 | 按照项目名/仓库名搜索 |
+| in:readme xxx               |                       |
+| in:description xxx          |                       |
+| stars:>xxx                  |                       |
+| forks:>xxx                  |                       |
+| language:xxx                |                       |
+| pushed:>YYYY-MM-DD          |                       |
+| awesome xxx                 | 找百科大全            |
+| xxx sample                  | 找例子                |
+| xxx starter/xxx boilerplate | 空项目模版            |
+| xxx tutorial                | 教程                  |
 
-4. stars数大于xxx
-`stars:>xxx`
 
-5. forks数大于xxx
-`forks:>xxx`
+</br>
 
-6. 编程语言为xxx
-`language:xxx`
+demo: 查找出现了 logger.addHandler 和 kinesis 的 python 代码
 
-7. 最新更新时间晚于YYYY-MM-DD
-`pushed:>YYYY-MM-DD`
+logger.addHandler kinesis language:Python
 
-8. 找百科大全
-`awesome xxx`
 
-9. 找例子
-`xxx sample`
-
-10. 找空项目架子
-`xxx starter`/`xxx boilerplate`
-
-11. 找教程
-`xxx tutorial`
 
 #### 2. 关于LICENSE
 
@@ -217,7 +210,7 @@ _Commit Message 规范_
 
 
 
-## _一次完整流程_
+## _一次流程_
 
 ?> 这是将本 docsify 部署到 github pages 的流程。
 
