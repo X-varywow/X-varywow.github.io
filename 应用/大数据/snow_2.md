@@ -414,6 +414,23 @@ select score_smooth_v1([23, 151, 66, 46, 8, 8, 3, 101, 46, 62, 1, 175, 89, 12, 1
 https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-tabular-vectorized
 
 
+## 9.regexp
+
+https://docs.snowflake.com/en/sql-reference/functions/regexp_substr
+
+demo:
+
+```sql
+select 
+    -- 提取 num= 后面的数字
+    regexp_substr(context:"*args", 'num=([0-9]+)', 1, 1, 'e') as num,
+
+    -- 贪婪匹配 [ ] 的内容
+    regexp_substr(context:"result", '\\\\[.*?\\\\]') as ll
+from t1
+```
+
+
 
 
 

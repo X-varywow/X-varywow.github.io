@@ -1,6 +1,7 @@
-官方文档：https://docs.python.org/zh-cn/3/library/re.html
 
-## 正则函数
+> 正则匹配，极强的字符匹配、提取工具
+
+## _re函数_
 
 `re.match(pattern,str,flags=0)`
 从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。
@@ -28,10 +29,12 @@ print(re.match("h","hello").span())
 #--> (0,1)
 ```
 
-## 正则符号
+</br>
+
+## _正则符号_
 
 `[ ]`
-匹配需要的字符**集合**，如`[1-3]`或`[123]`都是匹配1、2或者3。
+匹配需要的字符**集合**
 
 `( )`
 捕获需要的字符。
@@ -78,7 +81,9 @@ print(re.match("h","hello").span())
 
 正则匹配修饰符`re.S`使 `.` 匹配包括换行在内的所有字符
 
-## 正则实践
+</br>
+
+## _Demo_
 
 ```python
 re.findall("d(ds)*","askldjasaddsa") #-->['', 'ds']
@@ -96,7 +101,14 @@ re.compile("/(\S*)/").findall("//asd/sdsa/asda")  #-->['/asd/sdsa']
 #'*', '+'，和 '?' 修饰符都是贪婪的；它们在字符串进行尽可能多的匹配。
 ```
 
-## 常用片段
+</br>
+
+## _常用片段_
+
+
+`[Jj]ava` 匹配 Java 和 java
+
+`[1-3]` 或 `[123]` 匹配1、2或者3
 
 --------------------
 
@@ -123,13 +135,33 @@ re.compile("/(\S*)/").findall("//asd/sdsa/asda")  #-->['/asd/sdsa']
 `---title[\S\s]*?---` 非贪婪匹配，匹配文章的头信息。
 
 
+</br>
 
-_小结_
+## _特殊语法_
 
-ennn，入门应该够了，漏掉了`先行断言`,`(?.....)`等等
-正则表达式太强了，还能密码强度认证
+先行断言，后行断言，[参考资料](https://www.runoob.com/w3cnote/reg-lookahead-lookbehind.html)
 
->- 正则表达式在线测试：
->  http://c.runoob.com/front-end/854
->- **推荐的正则课程**：
->  https://codejiaonang.com/#/courses
+比如 "a regular expression" 字符串，需要找到 regular 的 re，不能匹配 expression 的 re.
+
+正向先行断言，如 `re(?=gular)`，限定了 re 右边的位置，这个位置之后是 gular, 但并不消耗 gular 这些字符
+
+使用 `re(?=gular).` 匹配到了 reg
+
+负向先行断言，如 `re(?!g)` 限定了 re 右边的位置不是字符 g
+
+(?<=pattern) 正向后行断言
+
+(?<!pattern) 负向后行断言
+
+
+
+</br>
+
+
+----------
+
+参考资料：
+- 官方文档：https://docs.python.org/zh-cn/3/library/re.html
+- [正则表达式在线测试](http://c.runoob.com/front-end/854)
+- 正则教程：https://codejiaonang.com/#/courses
+

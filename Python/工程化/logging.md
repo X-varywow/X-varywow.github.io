@@ -138,6 +138,7 @@ log_listener.start()
 
 方式二：
 
+https://stackoverflow.com/questions/46754062/implementing-non-blocking-remote-logging-handler
 
 ```python
 import queue
