@@ -42,7 +42,7 @@ async def app(scope, receive, send):
 # 运行服务器
 uvicorn example:app
 
-# --reload  enable auto-reload
+# --reload  开启热重载
 ```
 
 ----------

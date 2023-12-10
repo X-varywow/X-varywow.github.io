@@ -1,6 +1,5 @@
 
 
-参考：[官方文档](https://docs.python.org/zh-cn/3/library/asyncio.html?highlight=asyncio#module-asyncio)
 
 - 用于编写 **并发**，使用 async / await 语法
 - 被用作多个提供高性能 Python 异步框架的基础，包括网络和网站服务，数据库连接库，分布式任务队列等等
@@ -24,6 +23,32 @@ asyncio.run(main())
 # 简单地调用协程并不会使其调度执行
 main()
 ```
+
+
+```python
+import asyncio
+
+async def count():
+    print("One")
+    await asyncio.sleep(1)
+    print("Two")
+
+async def main():
+    await asyncio.gather(count(), count(), count())
+
+asyncio.run(main())
+
+# 总共耗时约 1s 
+# -> 1 1 1 2 2 2
+```
+
+
+
+
+
+
+
+
 
 ```python
 # 会一个一个执行
@@ -81,6 +106,11 @@ async def tcp_echo_client(message):
 asyncio.run(tcp_echo_client('Hello World!'))
 ```
 
------------
-
 其他：（同步原语）（子进程 subprocess）
+
+
+----------
+
+参考资料：
+- [官方文档](https://docs.python.org/zh-cn/3/library/asyncio.html?highlight=asyncio#module-asyncio)
+- [Python 异步编程入门 - 阮一峰](https://www.ruanyifeng.com/blog/2019/11/python-asyncio.html)

@@ -47,6 +47,10 @@ https://open.feishu.cn/document/common-capabilities/message-card/message-cards-c
 
 BUTTON primary, default
 
+文字颜色：green red grey default
+
+标签：<text_tag color='red'>标签文本</text_tag>
+
 
 ## card
 
