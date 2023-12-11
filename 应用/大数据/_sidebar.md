@@ -6,3 +6,4 @@
   - [snowpark](应用/大数据/snowpark)
   - [psql](应用/大数据/psql)
   - [citus](应用/大数据/citus)
+  - [redis](应用/大数据/redis)

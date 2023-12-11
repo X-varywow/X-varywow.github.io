@@ -155,6 +155,8 @@ _Commit Message 规范_
 - delete
 - modify
 - revert
+- docs
+- style
 
 
 

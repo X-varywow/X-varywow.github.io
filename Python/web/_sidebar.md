@@ -9,3 +9,4 @@
   - [psycopg](Python/web/psycopg)
   - [tenacity](Python/web/tenacity)
   - [fiddler](Python/web/fiddler)
+  - [restful](Python/web/restful)
