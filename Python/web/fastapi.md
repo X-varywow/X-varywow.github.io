@@ -43,7 +43,7 @@ def update_item(item_id: int, item: Item):
 ```
 
 
-引入 BaseModel 是为了防止传入不规范的数据
+引入 pydantic 是为了防止传入不规范的数据
 
 
 

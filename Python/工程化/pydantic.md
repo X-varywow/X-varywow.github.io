@@ -1,7 +1,5 @@
 
-
-https://docs.pydantic.dev/latest/
-
+## _preface_
 
 ```python
 from datetime import datetime
@@ -22,7 +20,37 @@ print(m.dimensions)
 #> (10, 20)
 ```
 
-支持类型验证（基于 rust 实现，速度较快）
+
+</br>
+
+## _数据类型_
+
+```python
+from datetime import datetime
+from pydantic import BaseModel, PositiveInt
+from typing import List, Optional
+```
+
+
+
+- int
+- float
+- str
+- bool
+- datetime
+- Tuple[int, int]
+- dict[str, PositiveInt]
+- Optional[str]
+- datetime | None
+- List[int]
+- 支持递归 BaseModel
+
+
+</br>
+
+## _类型验证_
+
+基于 rust 实现，速度较快
 
 ```python
 # continuing the above example...
@@ -64,7 +92,11 @@ except ValidationError as e:
 
 ```
 
-支持序列化
+
+
+</br>
+
+## _序列化_
 
 ```python
 from datetime import datetime
@@ -87,7 +119,6 @@ print(m.model_dump_json(exclude_defaults=True))
 #> {"when":"2020-01-01T12:00:00","where":"home"}
 
 ```
-
 
 --------------
 

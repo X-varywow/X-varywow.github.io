@@ -1,6 +1,12 @@
 
 fastapi + vue.js
 
+示例项目：
+- https://github.com/mizhexiaoxiao/vue-fastapi-admin
+- https://github.com/testdrivenio/fastapi-vue
+
+
+
 -----------------
 
 杂记：

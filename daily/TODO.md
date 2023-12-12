@@ -1,15 +1,18 @@
 
 弄个自动化控制，强化学习工具，先把界面弄出来
 
+
+POE 角色扮演，确实有趣
+
 https://chuangshi.qq.com/read/47755491/14
 
 https://docs.python.org/zh-cn/3/library/unittest.mock.html
 
+https://testdriven.io/blog/developing-a-single-page-app-with-fastapi-and-vuejs/
+
+https://testdriven.io/blog/fastapi-crud/
+
 哨兵，阻塞，，，
-
-
-wrk
-
 
 
 

@@ -11,3 +11,11 @@ https://github.com/azerothcore/azerothcore-wotlk
 
 
 [官方文档](https://www.azerothcore.org/wiki/getting-started)
+
+
+## _匹配系统_
+
+[房间和匹配系统](https://juejin.cn/post/7095766143612223524)
+
+
+方案一：转化为生产者、消费者问题，根据匹配时间、战力调整消费者水平。

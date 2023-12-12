@@ -1,10 +1,11 @@
 
 
 
-_restful api_
+## _restful api_
 
+一种通用的 API 风格
 
-HTTP 知识参考：[HTTP](cs/计网/http)
+前置知识：[HTTP](cs/计网/http)
 
 
 ```bash
@@ -54,8 +55,133 @@ DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
 500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
 ```
 
+</br>
+
+## _接口文档_
+
+
+
+
+
+
+</br>
+
+## _api 功能测试_
+
+DEMO, 使用 curl 测试 api:
+
+```bash
+curl --location --request POST 'http://you_api/path' \
+--header 'authorization: 123' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "data": "your_format"
+}'
+```
+
+
+DEMO, 使用 python 测试 api:
+
+```python
+import requests
+import json
+
+data = json.dumps({'col1':1})
+
+response = requests.request("POST", url , headers=headers, data=data)
+print(response.text)
+```
+
+
+
+
+
+使用 api 测试工具：apifox, postman 等，会方便很多
+
+https://www.postman.com/
+
+https://apifox.com/
+
+
+apifox = postman (API开发调试) + swagger（API文档涉及）+ Mock + JMeter（自动化、压力测试）
+
+
+[apifox 视频教程](https://www.bilibili.com/video/BV1ae4y1y7bf/)
+
+-------
+
+通用规范：
+
+```python
+# 请求数据格式
+{
+    'user_id': 1,
+    'name': 'li'
+}
+
+
+# 响应数据格式
+{
+    'code': 200,
+    'message': 'success',
+    'data': {
+        'col1': 1
+    }
+}
+
+```
+
+</br>
+
+## _wrk 性能测试_
+
+> Modern HTTP benchmarking tool
+
+https://github.com/wg/wrk
+
+功能测试 -> 性能测试
+
+```bash
+sudo apt-get install wrk
+```
+
+
+基本命令格式:
+
+```bash
+wrk -t<线程数> -c<连接数> -d<持续时间> <测试URL>
+```
+其中：
+- `-t` 选项指定了要使用的线程数。
+- `-c` 选项指定了要打开的HTTP连接数。
+- `-d` 选项指定了测试的持续时间，可以用s（秒）、m（分钟）、h（小时）来指定。
+
+
+
+示例命令:
+
+```bash
+wrk -t12 -c400 -d30s http://127.0.0.1:8080/index.html
+```
+
+使用12个线程和400个连接来测试本地服务器上的 "index.html" 页面，测试时间为30秒
+
+
+!> 生成的是真实的负载，对整个链路的影响较大，即使是测试环境也要注意
+
+
+
+-------------
+
+参考资料：
+- [性能测试工具 wrk 使用教程](https://www.cnblogs.com/quanxiaoha/p/10661650.html)
+
+
+
+
 
 --------
 
 参考资料：
 - [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+- https://apifox.com/help/
