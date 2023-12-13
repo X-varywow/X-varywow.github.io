@@ -6,7 +6,6 @@
   - ---
   - [数据处理](Python/数据处理/)
   - [web相关](Python/web/)
-  - [爬虫](Python/爬虫/)
   - [面试](Python/面试/)
   - [实践](Python/项目/)
   - ---

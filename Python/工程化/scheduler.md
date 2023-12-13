@@ -42,6 +42,34 @@ if __name__ == '__main__':
 
 调度器在后台独立运行
 
+demo: 配合 fastapi 使用，定期读取配置表
+
+```python
+from apscheduler.schedulers.background import BackgroundScheduler
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.on_event('startup')
+def start_job():
+    scheduler.start()
+    scheduler.add_job(
+        func=refresh_hot_config,
+        trigger='interval',
+        minutes=10
+    )
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 还有更多的调度器：AsyncIOScheduler，QtScheduler。。。

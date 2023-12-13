@@ -2,10 +2,9 @@
 - [Python/web相关](Python/web/)
   - [uvicorn](Python/web/uvicorn)
   - [fastapi](Python/web/fastapi)
+  - [requests](Python/web/requests)
   - [socket](Python/web/socket)
   - [flask](Python/web/flask)
-  - django
-  - sanic
   - [psycopg](Python/web/psycopg)
   - [tenacity](Python/web/tenacity)
   - [fiddler](Python/web/fiddler)
