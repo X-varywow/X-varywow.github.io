@@ -5,9 +5,6 @@
 
 一个数据结构可视化网站：https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
 
-备考任务文档：https://docs.qq.com/sheet/DRm1VQ09ycENsbWFo
-
-
 23考纲同22考纲，并查集红黑树，VLAN SDN
 
 ------------------------

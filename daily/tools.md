@@ -1,14 +1,6 @@
 
 ## mac 
 
-窗口管理软件 magnet
-
-显示器排列
-
-iterm2
-
-搜狗输入法
-
 | 快捷键                           | 说明     |
 | -------------------------------- | -------- |
 | `command` + `shift` + `3`        | 截全屏   |
@@ -16,6 +8,55 @@ iterm2
 | `command` + `shift` + `5`        |          |
 | `command` + `space`              | 聚焦搜索 |
 | `command` + `m`, `command` + `w` |          |
+
+搜狗输入法
+
+窗口管理软件 magnet
+
+显示器排列
+
+iterm2 + [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) + [nerd fonts](https://github.com/ryanoasis/nerd-fonts) + [dracula-theme](https://github.com/dracula/dracula-theme) 配色
+
+```zsh
+vim ~/.zshrc
+```
+
+将 ~/.bash_profile 中的 conda 配置移到 ~/.zshrc
+
+```bash
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/huazhixin/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/huazhixin/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/huazhixin/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/huazhixin/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
+```bash
+export PATH=/usr/local/python-2.7.6/bin:$PATH 
+```
+
+
+
+iterm2 快捷键：
+
+| 快捷键      | 说明    |
+| ----------- | ------- |
+| command + T | new tab |
+
+
+
+
+
+
 
 
 

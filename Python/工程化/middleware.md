@@ -1,6 +1,16 @@
 
 位于应用程序的核心逻辑和底层系统之间，用于处理请求、响应和数据流转等中间步骤。
 
+- FIFO cache
+- LFU cache (least frequently used)
+- LRU cache (least recently used)
+- MRU cache (most recently used)
+- RR cache (random replacement)
+- TTL cache
+- TLRU cache (Time-aware LRU)
+
+
+
 ## _cachetools_
 
 缓存是一种用于临时存储计算结果的技术，以避免在后续计算中重复执行相同的计算。使用缓存可以提高应用程序的性能和响应速度。
@@ -19,13 +29,7 @@ if v:
 ttl_cache[cache_k] = new_v
 ```
 
-- FIFO cache
-- LFU cache (least frequently used)
-- LRU cache (least recently used)
-- MRU cache (most recently used)
-- RR cache (random replacement)
-- TTL cache
-- TLRU cache (Time-aware LRU)
+ttl_cache 通过设置一个时间点，然后 <u> 轮询检查过期时间与当前时间的关系 </u>
 
 
 -------------

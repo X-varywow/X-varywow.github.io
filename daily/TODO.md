@@ -85,8 +85,6 @@ huawei ai tutorial
 
 https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#speed-is-your-friend
 
-https://github.com/ByteByteGoHq/system-design-101
-
 - [ ] blog ML/DL/transformer 整理
 - [ ] 整理归档，ASR 课程笔记
 

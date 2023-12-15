@@ -56,9 +56,13 @@ Rancher 是一个开源的容器管理平台，使用户能够轻松地部署和
 
 建立监控，保证可用性、正确性
 
-软件上：代码上设置监控报警点
+代码上设置监控报警点
 
-硬件上：Grafana 监控看板
+Grafana 监控看板；Prometheus 是一种开源监控和警报工具套件
+
+```python
+from prometheus_fastapi_instrumentator import Instrumentator
+```
 
 ------------
 

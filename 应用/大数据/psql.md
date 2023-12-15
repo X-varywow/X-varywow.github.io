@@ -73,7 +73,7 @@ select create_distributed_table('table_name', 'col_name');
 >通常将等值查询的条件放在索引字段的左边，将范围查询放在最右边，从而最大化索引的效用。</br></br>
 >如 组合索引（A,B,C）,合理的查询顺序是 A=x AND B=y AND C>z
 
-
+[索引失效的10种场景](https://zhuanlan.zhihu.com/p/455188214)
 
 
 ## psql 语法
