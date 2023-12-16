@@ -173,7 +173,11 @@ conda install ipykernel
 python -m ipykernel install --user --name=test
 ```
 
+```bash
+pip install jupyter
 
+jupyter notebook
+```
 
 </br>
 

@@ -6,13 +6,13 @@ PostgreSQL database adapter for Python
 
 psql citus 相关请参考： [应用/大数据/psql](/应用/大数据/psql)
 
-------------
 
-关于使用 sqlachemy 还是 psycopg
-
-sqlachemy 提供了一个强大的对象关系映射（ORM），用于简化数据库操作，减少编写原生 SQL 语句。
-
-psycopg 可直接编写 SQL 进行数据库操作，最大化性能，是 python 中最常用的 postgresql 适配器。
+几个重要方法：
+- psycopg.connect(**config)
+- conn.cursor() as cur
+- cur.execute(sql)
+- cur.fetchone()
+- cur.fetchall()
 
 
 
@@ -247,11 +247,24 @@ threading.Thread(target=worker, daemon=True).start()
 ```
 
 
+</br>
+
+## _other_
 
 
+关于使用 sqlachemy 还是 psycopg
 
+sqlachemy 提供了一个强大的对象关系映射（ORM），用于简化数据库操作，减少编写原生 SQL 语句。
 
+psycopg 可直接编写 SQL 进行数据库操作，最大化性能，是 python 中最常用的 postgresql 适配器。
 
+---------
+
+psycopg 默认的超时时间 30s
+
+The default maximum time in seconds that a client can wait to receive a connection from the pool 
+
+-> 超时的原因不仅可能是连接问题，还可能是 sql 执行超时的问题
 
 ---------
 
