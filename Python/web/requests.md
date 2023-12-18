@@ -89,4 +89,4 @@ print(r.text)
 - [官方文档](https://docs.python-requests.org/en/latest/index.html) 
 - [菜鸟教程](https://www.runoob.com/python3/python-requests.html)
 - https://www.cnblogs.com/zhuosanxun/p/12679121.html
-- https://xiaorui.cc/archives/4437
+- [构建高效的python requests长连接池](https://xiaorui.cc/archives/4437)，感觉有点错误，使用 session 会提高性能

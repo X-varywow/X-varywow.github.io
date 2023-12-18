@@ -14,12 +14,7 @@ python 中因为 GIL 的存在，所以一般使用多进程来实现。
 同时，不要频繁地创建销毁进程、线程池。
 
 
-
-## multiprocessing
-
-参考：[官方文档](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
-
->提供了本地和远程并发操作，通过 **使用子进程而非线程，有效地绕过了 全局解释器锁**
+-----------
 
 
 ?>GIL 是一个防止多线程并发执行机器码的互斥锁，每个解释器进程都具有一个 GIL. </br>
@@ -31,6 +26,13 @@ python 中因为 GIL 的存在，所以一般使用多进程来实现。
 （4）降低了集成 C 库的难度（避免考虑线程安全），促进了 C 库和 Python 的结合。</br>
 </br> Python如何利用多核处理器？</br>
 使用多进程而非多线程。每个进程拥有独立的解释器、GIL 以及数据资源，多个进程之间不会再受到 GIL 的限制。
+
+
+## multiprocessing
+
+参考：[官方文档](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
+
+提供了本地和远程并发操作，通过 **使用子进程而非线程，有效地绕过了 全局解释器锁**
 
 
 （1）使用 Pool ⭐️
@@ -108,11 +110,52 @@ if __name__ == '__main__':
 - Pipe
 
 
+```python
+# 使用队列在进程之间通信
+# 队列是线程安全，进程安全的
+
+from multiprocessing import Process, Queue
+
+def f(q):
+    q.put(["some info"])
+
+if __name__ == "__main__":
+    q = Queue()
+    p = Process(target=f, args=(q,))
+    p.start()
+    print(q.get())
+    p.join()
+```
+
+
+
 （4）更多
 
 - Value
 - Array
 - Lock
+
+```python
+# 使用同步锁
+
+from multiprocessing import Process, Lock
+
+def f(l, i):
+    l.acquire()
+    try:
+        print('hello', i)
+    finally:
+        l.release()
+
+if __name__ == "__main__":
+    lock = Lock()
+    for num in range(10):
+        Process(target=f, args=(lock, num)).start()
+
+```
+
+
+
 
 
 
@@ -120,10 +163,11 @@ if __name__ == '__main__':
 
 参考：[官方文档](https://docs.python.org/zh-cn/3/library/concurrent.futures.html)
 
->提供异步执行可调用对象高层接口。
+提供异步执行可调用对象高层接口；
 
+由 ThreadPoolExecutor 使用线程或由 ProcessPoolExecutor 使用单独的进程来实现异步执行。
 
-常用例子：
+</br>
 
 _ThreadPoolExecutor_
 
@@ -157,6 +201,8 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         else:
             print('%r page is %d bytes' % (url, len(data)))
 ```
+
+</br>
 
 _ProcessPoolExecutor_
 
@@ -198,6 +244,28 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+
+----------
+
+demo: 使用线程池异步执行 dynamo 的更新
+
+```python
+from concurrent.futures import ALL_COMPLETED, ThreadPoolExecutor, wait
+
+def wrapper():
+    dynamo.update(87654321, 12343345, 30)
+    
+
+executor = ThreadPoolExecutor(max_workers=3)
+
+futures = [executor.submit(dynamo.update, 87654321, 12343345, 30) for i in range(200)]
+
+wait(futures, return_when=ALL_COMPLETED, timeout=3)
+```
+
+
+
 
 [如何在进程并发的时候使用 tqdm 进度条](https://gist.github.com/alexeygrigorev/79c97c1e9dd854562df9bbeea76fc5de)
 

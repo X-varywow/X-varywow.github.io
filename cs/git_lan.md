@@ -31,6 +31,15 @@ git fetch origin branch_name
 git pull origin branch_name
 ```
 
+demo: 使用远端分支创建出本地新分支
+```bash
+git fetch origin 
+
+git checkout -b dev origin/dev
+```
+
+
+
 ## 3.工作流
 你的本地仓库由 git 维护的三棵“树”组成。
 

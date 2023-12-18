@@ -3,35 +3,9 @@
 
 缓存：高性能、高并发
 
-redis 记录在内存中
+redis 记录在内存中，用作缓存
 
 citus 常用于处理复杂查询和多种数据表关系
-
-sql 如何维持队列：
-
-```sql
-CREATE OR REPLACE FUNCTION maintain_queue_size()
-RETURNS TRIGGER AS $$
-BEGIN
-    -- 检查队列当前大小
-    IF (SELECT COUNT(*) FROM queue_table) > 10 THEN
-        -- 删除最老的超出部分
-        DELETE FROM queue_table
-        WHERE id IN (
-            SELECT id FROM queue_table
-            ORDER BY enqueued_at
-            LIMIT (SELECT COUNT(*) - 10 FROM queue_table)
-        );
-    END IF;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE TRIGGER trigger_maintain_queue_size
-AFTER INSERT ON queue_table
-FOR EACH ROW EXECUTE PROCEDURE maintain_queue_size();
-```
-
 
 
 
@@ -109,7 +83,7 @@ Redis 支持三种集群方案：
 - Sential(哨兵)模式
 - Cluster 模式
 
-参考：[一文读懂 Redis 集群](https://cloud.tencent.com/developer/article/1592432)
+参考：[Redis 集群](https://cloud.tencent.com/developer/article/1592432)
 
 >(9) 数据不一致问题
 
@@ -139,3 +113,33 @@ print(r['name'])
 print(r.get('name'))
 print(type(r.get('name')))
 ```
+
+
+遍历所有 key:
+
+```python
+from redis import Redis
+
+# 连接到 Redis
+redis_client = redis.Redis(
+    host="your_host", 
+    port=6362)
+
+# 定义要匹配的键的前缀
+prefix = "game:"
+
+# 使用 scan_iter 遍历匹配的键
+for key in redis_client.scan_iter(f"{prefix}*"): # f"{prefix}*"
+    print(key)
+    # 在这里可以执行其他操作，比如获取哈希值的内容
+#     hash_value = redis_client.hgetall(key)
+#     print(hash_value)
+```
+
+
+
+| 命令 | 说明                 |
+| ---- | -------------------- |
+| scan | 一个基于游标的迭代器 |
+|      |                      |
+|      |                      |
