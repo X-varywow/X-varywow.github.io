@@ -63,6 +63,33 @@ a = requests.adapters.HTTPAdapter(max_retries=3)
 s.mount('http://', a)
 ```
 
+性能测试下来，**使用 session 性能会提高很多；**
+
+所以，使用的时候，建议能用 session 就用 session
+
+
+
+```python
+# 测试代码
+import requests
+
+HEADER = {'Connection': 'keep-alive'}
+
+for i in range(10):
+    res = requests.get("http://www.baidu.com", headers = HEADER)
+```
+
+```python
+import requests
+
+with requests.Session() as s:
+    for i in range(10):
+        res = s.get("http://www.baidu.com")
+```
+
+
+
+
 ## _session_
 
 HTTP 协议本身是无状态的；为了让请求保持状态，有了 session 和 cookie
@@ -89,4 +116,3 @@ print(r.text)
 - [官方文档](https://docs.python-requests.org/en/latest/index.html) 
 - [菜鸟教程](https://www.runoob.com/python3/python-requests.html)
 - https://www.cnblogs.com/zhuosanxun/p/12679121.html
-- [构建高效的python requests长连接池](https://xiaorui.cc/archives/4437)，感觉有点错误，使用 session 会提高性能

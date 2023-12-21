@@ -7,11 +7,16 @@ PostgreSQL database adapter for Python
 psql citus 相关请参考： [应用/大数据/psql](/应用/大数据/psql)
 
 
+```python
+pip install "psycopg[binary,pool]"
+```
+
 几个重要方法：
-- psycopg.connect(**config)
+- psycopg.connect(**config) as conn
 - conn.cursor() as cur
 - cur.execute(sql)
 - cur.fetchone()
+- cur.fetchmany(size), size 表示要取多少行, 每行会包装成元组
 - cur.fetchall()
 
 

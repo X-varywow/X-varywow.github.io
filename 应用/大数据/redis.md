@@ -107,7 +107,7 @@ https://www.runoob.com/w3cnote/python-redis-intro.html
 ```python
 import redis
 
-r = redis.Redis(host='localhost', port=6379, decode_responses=True)   
+r = redis.Redis(host='localhost', port=6379, db = 0, decode_responses=True)   
 r.set('name', 'runoob')
 print(r['name'])
 print(r.get('name'))
@@ -143,3 +143,11 @@ for key in redis_client.scan_iter(f"{prefix}*"): # f"{prefix}*"
 | scan | 一个基于游标的迭代器 |
 |      |                      |
 |      |                      |
+
+----------
+
+```bash
+SCAN 0 MATCH "bike:*" COUNT 100
+```
+
+SCAN returns a cursor position, allowing you to scan iteratively for the next batch of keys until you reach the cursor value 0.
