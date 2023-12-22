@@ -45,6 +45,24 @@ from typing import List, Optional
 - List[int]
 - 支持递归 BaseModel
 
+--------
+
+动态属性，新增属性而不必是定义中的属性
+
+```python
+from pydantic import BaseModel
+
+class DataModel(BaseModel):
+    feature: str
+
+data = DataModel(feature='some value')
+data.feature = 'new value'  # 设置已存在的属性值
+data.new_feature = 'another value'  # 动态添加新属性
+```
+
+
+
+
 
 </br>
 

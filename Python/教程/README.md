@@ -66,6 +66,24 @@ main(**param)
 
 -----------
 
+**异常处理**
+
+Python 中异常也是一个对象，<u>所有异常的基类都是 Exception</u>。
+
+捕获异常可以使用 try...except... ; 当 try 中出现了异常就会转到 except 中执行。
+
+```python
+try:
+    pass
+except Exception as e:
+    # raise
+    print(e)
+```
+
+
+
+-----------
+
 **执行顺序**，python 默认从上到下顺序同步执行
 
 ```python

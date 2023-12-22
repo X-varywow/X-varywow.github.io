@@ -54,3 +54,9 @@ Keras3.0, 多框架机器学习，支持 tensorflow, pytorch, jax 作为后端
 - vision-transformer 多模态用于UI交互意图识别；
 - fusion、attenation学习上下文用于提高 CTR
 
+
+</br>
+
+`20231221`
+
+midjourney V6, 很真实

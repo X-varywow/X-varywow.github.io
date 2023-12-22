@@ -32,11 +32,11 @@ cat /proc/version
 
 ------------
 
-export 设置环境变量（对所有进程可见，设置的环境变量仅在当前会话中有效）
+export 设置环境变量（对所有进程可见，设置的环境变量 **仅在当前会话中有效**）
 
 ```bash
-# 一帮语法
 export VARIABLE_NAME=VALUE
+export APP_ENV=prod
 
 # 添加到 PATH 环境变量中
 export PATH=/usr/local/bin:$PATH
@@ -46,4 +46,10 @@ echo $PATH
 
 # 导出变量
 export VARIABLE_NAME
+```
+
+
+windows 中设置：
+```bash
+set APP_ENV=prod
 ```

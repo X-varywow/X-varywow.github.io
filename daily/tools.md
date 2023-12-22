@@ -41,6 +41,20 @@ unset __conda_setup
 ```
 
 ```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+export PATH=/opt/homebrew/bin:$PATH
+```
+
+在 `~/.zshrc` 中添加 export, 然后 `source ~/.zshrc`
+
+
+brew 安装一些奇奇怪怪的东西：
+
+- [trippy](https://trippy.cli.rs/), 一个命令行工具，可以代替 traceroute 查看互联网通信的路径，分析网络状况
+
+
+
+```bash
 export PATH=/usr/local/python-2.7.6/bin:$PATH 
 ```
 
@@ -74,7 +88,7 @@ iterm2 快捷键：
 
 [系统激活](https://github.com/TGSAN/CMWTAT_Digital_Edition)
 
-[一键自动化 下载、安装、激活 Office](https://github.com/OdysseusYuan/LKY_OfficeTools)，太牛了，感谢互联网
+[一键自动化 下载、安装、激活 Office](https://github.com/OdysseusYuan/LKY_OfficeTools)，666
 
 stardock fences 4
 
