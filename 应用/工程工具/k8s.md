@@ -12,3 +12,17 @@ Kubernetes 提供了一个可弹性运行分布式系统的框架。便于 **管
 - 密匙与配置管理
 
 常见的三个容器编排器：Docker Compose, Swarm, Kubernetes
+
+
+------------
+
+```bash
+kubectl get pods
+
+kubectl -n prod describe pod pod-name
+```
+
+- kubectl 命令行工具，用于与 k8s 集群交互
+- -n prod 指定命名空间为 prod
+- describe 显示特定资源详细新信息
+- pod 容器组，是k8s 集群中可以运行容器的最小单位
