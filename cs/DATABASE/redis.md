@@ -8,6 +8,77 @@ redis 记录在内存中，用作缓存
 citus 常用于处理复杂查询和多种数据表关系
 
 
+</br>
+
+## _python redis_
+
+https://www.runoob.com/w3cnote/python-redis-intro.html
+
+
+```python
+import redis
+
+r = redis.Redis(host='localhost', port=6379, db = 0, decode_responses=True)   
+r.set('name', 'runoob')
+print(r['name'])
+print(r.get('name'))
+print(type(r.get('name')))
+```
+
+
+遍历所有 key:
+
+```python
+from redis import Redis
+
+# 连接到 Redis
+redis_client = redis.Redis(
+    host="your_host", 
+    port=6362)
+
+# 定义要匹配的键的前缀
+prefix = "game:"
+
+# 使用 scan_iter 遍历匹配的键
+for key in redis_client.scan_iter(f"{prefix}*"): # f"{prefix}*"
+    print(key)
+    # 在这里可以执行其他操作，比如获取哈希值的内容
+#     hash_value = redis_client.hgetall(key)
+#     print(hash_value)
+```
+
+
+
+| 命令 | 说明                 |
+| ---- | -------------------- |
+| scan | 一个基于游标的迭代器 |
+|      |                      |
+|      |                      |
+
+----------
+
+```bash
+SCAN 0 MATCH "bike:*" COUNT 100
+```
+
+SCAN returns a cursor position, allowing you to scan iteratively for the next batch of keys until you reach the cursor value 0.
+
+
+
+
+</br>
+
+## _集群模式_
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -96,58 +167,3 @@ Redis 支持三种集群方案：
 总的来说，由于我们的基本原则是以数据库为准，那么我们选择的方案就应该把操作数据库放到前面，也就是说我们应该先操作数据库，再操作 Redis，对于并发很高的场景，我们可以在操作数据库之前通过消息队列来降低客户端对数据库的请求压力。
 
 参考：[Redis 的数据一致性方案分析](https://zhuanlan.zhihu.com/p/141537171)
-
-</br>
-
-## _python redis_
-
-https://www.runoob.com/w3cnote/python-redis-intro.html
-
-
-```python
-import redis
-
-r = redis.Redis(host='localhost', port=6379, db = 0, decode_responses=True)   
-r.set('name', 'runoob')
-print(r['name'])
-print(r.get('name'))
-print(type(r.get('name')))
-```
-
-
-遍历所有 key:
-
-```python
-from redis import Redis
-
-# 连接到 Redis
-redis_client = redis.Redis(
-    host="your_host", 
-    port=6362)
-
-# 定义要匹配的键的前缀
-prefix = "game:"
-
-# 使用 scan_iter 遍历匹配的键
-for key in redis_client.scan_iter(f"{prefix}*"): # f"{prefix}*"
-    print(key)
-    # 在这里可以执行其他操作，比如获取哈希值的内容
-#     hash_value = redis_client.hgetall(key)
-#     print(hash_value)
-```
-
-
-
-| 命令 | 说明                 |
-| ---- | -------------------- |
-| scan | 一个基于游标的迭代器 |
-|      |                      |
-|      |                      |
-
-----------
-
-```bash
-SCAN 0 MATCH "bike:*" COUNT 100
-```
-
-SCAN returns a cursor position, allowing you to scan iteratively for the next batch of keys until you reach the cursor value 0.
