@@ -10,3 +10,4 @@
   - [实践](Python/项目/)
   - ---
   - [环境相关](Python/env)
+  - [other](Python/tricks)

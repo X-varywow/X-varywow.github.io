@@ -48,6 +48,46 @@ logger.warning('Protocol problem: %s', 'connection reset', extra=d)
 #-->2006-02-08 22:20:02,165 192.168.0.1 fbloggs  Protocol problem: connection reset
 ```
 
+--------
+
+如何日志遇到 \n 不新起一个日志条目？
+
+修改原本 handler 的 emit 方法，新增 msg.replace()
+
+```python
+    def emit(self, record):
+        """
+        Emit a record.
+
+        If a formatter is specified, it is used to format the record.
+        The record is then written to the stream with a trailing newline.  If
+        exception information is present, it is formatted using
+        traceback.print_exception and appended to the stream.  If the stream
+        has an 'encoding' attribute, it is used to determine how to do the
+        output to the stream.
+        """
+        try:
+            msg = self.format(record)
+            stream = self.stream
+            # issue 35046: merged two stream.writes into one.
+            msg = msg.replace("\n", " ")
+            stream.write(msg + self.terminator)
+            self.flush()
+        except RecursionError:  # See issue 36272
+            raise
+        except Exception:
+            self.handleError(record)
+```
+
+
+
+
+
+
+
+
+
+
 ### （4）使用组件
 
 - Logger
