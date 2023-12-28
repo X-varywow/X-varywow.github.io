@@ -28,6 +28,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 参考：https://docs.python.org/zh-cn/3/extending/index.html
 
 
+</br>
+
+## _解释器实现_
+
+pypy, cpython 是 python 的两个不同的解释器实现
+
+pypy，主要特点是 JIT(即时编译)，可以优化频繁执行的代码，内存开销更低，但是兼容性不如 cpython。
 
 ----------
 

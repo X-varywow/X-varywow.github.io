@@ -35,7 +35,8 @@ a = []
 help(a)
 
 # 查看源码等信息
-a??
+get_long??
+?get_long
 
 # 函数返回对象object的属性和属性值的字典对象
 vars()
@@ -64,16 +65,27 @@ main(**param)
 
 ## _异常处理_
 
+捕获异常的目的：让程序能够优雅地处理错误情况，而不是直接抛出并停止运行。
+
+通过异常捕获，可以让程序更加健壮和用户友好。
+
 Python 中异常也是一个对象，<u>所有异常的基类都是 Exception</u>。
 
 捕获异常可以使用 try...except... ; 当 try 中出现了异常就会转到 except 中执行。
 
 ```python
 try:
+    a = 1/0
+except ZeroDivisionError:
+    print("ZeroDivisionError")
+except:
     pass
-except Exception as e:
-    # raise
-    print(e)
+else:
+    print("run with no except")
+finally:
+    print("run always")
+
+print(1)
 ```
 
 使用 traceback 打印堆栈
@@ -84,14 +96,14 @@ import traceback
 try:
     pass
 except Exception:
-    error = traceback.format_exc()
-    logger.error(f"monitor p7 error: {error}")
-    raise
+    logger.error(f"monitor p7 error: {traceback.format_exc()}")
+    # raise
 ```
 
-raise 会重新抛出当前捕获的异常，并保留原始的堆栈信息。
+使用 raise 会将捕获的异常抛出，然后程序退出（或交由上层处理）
 
-而使用 raise e 可能会丢失原始的堆栈信息。
+raise 会保留原始的堆栈信息，而使用 raise e 可能会丢失原始的堆栈信息。
+
 
 
 
@@ -153,3 +165,9 @@ autopep8
 flake8
 
 vscode 插件：black formatter 可以 format on save
+
+
+------------
+
+参考资料：
+- [python 官方文档：errors](https://docs.python.org/zh-cn/3/tutorial/errors.html)

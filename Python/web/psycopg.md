@@ -18,6 +18,7 @@ pip install "psycopg[binary,pool]"
 - cur.fetchone()
 - cur.fetchmany(size), size 表示要取多少行, 每行会包装成元组
 - cur.fetchall()
+- cur.rowcount 返回变动行数，常用于 cur.execute("update")，每次 execute 会刷新计数
 
 
 
@@ -256,6 +257,21 @@ threading.Thread(target=worker, daemon=True).start()
 
 ## _other_
 
+
+查看表结构信息：
+
+```sql
+SELECT
+    column_name, 
+    data_type
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE 
+    "table_schema" = 'scheme_name' 
+    and "table_name" = 'table_name';
+```
+
+
+----------
 
 关于使用 sqlachemy 还是 psycopg
 

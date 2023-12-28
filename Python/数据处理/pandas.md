@@ -471,6 +471,39 @@ train_df['USER_ID'] = seed_id_encoder.transform(train_df['USER_ID'])
 train_df.to_csv('train.csv', index=True)
 ```
 
+eg3. 从 psycopg 提取数据构造 dataframe
+
+```python
+def main(schema, table): 
+    query_match = f"""
+    select *
+    from {schema}.{table}
+    limit 100
+    """
+
+    query_format = f"""
+    SELECT
+        column_name,
+        data_type
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE "table_schema" = '{schema}' and "table_name" = '{table}';
+    """
+    with (
+        psycopg.connect(PG_CONFIG) as conn,
+        conn.cursor() as cur
+    ):
+        cur.execute(query_format)
+        res = cur.fetchall()
+        COL = [i[0] for i in res]
+        
+        cur.execute(query_match)
+        res = cur.fetchall()
+        df = pd.DataFrame([i for i in res], columns=COL)
+    return df
+
+main('s1', 't1')
+```
+
 
 
 -----------
