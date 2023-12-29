@@ -38,6 +38,14 @@ git fetch origin
 git checkout -b dev origin/dev
 ```
 
+demo: test 合并到 master 并不引起冲突
+```bash
+git fetch
+
+git checkout test
+
+git merge origin/master
+```
 
 
 ## 3.工作流

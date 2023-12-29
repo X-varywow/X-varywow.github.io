@@ -270,6 +270,19 @@ WHERE
     and "table_name" = 'table_name';
 ```
 
+----------
+
+避免 sql 注入:
+
+
+如果直接使用拼接的 SQL，它可能会导致 SQL 注入攻击：
+
+```python
+user_input = "1; DROP TABLE users;"
+
+sql = f"SELECT * FROM my_table WHERE my_column = {user_input}"
+```
+
 
 ----------
 

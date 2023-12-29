@@ -336,8 +336,10 @@ df.to_csv('filename.csv', index=True)
 Excel ：
 
 ```python
+# pip install openpyxl
+
 df.to_excel('filename.xlsx', sheet_name='Sheet1')
-pd.read_excel('filename.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
+df = pd.read_excel('filename.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
 ```
 
 
@@ -374,9 +376,10 @@ with open('citus.csv') as f:
 ```
 
 
+
+demo, 使用 csv 充当中转进行数据迁移
+
 使用 csv 要比 df.iterrows() + row.to_list() 快很多（在如下csv导到postgre过程）
-
-
 
 
 

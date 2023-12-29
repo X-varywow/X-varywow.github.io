@@ -167,6 +167,46 @@ flake8
 vscode 插件：black formatter 可以 format on save
 
 
+</br>
+
+## _分布式锁_
+
+通常，工程项目一般部署在多个 POD 上，多个POD 现在需要维持一个全局的锁。
+
+不保证同质数据只分发到一个 POD 上时，需要考虑外部存储缓存状态。即分布式锁
+
+
+```python
+import redis
+from redis.lock import Lock
+
+# 连接到Redis服务
+client = redis.StrictRedis(host='redis-host', port=6379, db=0)
+
+# 获取锁对象
+lock = client.lock("my_lock_name", timeout=5)
+
+# 尝试获取锁
+if lock.acquire(blocking=False):
+    try:
+        # 执行需要同步的代码
+        print("Lock acquired. Doing some work")
+        # ... 在这里做一些工作 ...
+    finally:
+        # 释放锁
+        lock.release()
+else:
+    print("Failed to acquire lock")
+```
+
+> 分布式锁：在分布式系统中保证多个计算节点之间进行互斥操作的一种同步机制。</br>
+> 在服务，应用分布在不同服务器上时，当它们要访问或修改共享资源时，需要确保不会产生冲突，类似于单机系统
+
+
+
+
+
+
 ------------
 
 参考资料：
