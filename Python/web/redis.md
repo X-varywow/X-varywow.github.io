@@ -16,6 +16,7 @@ https://www.runoob.com/w3cnote/python-redis-intro.html
 
 
 ```python
+# pip install redis
 import redis
 
 r = redis.Redis(host='localhost', port=6379, db = 0, decode_responses=True)   
@@ -70,6 +71,26 @@ SCAN returns a cursor position, allowing you to scan iteratively for the next ba
 
 ## _集群模式_
 
+
+```python
+# pip install redis-py-cluster
+
+from redis.cluster import RedisCluster
+
+# 配置您的 Redis 集群节点地址
+startup_nodes = [
+    {"host": "127.0.0.1", "port": "7000"},
+    {"host": "127.0.0.1", "port": "7001"}
+]
+
+# 实例化 RedisCluster 客户端
+rc = RedisCluster(startup_nodes=startup_nodes, decode_responses=True)
+
+# 执行 Redis 命令
+rc.set("foo", "bar")
+value = rc.get("foo")
+print(value)
+```
 
 
 

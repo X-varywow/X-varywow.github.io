@@ -6,6 +6,7 @@
   - [socket](Python/web/socket)
   - [flask](Python/web/flask)
   - [psycopg](Python/web/psycopg)
+  - [redis](Python/web/redis)
   - [tenacity](Python/web/tenacity)
   - [fiddler](Python/web/fiddler)
   - [API 相关](Python/web/api)

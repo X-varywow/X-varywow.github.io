@@ -283,6 +283,13 @@ user_input = "1; DROP TABLE users;"
 sql = f"SELECT * FROM my_table WHERE my_column = {user_input}"
 ```
 
+使用 %s 进行参数化查询 (被数据库视为普通的字符串值，而不是一部分可执行的SQL代码)
+
+```python
+# 安全的做法
+cursor.execute("SELECT * FROM my_table WHERE my_column = %s", (user_input,))
+```
+
 
 ----------
 
