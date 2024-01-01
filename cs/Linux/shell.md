@@ -4,9 +4,7 @@
 常见的shell:
 - sh, unix 的默认 shell
 - bash, linux 的默认 shell
-- ash
-- csh
-- ksh
+- zsh
 
 shell 语言属于脚本语言，需要通过解释执行。
 

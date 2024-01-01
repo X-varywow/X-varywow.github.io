@@ -11,7 +11,7 @@ SQL COMMAND，[请参考](cs/DATABASE/base)
 
 ## 连接
 
-- 命令行方式
+- 命令行方式(psql)
 - GUI 方式
   - pgadmin
   - navicat
@@ -31,6 +31,8 @@ SQL COMMAND，[请参考](cs/DATABASE/base)
 | \d table_name                |                           |
 | \d+ table_name               | 列出表的信息              |
 | \c database_name             | connected to database     |
+| \du                          | list of users             |
+| \dn                          | list of schemas           |
 | set search_path to path_name |                           |
 |                              |                           |
 

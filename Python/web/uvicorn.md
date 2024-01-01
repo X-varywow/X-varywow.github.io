@@ -45,6 +45,10 @@ uvicorn example:app
 # --reload  开启热重载
 ```
 
+访问 `http://127.0.0.1:8000/docs` (由 swagger ui 自动生成的交互式 api 文档)
+
+
+
 ----------
 
 参考资料：
