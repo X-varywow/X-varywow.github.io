@@ -104,6 +104,8 @@ except Exception:
 
 raise 会保留原始的堆栈信息，而使用 raise e 可能会丢失原始的堆栈信息。
 
+raise Exception(f"an error occurred while func,,,") 自定义异常信息
+
 
 
 

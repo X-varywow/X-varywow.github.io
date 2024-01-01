@@ -381,6 +381,12 @@ demo, 使用 csv 充当中转进行数据迁移
 
 使用 csv 要比 df.iterrows() + row.to_list() 快很多（在如下csv导到postgre过程）
 
+关键函数：
+- with open(csv_file) as f
+- reader = csv.reader(f)
+- header = next(reader)
+- for row in reader
+
 
 
 ```python
