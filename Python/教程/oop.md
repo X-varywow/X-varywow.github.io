@@ -1,5 +1,4 @@
-基本使用
----------------
+## 基本使用
 
 ### 1.0 定义与调用
 
@@ -134,8 +133,55 @@ s = student('ken',10,60,3)
 s.speak()
 ```
 
-高级使用
--------------
+### 1.4 组合
+
+```python
+class Engine:
+    def __init__(self, displacement):
+        self.displacement = displacement
+
+    def start(self):
+        print('引擎启动，排量为 {} 升.'.format(self.displacement))
+
+class Car:
+    def __init__(self, brand, engine):
+        self.brand = brand
+        self.engine = engine
+
+    def start_car(self):
+        print('{} 汽车准备启动.'.format(self.brand))
+        self.engine.start()
+
+# 创建一个引擎实例
+my_engine = Engine(2.5)
+
+# 创建一个搭载了这个引擎的汽车实例
+my_car = Car('宝马', my_engine)
+
+# 启动汽车
+my_car.start_car()
+```
+
+
+关键的 OOP 原则：
+
+|      |                                                                                  |
+| ---- | -------------------------------------------------------------------------------- |
+| 封装 | 将数据和方法捆绑一起，**隐藏内部状态和实现细节，只通过公共接口暴露对象的行为**。 |
+| 继承 |                                                                                  |
+| 多态 | 重写父类方法、鸭子类型                                                           |
+| 抽象 |                                                                                  |
+| 组合 | 将一个类的实例作为另一个类的属性                                                 |
+
+
+- 接口隔离（不应该强迫客户依赖于它们不使用的接口）
+- 单一职责（类的设计应该集中在一个核心功能上，而不是试图解决多个不相关的问题）
+- 开闭原则（开闭原则指出软件实体（类、模块、函数等）应该对扩展开放，对修改关闭）
+
+
+
+## 高级使用
+
 
 ### 2.0 抽象类
 - 接口：若干抽象方法的集合。
@@ -321,3 +367,4 @@ hot(c)
 参考资料：
 - 学校课程
 - [实例讲解Python中的魔法函数（高级语法）](https://zhuanlan.zhihu.com/p/344951719)
+- [runoob python oop](https://www.runoob.com/python/python-object.html)

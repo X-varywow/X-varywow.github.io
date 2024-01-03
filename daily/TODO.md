@@ -17,8 +17,6 @@ IDE 确实方便
 
 弄个自动化控制，强化学习工具，先把界面弄出来
 
-大表哥地理
-
 POE 角色扮演，确实有趣
 
 https://chuangshi.qq.com/read/47755491/14
@@ -29,11 +27,9 @@ https://testdriven.io/blog/developing-a-single-page-app-with-fastapi-and-vuejs/
 
 https://testdriven.io/blog/fastapi-crud/
 
-哨兵，阻塞，，，
+写的代码，类没写几个，高级方法没用多少，越写越low 了，全是怎么调包。。。
 
-
-
-EDGE 浏览器 copilot 666, 还能自定生成页面摘要
+EDGE 浏览器 copilot 666, 还能自定生成页面摘要: https://copilot.microsoft.com/
 
 https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA
 
