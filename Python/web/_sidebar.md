@@ -2,6 +2,7 @@
 - [Python/web相关](Python/web/)
   - [uvicorn](Python/web/uvicorn)
   - [fastapi](Python/web/fastapi)
+  - [streamlit](Python/web/streamlit)
   - [requests](Python/web/requests)
   - [socket](Python/web/socket)
   - [flask](Python/web/flask)

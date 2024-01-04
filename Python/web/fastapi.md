@@ -141,7 +141,21 @@ async def read_item(request: Request, id: str):
     )
 ```
 
+直接渲染
 
+```python
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+env = Environment(
+    loader=FileSystemLoader('templates'),
+    autoescape=select_autoescape(['html', 'xml'])
+)
+
+template = env.get_template('index.html')
+content = template.render(context={})  # 你可以在这里传递需要的上下文
+
+return HTMLResponse(content)
+```
 
 
 

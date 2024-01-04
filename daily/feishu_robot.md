@@ -109,3 +109,5 @@ https://open.feishu.cn/document/common-capabilities/message-card/message-cards-c
 
 <font color='#f66'> 不支持自定义，只支持 red green 
 
+DEBUG 模式，右键头像，可以获取 user_id
+

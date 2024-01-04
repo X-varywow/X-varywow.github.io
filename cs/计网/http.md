@@ -179,6 +179,15 @@ DNS 协议提供的是一种主机名到 IP地址 的转换服务，就是我们
 
 HTTP交互通常是无状态的，这意味着服务器不会自动记住之前的通信。一个HTTP请求完成后，服务器并不保留任何数据（状态）来识别用户下一次的请求。然而，为了实现跨请求的状态保持，通常使用cookies、会话（session）、token等机制记住用户状态。
 
+--------------
+
+`WS`（WebSocket）和`WSS`（WebSocket Secure）是两种网络通信协议。
+
+- `WS` 是WebSocket的简写，它是一种在单个长连接上进行全双工通信的协议。它允许服务器和客户端之间发送文本和二进制消息，主要用于浏览器和服务器之间的交互。`WS`的URL格式类似于http，例如：`ws://example.com/`。
+
+- `WSS` 是WebSocket Secure的简写，是`WS`的扩展，它在WebSocket基础上添加了SSL/TLS加密层。这使得客户端和服务器之间的通信被加密，对抗eavesdropping（窃听）和man-in-the-middle攻击。`WSS`的URL格式类似于https，例如：`wss://example.com/`。
+
+简单来说，`WSS`比`WS`更安全，通常用于需要加密通信的场景。
 
 
 
@@ -190,3 +199,4 @@ HTTP交互通常是无状态的，这意味着服务器不会自动记住之前�
 
 参考资料：
 - https://developer.mozilla.org/zh-CN/docs/Web/HTTP
+- chatgpt
