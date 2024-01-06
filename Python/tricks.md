@@ -211,6 +211,51 @@ else:
 
 
 
+</br>
+
+## _更多装饰器_
+
+
+权限验证装饰器：
+
+```python
+def md5_decorator(level):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if st.session_state.auth_level >= level:
+                return func(*args, **kwargs)
+            else:
+                return "权限不足"
+        return wrapper
+    return decorator
+
+@md5_decorator(level = 1)
+def main():
+    pass
+```
+
+改成装饰器类：
+
+```python
+class MD5Decorator:
+    def __init__(self, level):
+        self.level = level
+
+    def __call__(self, func):
+        def wrapper(*args, **kwargs):
+            if st.session_state.auth_level >= self.level:
+                return func(*args, **kwargs)
+            else:
+                return "权限不足", 0
+        return wrapper
+
+@MD5Decorator(level=2)
+def protected_function():
+    # Function implementation
+    pass
+```
+
 
 
 

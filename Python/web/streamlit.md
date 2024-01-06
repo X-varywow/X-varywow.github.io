@@ -37,6 +37,20 @@ def run_streamlit():
     subprocess.Popen(["streamlit", "run", "app.py", "--server.baseUrlPath=front"])
 ```
 
+使用 session_state 在会话中存储全局变量
+
+https://docs.streamlit.io/library/api-reference/session-state
+
+```python
+st.text_input("Your name", key="name")
+
+# This exists now:
+st.session_state.name
+```
+
+
+
+
 ## config
 
 查看 config 文档
@@ -48,6 +62,18 @@ streamlit config show
 ```bash
 vim ~/.streamlit/config.toml
 ```
+
+pageconfig:
+
+```python
+st.set_page_config(
+    page_title="Hello",
+    page_icon="👋",
+    layout="wide"
+)
+```
+
+
 
 ## pandas 支持
 
@@ -73,6 +99,11 @@ class MyConnection(ExperimentalBaseConnection[myconn.MyConnection]):
        return self._instance.query(query)
 ```
 
+
+
+
+
+
 ## other
 
 ```python
@@ -92,5 +123,5 @@ font="monospace"
 """)
 ```
 
-
+[Deploy Streamlit using Kubernetes](https://docs.streamlit.io/knowledge-base/tutorials/deploy/kubernetes)
 

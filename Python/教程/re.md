@@ -85,6 +85,23 @@ print(re.match("h","hello").span())
 
 ## _Demo_
 
+
+
+demo1: 捕获 sql 中的 schema.table
+
+```python
+import re
+
+pattern = r"from (\w+)\.(\w+)"
+try:
+    match = re.search(pattern, "select * from s.t limit 10;")
+    schema, table = match.groups()
+except:
+    print("error input")
+```
+
+
+
 ```python
 re.findall("d(ds)*","askldjasaddsa") #-->['', 'ds']
 re.findall("d[ds]*","askldjasaddsa") #-->['d', 'dds']
