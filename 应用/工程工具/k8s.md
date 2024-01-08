@@ -14,6 +14,8 @@ Kubernetes 提供了一个可弹性运行分布式系统的框架。便于 **管
 常见的三个容器编排器：Docker Compose, Swarm, Kubernetes
 
 
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20240108213620.png" style="zoom:70%">
+
 ------------
 
 ```bash
