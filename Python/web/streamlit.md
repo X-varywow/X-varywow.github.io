@@ -16,6 +16,7 @@
 
 [30days](https://30days.streamlit.app/)
 
+https://zhuanlan.zhihu.com/p/163927661
 
 ```python
 # pip install streamlit
@@ -48,6 +49,23 @@ st.text_input("Your name", key="name")
 st.session_state.name
 ```
 
+
+```python
+# 添加占位符
+placeholder = st.empty()
+# 创建进度条
+bar = st.progress(0)
+
+for i in range(100):
+    time.sleep(0.05)
+    # 不断更新占位符的内容
+    placeholder.text(f"Iteration {i+1}")
+    # 不断更新进度条
+    bar.progress(i + 1)
+
+# 状态
+st.success("Finished")
+```
 
 
 
