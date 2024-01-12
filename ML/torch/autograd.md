@@ -48,6 +48,21 @@ print(z_det.requires_grad)
 !>When we call backward for the second time with the same argument, the value of the gradient is different.
 
 
+------------
+
+```python
+import torch
+
+# 在这个块里, 不跟踪梯度, 适用于推理过程
+with torch.no_grad():
+    # your inference code here
+```
+
+
+torch.no_grad() 是个上下文管理器，用于关闭自动求导，减少内存消耗
+
+
+
 -------------
 
 torch.mul、torch.mm、torch.bmm、torch.matmul的区别

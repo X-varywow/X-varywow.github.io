@@ -52,11 +52,12 @@ wget https://civitai.com/api/download/models/94640 -O ./models/Stable-diffusion/
 wget https://civitai.com/api/download/models/102236 -O ./models/Lora/cartoon_portrait_v1.safetensors
 ```
 
-| 参数    | 说明                 |
-| ------- | -------------------- |
-| -q      | 安静模式，不显示输出 |
-| -O file | 写到file文件中       |
-| -o file | 追加写到file文件中   |
+| 参数    | 说明                     |
+| ------- | ------------------------ |
+| -q      | 安静模式，不显示输出     |
+| -O file | 写到file文件中           |
+| -o file | 追加写到file文件中       |
+| -P      | 指定下载文件时保存的目录 |
 
 
 

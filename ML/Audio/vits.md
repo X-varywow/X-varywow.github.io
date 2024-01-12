@@ -522,6 +522,15 @@ lr: 0.00019754009828923033
 ```
 
 
+## 报错
+
+只有一行报错信息： Segmentation fault
+
+定位到是 from text import text_to_sequence 这个方法
+
+解决方案： pip install phonemizer==2.2.1
+
+phonemizer 原本装的 是 3.2.1
 
 ------------
 

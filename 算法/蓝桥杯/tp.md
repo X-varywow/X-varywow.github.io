@@ -183,6 +183,25 @@ start.month
 start.day
 ```
 
+
+
+
+```python
+# 转化为固定格式, 大小写要求
+t = str(datetime.now().strftime('%Y-%m-%d_%H_%M_%S_'))
+
+# 获取 UTC+8 时间
+from datetime import datetime
+import pytz
+
+tz = pytz.timezone('Asia/Shanghai') # 选择一个UTC+8时区的城市，比如上海
+datetime_utc8 = datetime.now(tz)
+print(datetime_utc8.strftime('%Y-%m-%d %H:%M:%S'))
+```
+
+
+
+
 [Python datetime模块详解、示例](https://blog.csdn.net/cmzsteven/article/details/64906245)
 
 
