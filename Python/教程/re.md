@@ -92,7 +92,7 @@ demo1: 捕获 sql 中的 schema.table
 ```python
 import re
 
-pattern = r"from (\w+)\.(\w+)"
+pattern = r"(?i)from (\w+)\.(\w+)"
 try:
     match = re.search(pattern, "select * from s.t limit 10;")
     schema, table = match.groups()
@@ -169,6 +169,13 @@ re.compile("/(\S*)/").findall("//asd/sdsa/asda")  #-->['/asd/sdsa']
 (?<=pattern) 正向后行断言
 
 (?<!pattern) 负向后行断言
+
+-------------
+
+(?i) 实现对大小写不敏感的匹配
+
+
+
 
 
 

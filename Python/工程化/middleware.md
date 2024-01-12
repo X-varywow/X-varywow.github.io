@@ -101,6 +101,11 @@ conn.close()
 
 https://huzzefakhan.medium.com/apache-kafka-in-python-d7489b139384
 
+https://mp.weixin.qq.com/s/DCj_1gUOPwIvu4wHW5VHSg
+
+
+Kafka 不仅仅是一个消息队列，它还是一个适用于各种情况的开源事件流平台。
+
 
 
 --------------

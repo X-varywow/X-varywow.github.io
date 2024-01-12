@@ -83,10 +83,6 @@ diffusion audio 效果？
 - [ ] 多读 torch 文档
 
 
-
-日志报错：Segmentation fault，然后服务直接挂掉了，弄个定时任务告警
-
-
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
 
 

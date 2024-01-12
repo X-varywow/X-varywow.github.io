@@ -1,13 +1,13 @@
 
 > subprocess 模块允许我们启动一个新进程，并连接到它们的输入/输出/错误管道，从而获取返回值。
 
-被用来代替 os.system；
+被用来代替 os.system；os.spawn*
 
 与 multiprocessing （同一个代码中通过多进程调用其他的模块）不同，
 subprocess 直接调用外部的二进制程序，而非代码模块，**适用于与外部进程交互**。
 
 
-demo1，常见用法：
+demo1: 常见用法
 
 ```python
 import subprocess
@@ -32,6 +32,20 @@ def run_ffmpeg(args : List[str]) -> bool:
 如果只需要获取命令的标准输出结果，并且不需要对异常进行处理，可以使用subprocess.check_output()函数。
 
 而如果需要更多的灵活性，并且需要对异常进行处理，可以使用subprocess.run()函数。
+
+
+demo3: streamlit
+
+```python
+import subprocess
+
+# 在后台启动 Streamlit 服务
+def run_streamlit():
+    subprocess.Popen(["streamlit", "run", "app.py", "--server.baseUrlPath=front"])
+
+
+# Popen(cmd.split())
+```
 
 
 

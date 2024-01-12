@@ -62,6 +62,7 @@ device = (
 print(f"Using {device} device")
 
 # Define model
+# 占用 270 MB 显存；模型的权重需要在显存中进行初始化和存储
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
