@@ -519,3 +519,29 @@ logger.add(sys.stderr, level="WARNING")
 - **提高性能**，将日志记录与主程序的执行分离，不会阻塞主程序的执行，特别是高并发或高负载的场景
 - **减少 IO 开销**，异步日志操作可以将多个日志请求合并成一个批量写入操作，减少磁盘 IO 次数（磁盘IO 是一个相对很慢的操作）
 - **简化代码**，便于维护，将日志记录逻辑与主程序的逻辑分离
+
+
+
+
+
+</br>
+
+## _warnings_
+
+使用 warnings 来过滤特定的警告
+
+
+```python
+import warnings
+
+# 忽略特定的警告
+warnings.filterwarnings("ignore", category=UserWarning, message=".*weight_norm is deprecated.*")
+```
+
+
+```python
+import warnings
+
+# 忽略所有用户级别警告
+warnings.filterwarnings("ignore", category=UserWarning)
+```
