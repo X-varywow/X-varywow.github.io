@@ -400,7 +400,6 @@ select score_smooth_v1([23, 151, 66, 46, 8, 8, 3, 101, 46, 62, 1, 175, 89, 12, 1
 
 ## 8.UDTF
 
-
 `UDF` user defined function
 
 `UDTF` user defined table function
@@ -409,7 +408,52 @@ select score_smooth_v1([23, 151, 66, 46, 8, 8, 3, 101, 46, 62, 1, 175, 89, 12, 1
 https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-tabular-vectorized
 
 
-## 9.regexp
+```sql
+create or replace function stock_sale_sum(symbol varchar, quantity number, price number(10,2))
+returns table (symbol varchar, total number(10,2))
+language python
+runtime_version=3.8
+handler='StockSaleSum'
+as $$
+class StockSaleSum:
+    def __init__(self):
+        self._cost_total = 0
+        self._symbol = ""
+
+    def process(self, symbol, quantity, price):
+      self._symbol = symbol
+      cost = quantity * price
+      self._cost_total += cost
+      yield (symbol, cost)
+
+    def end_partition(self):
+      yield (self._symbol, self._cost_total)
+$$;
+```
+
+```sql
+select stock_sale_sum.symbol, total
+from stocks_table, 
+table(stock_sale_sum(symbol, quantity, price) over (partition by symbol));
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 9. regexp
 
 https://docs.snowflake.com/en/sql-reference/functions/regexp_substr
 
@@ -427,5 +471,40 @@ from t1
 
 
 
+## 10. snowflake-scripting
+
+[snowflake-scripting](https://docs.snowflake.com/en/developer-guide/snowflake-scripting/index)
+
+```sql
+DECLARE
+  res RESULTSET;
+  col_name VARCHAR;
+  select_statement VARCHAR;
+BEGIN -- begin end make block
+  col_name := 'col1';
+  select_statement := 'SELECT ' || col_name || ' FROM mytable';
+  res := (EXECUTE IMMEDIATE :select_statement);
+  RETURN TABLE(res);
+END;
+```
 
 
+
+
+
+## 11. credits
+
+[Understanding Compute Cost](https://docs.snowflake.com/en/user-guide/cost-understanding-compute)
+
+Small (2 credits/hour) 
+
+```sql
+SELECT 
+  query_id,
+  name,
+  scheduled_time,
+  *
+FROM 
+  table(information_schema.task_history(scheduled_time_range_start=> dateadd('hours',-10,current_timestamp)))
+LIMIT 100;
+```

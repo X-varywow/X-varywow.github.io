@@ -567,6 +567,14 @@ select
 from t;
 ```
 
+（6）使用 query_id
+
+```sql
+SELECT *
+FROM TABLE(QUERY_HISTORY())
+WHERE QUERY_ID = '查询ID';
+```
+
 
 
 -----------

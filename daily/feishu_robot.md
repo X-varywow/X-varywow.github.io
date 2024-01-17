@@ -40,6 +40,10 @@ https://open.feishu.cn/document/server-docs/im-v1/image/create
 
 https://open.feishu.cn/document/common-capabilities/message-card/message-cards-content/using-markdown-tags
 
+查看 template 颜色
+
+
+
 
 多列布局：
 https://open.feishu.cn/document/common-capabilities/message-card/message-cards-content/column-set

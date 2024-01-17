@@ -132,10 +132,31 @@ snowpark.table.Table
 from snowflake.snowpark.functions import col
 
 df = session.table("   ")
+
+
+# select
+df = df.select(col("id"))
+
+# where 
 df = df.filter(col('user_id') == 14329517)
+
+# join
+df.join(df_rhs, df.col["key"] == df_rhs.col["key"])
+
+# group
+df_group = df_tbl_read.group_by("CS_SOLD_DATE_SK").agg((f.sum("CS_QUANTITY").alias("QTY_SUM")),f.stddev("CS_WHOLESALE_COST").alias("STD_Dev"))
+
+# order
+.sort(col["col1"]).asc()
+
+# window
+df_window = df_tbl_read.with_column("Rank", row_number().over(Window.order_by(col("CS_SOLD_DATE_SK").desc()))).select(col("Rank"),col("CS_ORDER_NUMBER"),col("CS_QUANTITY"),col("CS_WHOLESALE_COST"),col("CS_LIST_PRICE"))
 
 df.show()
 ```
+
+
+
 
 
 
@@ -222,6 +243,84 @@ with (
         progress.update(task, advance=1)
 ```
 
+</br>
+
+## _snowfalke 内部使用_
+
+procedure 内使用：
+
+```sql
+CREATE OR REPLACE PROCEDURE filterByRole(tableName VARCHAR, role VARCHAR)
+RETURNS TABLE()
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.8'
+PACKAGES = ('snowflake-snowpark-python')
+HANDLER = 'filter_by_role'
+AS
+$$
+from snowflake.snowpark.functions import col
+
+def filter_by_role(session, table_name, role):
+  df = session.table(table_name)
+  return df.filter(col("role") == role)
+$$;
+
+
+CALL filterByRole('employees', 'dev');
+```
+
+
+worksheet 内使用：
+
+```python
+# The Snowpark package is required for Python Worksheets. 
+# You can add more packages by selecting them using the Packages control and then importing them.
+
+import snowflake.snowpark as snowpark
+from snowflake.snowpark.functions import col
+
+def main(session: snowpark.Session): 
+
+    
+    # Your code goes here, inside the "main" handler.
+    tableName = 'test_dataai.ads_combat_power.tmp_robot_log_hzx'
+    dataframe = session.table(tableName)
+
+    # Print a sample of the dataframe to standard output.
+    dataframe.show()
+    
+    # Return value will appear in the Results tab.
+    return dataframe
+```
+
+```sql
+create procedure procedure_name()
+    returns Table()
+    language python
+    runtime_version = 3.8
+    packages =('snowflake-snowpark-python')
+    handler = 'main'
+    as '# The Snowpark package is required for Python Worksheets. 
+# You can add more packages by selecting them using the Packages control and then importing them.
+
+import snowflake.snowpark as snowpark
+from snowflake.snowpark.functions import col
+
+def main(session: snowpark.Session): 
+
+    
+    # Your code goes here, inside the "main" handler.
+    tableName = ''test_dataai.ads_combat_power.tmp_robot_log_hzx''
+    dataframe = session.table(tableName)
+
+    # Print a sample of the dataframe to standard output.
+    dataframe.show()
+    
+    # Return value will appear in the Results tab.
+    return dataframe';
+```
+
+> 运行速度，与 SQL 完全不是一个量级的，SQL 同等操作会快100倍
 
 
 

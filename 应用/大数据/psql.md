@@ -44,16 +44,16 @@ SQL COMMAND，[请参考](cs/DATABASE/base)
 
 ```sql
 -- 创建表 + 主键索引
-create table "scheme_name"."table_name"(
-  "id" int8 not null
-  "col2" int2,
+create table scheme_name.table_name(
+  "id"        int not null
+  "col2"      bigint,
   "json_type" jsonb,
+  created_at   timestamp default current_timestamp
   constraint "pkey_name" primary key ("id", "col2")
 );
 
 -- 二级索引
 create index "index_name" on "table_name" using btree ("class", "student_name");
-
 
 
 -- 列注释
@@ -62,6 +62,18 @@ comment on column "scheme_name"."table_name"."col_name" is 'introduction';
 -- 分片
 set citus.shard_count = 32;
 select create_distributed_table('table_name', 'col_name');
+
+
+-- 分区
+create table ...()
+partition by range(created_at);
+
+select create_time_partitions(
+    table_name := 't1',
+    partition_interval := '1 month',
+    start_from := '2023-09-01 00:00:00',
+    end_at := now() + '24 months'
+)
 ```
 
 分片可以将整体的数据集划分为多个部分。这是为了解决大规模数据存储和处理的问题，常用于分布式数据库和分布式存储系统中。
@@ -131,6 +143,9 @@ select date_part('hour', t);
 ```sql
 -- 新增字段
 alter table t1 add column user_id bigint;
+
+-- 修改字段
+alter table t1 alter column col_name type text;
 
 -- 新增索引
 create index "index_name" on "table_name" using btree ("class", "student_name");
