@@ -61,21 +61,3 @@ app.register_blueprint(social_media_attention_router)
 app.register_blueprint(social_media_attitudes_router)
 app.register_blueprint(user_router)
 
-## 改进
-
-- 更换 logo 和 icon
-- 仿照 更改样式
-
-
-改变的地方
-
-- [ ] `layout/ index.vue`   全局2 的 css 部分
-  - [x] width, height 更加美观
-- [ ] css/my.css
-  - [ ] page 添加阴影
-  - [ ] ad
-- [ ] `layout-admin/index.vue` 全局1 的 css 部分
-
-一个 vue 由 template script style 组成
-
-按道理，改所有 vue 的 style 部分即可

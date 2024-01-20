@@ -19,8 +19,6 @@ IDE 确实方便
 
 POE 角色扮演，确实有趣
 
-https://chuangshi.qq.com/read/47755491/14
-
 https://docs.python.org/zh-cn/3/library/unittest.mock.html
 
 https://testdriven.io/blog/developing-a-single-page-app-with-fastapi-and-vuejs/
@@ -29,9 +27,9 @@ https://testdriven.io/blog/fastapi-crud/
 
 写的代码，类没写几个，高级方法没用多少，越写越low 了，全是怎么调包。。。
 
-EDGE 浏览器 copilot 666, 还能自定生成页面摘要: https://copilot.microsoft.com/
-
 https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA
+
+https://huggingface.co/spaces/XzJosh/LAPLACE-Bert-VITS2-2.3
 
 
 
@@ -48,30 +46,6 @@ https://github.com/valinet/ExplorerPatcher/wiki/All-features
 qianduan / tmp
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
-
-
-训练出来挺好的，响度有些问题
-
-- [ ] tensorboard 使用
-- [ ] hugg 两个库
-- [ ] 找音频训练
-- [ ] transformer att
-
-https://github.com/PlayVoice/so-vits-svc-5.0 两份代码差异好大
-
-https://github.com/MaxMax2016
-
-https://huggingface.co/docs/transformers/model_doc/bark
-
-https://huggingface.co/docs/transformers/model_doc/vits
-
-diffusion audio 效果？
-
-语音相关：
-- [ ] 多语种 tts 部分
-- [ ] svc 找语音新音色
-- [ ] 界面支持对话
-- [ ] 源码整合改进
 
 
 - [ ] 课程笔记整理
@@ -99,7 +73,6 @@ https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandboo
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
 
-bili 论文解读
 
 - electron开发，代替 TODO，自定义背景，等
 

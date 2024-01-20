@@ -1,5 +1,7 @@
 
-## _基本用法_
+## _CONDA_
+
+### 基本用法
 
 ```bash
 # (1) 检查&更新
@@ -47,7 +49,7 @@ conda env export > environment.yml
 ```
 
 
-## _channel 相关_
+### channel 相关
 
 ```bash
 conda config --show channels
@@ -60,7 +62,7 @@ conda config --remove channels some-channel
 
 
 
-## _yaml_
+### yaml
 
 ```bash
 conda env export >  environment.yaml
@@ -112,7 +114,7 @@ prefix: ~/anaconda3/envs/dualstylegan_env
 
 </br>
 
-## _! 与 %_
+### ! 与 %
 
 打通kernel, conda, !, %run {}
 
@@ -147,7 +149,7 @@ pip install oscrypto git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895
 
 </br>
 
-## _kernel_
+### kernel
 
 
 （1）查看kernel
@@ -181,7 +183,7 @@ jupyter notebook
 
 </br>
 
-## _other_
+### other
 
 
 （1）conda-pack 环境打包：
@@ -263,3 +265,40 @@ colab 中有这种语法：
 vcmd= f"checkout {commit}"
 !git $vcmd
 ```
+
+
+## _Poetry_
+
+python packaging and dependency management made easy.
+
+在 pip 基础上新增了依赖性管理
+
+poetry 使用的 pyproject.toml 是 PEP 518 所提出的新标准，相当于 npm 的 package.json
+
+```bash
+pip install poetry
+
+# 使用 poetry 创建项目
+poetry new poetry_demo
+
+poetry add flask
+
+# 查看 help
+poetry
+
+# other
+poetry env info
+
+```
+
+
+
+
+
+
+
+
+---------
+
+参考资料：
+- [Poetry 完全入門指南](https://blog.kyomind.tw/python-poetry/)

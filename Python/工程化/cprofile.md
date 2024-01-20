@@ -14,6 +14,8 @@ python -m cProfile -s tottime ZZZ_log.py > test.txt
 - tottime，指的是函数本身的运行时间，扣除了子函数的运行时间
 - cumtime，指的是函数的累计运行时间，包含了子函数的运行时间
 
+更多性能分析模块： line_profiler, memory_profiler, pyflame
+
 
 ## _测试时间_
 
@@ -153,6 +155,7 @@ numba  还有的功能：
 - 不使用 numpy 方法，使用原生方法
 - 不使用 listcomp，减少中间变量
 - 函数参数不使用 列表, 少的情况直接取出来
+
 
 -----------
 
