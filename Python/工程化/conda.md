@@ -142,6 +142,18 @@ prepare_command = f"./model/stylegan/prepare_data.py --out ./data/{project_name}
 
 # 这可以更加工程化，可说明；相当把整个 bash 流程都可以搬到 jupyter 上。
 ```
+
+```python
+# line mode
+%timeit func()
+
+# cell mode
+%%timeit
+
+func()
+```
+
+
 pip install oscrypto git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895ae1edd9e503cfb352e635a8
 
 

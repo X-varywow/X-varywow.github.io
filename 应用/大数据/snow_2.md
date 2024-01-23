@@ -119,16 +119,14 @@ alter task t2 suspend;
 
 
 ```sql
-
--- 1.创建 task 由于需具有创建task的权限
-CREATE OR REPLACE TASK t_marketing_core_01_tmp
-  WAREHOUSE = PRODUCTION_AVIA_DEFAULT_MEDIUM_1
---task执行的北京时间 给个30分钟   30*60 = 1800 000
-  SCHEDULE = 'USING CRON 20 07 * * * Asia/Shanghai'
-  USER_TASK_TIMEOUT_MS = 1800000
-AS
---需要执行的存储过程
-  CALL p_marketing_core_01_tmp();
+-- 1. 创建 task
+create or replace task task1
+	warehouse = house1
+  -- 执行时间为上海的 8-21 点，每分钟执行一次
+	schedule ='USING CRON */1 8-21 * * * Asia/Shanghai'
+	USER_TASK_TIMEOUT_MS = 86400000
+  -- 用于执行存储过程
+	as call procedure1();
 
 
 -- 2.创建过程

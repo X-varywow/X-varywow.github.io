@@ -7,6 +7,13 @@ Python 数据处理首页
 
 -------------
 
+- 使用 pandas-profiling 生成数据的详细报告（不适合大量的数据）
+- ydata profiling
+
+
+
+-------------
+
 关于 `GPU加速`
 
 使用 [cuDF - GPU DataFrame Library](https://github.com/rapidsai/cudf)
