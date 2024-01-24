@@ -53,6 +53,15 @@ $$\frac{\partial V_\pi(s_t)}{\partial \theta} = E_{A_t \sim \pi}[Q_\pi (s_t, A_t
 
 ## _PPO_
 
+proximal policy optimization, 近端策略优化。(OpenAI 2017)
+
+PPO的主要特点是尝试保持新旧策略之间的差异适度，即它限制了策略更新过程中策略变化的幅度以避免过于激烈的调整导致性能下降。它通过截断的策略梯度或裁剪（clipping）约束来实现。
+
+具体地，PPO定义了一个“剪切”目标函数，用来维持两个连续策略之间的一个预设界限，如果实际的策略变动超过这个界限，该目标函数会限制该变动，从而提高算法的稳定性。
+
+
+
+
 </br>
 
 ## _DQN_
@@ -83,3 +92,4 @@ action critic 两个网络，行动价值，状态价值；
 - https://easyai.tech/ai-definition/reinforcement-learning/
 - [DQN打只狼里的boss](https://www.bilibili.com/video/BV1by4y1n7pe/)
 - [强化学习—— 离散与连续动作空间](https://blog.csdn.net/Cyrus_May/article/details/124137445)
+- chatgpt

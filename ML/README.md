@@ -14,7 +14,6 @@
 
 -----------------------------
 
-学习的课程：
 - 学校-机器学习
 - 学校-自然语言处理A
 - 学校-自然语言处理B
@@ -29,7 +28,7 @@
 
 一些网站：
 - https://github.com/fengdu78
-- https://github.com/dair-ai
+- https://github.com/dair-ai/ml-visuals
 - https://deepmind.com/
 - https://openai.com/
 - https://easyai.tech/

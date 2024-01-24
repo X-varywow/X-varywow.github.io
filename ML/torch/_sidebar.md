@@ -6,6 +6,7 @@
   - [autograd](ML/torch/autograd)
   - [优化器 optimizer](ML/torch/optimizer)
   - [学习率 lr_scheduler](ML/torch/lr)
+  - [杂记](ML/torch/other)
   - --------
   - [tensorboard](ML/torch/tensorboard)
   - [huggingface](ML/torch/huggingface)

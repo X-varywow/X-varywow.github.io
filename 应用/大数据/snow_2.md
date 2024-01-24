@@ -272,7 +272,7 @@ when not matched then
 
 
 
-
+https://docs.snowflake.com/en/user-guide/streams-examples
 
 
 

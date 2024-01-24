@@ -11,6 +11,7 @@ model = LSTM1(**params)
 
 ## 神经网络
 
+
 ```python
 import torch
 import torch.nn as nn
@@ -33,8 +34,10 @@ plt.show()
 
 # way 2:
 # plt.scatter(x.data.numpy(),y.data.numpy())
+```
 
 
+```python
 # 搭建神经网络
 class Net(nn.Module):
     def __init__(self, n_input, n_hidden, n_output):
@@ -54,8 +57,9 @@ class Net(nn.Module):
 
 net = Net(1,20,1)
 print(net)
+```
 
-
+```python
 # 构建优化目标及损失函数
 optimizer = torch.optim.SGD(net.parameters(), lr = 0.1)
 loss_func = torch.nn.MSELoss()

@@ -64,3 +64,14 @@ isinstance(1, int | str)
 
 （2）每个解释器一个 GIL，充分利用多核； 3.13 将能直接从 python 层调用
 
+
+
+----------
+
+`PEP`， Python Enhancement Proposal， Python 改进建议书。
+
+它是一种为 Python 社区提供新功能建议、信息或者设计准则的正式设计文档。
+
+旨在确保所有对 Python 的重大变更、新特性或者政策在实施之前经过充分讨论、记录与审查。
+
+

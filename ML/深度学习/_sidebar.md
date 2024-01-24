@@ -12,6 +12,6 @@
   - [transformer](ML/深度学习/transformer)
   - [其它网络](ML/深度学习/model)
   - [强化学习](ML/深度学习/rl)
-  - [PPO](ML/深度学习/PPO)
+  - [PPO](ML/深度学习/gym)
   - ------
   - [分布规整](ML/深度学习/分布规整)
