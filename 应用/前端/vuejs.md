@@ -3,6 +3,7 @@ Vue 是一套用于构建用户界面的 JavaScript 框架。提供了模版语�
 
 [官方文档](https://cn.vuejs.org/guide/introduction.html) 已经很全面了，这里用作临时笔记
 
+类似前端框架： React, Angular
 
 
 ### 1. 引入

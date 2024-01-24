@@ -1,4 +1,15 @@
 
+幻兽帕鲁；缝合才是世界的本质；
+
+简单轻松，竞技，多人，游戏
+
+生成式 AI,确实使游戏开发快很多；https://huggingface.co/cagliostrolab/animagine-xl-3.0
+
+思考一下要做的, 学点 RL ，感觉没啥好开发的
+
+https://github.com/KRTirtho/spotube
+
+
 需要统筹的人，有着明确的 TODO 和 理清各部分 block 的能力，并制定团队的原则；
 
 不能以不同人完成不同事的时间，来衡量事情的容易，事情在细节上会有很大不同的。

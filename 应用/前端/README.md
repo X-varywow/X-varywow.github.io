@@ -32,6 +32,8 @@
 - [Bootstrap 中文网](https://www.bootcss.com/)，有一些优质的前端项目
 - [前端专场 - 字节跳动青训营](https://juejin.cn/post/7196393365314322489)
 - [不可不知的前端工程化—— 埋点&监控](https://juejin.cn/post/7247770501324996664)
+- [2023前端技术盘点与2024技术展望](https://mp.weixin.qq.com/s/rQU9uBYrjMJKoEBz-HXpmw) ⭐ rust 影响力变大
+
 
 ---------------------
 

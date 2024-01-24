@@ -56,8 +56,6 @@
 </br>
 other
 
-- [textual](https://github.com/Textualize/textual)，一个命令行用户界面框架
-  - 作品1：[TUI todo manager](https://github.com/kraanzu/dooit)
 - [NoneBot 跨平台 PYTHON 异步机器人框架](https://v2.nonebot.dev/)
 - [LibHunt](https://www.libhunt.com/)
 - [BrutalityExtractor 使用 tkinter 的多进程解压缩软件](https://github.com/hxz393/BrutalityExtractor)
