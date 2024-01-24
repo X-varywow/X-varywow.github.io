@@ -286,7 +286,7 @@ HTTP header(HTTP首部)，表示在HTTP请求或响应中的用来传递附加�
 
 >(5) 了解RPC吗？
 
-Remote Procedure Call，即远程过程调用。
+Remote Procedure Call，即远程过程调用。RPC 可以使用多种传输层协议（TCP UDP等），是一种远程通信的高级抽象，不是一种网络传输协议。
 
 客户端在不知道调用细节的情况下，调用远端服务器暴露出来的方法，就像调用本地方法一样。
 

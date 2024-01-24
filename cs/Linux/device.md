@@ -32,6 +32,11 @@ free -h
 linux 为了提升读写性能，会缓存一部分内存资源缓存磁盘数据。
 
 参考：[linux free 命令下free/available区别](https://blog.csdn.net/gpcsy/article/details/84951675)
+
+
+
+
+
 </br>
 
 ## _设备信息_
@@ -49,6 +54,10 @@ sudo dmidecode -t memory
 # 内核版本
 cat /proc/version
 ```
+
+
+
+
 
 </br>
 

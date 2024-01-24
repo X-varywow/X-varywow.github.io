@@ -151,6 +151,9 @@ alter table t1 add column user_id bigint;
 -- 修改字段
 alter table t1 alter column col_name type text;
 
+-- 重命名
+alter table schema_name.t1 rename to t2;
+
 -- 新增索引
 create index "index_name" on "table_name" using btree ("class", "student_name");
 ```

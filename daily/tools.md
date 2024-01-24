@@ -47,6 +47,17 @@ export PATH=/opt/homebrew/bin:$PATH
 
 在 `~/.zshrc` 中添加 export, 然后 `source ~/.zshrc`
 
+除了更改文件的方式，还可以使用如下命令
+
+```bash
+echo 'export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"' >> ~/.zshrc
+```
+
+
+
+
+------------
+
 
 brew 安装一些奇奇怪怪的东西：
 

@@ -1,5 +1,12 @@
 
+REST, Representational State Transfer，是一种软件架构风格。
 
+- 客户端-服务器架构（CS独立运行，可扩展可移植）
+- 无状态（每个请求都包含理解和完成请求所需的全部信息，服务器不存储客户端的会话信息）
+- 可缓存性
+- 分层系统
+- 按需编码
+- 统一接口
 
 ## _restful api_
 
@@ -184,4 +191,5 @@ wrk -t12 -c400 -d30s http://127.0.0.1:8080/index.html
 
 参考资料：
 - [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+- [REST API 的关键概念](https://mp.weixin.qq.com/s/lRLhXrVN2_-2wVLD4yJ8og)
 - https://apifox.com/help/

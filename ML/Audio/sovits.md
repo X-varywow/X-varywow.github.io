@@ -23,6 +23,7 @@ https://www.bilibili.com/video/BV1H24y187Ko/ (纯工程应用向，实用性强)
 
 试了一下，10分钟高质量语音就能出来一个较好的音色；社区与文档也好。
 
+> 使用 4.1 需要在旧模型的 config/model 中新增如下内容："speech_encoder": "ec256l9"
 
 
 </br>
