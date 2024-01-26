@@ -41,6 +41,27 @@ $$ RMSE = \sqrt {\frac 1N \sum_{i=1}^N(y_i^2-\hat{y}_i^2)}$$
 MAE，平均绝对误差（Mean absolute error）
 $$ MAE = \frac {\sum^N_{i=1}|y_i-x_i|}n $$
 
+----------------
+
+MAE，平均绝对误差（Median Absolute Error）
+
+$$ MAE = \frac 1n \sum_{i=1}^n|\hat{y_i}-y_i|$$
+
+MAPE，平均绝对百分比误差（Mean Absolute Percentage Error）
+
+$$ MAPE = \frac 1n \sum_{i=1}^n|\frac{\hat{y_i}-y_i}{y_i}|$$
+
+-------------
+
+梯度下降时，MSE 较 MAE 更为准确，异常值处 MAE 较 MSE 更加鲁棒
+
+Huber Loss， 一定程度上结合了 MSE 和 MAE 的优点
+
+
+$$L_{delta}(y, f(x)) = \begin{cases}
+\frac12(y-f(x))^2, \quad \quad \quad if |y-f(x)| \le \delta \\
+\delta|y-f(x)| - \frac12\delta^2, \quad if |y-f(x)| > \delta
+\end{cases}$$
 
 -------------------
 
@@ -72,10 +93,6 @@ Pearson 相关系数
 Kappa 系数
 
 Spearman 相关系数， 斯皮尔曼相关系数
-
-MedianAE，Median Absolute Error
-
-MAPE，Mean Absolute Percentage Error
 
 </br>
 

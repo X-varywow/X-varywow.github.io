@@ -7,8 +7,24 @@ Python 数据处理首页
 
 -------------
 
-- 使用 pandas-profiling 生成数据的详细报告（不适合大量的数据）
-- ydata profiling
+使用 ydata profiling 生成数据的详细报告（不适合大量的数据）
+
+
+```python
+# !pip install ydata-profiling
+
+import numpy as np
+import pandas as pd
+from ydata_profiling import ProfileReport
+
+df = pd.DataFrame(np.random.rand(100, 5), columns=["a", "b", "c", "d", "e"])
+
+profile = ProfileReport(df, title="Profiling Report")
+
+# 生成 notebook 内分析报告
+profile.to_notebook_iframe()
+```
+
 
 
 

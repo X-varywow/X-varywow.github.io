@@ -79,3 +79,11 @@ history
 ```
 
 [nvidia-smi 更多的介绍](https://blog.csdn.net/C_chuxin/article/details/82993350)
+
+显存相关的，还可以使用工具： nvitop
+
+```bash
+pip install nvitop
+
+nvitop
+```

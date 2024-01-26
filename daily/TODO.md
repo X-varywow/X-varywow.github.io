@@ -5,6 +5,9 @@
 
 生成式 AI,确实使游戏开发快很多；https://huggingface.co/cagliostrolab/animagine-xl-3.0
 
+语音、图片、线稿生图
+
+
 思考一下要做的, 学点 RL ，感觉没啥好开发的
 
 https://github.com/KRTirtho/spotube

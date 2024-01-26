@@ -4,8 +4,6 @@
   - [基本概念](ML/基本概念)
   - [暂时笔记](ML/tmp_note/)
   - [高级算法](ML/高级/)
-  - [评价指标](ML/metric)
-  - [信息学中的熵](ML/信息学中的熵)
   - ---
   - [监督学习](ML/监督学习/)
   - [非监督学习](ML/非监督学习/)
@@ -19,6 +17,8 @@
   - ---
   - [环境相关](ML/env)
   - [CUDA相关](ML/cuda)
+  - [Metrics](ML/metric)
+  - [信息学中的熵](ML/信息学中的熵)
   - [模型部署](ML/deploy)
   - [News](ML/News)
   - [OTHER](ML/other)

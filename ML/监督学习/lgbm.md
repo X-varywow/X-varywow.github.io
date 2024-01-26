@@ -14,20 +14,22 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 - 互斥特征捆绑算法
 
 
+</br>
 
-
-## _常见用法_
+## _demo1_
 
 ```python
 !pip install lightgbm
 ```
+
+原生使用方式：
 
 ```python
 import lightgbm as lgb
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 import numpy as np
-from sklearn.metrics import roc_auc_score, accuracy_score
+from sklearn.metrics import roc_auc_score, accuracy_score, mean_squared_error
 
 # 加载数据
 iris = datasets.load_iris()
@@ -36,21 +38,31 @@ iris = datasets.load_iris()
 X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.3)
 
 # 转换为Dataset数据格式
-train_data = lgb.Dataset(X_train, label=y_train)
-validation_data = lgb.Dataset(X_test, label=y_test)
+train_data = lgb.Dataset(X_train, y_train)
+validation_data = lgb.Dataset(X_test, y_test)
 
 # 参数
 params = {
-    'learning_rate': 0.1,
-    'lambda_l1': 0.1,
-    'lambda_l2': 0.2,
-    'max_depth': 4,
-    'objective': 'multiclass',  # 目标函数
-    'num_class': 3,
+    'task': 'train',
+    'boosting_type': 'gbdt',  # 设置提升类型
+    'objective': 'regression',  # 目标函数
+    'metric': {'l2', 'auc'},  # 评估函数
+    'num_leaves': 31,  # 叶子节点数
+    'learning_rate': 0.05,  # 学习速率
+    'feature_fraction': 0.9,  # 建树的特征选择比例
+    'bagging_fraction': 0.8,  # 建树的样本采样比例
+    'bagging_freq': 5,  # k 意味着每 k 次迭代执行bagging
+    'verbose': 1  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
+    # 'learning_rate': 0.1,
+    # 'lambda_l1': 0.1,
+    # 'lambda_l2': 0.2,
+    # 'max_depth': 4,
+    # 'objective': 'multiclass',  # 目标函数
+    # 'num_class': 3,
 }
 
 # 模型训练
-gbm = lgb.train(params, train_data, valid_sets=[validation_data])
+gbm = lgb.train(params, train_data, valid_sets=[validation_data], early_stopping_rounds=5)
 
 # 模型预测
 y_pred = gbm.predict(X_test)
@@ -58,8 +70,105 @@ y_pred = [list(x).index(max(x)) for x in y_pred]
 print(y_pred)
 
 # 模型评估
-print(accuracy_score(y_test, y_pred))
+print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
+
+# 保存/加载
+gbm.save_model('model-01')
+model = lgb.Booster(model_file = 'model-01')
 ```
+
+sklearn 接口形式，参考如下分数位回归：
+
+
+
+</br>
+
+## _分位数回归_
+
+quantile regression，最小化所选分位数切点产生的绝对误差之和
+
+还有这个东西，相当于间接把预测目标的分布给描述出来了，对于用户得分预测等场景很适用
+
+```python
+import lightgbm as lgb
+
+model = lgb.LGBMRegressor(
+    task = 'train',
+    objective = 'quantile',
+    alpha = 0.5,
+    boosting_type = 'gbdt',
+    learning_rate = 0.01
+    n_estimators = 2000,
+    min_child_samples = 16,
+    max_depth = 7,
+    num_leaves = 127,
+    random_state = 42,
+    max_cat_threshold = 1024,
+    max_bin = 256,
+    class_weight = 'balanced'
+)
+
+callbacks = [log_evaluation(period=100), early_stopping(stopping_rounds=30)]
+model.fit(
+    X_train, 
+    y_train, 
+    eval_set = [(X_train, y_train),(X_val, _val)],
+    eval_metric = ['rmse', 'mape', 'huber'],
+    callbacks = callbacks,
+    feature_nmae = ,
+    categorical_feature = 
+)
+```
+
+```python
+from lightgbm import LGBMRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import GridSearchCV
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.externals import joblib
+
+# 加载数据
+iris = load_iris()
+data = iris.data
+target = iris.target
+
+# 划分训练数据和测试数据
+X_train, X_test, y_train, y_test = train_test_split(data, target, test_size=0.2)
+
+# 模型训练
+gbm = LGBMRegressor(objective='regression', num_leaves=31, learning_rate=0.05, n_estimators=20)
+gbm.fit(X_train, y_train, eval_set=[(X_test, y_test)], eval_metric='l1', early_stopping_rounds=5)
+
+# 模型存储
+joblib.dump(gbm, 'loan_model.pkl')
+# 模型加载
+gbm = joblib.load('loan_model.pkl')
+
+# 模型预测
+y_pred = gbm.predict(X_test, num_iteration=gbm.best_iteration_)
+
+# 模型评估
+print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
+
+# 特征重要度
+print('Feature importances:', list(gbm.feature_importances_))
+
+# 网格搜索，参数优化
+estimator = LGBMRegressor(num_leaves=31)
+param_grid = {
+    'learning_rate': [0.01, 0.1, 1],
+    'n_estimators': [20, 40]
+}
+gbm = GridSearchCV(estimator, param_grid)
+gbm.fit(X_train, y_train)
+print('Best parameters found by grid search are:', gbm.best_params_)
+
+
+```
+
+
+
 
 ## _数据分析_
 

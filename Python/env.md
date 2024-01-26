@@ -328,8 +328,6 @@ sys.version
 
 import os
 os.cpu_count()
-
-!nvidia-smi
 ```
 
 `pyc` 文件

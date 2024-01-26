@@ -275,6 +275,8 @@ when not matched then
 https://docs.snowflake.com/en/user-guide/streams-examples
 
 
+双流数据 join 的问题，可以改为在原始表建立 join 的视图，然后使用 stream 捕获。
+
 
 
 ## 5.Dynamic Tables
