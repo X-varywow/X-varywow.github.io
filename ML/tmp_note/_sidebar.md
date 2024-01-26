@@ -9,6 +9,5 @@
   - [概统基础](ML/tmp_note/math-ST)
   - [数据科学](ML/tmp_note/数据科学)
   - ---
-  - [特征工程](ML/tmp_note/特征工程)
   - [时序问题](ML/tmp_note/时序问题)
   - [推荐系统](ML/tmp_note/推荐系统)

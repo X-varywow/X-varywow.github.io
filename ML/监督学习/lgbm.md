@@ -87,15 +87,16 @@ sklearn 接口形式，参考如下分数位回归：
 
 quantile regression，最小化所选分位数切点产生的绝对误差之和
 
-还有这个东西，相当于间接把预测目标的分布给描述出来了，对于用户得分预测等场景很适用
+关心预测的期望值和潜在变异性，相当于间接把预测目标的分布给描述出来了，对于用户得分预测等场景很适用
 
 ```python
 import lightgbm as lgb
+from lightgbm import log_evaluation, early_stopping
 
 model = lgb.LGBMRegressor(
     task = 'train',
     objective = 'quantile',
-    alpha = 0.5,
+    alpha = 0.5,  # 指定关心的分数位
     boosting_type = 'gbdt',
     learning_rate = 0.01
     n_estimators = 2000,
@@ -168,31 +169,12 @@ print('Best parameters found by grid search are:', gbm.best_params_)
 ```
 
 
+----------------
 
+其它目标函数： regression_l1, regression_l2, quantile, poisson, mape
 
-## _数据分析_
+特征工程、数据分析相关，参考：[Python/数据处理/特征工程](Python/数据处理/特征工程)
 
-```python
-import pandas
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# 查看 pandas.DataFrame
-df.describe()
-
-# 自动箱线图
-df.boxplot()
-plt.show()
-
-# 相关性分析
-df.corr()
-
-# 相关性曲线
-sns.pairplot(df, x_vars=[...], y_vars='strength', height=7, aspect=0.8, kind = 'reg')
-plt.show()
-```
 
 
 
@@ -303,9 +285,9 @@ shap.plots.bar(shap_values)
 --------------------
 
 参考资料：
-- [深入理解LightGBM](https://zhuanlan.zhihu.com/p/99069186)
 - [万字详解：LightGBM 原理、代码最全解读！](https://zhuanlan.zhihu.com/p/447252042)
 - [LightGBM官方文档](https://lightgbm.readthedocs.io/en/v3.3.2/)
-- [Kaggle神器LightGBM最全解读！](https://cloud.tencent.com/developer/article/1758058)
+- https://caicaijason.github.io/2020/01/07/LightGBM%E7%AE%80%E4%BB%8B/ ⭐️
+- https://mp.weixin.qq.com/s/XxFHmxV4_iDq8ksFuZM02w
 - https://optuna.org/
 - [optuna 文档](https://zh-cn.optuna.org/index.html)

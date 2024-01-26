@@ -1,6 +1,9 @@
 
 
 
+## _直方图_
+
+
 ```python
 import seaborn as sns
 sns.histplot(df[df['NEXT_ENTRY_KIND'] == 2]['NEXT_SCORE'], kde=True)
@@ -16,11 +19,32 @@ sns.kdeplot(data=data, x='feature1', y='feature2', shade=True)
 
 
 
+## _气泡图_
+
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# 假设df是您的DataFrame
+
+# 修改数据，增加一列作为气泡的大小
+df['size'] = np.log(df['col2'])
+
+# 使用seaborn的scatterplot函数绘制气泡图，并设置透明度
+# sizes 表示：线性映射的最小值、最大值
+sns.scatterplot(data=df, x='col1', y='col1', size='size', legend=False, sizes=(20, 2000), alpha=0.5)
+
+# 通过matplotlib加以定制，比如添加标题等
+plt.title('Bubble Plot with Transparency')
+plt.show()
+```
 
 
 
-
-## _绘制热度图_
+## _热度图_
 
 ```python
 import matplotlib.pyplot as plt
@@ -44,4 +68,5 @@ sns.heatmap(data, fmt='d', linewidths=.5, cmap='YlGnBu')
 ---------
 
 参考资料：
-- 官网
+- [seaborn_gallery](https://seaborn.pydata.org/examples/index.html)
+- chatgpt

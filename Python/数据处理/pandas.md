@@ -103,6 +103,17 @@ df.info()  # more info than shape
 ```python
 # of distinct values in a column
 df['w'].unique()
+
+# 查看分位数 
+df['col'].quanile(0.5)
+
+# 查看某一列 > 10 的数据
+df[pd.to_numeric(df['col1']) > 10]
+
+# 分组再统计
+seed_res = data_oldusers_test.groupby('NEXT_SEED')['bias'].agg([
+    ('win_ratio', lambda x: (x > 0).mean()), ('score_cnt', 'size')
+])
 ```
 
 
@@ -111,6 +122,10 @@ df['w'].unique()
 ```python
 # 新建一个 dataframe 为前100行
 new_df = df.head(100)
+
+
+# 新增一列
+df['idx'] = range(len(df))
 ```
 
 设置行列名称：
@@ -271,7 +286,9 @@ df.drop('feature_variable_name', axis=1)
 # 根据索引排序，默认升序
 df.sort_index(axis=0,ascending=True)
 
-# 根据值排序
+# 根据cnt值降序排列
+df.sort_values(by='score_cnt', ascending=False)
+
 df.sort_values(axis=0,ascending=True)
 
 # 按时间升序，以显示

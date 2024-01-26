@@ -38,10 +38,7 @@ $$ MSE =  \frac 1N \sum_{i=1}^N(y_i^2-\hat{y}_i^2)$$
 RMSE，均方根误差（Root Mean Squared Error）
 $$ RMSE = \sqrt {\frac 1N \sum_{i=1}^N(y_i^2-\hat{y}_i^2)}$$
 
-MAE，平均绝对误差（Mean absolute error）
-$$ MAE = \frac {\sum^N_{i=1}|y_i-x_i|}n $$
-
-----------------
+--------------
 
 MAE，平均绝对误差（Median Absolute Error）
 
