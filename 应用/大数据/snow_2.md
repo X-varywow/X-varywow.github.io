@@ -114,6 +114,8 @@ as
 
 alter task t1 resume;
 alter task t2 suspend;
+
+execute task t1;
 ```
 
 
@@ -506,5 +508,6 @@ SELECT
   *
 FROM 
   table(information_schema.task_history(scheduled_time_range_start=> dateadd('hours',-10,current_timestamp)))
+WHERE schema_name = '' and database_name = ''
 LIMIT 100;
 ```

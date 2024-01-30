@@ -85,6 +85,9 @@ sorted([f.name for f in font_manager.fontManager.ttflist])
 
 plt.rc('font',family='Nimbus Roman') 
 
+# sagemaker 比较好看的字体
+plt.rcParams['font.family'] = 'DejaVu Sans'
+
 
 # win 端比较好看的字体
 plt.rcParams['font.family']=['Bookman Old Style']

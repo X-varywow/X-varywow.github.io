@@ -40,7 +40,10 @@ CRM 客户关系管理，对客户分群等操作，定制化广告投放
 
 `CE` conversion event, 转化事件，在广告投放中会通过设置转化事件来衡量广告的效果和ROI(投资回报率)，并根据转化事件的数量和质量来优化广告投放策略。
 
-`EDA` exploratory data analysis，探索性数据分析。
+`ROAS` Return on Advertising Spend, 广告花费回报率，= 广告收入/广告支出
+
+
+`EDA` exploratory data analysis，探索性数据分析
 
 
 

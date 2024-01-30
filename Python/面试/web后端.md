@@ -106,7 +106,7 @@ Session 代表着服务器和客户端一次会话过程。保存在服务器端
 
 >(15) select,poll,epoll 了解吗？
 
-select,poll,epoll 是三种 **IO多路复用**（多个socket网络连接复用一个线程） 技术。
+select, poll, epoll 是三种 **IO多路复用**（多个socket网络连接或IO流，复用一个线程，被同时监控） 技术。
 
 与多进程和多线程技术相比，I/O多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销。
 
@@ -115,6 +115,10 @@ select 连接数有限制，基于轮询机制，随着连接数的增加，性�
 poll 的实现与 select 非常相似，只是描述 fd 集合的方式不同。
 
 epoll 是目前最好的多路复用技术，连接数无限制，随着连接数增加，性能基本上没有下降。在处理上千万并发连接时，性能很好。（数据结构：红黑树）
+
+个人理解：监听多个IO流并通知的中转器
+
+[python-select](https://docs.python.org/zh-cn/3/library/select.html)
 
 参考：[深入浅出理解select、poll、epoll的实现](https://zhuanlan.zhihu.com/p/367591714)
 

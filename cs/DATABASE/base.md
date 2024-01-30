@@ -54,6 +54,9 @@ truncate table t1 restart identity;
 
 
 ```sql
+-- 使用 a 表结构创建 b 表
+create table b like a;
+
 drop table table_name;
 ```
 
