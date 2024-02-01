@@ -1,6 +1,6 @@
 - [回到上一级](cs/)
 - [cs/Database](cs/DATABASE/)
   - [基本操作](cs/DATABASE/base)
+  - [基础语法](cs/DATABASE/synatax)
   - [课程笔记](cs/DATABASE/db_theory)
-  - [sql_基础语法](cs/DATABASE/sql_fund)
   - [sql_入门题](cs/DATABASE/sql_easy)

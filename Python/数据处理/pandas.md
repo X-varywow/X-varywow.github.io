@@ -100,6 +100,11 @@ df.shape   # (rows, cols)
 df.info()  # more info than shape
 ```
 
+
+</br>
+
+_常见操作_
+
 ```python
 # of distinct values in a column
 df['w'].unique()
@@ -110,10 +115,16 @@ df['col'].quanile(0.5)
 # 查看某一列 > 10 的数据
 df[pd.to_numeric(df['col1']) > 10]
 
+# 再复杂一点
+df['col2'] = abs(df['col1'] - 0.5)*df['col3']
+
 # 分组再统计
 seed_res = data_oldusers_test.groupby('NEXT_SEED')['bias'].agg([
     ('win_ratio', lambda x: (x > 0).mean()), ('score_cnt', 'size')
 ])
+
+# 类型转化
+data['NEXT_SCORE'] = data['NEXT_SCORE'].astype('int')
 ```
 
 

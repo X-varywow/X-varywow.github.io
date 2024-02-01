@@ -544,4 +544,6 @@ import warnings
 
 # 忽略所有用户级别警告
 warnings.filterwarnings("ignore", category=UserWarning)
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 ```

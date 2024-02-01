@@ -245,11 +245,12 @@ from corn_production;
 | Iowa   |              110 |           3|
 | Iowa   |              100 |           4|
 +--------+------------------+------------+
+
 select 
-symbol,
-exchange,
-shares,
-row_number() over (partition by exchange order by shares) as row_number
+    symbol,
+    exchange,
+    shares,
+    row_number() over (partition by exchange order by shares) as row_number
 from trades;
 +------+--------+------+----------+
 |SYMBOL|EXCHANGE|SHARES|ROW_NUMBER|

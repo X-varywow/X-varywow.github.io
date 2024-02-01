@@ -60,25 +60,6 @@ values
 
 ```
 
-> join 相关
-
-
-https://www.runoob.com/sql/sql-join.html
-
-
-<img src='https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png' style="zoom:60%">
-
-
-</br>
-
-左连接，保留左边全部行，按左边行顺序与右边比较连接条件做连接，<u>一对多会产生多条连接记录</u>
-
-利用笛卡尔积 （cross join）和中间表可以实现很多有用的逻辑，
-
-比如：每个列中附加全局统计信息
-
-
-
 
 
 

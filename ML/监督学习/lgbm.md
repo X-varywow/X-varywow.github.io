@@ -13,16 +13,27 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 - 单边梯度采样算法
 - 互斥特征捆绑算法
 
-
-</br>
-
-## _demo1_
+---------------
 
 ```python
 !pip install lightgbm
 ```
 
-原生使用方式：
+
+- lightgbm.LGBMRegressor
+- lightgbm.LGBMClassifier
+- lightgbm.LGBMRanker
+
+
+
+
+
+
+
+
+</br>
+
+## _原生demo_
 
 ```python
 import lightgbm as lgb
@@ -153,7 +164,13 @@ y_pred = gbm.predict(X_test, num_iteration=gbm.best_iteration_)
 print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
 
 # 特征重要度
-print('Feature importances:', list(gbm.feature_importances_))
+pd.DataFrame({
+        'column': feas,
+        'importance': model.feature_importances_,
+}).sort_values(by = 'importance', ascending=False)
+
+lgb.plot_importance(model)
+
 
 # 网格搜索，参数优化
 estimator = LGBMRegressor(num_leaves=31)
@@ -164,9 +181,20 @@ param_grid = {
 gbm = GridSearchCV(estimator, param_grid)
 gbm.fit(X_train, y_train)
 print('Best parameters found by grid search are:', gbm.best_params_)
-
-
 ```
+
+
+
+
+
+</br>
+
+## _other_
+
+更好的模型效果：
+- 常规的: 更大、更好的训练数据
+- 较大的 max_bin
+- 较小的 learning_rate
 
 
 ----------------
@@ -176,7 +204,25 @@ print('Best parameters found by grid search are:', gbm.best_params_)
 特征工程、数据分析相关，参考：[Python/数据处理/特征工程](Python/数据处理/特征工程)
 
 
+-----------
 
+解释接口：
+
+```python
+!pip install graphviz
+lgb.plot_tree(model)
+
+lgb.plot_metric(model)
+
+lgb.plot_importance(model)
+```
+
+
+
+
+
+
+</br>
 
 ## _使用 optuna_
 
@@ -240,6 +286,13 @@ study = optuna.create_study(direction='maximize')
 study.optimize(objective, n_trials=100)
 ```
 
+- https://optuna.org/
+- [optuna 文档](https://zh-cn.optuna.org/index.html)
+
+
+
+
+</br>
 
 ## _使用 shap_
 
@@ -288,6 +341,5 @@ shap.plots.bar(shap_values)
 - [万字详解：LightGBM 原理、代码最全解读！](https://zhuanlan.zhihu.com/p/447252042)
 - [LightGBM官方文档](https://lightgbm.readthedocs.io/en/v3.3.2/)
 - https://caicaijason.github.io/2020/01/07/LightGBM%E7%AE%80%E4%BB%8B/ ⭐️
-- https://mp.weixin.qq.com/s/XxFHmxV4_iDq8ksFuZM02w
-- https://optuna.org/
-- [optuna 文档](https://zh-cn.optuna.org/index.html)
+- https://www.showmeai.tech/article-detail/205 ⭐️ 具体应用向
+- [LightGBM源码阅读+理论分析](https://mp.weixin.qq.com/s/XxFHmxV4_iDq8ksFuZM02w) 偏理论
