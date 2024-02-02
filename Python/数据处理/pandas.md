@@ -115,6 +115,8 @@ df['col'].quanile(0.5)
 # 查看某一列 > 10 的数据
 df[pd.to_numeric(df['col1']) > 10]
 
+df2 = df[(20 < df['CLEAR_RATIO']) & (df['CLEAR_RATIO'] <= 75)]
+
 # 再复杂一点
 df['col2'] = abs(df['col1'] - 0.5)*df['col3']
 

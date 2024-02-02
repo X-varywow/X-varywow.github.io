@@ -7,6 +7,8 @@
 
 语音、图片、线稿生图
 
+https://instantid.github.io/
+
 
 思考一下要做的, 学点 RL ，感觉没啥好开发的
 

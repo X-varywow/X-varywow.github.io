@@ -15,7 +15,7 @@
 
 显示器排列
 
-iterm2 + [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) + [nerd fonts](https://github.com/ryanoasis/nerd-fonts) + [dracula-theme](https://github.com/dracula/dracula-theme) 配色
+iterm2 + zsh + [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) + [nerd fonts](https://github.com/ryanoasis/nerd-fonts) + [dracula-theme](https://github.com/dracula/dracula-theme) 配色
 
 ```zsh
 vim ~/.zshrc
@@ -68,6 +68,31 @@ brew 安装一些奇奇怪怪的东西：
 ```bash
 export PATH=/usr/local/python-2.7.6/bin:$PATH 
 ```
+
+autojump， 快捷地文件跳转
+
+```bash
+brew install autojump
+
+vim  ~/.zshrc
+# 添加如下：
+# [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+source ~/.zshrc
+
+# 查看数据库
+autojump --stat
+j --stat
+
+# 使用 j 跳转到指定目录
+j csm
+# /data/www/xxx/cms
+```
+
+
+
+
+
 
 
 
