@@ -58,7 +58,7 @@ Rancher 是一个开源的容器管理平台，使用户能够轻松地部署和
 
 代码上设置监控报警点
 
-Grafana 监控看板；Prometheus 是一种开源监控和警报工具套件
+Grafana 监控看板；Prometheus 是一种开源监控和警报工具套件；python 使用参考：[fastapi](Python/web/fastapi)
 
 ```python
 from prometheus_fastapi_instrumentator import Instrumentator

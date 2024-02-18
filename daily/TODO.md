@@ -107,3 +107,14 @@ https://medium.com/dissecting-bert/dissecting-bert-part-1-d3c3d495cdb3
 http://nlp.seas.harvard.edu/2018/04/03/attention.html
 
 https://www.cloudskillsboost.google/journeys/118
+
+
+简单的内容创作，AI 可以做太多了；
+
+github 越多 ai 相关的了，也不是很深奥的代码，常用的网络方法、领域数据处理不太熟，
+
+以及 rust 重写的工具
+
+https://github.com/MichaelCade/90DaysOfDevOps/blob/main/2023/day06.md
+
+https://openai.com/sora 质量有点好，但是再长一些的连贯，制作短片，将文本内容转视频，辅助视频制作，会很有用

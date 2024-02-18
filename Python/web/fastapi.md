@@ -99,6 +99,14 @@ def shutdown_event():
 
 demo, 使用监控：
 
+```bash
+pip install prometheus-fastapi-instrymentator
+
+
+mkdir "monitor"
+export prometheus_multiproc_dir="monitor"
+```
+
 ```python
 from prometheus_fastapi_instrumentator import Instrumentator
 
@@ -106,11 +114,14 @@ from prometheus_fastapi_instrumentator import Instrumentator
 def start_prometheus():
     Instrumentator().instrument(app).expose(
         app,
-        endpoint=f'{prefix}/metrics',
+        endpoint=f'{app_name}/metrics',
         tags=['system']
     )
-```
 
+
+# 引入 grafana 的接口： /{app_name}/metrics
+# curl http://0.0.0.0:8888/{app_name}/metrics
+```
 
 
 </br>

@@ -84,7 +84,7 @@ print(y_pred)
 print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
 
 # 保存/加载
-gbm.save_model('model-01')
+gbm.booster_.save_model(model_name)
 model = lgb.Booster(model_file = 'model-01')
 ```
 
