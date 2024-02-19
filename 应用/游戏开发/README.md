@@ -38,14 +38,3 @@ EA（Electronic Arts）：EA在制作游戏时使用的主要引擎是Frostbite�
 
 B社（Bethesda Softworks）：B社在制作游戏时使用的主要引擎是Creation Engine。Creation Engine是B社自家开发的引擎，被用于制作B社旗下的游戏作品，如《上古卷轴》系列、《辐射》系列等。不过，B社也会在一些游戏中使用其他引擎，如《毁灭战士》系列使用的是id Tech引擎。
 
-
--------------------
-
-#关于 Unity 2024 年新增安装费
-
-收到反馈后，变成：个人版不收费，专业版和企业版使用 2024LTS 之后的 unity 版本开发的，一定量级会增设费用。
-
-还是可以白嫖的
-
-
-参考：http://www.ruanyifeng.com/blog/2023/09/weekly-issue-272.html

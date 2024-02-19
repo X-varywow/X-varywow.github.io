@@ -7,8 +7,9 @@
 pip install numpy
 ```
 
+</br>
 
-### Numpy 数组
+## _Numpy 数组_
 
 | 属性        | 说明                       |
 | ----------- | -------------------------- |
@@ -21,7 +22,7 @@ pip install numpy
 ndarray数组可以由非同质对象构成。
 非同质ndarray元素为对象类型，`dtype('O')`
 
-#### （1）创建方法
+### （1）创建方法
 1. `np.array(list/tuple,dtype=np.float32)`
 
 ```python
@@ -44,9 +45,20 @@ np.arange(start,stop,step)
 8. `np.zeros_like(a)`
 9.  `np.full_like(a,val)`
 10. `np.linspace(n,m,k,endpoint=True)`
+
+
+
+
 11. `np.concatenate()` 
 
-#### （2）变换方法
+12. `np.random.uniform()`
+
+```python
+np.random.uniform(low = 0.0, high = 1.0, size = 4)
+```
+
+
+### （2）变换方法
 1. `a.reshape(shape)`，对a`reshape`,返回shape形状数组
 2. `a.resize(shape)`，同`reshape`，但修改原数组
 3. `a.swapaxes(ax1,ax2)`，调换维度
@@ -55,12 +67,32 @@ np.arange(start,stop,step)
 6. `a.tolist()`
 
 
-#### （3）切片和子集
+-----------------
+
+数组叠加：
+
+```python
+# 在 数组 a 末尾水平追加数组 b
+np.hstack(a, b)
+
+# 数组堆叠到 a 上
+np.vstack(a, b)
+```
+
+
+
+
+
+
+
+
+
+### （3）切片和子集
 1. 索引切片同 `list`，但：多维间用 `,` 隔开，eg: `array[i,j]`
 2. `:` 可选取整个维度
 3. 还有一种布尔索引，eg: `array[i<4]`
 
-#### （4）运算方法
+### （4）运算方法
 1. `a.mean()`
 2. 元素群运算：`+` `-` `*` `/` `**`
   `np.maxmum(x,y)`
@@ -84,7 +116,11 @@ np.ones([2,2])          #-->array([[1., 1.],1., 1.]])
 np.linspace(1,10,4)     #-->array([ 1.,  4.,  7., 10.])
 ```
 
-### 统计函数
+</br>
+
+## _统计函数_
+
+
 1. `np.sum(a,axis=None)`
 2. `np.mean(a,axis=None)`，计算期望
 3. `np.average(a,axis=None,weights=None)`，计算加权平均
@@ -98,7 +134,10 @@ np.linspace(1,10,4)     #-->array([ 1.,  4.,  7., 10.])
 8. `array.max()`
 9. `array.cumsum()`，指定轴求累计和
 
-### 特殊函数
+
+</br>
+
+## _特殊函数_
 
 `np.gradient(f)` 计算斜率
 
@@ -111,17 +150,15 @@ np.linspace(1,10,4)     #-->array([ 1.,  4.,  7., 10.])
 `np.random.poisson(lam,size)` 产生泊松分布数组，`lam`随机事件发生概率
 
 
-np.stack() 堆叠
+---------------------
 
-
-
-### 文件读写
+文件读写
 
 **一维或二维**
 1. `np.savetxt(frame,array,fmt,delimiter=None)`
 其中delimiter应该为 `,`
 eg. `np.savetxt('foo.csv',a,fmt='%d',delimiter=',')`
-2. `np.loadtxt(frame,dtype=np.float,delimiter=None,unpack=False)`
+1. `np.loadtxt(frame,dtype=np.float,delimiter=None,unpack=False)`
 
 **多维**
 1. ` a.tofile()`
@@ -147,9 +184,11 @@ np.save('outfile.npy',a)
 np.save('outfile2',a)
 ```
 
-### _other_
+</br>
 
-##### 1. 转置矩阵
+## _other_
+
+#### 1. 转置矩阵
 
 ```python
 #做法一：
@@ -164,7 +203,7 @@ class Solution:
         return list(zip(*matrix))
 ```
 
-##### 2. 对图片进行手绘风格转变
+#### 2. 对图片进行手绘风格转变
 
 ```python
 from PIL import Image
@@ -195,7 +234,7 @@ im = Image.fromarray(b.astype('uint8'))  #重构图像
 im.save('./beijingHD.jpg')
 ```
 
-##### 3. 使用 numpy 加速计算
+#### 3. 使用 numpy 加速计算
 
 ```python
 import numpy as np
