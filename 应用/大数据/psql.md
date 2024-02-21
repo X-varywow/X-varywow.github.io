@@ -61,8 +61,10 @@ comment on column "scheme_name"."table_name"."col_name" is 'introduction';
 
 -- 分片
 set citus.shard_count = 32;
-select create_distributed_table('table_name', 'col_name');
+select create_distributed_table('schema.table_name', 'col_name');
 
+-- 参照表（保证每个节点都有完整的数据副本，适用于数据量不大但需经常访问的表）
+SELECT create_reference_table('schema.table_name');
 
 -- 分区
 create table ...()

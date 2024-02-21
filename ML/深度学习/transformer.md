@@ -281,3 +281,6 @@ $$(softmax_1(x))_i = \frac{exp(x_i)}{1 + \sum_jexp(x_j)}$$
 [xFormers](https://github.com/facebookresearch/xformers) - Toolbox to Accelerate Research on Transformers
 
 
+[Transformer的物理原理](https://mp.weixin.qq.com/s/wUtwfeWAbMCBzRu5pWk2Cg)
+
+

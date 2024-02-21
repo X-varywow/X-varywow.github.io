@@ -118,3 +118,13 @@ github 越多 ai 相关的了，也不是很深奥的代码，常用的网络方
 https://github.com/MichaelCade/90DaysOfDevOps/blob/main/2023/day06.md
 
 https://openai.com/sora 质量有点好，但是再长一些的连贯，制作短片，将文本内容转视频，辅助视频制作，会很有用
+
+https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
+
+vae diffusion transformer 数理基础，算子，有空补一下;
+
+脑机接口，也是离谱
+
+20240221
+- [ ] update blog place1
+- [ ] update blog place2

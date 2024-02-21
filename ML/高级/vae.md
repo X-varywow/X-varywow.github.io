@@ -209,4 +209,10 @@ chatgpt
 
 [Understanding Variational Autoencoders (VAEs)](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73)
 
+[漂亮国的核潜艇与深度学习的内卷](https://mp.weixin.qq.com/s/NvwaR_dzQZnE85W1YtVWiA) 综述及探讨常用生成模型和分布误差度量方式
 
+对神经网络黑盒的理解：如何对这些信息进行了有效的表征，并且可以泛化；其中数学原理？信息传递方式？压缩即智能？
+
+相变、涌现、很神奇 [学习语言需要相变](https://mp.weixin.qq.com/s/x2mkY3qCJssZ2WJmD0MB_A)
+
+[White-Box Transformers via Sparse Rate Reduction: Compression Is All There Is?](https://arxiv.org/abs/2311.13110) 数学可解释模型 [解读1](https://zhuanlan.zhihu.com/p/661471603)

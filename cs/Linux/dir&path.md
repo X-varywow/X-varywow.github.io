@@ -1,5 +1,5 @@
 
-_绝对路径和相对路径_
+## _绝对路径和相对路径_
 
 **绝对路径**：由 `/` 开始写起，如`/home/user`
 
@@ -24,7 +24,7 @@ cd -
 
 </br>
 
-_基本指令_
+## _基本指令_
 
 （1）ls
 
@@ -71,7 +71,7 @@ ln -s log2013.log link2013   # 软链接
 
 </br>
 
-_查看文件_
+## _查看文件_
 
 | 命令                  | 描述                     |
 | --------------------- | ------------------------ |
@@ -84,9 +84,26 @@ _查看文件_
 | `which`               | 查看可执行文件的绝对路径 |
 | `find 路径 参数`      | 搜索文件                 |
 
+
+
 </br>
 
-_文件属性_
+## _文件系统_
+
+/ 根目录
+
+/bin 包含启动系统和执行基本操作所需的基本二进制可执行文件
+
+/dev 包含代码硬件组件或其他系统设备的设备文件。例如，/dev/sda 代表第一个 SATA 驱动器，/dev/tty 代表终端。
+
+/etc 存储系统和应用程序的配置文件。
+
+/home 包含系统上所有有账户的用户的个人目录
+
+
+</br>
+
+## _文件属性_
 
 在Linux中我们可以使用`ll`或者`ls –l`命令来显示一个文件的属性以及文件所属的用户和组
 
@@ -107,4 +124,8 @@ chmod  XXX  文件名
 chmod  [-R]  XXX  目录名
 ```
 
-更多信息：https://www.runoob.com/linux/linux-file-attr-permission.html
+-------------
+
+参考资料：
+- [linux 文件系统](https://mp.weixin.qq.com/s/AGC3w7NZqllq-2tc4q3afw)
+- [linux-file-attr-permission](https://www.runoob.com/linux/linux-file-attr-permission.html)

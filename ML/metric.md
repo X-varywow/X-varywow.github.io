@@ -91,6 +91,30 @@ Kappa 系数
 
 Spearman 相关系数， 斯皮尔曼相关系数
 
+
+
+</br>
+
+## _常见距离_
+
+
+欧氏距离，曼哈顿距离，切比雪夫距离，闵可夫斯基距离，马氏距离，余弦相似度，皮尔逊相关系数，
+
+汉明距离，杰卡德相似系数，编辑距离，KL 散度，还有改进KL散度的对称的JS 散度
+
+----------
+
+Wasserstein距离，两个概率分布之间差异的度量
+
+假定要把概率分布 $p(x)$ 转变为 $q(x)$，设距离函数（转移成本）为 $d(x,y)$, 则：
+
+$$\omega[p,q] = inf_{\gamma \in \prod [p, q]} \iint \gamma (x,y) d(x,y) dxdy$$
+
+
+
+
+
+
 </br>
 
 ## _一些例子_
@@ -116,3 +140,4 @@ def regression_metrics(ground_truth, prediction):
 
 参考资料：
 - [说一说机器学习中TP、TN 、FP 、FN](https://blog.csdn.net/qq_28834001/article/details/102922993)
+- https://zhuanlan.zhihu.com/p/353418080

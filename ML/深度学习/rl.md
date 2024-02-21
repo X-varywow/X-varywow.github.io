@@ -85,6 +85,13 @@ action critic 两个网络，行动价值，状态价值；
 
 
 
+</br>
+
+## _逆向强化学习_
+
+复杂场景特别是多智能体的博弈下，给出激励（Reward）是极其困难的，多数情况几乎不可行。
+
+Inverse Reinforcement Learning 通过收集专家的经验与环境信息，来反向学习激励函数。
 
 -----------
 
@@ -92,4 +99,5 @@ action critic 两个网络，行动价值，状态价值；
 - https://easyai.tech/ai-definition/reinforcement-learning/
 - [DQN打只狼里的boss](https://www.bilibili.com/video/BV1by4y1n7pe/)
 - [强化学习—— 离散与连续动作空间](https://blog.csdn.net/Cyrus_May/article/details/124137445)
+- https://mp.weixin.qq.com/s/NvwaR_dzQZnE85W1YtVWiA
 - chatgpt
