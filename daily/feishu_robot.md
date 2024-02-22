@@ -115,3 +115,33 @@ https://open.feishu.cn/document/common-capabilities/message-card/message-cards-c
 
 DEBUG 模式，右键头像，可以获取 user_id
 
+
+---------------
+
+显示折叠消息：
+
+官方文档上暂时没有这个组件，使用的如下方式：
+
+```python
+MORE_INFO = {
+    "tag": "action",
+    "actions":[{
+        "tag": "select_static",
+        "placeholder": {
+        "tag": "plain_text",
+        "content": "more info"
+        },
+        "options": [
+        {
+            "text": {
+            "tag": "plain_text",
+            "content": i
+            },
+            "value": ""
+        }
+        for i in params['more_info']
+        ]
+    }]
+    }
+```
+
