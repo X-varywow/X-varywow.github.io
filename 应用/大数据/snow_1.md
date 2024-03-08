@@ -488,7 +488,18 @@ call test_sp_dynamic('t001');
 ```
 
 
-### 2.5 其他
+### 2.5 时间相关
+
+```sql
+SELECT 
+    DATE_TRUNC('DAY', created_at) AS day, 
+    DATEADD(hour, -1, current_timestamp()),
+    EXTRACT(DAY FROM CREATED_AT)
+FROM T1 LIMIT 10;
+```
+
+
+### 2.6 其他
 
 - 创建临时表
 - 加载数据 https://docs.snowflake.com/en/user-guide/data-load-overview.html
