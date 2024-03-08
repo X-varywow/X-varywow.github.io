@@ -105,6 +105,8 @@ new_df = df.to_pandas()
 
 （3）数据写入 snowflake
 
+将列名转化为大写，不然 snowflake 无法识别
+
 ```python
 data = pd.DataFrame([[var_name, a.mu, a.sigma, a.ordinal()] for var_name, a in d.items()])
 data.rename(columns={0:'var_name', 1:'mu', 2:'sigma', 3:'rank'},inplace=True)

@@ -334,6 +334,51 @@ shap_values = explainer(X)
 shap.plots.bar(shap_values)
 ```
 
+</br>
+
+
+## _demo: lgbm&shap_
+
+```python
+import lightgbm as lgb
+import shap
+file_path = r'/home/ec2-user/SageMaker/'
+
+# 1. load model
+bst = lgb.Booster(model_file=f'{file_path}/model.pkl')
+lgb.plot_importance(bst, max_num_features=20)
+
+# 2. predict by feas
+feas = ['user_id', 'score_100']
+bst.predict(df.head(1)[feas])
+
+# 中途有报错，指定一下 objective
+bst.params['objective'] = 'quantile'
+
+# 3. shap explain
+explainer = shap.Explainer(bst)
+x = df[df['difficulty_bin'.upper()] == 5].head(1)
+shap_values = explainer(x)
+
+# 4. waterfall plot
+shap.plots.waterfall(shap_values[0])
+
+# 5. batch plot
+shap.plots.beeswarm(shap_values)
+```
+
+lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看子样本维度的时候，如深水区、浅水区、都需要完美预测运动员的水平，但是分位数回归只是整体做了一个 50 分位的预测，
+
+虽然整体上看偏差还是正态，无太大问题， 但是各个子样本（训练与预测）的分布不同、峰度、偏度不同，大概率会产生一定问题，可以尝试：拆分样本。
+
+
+
+
+
+
+
+
+
 
 --------------------
 

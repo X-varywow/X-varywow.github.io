@@ -144,9 +144,11 @@ Command Mode (press Esc to enable)
 | -------------- | ---------------------- |
 | m              | 变成 markdown          |
 | y              | 变成 code              |
+| r              | 变成 raw              |
 | A              | insert cell above      |
 | B              | insert cell below      |
 | X              | cut selected cells     |
+| Z              | 回退     |
 | ctrl + enter   | 运行                   |
 | shift + enter  | 运行并切换到下个代码块 |
 | option + enter | 运行并新增到下个代码块 |

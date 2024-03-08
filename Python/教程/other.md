@@ -39,7 +39,6 @@ if n < 1:
 
 - 定义函数时，带默认参数的必须出现在参数列表最右边
 - 多行注释`'''  '''`
-- `eval()`执行字符串表达式
 - `del list(index)`，删除
 - `list`使用`+=`可进行扩充
 
@@ -51,3 +50,31 @@ not ''           # -> True
 ```python
 # nums[:]=ans 和 nums=ans.copy() 相比, 第二个高效些
 ```
+
+-------------
+
+
+eval() 执行字符串表达式
+
+exec() 执行储存在字符串或文件中的 Python 语句
+
+```python
+x = 10
+expr = """
+z = 30
+sum = x + y + z
+print(sum)
+"""
+def func():
+    y = 20
+    exec(expr)
+    exec(expr, {'x': 1, 'y': 2})
+    exec(expr, {'x': 1, 'y': 2}, {'y': 3, 'z': 4})
+    
+func()
+```
+
+如果在生产上，简便的同时，安全隐患也大幅提高，动态加载逻辑文件，最好换种方式；
+
+
+参考：[func-exec](https://www.runoob.com/python3/python3-func-exec.html)
