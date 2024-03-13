@@ -31,6 +31,80 @@ class Hello{
 
 ## 类型变量
 
+.net.dib, vscode 内类似 jupyter
+
+
+```cs
+string aFriend = "Bill";
+Console.WriteLine(aFriend);
+
+Console.WriteLine("Hello " + aFriend);
+
+Console.WriteLine($"My friends are {firstFriend}");
+
+
+var apples = 100m;   // Decimal value
+var oranges = 30m;   // Decimal value
+
+display(apples > oranges)
+```
+
+## 循环控制
+
+```cs
+var seconds = DateTime.Now.Second;
+display("Current seconds: " + seconds);
+
+if (seconds % 2 == 0) {
+    display("Seconds are even");
+} else if (seconds % 3 == 0) {
+    display("Seconds are a multiple of 3");
+} else if (seconds % 5 == 0) {
+    display("Seconds are a multiple of 5");
+} else {
+    display("Seconds are neither even nor a multiple of 3");
+}
+
+if (seconds % 2 == 0)          display("Seconds are even");
+else if (seconds % 3 == 0)     display("Seconds are a multiple of 3");
+else if (seconds % 5 == 0)     display("Seconds are a multiple of 5");
+else                           display("Seconds are neither even nor a multiple of 3");
+```
+
+```cs
+for (var counter=5; counter>0; counter-= 3) {
+  display("Counting " + counter);
+}
+```
+
+```cs
+var arrNames = new string[] { "Fritz", "Scott", "Maria", "Jayme", "Maira", "James"};
+
+foreach (var name in arrNames) {
+    display(name);
+}
+```
+
+```cs
+var counter = 6;
+
+while (counter < 5) {
+    counter++;
+    display(counter);
+}
+```
+
+
+```cs
+var counter = 6;
+
+do {
+    counter++;
+    display(counter);
+} while (counter < 5);
+```
+
+
 
 
 
@@ -52,6 +126,7 @@ class Hello{
 
 参考资料：
 - https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/
+- https://dotnet.microsoft.com/zh-cn/learn
 - https://dotnet.microsoft.com/zh-cn/learntocode
 
 

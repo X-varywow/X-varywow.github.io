@@ -161,7 +161,7 @@ _Commit Message 规范_
 
 ## gitlens 使用
 
-vscode 安装 gitlens 插件
+vscode 安装 gitlens 插件， 关闭 Gitlens > Code Lens Enabled
 
 常用功能： 
 
