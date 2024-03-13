@@ -494,8 +494,10 @@ call test_sp_dynamic('t001');
 SELECT 
     DATE_TRUNC('DAY', created_at) AS day, 
     DATEADD(hour, -1, current_timestamp()),
-    EXTRACT(DAY FROM CREATED_AT)
-FROM T1 LIMIT 10;
+    EXTRACT(DAY FROM created_at)
+FROM T1 
+WHERE TO_DATE(created_at) = '2024-03-09'
+LIMIT 10;
 ```
 
 

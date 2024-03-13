@@ -84,6 +84,13 @@ pd.DataFrame(np.random.randn(3,4),index=dates,columns=list('abcd'))
 df.head(10)
 df.tail()
 
+# 随机抽取 100 元素
+df.sample(100)
+# 抽取 20%
+df.sample(frac=0.2)
+# 不放回抽样
+df.sample(n=2, replace=True)
+
 # 查看行号
 df.index
 # 查看列名
@@ -99,6 +106,15 @@ df.describe()
 df.shape   # (rows, cols)
 df.info()  # more info than shape
 ```
+
+```python
+for index, row in pddf.iterrows():
+    a,b,c = row.to_list()
+```
+
+
+
+
 
 
 </br>
@@ -542,6 +558,24 @@ def main(schema, table):
 
 main('s1', 't1')
 ```
+
+可以使用 cursor.description 来简化上述步骤
+
+
+```python
+with (
+    psycopg.connect(PG_CONFIG) as conn,
+    conn.cursor() as cur
+):
+    cur.execute(query_match)
+    res = cur.fetchall()
+    column_name_list = [desc[0].upper() for desc in cursor.description]
+    df = pd.DataFrame([i for i in res], columns=column_name_list)
+```
+
+
+
+
 
 
 

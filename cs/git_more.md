@@ -159,6 +159,17 @@ _Commit Message 规范_
 - style
 
 
+## gitlens 使用
+
+vscode 安装 gitlens 插件
+
+常用功能： 
+
+commits 历史修改对比
+
+分支对比：（gitlens inspect） -> (compare references)
+
+文件行级别最近修改：右上角 file annotations
 
 
 
