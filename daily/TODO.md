@@ -1,8 +1,4 @@
 
-幻兽帕鲁；缝合才是世界的本质；
-
-简单轻松，竞技，多人，游戏
-
 生成式 AI,确实使游戏开发快很多；https://huggingface.co/cagliostrolab/animagine-xl-3.0
 
 语音、图片、线稿生图
@@ -41,7 +37,6 @@ https://testdriven.io/blog/developing-a-single-page-app-with-fastapi-and-vuejs/
 
 https://testdriven.io/blog/fastapi-crud/
 
-写的代码，类没写几个，高级方法没用多少，越写越low 了，全是怎么调包。。。
 
 https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA
 
@@ -124,7 +119,3 @@ https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
 vae diffusion transformer 数理基础，算子，有空补一下;
 
 脑机接口，也是离谱
-
-20240221
-- [ ] update blog place1
-- [ ] update blog place2

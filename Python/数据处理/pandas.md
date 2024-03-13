@@ -272,6 +272,20 @@ def age_fun(x):
 train["Age"] = train["Age"].apply(age_fun)
 ```
 
+
+eg. 根据 df 生成提示词：
+
+```python
+template = "\n\nCategory:\nkaggle-{Category}\n\nQuestion:\n{Question}\n\nAnswer:\n{Answer}"
+
+df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Category,
+                                                             Question=row.Question,
+                                                             Answer=row.Answer), axis=1)
+data = df.prompt.tolist()
+```
+
+
+
 ### 空值&删除
 
 

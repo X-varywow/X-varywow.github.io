@@ -144,11 +144,11 @@ Command Mode (press Esc to enable)
 | -------------- | ---------------------- |
 | m              | 变成 markdown          |
 | y              | 变成 code              |
-| r              | 变成 raw              |
+| r              | 变成 raw               |
 | A              | insert cell above      |
 | B              | insert cell below      |
 | X              | cut selected cells     |
-| Z              | 回退     |
+| Z              | 回退                   |
 | ctrl + enter   | 运行                   |
 | shift + enter  | 运行并切换到下个代码块 |
 | option + enter | 运行并新增到下个代码块 |
@@ -158,6 +158,7 @@ Command Mode (press Esc to enable)
 - 编辑模式，Esc 或者在单元格外部
 - 命令模式，Enter 或者在单元格内部
 
+拖动单元格可以快速移动
 
 
 参考：[Jupyter Notebook使用技巧](https://cloud.tencent.com/developer/article/1943703)

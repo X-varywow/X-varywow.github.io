@@ -138,7 +138,12 @@ git fetch origin pro
 
 # 将 pro merge 到当前本地分支
 git merge origin/pro
+
+# 将本地 master merge 到当前分支（test）
+git merge master
 ```
+
+一般合并代码发生冲突，在编辑器中合并，接受传入
 
 
 
