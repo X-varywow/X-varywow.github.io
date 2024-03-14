@@ -255,6 +255,35 @@ train = data[~data.index.isin(test.index.tolist())]
 ```
 
 
+逐行替换部分 columns, 构造新 dataframe
+
+```python
+new_df = pd.DataFrame(columns=feas) 
+
+
+for i, row in online_user_df.iterrows():
+    if i%500 == 0:
+        print(i)
+    score = int(row[0])
+    d = eval(row[1].replace('null', 'None'))
+    
+    selected_row ={}
+    tmp = offline_df[(offline_df['USER_ID'] == d['USER_ID'])&(offline_df['NEXT_SEED'] == d['SEED_ID'])&(offline_df['NEXT_SCORE'] == score)]
+    if tmp.shape[0] == 1:
+        for col in feas:
+            if col in need_change_cols:
+                selected_row[col] = tmp[col]
+            else:
+                selected_row[col] = d[col]
+
+
+        new_df = new_df.append(selected_row, ignore_index=True)
+```
+
+
+
+
+
 
 ### 自定义函数
 
