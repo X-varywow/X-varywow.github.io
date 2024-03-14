@@ -54,7 +54,6 @@ https://lilianweng.github.io/
 
 https://github.com/valinet/ExplorerPatcher/wiki/All-features
 
-qianduan / tmp
 
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
 
@@ -80,7 +79,6 @@ huawei ai tutorial
 https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#speed-is-your-friend
 
 - [ ] blog ML/DL/transformer 整理
-- [ ] 整理归档，ASR 课程笔记
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
 
@@ -117,5 +115,3 @@ https://openai.com/sora 质量有点好，但是再长一些的连贯，制作�
 https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
 
 vae diffusion transformer 数理基础，算子，有空补一下;
-
-脑机接口，也是离谱

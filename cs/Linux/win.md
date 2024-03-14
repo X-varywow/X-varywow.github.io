@@ -67,7 +67,9 @@ hexo cl & hexo g & hexo d
 `C:\Users\你的用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 2. 这时候，开机便会执行这个文件，但还是会出现黑窗口
 3. 将第一步的文件放入另一个地方，新建 vbs 文件（执行bat），代码如下：
+
+
 ```vbs
 set ws=WScript.CreateObject("WScript.Shell")
-ws.Run "C:\\Users\\User\\Documents\hexo-server.bat /start",0
+ws.Run "C:\\Users\\Administrator\\Documents\docsify-server.bat /start",0
 ```

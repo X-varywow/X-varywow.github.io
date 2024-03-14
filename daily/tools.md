@@ -163,11 +163,11 @@ ExplorerPatcher
 
 - [字体更换工具](https://github.com/Tatsu-syo/noMeiryoUI)
 - [纯粹的Windows右键菜单管理程序](https://github.com/BluePointLilac/ContextMenuManager)⭐
-- [Win10管理右键新建菜单](https://blog.csdn.net/weixin_44811846/article/details/103288139)
 - [自定义右键菜单](https://shliang.blog.csdn.net/article/details/89286118)
+- [win 11 自动登录](https://zhuanlan.zhihu.com/p/411167130)，修改注册表方式，adminstrator 可使用 windows 的密码自动登录
 
 
-> win 比 mac 好用
+Windows 11 Classic Context Menu 使用经典右键菜单
 
 
 ## common
@@ -186,6 +186,9 @@ xmind
 
 
 ## IDE 通用
+
+[anaconda 镜像下载](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)
+
 
 | 快捷键           | 说明                     |
 | ---------------- | ------------------------ |

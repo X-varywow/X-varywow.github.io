@@ -22,6 +22,9 @@ UEFI 启动 和 lagacy 启动，传统 BIOS 启动改名为 lagacy 了。
 
 [硬盘分区表格式GUID和MBR知识普及](https://zhuanlan.zhihu.com/p/370552513)
 
+**装系统注意自动装的盘**，错了很麻烦
+
+
 ## Windows PE
 
 Preinstallation Environment，带有限服务的、最小 Win32 子系统，基于保护模式运行的 Windows 内核。

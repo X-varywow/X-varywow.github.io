@@ -1,18 +1,13 @@
-参考资料：
-- [《统计机器学习》视频讲解](https://www.bilibili.com/video/BV1o5411p7H2)
-- [如何理解拉格朗日乘子法](https://www.zhihu.com/question/38586401)
-- [sklearn-svm 官方文档](https://scikit-learn.org/stable/modules/svm.html)
-- [sklearn.svm.SVC 官方文档](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
-- 《统计机器学习》
 
-基本原理
--------------------
+
+## 基本原理
+
 
 `SVM` 是一种二类分类模型
 
 - 基本模型是定义在特征空间上的 **间隔最大** 的线性分类器
 - 有别于感知机，间隔最大化使其解唯一
-- 实质上的非线性分类器
+- 实质上的非线性分类器, 支持非线性的核函数
 
 ----------------------
 
@@ -33,8 +28,10 @@ $$\min_{w,b}\frac12|w|^2$$
   - 学习策略：核技巧 + 软间隔最大化
   - **核技巧**：通过空间映射，隐式地在高维的特征空间中学习线性支持向量机
 
-题目要求
--------------------
+
+
+## 题目要求
+
 1. 了解SVM工具包sklearn.svm
    1. 从 start_code 开始
    2. 阅读文档
@@ -45,8 +42,8 @@ $$\min_{w,b}\frac12|w|^2$$
    3. 打印SVM分类器最终获得的支持向量集；在random_data数据集上使用matplotlib可视化分类效果：分类结果、支持向量点、分割面、margin边界
 
 
-代码实现
--------------------
+## 代码实现
+
 
 ##### start_code
 ```python
@@ -88,3 +85,13 @@ if __name__ == '__main__':
 
 ##### after
 <a href="main/zone/svm.html" target="_blank">代码参考</a>
+
+
+--------------
+
+参考资料：
+- [《统计机器学习》视频讲解](https://www.bilibili.com/video/BV1o5411p7H2)
+- [如何理解拉格朗日乘子法](https://www.zhihu.com/question/38586401)
+- [sklearn-svm 官方文档](https://scikit-learn.org/stable/modules/svm.html)
+- [sklearn.svm.SVC 官方文档](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+- 《统计机器学习》
