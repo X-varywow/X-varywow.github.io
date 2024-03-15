@@ -351,33 +351,9 @@ call count_rows();
 
 !> Function 和 procedure 有利于增强代码复用性，区别：函数一般情况下用来计算并返回一个计算结果。存储过程一般是用来完成特定的操作，sql语句（DML或select）中不可调用。
 
-3. Procedure 返回表格数据
-
-```sql
-create or replace procedure get_entry_fee() 
-returns table() 
-language sql
-as 
-declare
- res resultset default(
-    select
-        user_id,
-    from
-        table_name
-    GROUP BY
-        USER_ID,
-        DT
-    limit
-        10);
-begin
-    return table(res);
-end;
-
-call get_entry_fee();
-```
 
 
-4. 使用参数
+3. 使用参数 & 返回表格数据
 
 ```sql
 create or replace procedure get_entry_fee(source_flag int, cnt int) 
@@ -386,17 +362,9 @@ language sql
 as 
 declare
  res resultset default(
-    select
-        user_id,
-        DT,
-        ROUND(avg(actual_entry_fee), 2) avg_entryfee,
-        ROUND(min(actual_entry_fee), 2) min_entryfee,
-        ROUND(max(actual_entry_fee), 2) max_entryfee
-    from
-        table_name
-    GROUP BY
-        USER_ID,
-        DT
+    select *
+    from table_name
+    where col1 = :source_flag
     limit 10 );
 begin
     return table(res);
@@ -404,6 +372,19 @@ end;
 
 call get_entry_fee(2, 5);
 ```
+
+```sql
+CREATE OR REPLACE PROCEDURE insert_two_values(value1 INTEGER, value2 INTEGER)
+RETURNS VARCHAR NOT NULL
+LANGUAGE SQL
+AS
+BEGIN
+  CALL insert_value(:value1);
+  CALL insert_value(:value2);
+  RETURN 'Finished calling stored procedures';
+END;
+```
+
 
 
 
@@ -462,7 +443,8 @@ call procedure_name();
 drop procedure procedure_name();
 ```
 
-
+参考资料：
+- https://docs.snowflake.com/en/developer-guide/stored-procedure/stored-procedures-snowflake-scripting
 
 
 
