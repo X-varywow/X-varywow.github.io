@@ -209,7 +209,33 @@ else:
 > 分布式锁：在分布式系统中保证多个计算节点之间进行互斥操作的一种同步机制。</br>
 > 在服务，应用分布在不同服务器上时，当它们要访问或修改共享资源时，需要确保不会产生冲突，类似于单机系统
 
+</br>
 
+## _错误行为_
+
+（1）将 lambda 定义 放在 for 中【影响性能】
+
+```python
+def main():
+    for i in range(10):
+        filter1 = lambda x: x%2==0
+        if filter1(i):
+            print(i)
+
+main()
+```
+
+（2）默认值设置为可变数据类型【结果不可控】
+
+```python
+def f(a, L=[]):
+    L.append(a)
+    return L
+
+print(f(1)) # -> [1]
+print(f(2)) # -> [1, 2]
+print(f(3)) # -> [1, 2, 3]
+```
 
 </br>
 

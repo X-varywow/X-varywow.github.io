@@ -30,10 +30,15 @@ pre {
 }
 ```
 
+?> _jupyter lab_
+
+```bash
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 
-?>_pycharm 激活_  http://www.javatiku.cn/pycharm/879.html `2022.1.6有效`
 
+?> _pycharm 激活_  https://idea.javatiku.cn/ `2024.03 有效`
 
 </br>
 </br>
@@ -289,35 +294,6 @@ print(d)
 </br>
 </br>
 
-## _错误行为_
-
-（1）将 lambda 定义 放在 for 中【影响性能】
-
-```python
-def main():
-    for i in range(10):
-        filter1 = lambda x: x%2==0
-        if filter1(i):
-            print(i)
-
-main()
-```
-
-（2）默认值设置为可变数据类型【结果不可控】
-
-```python
-def f(a, L=[]):
-    L.append(a)
-    return L
-
-print(f(1)) # -> [1]
-print(f(2)) # -> [1, 2]
-print(f(3)) # -> [1, 2, 3]
-```
-
-
-</br>
-</br>
 
 ## _other_
 

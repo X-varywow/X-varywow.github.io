@@ -3,14 +3,22 @@
 ## preface
 
 
-为什么学 c#?
+为什么 c#?
 
-作为 python 的补充，开发 unity 会用到，并且以前使用外挂时用的 c#，.NET 也很有用，对 windows 可有更多的 DIY 特性。
+作为 python 的补充，开发 unity 会用到，并且以前使用外挂时用的 c#，.NET 也很有用，对 windows 可有更多的 DIY
 
 
 ## hello world
 
-C# 程序在 .NET 上运行；
+C# 程序在 .NET 上运行；[下载 net sdk](https://dotnet.microsoft.com/zh-cn/download/dotnet/sdk-for-vs-code)
+
+```bash
+dotnet --version
+# 8.0.203
+```
+
+
+
 
 .NET 是名为公共语言运行时 (CLR) 的虚执行系统和一组类库。 
 
@@ -108,7 +116,7 @@ do {
 
 
 
-## 项目
+## 示例项目
 
 [虚拟桌宠模拟器](https://github.com/LorisYounger/VPet)
 
