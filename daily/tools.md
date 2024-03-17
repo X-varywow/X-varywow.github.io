@@ -220,3 +220,6 @@ vscode:
 
 
 ctrl + shift + p 打开 vscode 魔法命令行， 如 `>Tasks: Run Task`
+
+
+字体：[FiraCode](https://github.com/tonsky/FiraCode)

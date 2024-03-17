@@ -8,6 +8,15 @@
 作为 python 的补充，开发 unity 会用到，并且以前使用外挂时用的 c#，.NET 也很有用，对 windows 可有更多的 DIY
 
 
+> .NET 是一个安全、可靠且高性能的应用程序平台。</br>
+C# 是 .NET 的编程语言。它是强类型且类型安全的，并集成了并发和自动内存管理。</br>
+C# 是一种新式、安全且面向对象的编程语言，既有面向数据的记录等高级功能，也有函数指针等低级功能。
+
+
+.NET 包括一组标准库和 API，涵盖集合、网络到机器学习。
+
+NuGet 是 .NET 的包管理器
+
 ## hello world
 
 C# 程序在 .NET 上运行；[下载 net sdk](https://dotnet.microsoft.com/zh-cn/download/dotnet/sdk-for-vs-code)
@@ -16,15 +25,6 @@ C# 程序在 .NET 上运行；[下载 net sdk](https://dotnet.microsoft.com/zh-c
 dotnet --version
 # 8.0.203
 ```
-
-
-
-
-.NET 是名为公共语言运行时 (CLR) 的虚执行系统和一组类库。 
-
-CLR 是 Microsoft 对公共语言基础结构 (CLI) 国际标准的实现。 
-
-CLI 是创建执行和开发环境的基础，语言和库可以在其中无缝地协同工作。
 
 
 ```cs

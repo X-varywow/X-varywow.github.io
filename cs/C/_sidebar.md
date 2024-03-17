@@ -1,4 +1,6 @@
 - [回到上一级](cs/)
 - [cs/C语言](cs/C/)
   - [单链表逆置](cs/C/单链表逆置)
-- [csharp](cs/C/csharp)
+- [IDE](cs/C/ide)
+- [csharp_day1](cs/C/csharp)
+- [csharp_day2](cs/C/net_core_app_develop)
