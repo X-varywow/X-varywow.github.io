@@ -334,6 +334,7 @@ shap_values = explainer(X)
 shap.plots.bar(shap_values)
 ```
 
+
 </br>
 
 
@@ -372,6 +373,12 @@ lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看
 虽然整体上看偏差还是正态，无太大问题， 但是各个子样本（训练与预测）的分布不同、峰度、偏度不同，大概率会产生一定问题，可以尝试：拆分样本。
 
 
+## other
+
+模型加载时间：14mb model 一次加载 90ms
+
+降低模型大小：
+set the histogram_pool_size parameter to the MB you want to use for LightGBM (histogram_pool_size + dataset size = approximately RAM used), lower num_leaves or lower max_bin
 
 
 
