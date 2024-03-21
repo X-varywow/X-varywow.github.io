@@ -56,7 +56,7 @@ validation_data = lgb.Dataset(X_test, y_test)
 params = {
     'task': 'train',
     'boosting_type': 'gbdt',  # 设置提升类型
-    'objective': 'regression',  # 目标函数
+    'objective': 'regression',  # 目标函数 poisson/quantile/quantile_l2/gamma/binary/multiclass
     'metric': {'l2', 'auc'},  # 评估函数
     'num_leaves': 31,  # 叶子节点数
     'learning_rate': 0.05,  # 学习速率
@@ -64,12 +64,17 @@ params = {
     'bagging_fraction': 0.8,  # 建树的样本采样比例
     'bagging_freq': 5,  # k 意味着每 k 次迭代执行bagging
     'verbose': 1  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
-    # 'learning_rate': 0.1,
+
+    # max_cat_threshold: 1024,
+    # max_bin: 256,
+
     # 'lambda_l1': 0.1,
     # 'lambda_l2': 0.2,
     # 'max_depth': 4,
-    # 'objective': 'multiclass',  # 目标函数
     # 'num_class': 3,
+
+    # class_weight: 'balanced',
+    # sample_weight: data_train['weight'].values,
 }
 
 # 模型训练
@@ -380,7 +385,7 @@ lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看
 降低模型大小：
 set the histogram_pool_size parameter to the MB you want to use for LightGBM (histogram_pool_size + dataset size = approximately RAM used), lower num_leaves or lower max_bin
 
-
+损失函数选择：MSE 比 MAE 更加重视较大的误差，如何不想让异常值过度地影响模型，MAE 会更好。
 
 
 
@@ -395,3 +400,4 @@ set the histogram_pool_size parameter to the MB you want to use for LightGBM (hi
 - https://caicaijason.github.io/2020/01/07/LightGBM%E7%AE%80%E4%BB%8B/ ⭐️
 - https://www.showmeai.tech/article-detail/205 ⭐️ 具体应用向
 - [LightGBM源码阅读+理论分析](https://mp.weixin.qq.com/s/XxFHmxV4_iDq8ksFuZM02w) 偏理论
+- [为风控业务定制损失函数与评价函数（XGB/LGB）](https://cloud.tencent.com/developer/article/1557778)
