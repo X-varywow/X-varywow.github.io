@@ -49,6 +49,7 @@ git merge origin/master
 
 
 ## 3.工作流
+
 你的本地仓库由 git 维护的三棵“树”组成。
 
 第一个是你的 `工作目录`，它持有实际文件；
@@ -57,7 +58,9 @@ git merge origin/master
 
 最后是 `HEAD`，指向你最近一次提交后的结果。
 
-## 4.添加与提交
+## 4.添加&提交&推送
+
+
 ```bash
 # 将其添加到缓存区
 
@@ -70,7 +73,6 @@ git add *
 git commit -m "代码提交信息"
 ```
 
-## 5.推送改动
 
 ```bash
 git remote add origin 'server'
@@ -78,7 +80,7 @@ git remote add origin 'server'
 git push origin 'branch'
 ```
 
-## 6.分支 ⭐
+## 5.分支 ⭐
 
 ```bash
 #创建一个叫做“feature_x”的分支，并切换过去：
@@ -114,6 +116,14 @@ git push origin --delete remoteBranchName
 git push orign branch_name
 ```
 
+
+## 6.tag
+
+Tags give the ability to mark specific points in history as being important
+
+使用 tag 可以保存重要版本的代码
+
+[参考](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
 
 
 ## 7.更新与合并

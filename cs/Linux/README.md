@@ -41,6 +41,8 @@ export APP_ENV=prod
 # 添加到 PATH 环境变量中
 export PATH=/usr/local/bin:$PATH
 
+export PYTHONPATH=$PYTHONPATH:/Users/filename
+
 
 echo $PATH
 

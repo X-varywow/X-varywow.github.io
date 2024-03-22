@@ -56,7 +56,7 @@ validation_data = lgb.Dataset(X_test, y_test)
 params = {
     'task': 'train',
     'boosting_type': 'gbdt',  # 设置提升类型
-    'objective': 'regression',  # 目标函数
+    'objective': 'regression',  # 目标函数 poisson/quantile/quantile_l2/gamma/binary/multiclass
     'metric': {'l2', 'auc'},  # 评估函数
     'num_leaves': 31,  # 叶子节点数
     'learning_rate': 0.05,  # 学习速率
@@ -64,12 +64,17 @@ params = {
     'bagging_fraction': 0.8,  # 建树的样本采样比例
     'bagging_freq': 5,  # k 意味着每 k 次迭代执行bagging
     'verbose': 1  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
-    # 'learning_rate': 0.1,
+
+    # max_cat_threshold: 1024,
+    # max_bin: 256,
+
     # 'lambda_l1': 0.1,
     # 'lambda_l2': 0.2,
     # 'max_depth': 4,
-    # 'objective': 'multiclass',  # 目标函数
     # 'num_class': 3,
+
+    # class_weight: 'balanced',
+    # sample_weight: data_train['weight'].values,
 }
 
 # 模型训练
@@ -181,6 +186,45 @@ param_grid = {
 gbm = GridSearchCV(estimator, param_grid)
 gbm.fit(X_train, y_train)
 print('Best parameters found by grid search are:', gbm.best_params_)
+```
+
+
+</br>
+
+## _多分类_
+
+
+```python
+classifier = lgb.LGBMRegressor(
+        task = 'train',
+        objective = 'multiclass',
+        num_class = 5,
+        boosting_type = 'gbdt',
+        # metric = 'multi_logloss',
+        learning_rate = 0.01,
+        n_estimators = 2000, 
+        min_child_samples = 16, 
+        max_depth = 7,  
+        num_leaves = 32, 
+        random_state = 42,
+        max_cat_threshold = 1024,
+        max_bin = 256,
+        # class_weight = 'balanced',
+         # sample_weight=data_oldusers_train_1['weight'].values,
+    )
+
+callbacks = [log_evaluation(period=100), early_stopping(stopping_rounds=30)]
+
+classifier.fit(X_train, y_train, eval_set=[(X_train, y_train),
+                                          (X_val, y_val)],
+              # eval_metric=[
+              #     'mae','huber'
+              # ],
+              callbacks=callbacks,
+              feature_name=feas, 
+              # no log
+              # categorical_feature=categorical_features
+             )
 ```
 
 
@@ -334,6 +378,7 @@ shap_values = explainer(X)
 shap.plots.bar(shap_values)
 ```
 
+
 </br>
 
 
@@ -372,8 +417,14 @@ lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看
 虽然整体上看偏差还是正态，无太大问题， 但是各个子样本（训练与预测）的分布不同、峰度、偏度不同，大概率会产生一定问题，可以尝试：拆分样本。
 
 
+## other
 
+模型加载时间：14mb model 一次加载 90ms
 
+降低模型大小：
+set the histogram_pool_size parameter to the MB you want to use for LightGBM (histogram_pool_size + dataset size = approximately RAM used), lower num_leaves or lower max_bin
+
+损失函数选择：MSE 比 MAE 更加重视较大的误差，如何不想让异常值过度地影响模型，MAE 会更好。
 
 
 
@@ -388,3 +439,4 @@ lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看
 - https://caicaijason.github.io/2020/01/07/LightGBM%E7%AE%80%E4%BB%8B/ ⭐️
 - https://www.showmeai.tech/article-detail/205 ⭐️ 具体应用向
 - [LightGBM源码阅读+理论分析](https://mp.weixin.qq.com/s/XxFHmxV4_iDq8ksFuZM02w) 偏理论
+- [为风控业务定制损失函数与评价函数（XGB/LGB）](https://cloud.tencent.com/developer/article/1557778)

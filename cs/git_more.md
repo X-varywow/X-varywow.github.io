@@ -57,14 +57,6 @@ git config format.pretty oneline
 git add -i
 ```
 
-6. 使用 tag
-
-Tags are ref's that point to specific points in Git history。
-
-可以使用 tag 保存重要的 repo （特定版本）
-
-[参考](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
-
 ## 相关文件
 
 </br>

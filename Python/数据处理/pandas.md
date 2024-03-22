@@ -299,12 +299,25 @@ def age_fun(x):
     else: return "old"
 
 train["Age"] = train["Age"].apply(age_fun)
-```
+
+
+
+# eg3 耗时较久
+from bisect import bisect_right
+
+def func(x):
+    seed, score = x['SEED'], x['SCORE']
+    if seed[-2:] in ['Y1', 'Y2', 'Y3']:
+        return bisect_right(score, [0, 5000, 11000, 21000, 36000])
+    else:
+        return bisect_right(score, [0, 5000, 18000, 30000, 56000])
+    
+    
+
+df['LABEL'] = df.apply(func, axis=1) # 按行应用
 
 
 eg. 根据 df 生成提示词：
-
-```python
 template = "\n\nCategory:\nkaggle-{Category}\n\nQuestion:\n{Question}\n\nAnswer:\n{Answer}"
 
 df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Category,
@@ -312,7 +325,6 @@ df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Catego
                                                              Answer=row.Answer), axis=1)
 data = df.prompt.tolist()
 ```
-
 
 
 ### 空值&删除

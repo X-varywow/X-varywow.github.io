@@ -6,6 +6,7 @@ fastapi + vue.js
 - https://github.com/testdrivenio/fastapi-vue
 
 
+https://github.com/tiangolo/full-stack-fastapi-template
 
 -----------------
 
