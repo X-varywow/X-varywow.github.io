@@ -189,6 +189,45 @@ print('Best parameters found by grid search are:', gbm.best_params_)
 ```
 
 
+</br>
+
+## _多分类_
+
+
+```python
+classifier = lgb.LGBMRegressor(
+        task = 'train',
+        objective = 'multiclass',
+        num_class = 5,
+        boosting_type = 'gbdt',
+        # metric = 'multi_logloss',
+        learning_rate = 0.01,
+        n_estimators = 2000, 
+        min_child_samples = 16, 
+        max_depth = 7,  
+        num_leaves = 32, 
+        random_state = 42,
+        max_cat_threshold = 1024,
+        max_bin = 256,
+        # class_weight = 'balanced',
+         # sample_weight=data_oldusers_train_1['weight'].values,
+    )
+
+callbacks = [log_evaluation(period=100), early_stopping(stopping_rounds=30)]
+
+classifier.fit(X_train, y_train, eval_set=[(X_train, y_train),
+                                          (X_val, y_val)],
+              # eval_metric=[
+              #     'mae','huber'
+              # ],
+              callbacks=callbacks,
+              feature_name=feas, 
+              # no log
+              # categorical_feature=categorical_features
+             )
+```
+
+
 
 
 
