@@ -10,6 +10,32 @@ SHAP(SHapley Additive exPlanations) 是一种解释机器学习模型决策的�
 - 特征重要性
 - 依赖关系可视化
 
+</br>
+
+## _demo_
+
+查看 lgbm 分类模型的特征重要度：
+
+```python
+import lightgbm as lgb
+import shap
+CLASSIFER = lgb.Booster(model_file = new_file_path)
+CLASSIFER.params['objective'] = 'multiclass'
+
+explainer = shap.TreeExplainer(CLASSIFER)
+shap_values = explainer.shap_values(new_df.head(1)[new_feas])
+shap.summary_plot(shap_values, new_df.head(1)[new_feas], plot_type="bar")
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

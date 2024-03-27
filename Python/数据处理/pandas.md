@@ -105,6 +105,10 @@ df.describe()
 
 df.shape   # (rows, cols)
 df.info()  # more info than shape
+
+# 查看特定的列
+cols = ['a', 'b']
+df[cols]
 ```
 
 ```python

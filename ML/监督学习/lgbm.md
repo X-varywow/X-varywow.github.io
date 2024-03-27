@@ -426,8 +426,18 @@ set the histogram_pool_size parameter to the MB you want to use for LightGBM (hi
 
 损失函数选择：MSE 比 MAE 更加重视较大的误差，如何不想让异常值过度地影响模型，MAE 会更好。
 
+查看模型特征：
+
+```python
+model.feature_name()
+model.num_feature()
+```
 
 
+对模型精度影响的重要度：
+1. 数据集
+2. 损失函数
+3. 超参数
 
 
 
