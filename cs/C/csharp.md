@@ -123,18 +123,13 @@ do {
 [Game Launcher for miHoYo - 米家游戏启动器](https://github.com/Scighost/Starward)
 
 
-## desktop runtime
-
-
-.NET windows desktop
-
-
-
 --------------
 
 参考资料：
-- https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/
-- https://dotnet.microsoft.com/zh-cn/learn
-- https://dotnet.microsoft.com/zh-cn/learntocode
+
+- [什么是 .NET?](https://dotnet.microsoft.com/zh-cn/learn/dotnet/what-is-dotnet)
+- [了解 .NET](https://dotnet.microsoft.com/zh-cn/learn)
+- [学习如何编写 C# 代码](https://dotnet.microsoft.com/zh-cn/learntocode)
+- [tour-of-csharp](https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/)
 
 
