@@ -263,37 +263,6 @@ prepare_command = f"./model/stylegan/prepare_data.py --out ./data/{project_name}
 </br>
 
 
-## _代码美观_
-
-(1) 长代码分多行
-
-```python
-# 使用 \ 链接多行
-a = 12 + \
-    13
-
-# 或者用 ()
-a = (12 +
-13)
-
-```
-
-
-(2) 中间空行
-```python
-d = {
-    '1':2,
-
-    '3':1
-}
-print(d)
-
-# -> {'1': 2, '3': 1}
-```
-
-</br>
-</br>
-
 
 ## _other_
 

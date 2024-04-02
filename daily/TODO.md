@@ -115,3 +115,8 @@ https://openai.com/sora 质量有点好，但是再长一些的连贯，制作�
 https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
 
 vae diffusion transformer 数理基础，算子，有空补一下;
+
+
+- [ ] 整理博客
+- [ ] 整理布局
+- [ ] 图片工具

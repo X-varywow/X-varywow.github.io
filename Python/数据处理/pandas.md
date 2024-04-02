@@ -17,22 +17,17 @@ pd.set_option('display.max_columns', None)
 
 ## _数据结构_
 
-_Series_
+1. **Series**
 
-
-`Series` 操作类似字典类型，含：保留字 `in` 操作、`.get(key,default=None)` 方法
+Series 操作类似字典类型，保留 `in` 操作、`.get(key,default=None)` 方法
 
 ```python
-pd.Series([1,2,3]，index=[0,1,2])
-
-# 0    1
-# 1    2
-# 2    3
-# dtype: int64
+s = pd.Series([1, 3, 5, np.nan, 6, 8])
 ```
 
 
-_DataFrame_
+2. **DataFrame**
+
 
 ```python
 df = pd.DataFrame()
@@ -74,7 +69,7 @@ pd.DataFrame(np.random.randn(3,4),index=dates,columns=list('abcd'))
 
 </br>
 
-## _查看&行列_
+## _查看&行遍历&排序_
 
 重要方法： head(), info(), describe()
 
@@ -83,6 +78,9 @@ pd.DataFrame(np.random.randn(3,4),index=dates,columns=list('abcd'))
 # 查看首尾几行数据
 df.head(10)
 df.tail()
+
+# 查看每列的数据类型
+df.dtypes
 
 # 随机抽取 100 元素
 df.sample(100)
@@ -117,84 +115,19 @@ for index, row in pddf.iterrows():
 ```
 
 
-
-
-
-
-</br>
-
-_常见操作_
-
 ```python
-# of distinct values in a column
-df['w'].unique()
+# 根据索引排序，默认升序
+df.sort_index(axis=0,ascending=True)
 
-# 查看分位数 
-df['col'].quanile(0.5)
+# 根据cnt值降序排列
+df.sort_values(by='score_cnt', ascending=False)
 
-# 查看某一列 > 10 的数据
-df[pd.to_numeric(df['col1']) > 10]
+df.sort_values(axis=0,ascending=True)
 
-df2 = df[(20 < df['CLEAR_RATIO']) & (df['CLEAR_RATIO'] <= 75)]
-
-# 再复杂一点
-df['col2'] = abs(df['col1'] - 0.5)*df['col3']
-
-# 分组再统计
-seed_res = data_oldusers_test.groupby('NEXT_SEED')['bias'].agg([
-    ('win_ratio', lambda x: (x > 0).mean()), ('score_cnt', 'size')
-])
-
-# 类型转化
-data['NEXT_SCORE'] = data['NEXT_SCORE'].astype('int')
+# 按时间升序，以显示
+res = pddf.sort_values(by='CREATED_AT')
+res
 ```
-
-
-利用各种查看方法，能更快新建 dataframe：
-
-```python
-# 新建一个 dataframe 为前100行
-new_df = df.head(100)
-
-
-# 新增一列
-df['idx'] = range(len(df))
-```
-
-设置行列名称：
-
-```python
-# 设置索引为 1~10
-df.set_index(pd.RangeIndex(1, 11), inplace = True)
-
-# 更改列名
-df.columns=['grammer', 'score', 'cycle']
-
-# 更改列名
-df.rename(columns={0:'var_name', 1:'mu', 2:'sigma', 3:'rank'},inplace=True)
-df.rename(columns = {df.columns[2]:'size'}, inplace=True)
-```
-
-
-reindex() 用于重排 Series 或 DataFrame 对象
-
-```python
-import pandas as pd
-
-data = {'Name': ['Alice', 'Bob', 'Charlie'],
-        'Age': [25, 30, 35],
-        'City': ['New York', 'London', 'Tokyo']}
-
-df = pd.DataFrame(data)
-
-new_index = ['A', 'B', 'C']
-new_columns = ['Name', 'Age', 'City', 'Country']
-
-new_df = df.reindex(index=new_index, columns=new_columns, fill_value='Unknown')
-
-print(new_df)
-```
-
 
 
 </br>
@@ -203,9 +136,12 @@ print(new_df)
 
 （1）获取单列，`df.a` 与 `df['a']` 等效
 
+```python
+df['w']                 # get w col
+df['w'].unique()        # # of distinct values in a column
+```
 
 （2）获取行，用 [ ] 切片行，如 `df[1:]`
-
 
 
 （3）`df.iloc()` 通过整数位置来访问和选择数据
@@ -287,9 +223,82 @@ for i, row in online_user_df.iterrows():
 
 
 
+</br>
+
+_常见操作_
+
+```python
+# 查看分位数 
+df['col'].quanile(0.5)
+
+# 查看某一列 > 10 的数据
+df[pd.to_numeric(df['col1']) > 10]
+
+df2 = df[(20 < df['CLEAR_RATIO']) & (df['CLEAR_RATIO'] <= 75)]
+
+# 再复杂一点
+df['col2'] = abs(df['col1'] - 0.5)*df['col3']
+
+# 分组再统计
+seed_res = data_oldusers_test.groupby('NEXT_SEED')['bias'].agg([
+    ('win_ratio', lambda x: (x > 0).mean()), ('score_cnt', 'size')
+])
+
+# 类型转化
+data['NEXT_SCORE'] = data['NEXT_SCORE'].astype('int')
+```
 
 
-### 自定义函数
+利用各种查看方法，能更快新建 dataframe：
+
+```python
+# 新建一个 dataframe 为前100行
+new_df = df.head(100)
+
+
+# 新增一列
+df['idx'] = range(len(df))
+```
+
+设置行列名称：
+
+```python
+# 设置索引为 1~10
+df.set_index(pd.RangeIndex(1, 11), inplace = True)
+
+# 更改列名
+df.columns=['grammer', 'score', 'cycle']
+
+# 更改列名
+df.rename(columns={0:'var_name', 1:'mu', 2:'sigma', 3:'rank'},inplace=True)
+df.rename(columns = {df.columns[2]:'size'}, inplace=True)
+```
+
+
+reindex() 用于重排 Series 或 DataFrame 对象
+
+```python
+import pandas as pd
+
+data = {'Name': ['Alice', 'Bob', 'Charlie'],
+        'Age': [25, 30, 35],
+        'City': ['New York', 'London', 'Tokyo']}
+
+df = pd.DataFrame(data)
+
+new_index = ['A', 'B', 'C']
+new_columns = ['Name', 'Age', 'City', 'Country']
+
+new_df = df.reindex(index=new_index, columns=new_columns, fill_value='Unknown')
+
+print(new_df)
+```
+
+
+
+</br>
+
+## _自定义函数_
 
 ```python
 # eg1
@@ -330,8 +339,9 @@ df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Catego
 data = df.prompt.tolist()
 ```
 
+</br>
 
-### 空值&删除
+## _空值&删除_
 
 
 ```python
@@ -361,29 +371,6 @@ np.count_nonzero((y_pred>=y_test)) / y_test.shape[0]
 df.drop('feature_variable_name', axis=1)
 ```
 
-
-
-### 运算&排序 
-
-1. **算术运算**根据行列索引，补齐后运算，运算默认产生浮点数。
-2. 不同维度数据间运算为广播运算
-3. `+` 或 `b.add(a,fill_value=NaN)`
-
-
-```python
-# 根据索引排序，默认升序
-df.sort_index(axis=0,ascending=True)
-
-# 根据cnt值降序排列
-df.sort_values(by='score_cnt', ascending=False)
-
-df.sort_values(axis=0,ascending=True)
-
-# 按时间升序，以显示
-res = pddf.sort_values(by='CREATED_AT')
-res
-```
-
 groupby() 
 
 
@@ -397,12 +384,9 @@ df.shift(2)
 
 
 
+</br>
 
-
-
-
-
-### 连接&合并
+## _连接&合并_
 
 ```python
 import pandas as pd
@@ -424,9 +408,9 @@ print(df1)
 ```
 
 
+</br>
 
-
-### 文件读写
+## _文件读写_
 
 CSV ：
 ```python
@@ -447,8 +431,9 @@ df.to_excel('filename.xlsx', sheet_name='Sheet1')
 df = pd.read_excel('filename.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
 ```
 
+</br>
 
-### 使用 csv
+## _使用 csv_
 
 使用原生方法读取 csv 文件：
 
@@ -641,8 +626,8 @@ with (
 -----------
 
 参考资料：
+- [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html)
 - Pandas中文网：https://www.pypandas.cn/
 - Pandas练习：https://zhuanlan.zhihu.com/p/69371799
-- [十分钟入门 Pandas](https://www.pypandas.cn/docs/getting_started/10min.html)
 - [23种pandas操作](https://zhuanlan.zhihu.com/p/43018099)
 - chatgpt
