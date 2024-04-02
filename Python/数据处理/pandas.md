@@ -130,6 +130,19 @@ res
 ```
 
 
+使用各种查看方法，能更快新建 dataframe：
+
+```python
+# 新建一个 dataframe 为前100行
+new_df = df.head(100)
+
+df2 = df.copy()
+
+# 新增一列
+df['idx'] = range(len(df))
+```
+
+
 </br>
 
 ## _选择&常见操作_
@@ -152,6 +165,8 @@ df.iloc[10:20]
 
 # 选取第 1，2，5 列
 df.iloc[:, [1,2,5]]
+
+df.loc[:, ["A", "B"]]
 ```
 
 （4）`df.loc()` 通过标签来访问和选择数据
@@ -180,6 +195,7 @@ df.nsmallest(n, 'value')
 max_row = fres.loc[fres['ratio'].idxmax()]
 min_row = fres.loc[fres['ratio'].idxmin()]
 
+df2[df2["E"].isin(["two", "four"])]
 ```
 
 转化为 list 进行操作
@@ -249,16 +265,16 @@ data['NEXT_SCORE'] = data['NEXT_SCORE'].astype('int')
 ```
 
 
-利用各种查看方法，能更快新建 dataframe：
+[groupby 官方文档](https://pandas.pydata.org/docs/user_guide/groupby.html)
+
+[Windowing operations 官方文档](https://pandas.pydata.org/docs/user_guide/window.html)
 
 ```python
-# 新建一个 dataframe 为前100行
-new_df = df.head(100)
-
-
-# 新增一列
-df['idx'] = range(len(df))
+for window in s.rolling(window=2):
+    print(window)
 ```
+
+
 
 设置行列名称：
 
@@ -371,8 +387,6 @@ np.count_nonzero((y_pred>=y_test)) / y_test.shape[0]
 df.drop('feature_variable_name', axis=1)
 ```
 
-groupby() 
-
 
 移位：
 
@@ -412,28 +426,18 @@ print(df1)
 
 ## _文件读写_
 
-CSV ：
-```python
-# 读
-data = pd.read_csv('filename.csv')
-
-# 写
-df.to_csv('filename.csv', index=True)
-```
-
-
-Excel ：
 
 ```python
 # pip install openpyxl
 
-df.to_excel('filename.xlsx', sheet_name='Sheet1')
+df = pd.read_csv('filename.csv')
 df = pd.read_excel('filename.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
+
+df.to_csv('filename.csv', index=True)
+df.to_excel('filename.xlsx', sheet_name='Sheet1')
 ```
 
-</br>
-
-## _使用 csv_
+--------
 
 使用原生方法读取 csv 文件：
 
@@ -524,7 +528,7 @@ with psycopg.connect(PG_CONFIG) as conn:
 
 </br>
 
-## _示例_
+## _demo_
 
 eg1. 新建几列，rank 值，与前一名分差，与第一名分差
 
