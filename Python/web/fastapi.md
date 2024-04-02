@@ -170,6 +170,19 @@ return HTMLResponse(content)
 
 
 
+</br>
+
+## _other_
+
+
+fastapi 与 numpy 一起使用时，
+
+报错如下：`ValueError: [TypeError("'numpy.int64' object is not iterable"),`
+
+堆栈全是 fastapi encoder 的错误信息，最后发现：返回的元素（list中包含）了 numpy.int64 类型。
+
+
+
 
 -------------------------------
 
