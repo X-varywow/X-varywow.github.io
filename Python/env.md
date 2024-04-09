@@ -40,6 +40,9 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 ?> _pycharm 激活_  https://idea.javatiku.cn/ `2024.03 有效`
 
+
+vscode, 安装 pylance 插件发现基础的语法错误
+
 </br>
 </br>
 

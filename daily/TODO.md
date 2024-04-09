@@ -120,3 +120,6 @@ vae diffusion transformer 数理基础，算子，有空补一下;
 - [ ] 整理博客
 - [ ] 整理布局
 - [ ] 图片工具
+
+有意思，
+https://github.com/BAAI-Agents/Cradle

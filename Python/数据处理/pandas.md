@@ -437,6 +437,23 @@ df.to_csv('filename.csv', index=True)
 df.to_excel('filename.xlsx', sheet_name='Sheet1')
 ```
 
+分块读取 csv
+
+```python
+import pandas as pd
+
+chunksize = 10**4  # 分块大小，此处例子按每10000行划分
+filename = 'large_file.csv'
+
+for chunk in pd.read_csv(filename, chunksize=chunksize):
+    # 处理每块数据
+    pass
+```
+
+
+
+
+
 --------
 
 使用原生方法读取 csv 文件：
