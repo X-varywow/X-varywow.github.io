@@ -42,15 +42,16 @@ logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
 class CosUploader():
     def __init__(self):
-        self.secret_id = '***'
-        self.secret_key = '***'
+        self.secret_id = ''
+        self.secret_key = ''
+        self.bucket = ''
         self.region = 'ap-beijing'
         self.token = None
         self.scheme = 'https'
         self.config = CosConfig(Region=self.region, SecretId=self.secret_id, SecretKey=self.secret_key, Token=self.token, Scheme=self.scheme)
         self.client = CosS3Client(self.config)
-        self.path1 = "C:\\Users\\User\\Pictures\\"
-        self.path2 = "C:\\Users\\User\\Pictures\\cos_pic\\"
+        self.path1 = "C:\\Users\\Administrator\\Pictures\\"
+        self.path2 = "C:\\Users\\Administrator\\Pictures\\cos_pic\\"
     
     # 返回 桶名 列表
     def ls_bk(self):
@@ -62,7 +63,7 @@ class CosUploader():
     def download_all(self):
         cnt = 1
         for name, size in self.ls_pic():
-            response = self.client.get_object(Bucket='***',Key=name)
+            response = self.client.get_object(Bucket=self.bucket, Key=name)
             response['Body'].get_stream_to_file(self.path2 + name)
             print("第{}张传输完成".format(cnt))
             cnt += 1
@@ -71,7 +72,7 @@ class CosUploader():
     # 打印并返回 图片 统计信息,
     # mod 为 1 时打印全部信息
     def ls_pic(self, mod = 0):
-        data = self.client.list_objects(Bucket='***')
+        data = self.client.list_objects(Bucket=self.bucket)
         res = [(d['Key'], d['Size']) for d in data['Contents']]
         
         cnt, size = 0, 0
@@ -90,7 +91,7 @@ class CosUploader():
     def upload(self, img_path, name):
         with open(img_path, 'rb') as fp:
             response = self.client.put_object(
-            Bucket='***',
+            Bucket=self.bucket,
             Body=fp,
             Key=name,
             StorageClass='STANDARD',

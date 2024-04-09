@@ -7,7 +7,15 @@ _shutil_
 
 </br>
 
-（1）使用 make_archive 打包文件
+（1）基本用法
+
+```python
+# 递归地将一个文件或目录 (src) 移到另一位置并返回目标位置。
+shutil.move(src, dst) 
+```
+
+
+（2）使用 make_archive 打包文件
 
 ```python
 import shutil
