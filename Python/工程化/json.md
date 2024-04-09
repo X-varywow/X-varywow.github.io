@@ -31,6 +31,10 @@ pprint(res)
 res = {}
 with open("data.json", "w") as f:
     json.dump(res, f)
+
+# 保存中文文件时，使用如下方式：（不会被编码为 \u6a31 类似的）
+with open('data.json', 'w', encoding='utf-8') as f:
+    json.dump(out, f, ensure_ascii=False, indent=4)
 ```
 
 
