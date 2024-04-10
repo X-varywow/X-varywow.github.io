@@ -183,11 +183,16 @@ SHOW TASKS;
 查看 TASK 执行记录：https://docs.snowflake.com/en/sql-reference/functions/task_history
 
 ```sql
-select *
-  from table(information_schema.task_history(
-    scheduled_time_range_start=>dateadd('hour',-1,current_timestamp()),
-    result_limit => 10,
-    task_name=>'MYTASK'));
+select 
+    concat(STATE,' : ',SCHEDULED_TIME) detail,
+    datediff(second, QUERY_START_TIME, COMPLETED_TIME) cost_time,
+    *
+from table(
+    information_schema.task_history(
+        scheduled_time_range_start=>dateadd('hour',-24, current_timestamp()),
+        result_limit => 3000,
+        task_name=>'...'))
+where SCHEMA_NAME = '...' and  DATABASE_NAME = '...';
 ```
 
 

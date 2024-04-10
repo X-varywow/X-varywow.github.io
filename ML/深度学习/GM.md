@@ -1,11 +1,12 @@
 
 
-> 主流的的生成模型：VAE, GAN, flow
+> 主流的的生成模型：
 - GAN
     - a generative model `G` that captures the data distribution
     - a discriminative model `D` that estimates the probability that a sample came from the training data rather than G
 - VAE
 - Flow
+- Diffusion
 
 
 <img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20230822004226.png" style="zoom:60%">
@@ -194,6 +195,8 @@ torch.save(D.state_dict(), 'discriminator.pth')
 ## _Diffusion_
 
 属于无监督生成模型
+
+通过模拟一个逐步从无序状态向有序状态（或相反）转变的过程来生成数据；这个过程通常包括多个步骤，通过逐渐减少数据中的噪声，最终生成类似于训练集的高质量数据。Diffusion模型在生成图像、音频等多种类型的数据方面表现优越，被广泛应用于生成艺术、模拟真实世界物体的外观、语音合成等领域。
 
 如 Stable Diffusion (2022 年的深度学习文本到图像生成模型), [wiki](https://zh.wikipedia.org/zh-cn/Stable_Diffusion)。
 

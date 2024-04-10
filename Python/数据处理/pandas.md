@@ -9,6 +9,8 @@ import numpy as np
 # 更改显示情况
 pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', None)
+
+pd.set_option('display.float_format',lambda x : '%.4f' % x)
 ```
 
 

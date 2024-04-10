@@ -121,5 +121,50 @@ vae diffusion transformer 数理基础，算子，有空补一下;
 - [ ] 整理布局
 - [ ] 图片工具
 
+
+----------
 有意思，
 https://github.com/BAAI-Agents/Cradle
+
+llm agent, 基于大型语言模型（如GPT系列）的智能体或助手
+
+使用 ahk 做输入控制
+
+图意多模态理解，（text: ocr, 图意？？）
+
+把按键控制定义 skill
+
+- atomic_skills
+- composite_skills
+
+
+决策，控制
+
+层层抽象，
+
+cv_go_to_icon screenshot -> match(mtm, cv2.TM_CCOEFF_NORMED)
+
+https://github.com/multi-template-matching/mtm-python-oop
+
+https://github.com/JaidedAI/EasyOCR  21K
+
+pyautogui.getWindowsWithTitle(config.env_name)
+
+重点在那一大片提示词, 然后 gpt 理解 图像
+
+关键点： client 学习与决策？图意理解？
+
+https://github.com/nashsu/FreeAskInternet
+
+https://github.com/PKU-YuanGroup/Open-Sora-Plan
+
+https://huggingface.co/NexaAIDev/Octopus-v2
+
+trafilatura
+
+simcse
+
+电话卡
+
+
+https://m.ofweek.com/ai/2024-01/ART-201712-8440-30623318.html gpt3.5 弄个 agent

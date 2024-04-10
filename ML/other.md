@@ -71,12 +71,13 @@ https://github.com/Significant-Gravitas/Auto-GPT
 
 这要是能做成虚拟现实的游戏，绝对爆火。
 
-**（5）other**
+**（5）LLM Agent**
+
+
+**（6）other**
 
 
 [FastGPT](https://github.com/labring/FastGPT) ，一个基于 LLM 大语言模型的知识库问答系统
-
-**（6）其他大语言模型**
 
 参考：[机器学习/LLM](/ML/llm)
 
