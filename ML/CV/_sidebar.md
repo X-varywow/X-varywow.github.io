@@ -15,6 +15,7 @@
   - [yolo](ML/CV/yolo)
   - [CLIP](ML/CV/CLIP)
   - [faceswap](ML/CV/faceswap/)
+  - [OCR](ML/CV/ocr)
   - ---
   - [mediapipe](ML/CV/mediapipe)
   - [opencv](ML/CV/opencv)

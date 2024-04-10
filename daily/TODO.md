@@ -146,8 +146,6 @@ cv_go_to_icon screenshot -> match(mtm, cv2.TM_CCOEFF_NORMED)
 
 https://github.com/multi-template-matching/mtm-python-oop
 
-https://github.com/JaidedAI/EasyOCR  21K
-
 pyautogui.getWindowsWithTitle(config.env_name)
 
 重点在那一大片提示词, 然后 gpt 理解 图像
