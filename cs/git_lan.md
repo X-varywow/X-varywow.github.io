@@ -151,6 +151,9 @@ git merge origin/pro
 
 # 将本地 master merge 到当前分支（test）
 git merge master
+
+# --squash 合并 commit 信息
+git merge --squash master
 ```
 
 一般合并代码发生冲突，在编辑器中合并，接受传入
