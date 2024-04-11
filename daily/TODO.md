@@ -166,3 +166,15 @@ simcse
 
 
 https://m.ofweek.com/ai/2024-01/ART-201712-8440-30623318.html gpt3.5 弄个 agent
+
+
+------------
+
+https://github.com/openai/tiktoken
+
+计算token, encode 工具
+
+BPE, byte Pair Encoding; 减少了处理大词汇量时的复杂性,允许模型有效地处理未见词
+
+------------
+
