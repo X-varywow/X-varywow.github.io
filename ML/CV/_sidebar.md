@@ -2,18 +2,20 @@
 - [ML/图像任务](ML/CV/)
   - ---
   - [图像基础](ML/CV/图像基础)
-  - [图像生成](ML/CV/图像生成)
   - [图像切分](ML/CV/图像切分)
   - [图像翻译](ML/CV/图像翻译/)
   - [数据集](ML/CV/dataset)
   - ---
-  - [SD 理论](ML/CV/sd_the)
-  - [SD 实践](ML/CV/sd_pra)
-  - [SDXL](ML/CV/SDXL)
+  - [图像生成](ML/CV/sd/图像生成)
+  - [SD 理论](ML/CV/sd/sd_the)
+  - [SD 实践](ML/CV/sd/sd_pra)
+  - [animatediff](ML/CV/sd/animatediff)
+  - [sd_other](ML/CV/sd/sd_other)
+  - ---
+  - [CLIP](ML/CV/CLIP)
   - [first-order-model](ML/CV/FOMM)
   - [VGG](ML/CV/vgg)
   - [yolo](ML/CV/yolo)
-  - [CLIP](ML/CV/CLIP)
   - [faceswap](ML/CV/faceswap/)
   - [OCR](ML/CV/ocr)
   - ---

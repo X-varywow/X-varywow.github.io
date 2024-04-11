@@ -156,6 +156,10 @@ Qwen 使用 qlora 微调: https://mp.weixin.qq.com/s/2VuZOwe6rf3uAYyoXXPloQ
 
 4080 目前还是闲着，，，
 
+2024-04-01
+
+qwen 1.5
+
 -------------------
 
 参考资料：
