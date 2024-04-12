@@ -8,7 +8,6 @@
   - [bokeh](Python/数据处理/bokeh)
   - [pyecharts](Python/数据处理/pyecharts)
   - [seaborn](Python/数据处理/seaborn)
-  - [Vizro](Python/数据处理/vizro)
   - ---------
   - [数据分析](Python/数据处理/数据分析)
   - [特征工程](Python/数据处理/特征工程)

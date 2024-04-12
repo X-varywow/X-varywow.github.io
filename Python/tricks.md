@@ -190,6 +190,48 @@ from a import main
 a = 1 是作为一个 <u>顶层代码行</u>，当 python 解释器在执行 `from a import main` 的时候，会执行 a.py 中的所有顶层代码，这时候 a = 1 会被执行。
 
 
+</br>
+
+## _作用域_
+
+global
+
+```python
+num = 1
+def fun1():
+    global num  # 需要使用 global 关键字声明
+    print(num) 
+    num = 123
+    print(num)
+fun1()
+print(num)
+```
+
+
+nonlocal
+
+
+```python
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        res = float('-inf')
+
+        def maxGain(node):
+            nonlocal res
+            if not node: return 0
+            left = max(maxGain(node.left), 0)
+            right = max(maxGain(node.right), 0)
+            tmp = node.val + left + right
+            res = max(res, tmp)
+            # 该节点的贡献值，只能一条分支
+            return node.val + max(left, right)
+        
+        maxGain(root)
+        return res
+```
+
+
+
 
 </br>
 
