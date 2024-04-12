@@ -6,7 +6,6 @@
   - [图像翻译](ML/CV/图像翻译/)
   - [数据集](ML/CV/dataset)
   - ---
-  - [图像生成](ML/CV/sd/图像生成)
   - [SD 理论](ML/CV/sd/sd_the)
   - [SD 实践](ML/CV/sd/sd_pra)
   - [animatediff](ML/CV/sd/animatediff)

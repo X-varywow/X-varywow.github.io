@@ -16,9 +16,6 @@ OpenAI 的 CLIP（对比性语言-图像预训练）是一种多模态模型。�
 
 
 
-参考：https://zhuanlan.zhihu.com/p/521151393
-
-
 ## 部署
 
 
@@ -74,11 +71,38 @@ with torch.no_grad():
 print("Label probs:", probs)  # prints: [[0.9927937  0.00421068 0.00299572]]
 ```
 
+## (3) clip-vit-large-patch14
+
+https://huggingface.co/openai/clip-vit-large-patch14
+
+```python
+from PIL import Image
+import requests
+
+from transformers import CLIPProcessor, CLIPModel
+
+clip_path = r"E:\stable-diffusion-webui-master\openai\clip-vit-large-patch14"
+
+model = CLIPModel.from_pretrained(clip_path)
+processor = CLIPProcessor.from_pretrained(clip_path)
+
+url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = Image.open(requests.get(url, stream=True).raw)
+
+inputs = processor(text=["a photo of a cat", "a photo of a dog"], images=image, return_tensors="pt")
+
+outputs = model(**inputs)
+logits_per_image = outputs.logits_per_image # this is the image-text similarity score
+probs = logits_per_image.softmax(dim=1) # we can take the softmax to get the label probabilities
+
+probs
+```
+
 
 
 
 ------------
 
 参考资料：
-- https://kky42.com/clip
+- https://zhuanlan.zhihu.com/p/521151393
 - https://github.com/openai/CLIP

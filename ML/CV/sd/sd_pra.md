@@ -1,27 +1,28 @@
 
-[webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 62.8k
+[webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 
-[stable-diffusion](https://github.com/CompVis/stable-diffusion) 50.6k
+[stable-diffusion](https://github.com/CompVis/stable-diffusion) 
 
-[huggingface sd v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5) [huggingface sd v2.1](https://huggingface.co/stabilityai/stable-diffusion-2-1)
+[civitai 模型共享](https://civitai.com/)
 
-[civitai 模型共享](https://civitai.com/) ⭐️
+</br>
 
-https://civitai.com/models/6424/chilloutmix
+## _环境部署_
 
+1. 克隆仓库：[webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 
 
+2. windows 执行 webui.bat， 会在 venv 目录下新建 python 环境
 
-## 部署
-
-windows 执行 webui.bat， 会在 venv 目录下新建环境
-
-然后去 huggingface 上下载模型, 
+3. huggingface 上下载模型, 
 
 如：
 - [stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/tree/main) 中 safetensors 文件
-- [stable-diffusion-2](https://huggingface.co/stabilityai/stable-diffusion-2)
+- [stabilityai/stable-diffusion-2-1](https://huggingface.co/stabilityai/stable-diffusion-2-1)
+- [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5)
 
 然后将 6.7GB 的模型放到 webui/models/Stable-diffusion 目录下
+
+4. 启动 webui.bat
 
 
 -----------------
@@ -31,19 +32,20 @@ windows 执行 webui.bat， 会在 venv 目录下新建环境
 OSError: Can't load tokenizer for 'openai/clip-vit-large-patch14'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'openai/clip-vit-large-patch14' is the correct path to a directory containing all relevant files for a CLIPTokenizer tokenizer.
 
 
-之后在 stable-diffusion-webui-master\venv\Lib\site-packages\transformers\models
-
+下载方式1：
 ```bash
 git lfs install
 git clone https://hf-mirror.com/openai/clip-vit-large-patch14
 ```
 
-使用的镜像站 https://hf-mirror.com/
+下载方式2：huggingface 或镜像站 https://hf-mirror.com/  手动下载模型文件
+
+移动到位置：stable-diffusion-webui-master\openai\clip-vit-large-patch14 即可
+
+----------------
 
 
-
-
-（可选）
+（可选：xformers 推理加速）
 
 [xFormers](https://github.com/facebookresearch/xformers) - Toolbox to Accelerate Research on Transformers
 
@@ -56,40 +58,36 @@ cd E:\stable-diffusion-webui-master\venv\Scripts
 
 安装的 xformers-0.0.25.post1
 
----------------------
 
+更改 webui-user.bat ( 对 webui 增设参数) 即可
 
 ```bash
-git clone repo_name
-
-./webui.sh --share
+set COMMANDLINE_ARGS=--xformers
 ```
 
+## 常用
 
-## SDXL
+去 [civitai](https://civitai.com/) 下载模型
 
-
-（2023.08）
-
-SDXL 1.0 也是所有开放式图像模型中参数量最多的模型之一，它建立在一个创新的新架构上，由一个 35 亿参数的基础模型和一个 66 亿参数的细化模型组成。
-
-论文地址：https://arxiv.org/pdf/2307.01952.pdf
-
-代码地址：https://github.com/Stability-AI/generative-models
-
-官网：https://stablediffusionxl.com/
-
-huggingface 在线：https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0
+点击图片右下角 i copy 参数进行绘图
 
 
+setting -> show all pages -> Quicksettings list (setting entries that appear at the top of page rather than in settings tab) 加入 「sd_vae」、「CLIP_stop_at_last_layers」
 
-[SDXL1.0评测](https://zhuanlan.zhihu.com/p/646879971)
+--------------
 
-[深入浅出完整解析Stable Diffusion XL（SDXL）核心基础知识](https://zhuanlan.zhihu.com/p/643420260)
+- [x] [picx_real](https://civitai.com/models/241415/picxreal)
+- [x] [小红书纯欲风格自拍](https://civitai.com/models/68691?modelVersionId=73382)
+- [ ] [Artist Style | PonyXL | Lora](https://civitai.com/models/351303)
 
 
+DPM++ 3M SDE Exponential 挺好的
 
-## 插件等
+。。。有点吓人，各种扭曲在一起的时候；其他都挺好的
+
+</br>
+
+## _插件等_
 
 </br>
 
@@ -143,3 +141,7 @@ https://github.com/comfyanonymous/ComfyUI
 ## OTHER
 
 [LoRA the Explorer](https://huggingface.co/spaces/multimodalart/LoraTheExplorer): 使用 SDXL 生成固定风格图片
+
+
+参考资料：
+- [sd civitai 使用](https://blog.csdn.net/sinat_26917383/article/details/131037406)
