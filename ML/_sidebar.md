@@ -11,7 +11,6 @@
   - [torch&tools](ML/torch/)
   - ---
   - [NLP](ML/NLP/)
-  - [LLM](ML/llm)
   - [CV](ML/CV/)
   - [Audio](ML/Audio/)
   - ---
@@ -21,4 +20,3 @@
   - [信息学中的熵](ML/信息学中的熵)
   - [模型部署](ML/deploy)
   - [News](ML/News)
-  - [OTHER](ML/other)

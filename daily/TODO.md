@@ -177,3 +177,7 @@ https://github.com/openai/tiktoken
 BPE, byte Pair Encoding; 减少了处理大词汇量时的复杂性,允许模型有效地处理未见词
 
 ------------
+
+https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-environments/
+
+llm, sd

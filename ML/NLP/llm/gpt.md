@@ -92,12 +92,4 @@ https://github.com/Significant-Gravitas/Auto-GPT
 - [ChatGPT 原理剖析 (3/3) — ChatGPT 所带来的研究問題](https://www.youtube.com/watch?v=UsaZhQ9bY2k)
 
 
-## 方法论
-
-（1）当模型预测不准时，并且没有改进思路。可以查看预测不准的数据是什么样子，然后对数据筛选或寻找原因。
-
-（2）[Kaggle 通用方法](https://zhuanlan.zhihu.com/p/27424282)
-
-（3）了解一个领域，去看综述很有用；杂七杂八的短文，有时不如去上一门专业的课程或一本专业书。
-
 
