@@ -67,6 +67,39 @@ for i in range(100):
 st.success("Finished")
 ```
 
+## 常见控件
+
+
+```python
+with st.sidebar:
+    st.header("Configuration")
+    day = st.number_input("距离当前时间天数", value = 3)
+
+    if st.button("刷新数据"):
+        # statement = refresh_qa_sql.format(day=day)
+        # session.sql(statement)
+        session.call("procedure", 1)
+        st.success("success")
+```
+
+
+```python
+def color_cells(val):
+    if val > 90:
+        color = '#ead0d1'
+    elif val < 70:
+        color = '#2add9c50' 
+    else:
+        color = '#e9e7ef50'
+    return f'background-color: {color}'
+
+styled_df = df.style.applymap(color_cells, subset=['col2'])
+
+# st.write(df)
+st.dataframe(styled_df)
+```
+
+
 
 
 ## config

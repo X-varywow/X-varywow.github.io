@@ -180,4 +180,6 @@ BPE, byte Pair Encoding; 减少了处理大词汇量时的复杂性,允许模型
 
 https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-environments/
 
-llm, sd
+llm, sd; blog, python-proj
+
+https://github.com/liguodongiot/llm-action
