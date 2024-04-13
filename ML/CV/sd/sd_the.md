@@ -122,6 +122,38 @@ sd 开源，生态友好；
 
 ------------
 
+
+其他产品：
+
+
+
+
+#### stable video diffusion
+
+
+[stabilityai/stable-video-diffusion-img2vid-xt](https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt)
+
+
+
+#### stablelm
+
+[stabilityai/stablelm-2-12b-chat](https://huggingface.co/stabilityai/stablelm-2-12b-chat)
+
+
+```bash
+pip install transformers
+
+# 预先安装模型文件
+git lfs install
+```
+
+
+
+
+
+
+------------
+
 参考资料：
 - https://new.qq.com/rain/a/20230602A0A5RF00
 - [Stability AI 是如何赚钱的？ 稳定性 AI 商业模式分析](https://fourweekmba.com/zh-CN/%E7%A8%B3%E5%AE%9A%E6%80%A7ai%E6%98%AF%E6%80%8E%E4%B9%88%E8%B5%9A%E9%92%B1%E7%9A%84/)

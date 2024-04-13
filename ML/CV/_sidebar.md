@@ -6,10 +6,9 @@
   - [图像翻译](ML/CV/图像翻译/)
   - [数据集](ML/CV/dataset)
   - ---
-  - [SD 理论](ML/CV/sd/sd_the)
-  - [SD 实践](ML/CV/sd/sd_pra)
+  - [StableDiffusion](ML/CV/sd/sd_the)
+  - [SD Webui 使用](ML/CV/sd/sd_pra)
   - [animatediff](ML/CV/sd/animatediff)
-  - [sd_other](ML/CV/sd/sd_other)
   - ---
   - [CLIP](ML/CV/CLIP)
   - [first-order-model](ML/CV/FOMM)

@@ -11,3 +11,5 @@ cd AnimateDiff
 conda env create -f environment.yaml
 conda activate animatediff
 ```
+
+[animatediff + comfyUI 制作动画工作流](https://www.bilibili.com/video/BV1Pc41117Tf)

@@ -78,22 +78,31 @@ setting -> show all pages -> Quicksettings list (setting entries that appear at 
 
 - [x] [picx_real](https://civitai.com/models/241415/picxreal)
 - [x] [小红书纯欲风格自拍](https://civitai.com/models/68691?modelVersionId=73382)
-- [ ] [Artist Style | PonyXL | Lora](https://civitai.com/models/351303)
+- [x] [Artist Style | PonyXL | Lora](https://civitai.com/models/351303)
 
 
-DPM++ 3M SDE Exponential 挺好的
+AI 制作普通的游戏素材还是可以的
 
-。。。有点吓人，各种扭曲在一起的时候；其他都挺好的
+。。。有点吓人，各种扭曲在一起的时候; 画不好手；其他都挺好的
+
+
+
+
+
+
 
 </br>
 
 ## _插件等_
 
-</br>
 
-### _controlnet_
 
-> 很有用，但现在自己没场景
+
+
+
+
+
+### controlnet
 
 [ControlNet精准控制AI绘画教程](https://zhuanlan.zhihu.com/p/608499305)
 
@@ -123,25 +132,28 @@ DPM++ 3M SDE Exponential 挺好的
 
 <img src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/646a6cf5-9cd8-443a-ad53-69b7feca02c8/width=450/6.jpeg">
 
-</br>
 
-### _EbSynth_
+### EbSynth
 
 [EbSynth 补帧生成动画](https://www.bilibili.com/video/BV1uX4y1H7U3)
 
 
-</br>
 
-### _ComfyUI_
+
+### ComfyUI
 
 
 https://github.com/comfyanonymous/ComfyUI
 
+</br>
 
-## OTHER
+## _OTHER_
 
 [LoRA the Explorer](https://huggingface.co/spaces/multimodalart/LoraTheExplorer): 使用 SDXL 生成固定风格图片
 
 
+---------------
+
 参考资料：
 - [sd civitai 使用](https://blog.csdn.net/sinat_26917383/article/details/131037406)
+- [Stable Diffusion WebUI 显示 VAE 模型、CLIP 终止层数](https://zhuanlan.zhihu.com/p/645264967)
