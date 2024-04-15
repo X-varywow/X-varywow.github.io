@@ -136,6 +136,15 @@ def regression_metrics(ground_truth, prediction):
     return msg
 ```
 
+```python
+from sklearn.metrics import classification_report
+
+report = classification_report(y_test, y_pred_class)
+print(report)
+```
+
+
+
 --------------
 
 参考资料：

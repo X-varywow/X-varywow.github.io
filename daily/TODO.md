@@ -182,3 +182,23 @@ https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-en
 llm, sd; blog, python-proj
 
 https://github.com/liguodongiot/llm-action
+
+
+-----------
+
+blog zhihu
+
+https://zhuanlan.zhihu.com/p/463021006
+
+
+https://sci-hub.ru/https://www.sciencedirect.com/science/article/abs/pii/030646039390038B
+
+sci-hub, 6的； ocr
+
+https://mp.weixin.qq.com/s/6Jn4-3KPoffsYGrrvYX6vg
+
+kimi 用起来还可以
+
+https://zhuanlan.zhihu.com/p/659784334
+
+https://lilianweng.github.io/posts/2023-06-23-agent/
