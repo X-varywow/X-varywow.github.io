@@ -109,6 +109,9 @@ df.info()  # more info than shape
 # 查看特定的列
 cols = ['a', 'b']
 df[cols]
+
+# .T 方便查看单行数据
+df.T
 ```
 
 ```python

@@ -495,7 +495,7 @@ LIMIT 10;
 - IFNULL( <expr1> , <expr2> ) -- If expr1 is NULL, returns expr2, otherwise returns expr1.
 - NULLIF( <expr1> , <expr2> ) -- Returns NULL if expr1 is equal to expr2, otherwise returns expr1.
 - count_if()/count(1)
-
+- IFF( <condition> , <expr1> , <expr2> ) -- If condition evaluates to TRUE, returns expr1, otherwise returns expr2.
 
 
 
