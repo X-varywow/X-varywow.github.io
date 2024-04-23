@@ -45,6 +45,24 @@ from typing import List, Optional
 - List[int]
 - 支持递归 BaseModel
 
+
+
+--------
+
+```python
+class Item(BaseModel):
+    id: Optional[int] = None
+    id2: int = 1
+
+# Optional 可选参数
+# id2 写法要么不传过来，要么传过来不能为 None
+```
+
+传过来 null 会报错：422 Unprocessable Entity
+
+
+
+
 --------
 
 动态属性，新增属性而不必是定义中的属性

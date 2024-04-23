@@ -335,6 +335,10 @@ def age_fun(x):
 train["Age"] = train["Age"].apply(age_fun)
 
 
+# eg3 lambda 配合自定义函数
+df['new_col'] = df.apply(lambda x: func(x['col1'], x['col2']))
+
+
 
 # eg3 耗时较久
 from bisect import bisect_right
