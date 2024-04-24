@@ -1,22 +1,4 @@
-
-想用 fastapi 的 html response, 但是部署到 k8s 就各种问题，，
-
-想用 nodejs 新起一个前端服务，但是没有复用的路，估计较长的时间，，
-
-想用 gradio, 但 mac 报 no Blocks ， 奇怪，
-
-用 streamlit 了， 刚好
-
-
 ## preface
-
-[cheats-sheet](https://cheat-sheet.streamlit.app/)
-
-[create a multipage app](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app)
-
-[30days](https://30days.streamlit.app/)
-
-https://zhuanlan.zhihu.com/p/163927661
 
 ```python
 # pip install streamlit
@@ -24,12 +6,16 @@ https://zhuanlan.zhihu.com/p/163927661
 import streamlit as st
 
 st.markdown("## hello world")
-
-# streamlit run app.py
 ```
 
-其它启动方式:
 
+启动方式:
+
+(1)
+```bash
+streamlit run app.py
+```
+(2)
 ```python
 import subprocess
 
@@ -37,6 +23,9 @@ import subprocess
 def run_streamlit():
     subprocess.Popen(["streamlit", "run", "app.py", "--server.baseUrlPath=front"])
 ```
+
+
+## 常用组件
 
 使用 session_state 在会话中存储全局变量
 
@@ -48,7 +37,6 @@ st.text_input("Your name", key="name")
 # This exists now:
 st.session_state.name
 ```
-
 
 ```python
 # 添加占位符
@@ -67,9 +55,6 @@ for i in range(100):
 st.success("Finished")
 ```
 
-## 常见控件
-
-
 ```python
 with st.sidebar:
     st.header("Configuration")
@@ -81,7 +66,6 @@ with st.sidebar:
         session.call("procedure", 1)
         st.success("success")
 ```
-
 
 ```python
 def color_cells(val):
@@ -98,64 +82,6 @@ styled_df = df.style.applymap(color_cells, subset=['col2'])
 # st.write(df)
 st.dataframe(styled_df)
 ```
-
-
-
-
-## config
-
-查看 config 文档
-
-```bash
-streamlit config show
-```
-
-```bash
-vim ~/.streamlit/config.toml
-```
-
-pageconfig:
-
-```python
-st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
-    layout="wide"
-)
-```
-
-
-
-## pandas 支持
-
-```python
-df = pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40]
-     })
-st.write(df)
-```
-
-连接 snowpark
-
-```python
-st.experimental_connection('pets_db', type='sql')
-conn = st.experimental_connection('sql')
-conn = st.experimental_connection('snowpark')
-
-class MyConnection(ExperimentalBaseConnection[myconn.MyConnection]):
-    def _connect(self, **kwargs) -> MyConnection:
-        return myconn.connect(**self._secrets, **kwargs)
-    def query(self, query):
-       return self._instance.query(query)
-```
-
-
-
-
-
-
-## other
 
 ```python
 st.latex(r'''
@@ -174,5 +100,82 @@ font="monospace"
 """)
 ```
 
-[Deploy Streamlit using Kubernetes](https://docs.streamlit.io/knowledge-base/tutorials/deploy/kubernetes)
+更多组件，请查看参考资料（1）（2）
 
+
+
+## config
+
+查看 config 文档
+```bash
+streamlit config show
+
+vim ~/.streamlit/config.toml
+```
+pageconfig:
+
+```python
+st.set_page_config(
+    page_title="Hello",
+    page_icon="👋",
+    layout="wide"
+)
+```
+
+
+## Other
+
+### 使用装饰器做权限验证和分级
+
+st.session_state 相当于一个全局变量字典
+
+```python
+from functools import wraps
+
+def md5_decorator(level):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if st.session_state.auth_level >= level:
+                return func(*args, **kwargs)
+            else:
+                return "Please confirm your authoration!", 0
+        return wrapper
+    return decorator
+    
+    
+@md5_decorator(level = 3)
+def func(citus_connection_config, content):
+    pass
+```
+
+### snowflake session
+
+Snowflake 内使用：
+```python
+from snowflake.snowpark.context import get_active_session
+session = get_active_session()
+```
+POD 中使用：
+
+```python
+from snowflake.snowpark import Session
+session = Session.builder.configs(snowflake_config).create()
+```
+
+### Html 支持
+
+```python
+st.markdown('<br>', unsafe_allow_html=True)
+```
+
+------------
+
+参考资料:
+
+- [cheats-sheet](https://cheat-sheet.streamlit.app/)
+- https://zhuanlan.zhihu.com/p/163927661
+- [create a multipage app](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app)
+- [30days](https://30days.streamlit.app/)
+- Gallery: https://streamlit.io/gallery
+- 布局方法：https://docs.streamlit.io/develop/api-reference/layout

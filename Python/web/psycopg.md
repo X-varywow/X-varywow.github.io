@@ -187,8 +187,9 @@ class my_pool:
             with self.pool.connection() as conn:
                 conn.autocommit = True
                 try:
-                    with conn.cursor() as cursor:
-                        cursor.execute("SELECT 1")
+                    # with conn.cursor() as cursor:
+                    #     cursor.execute("SELECT 1")
+                    self.pool.check()
                 except:
                     error = traceback.format_exc()
                     logger.error(f"PostgresConnection _warm_up citus failed by: {error}")
