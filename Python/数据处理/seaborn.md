@@ -1,5 +1,22 @@
+## _直线图_
+
+```python
+import numpy as np
+import pandas as pd
+import seaborn as sns
+sns.set_theme(style="whitegrid")
+
+rs = np.random.RandomState(365)
+values = rs.randn(365, 4).cumsum(axis=0)
+dates = pd.date_range("1 1 2016", periods=365, freq="D")
+data = pd.DataFrame(values, dates, columns=["A", "B", "C", "D"])
+data = data.rolling(7).mean()
+
+sns.lineplot(data=data, palette="tab10", linewidth=2.5)
+```
 
 
+</br>
 
 ## _直方图_
 
@@ -17,7 +34,7 @@ sns.kdeplot(data=data['column_name'])
 sns.kdeplot(data=data, x='feature1', y='feature2', shade=True)
 ```
 
-
+</br>
 
 ## _气泡图_
 
@@ -42,7 +59,7 @@ plt.title('Bubble Plot with Transparency')
 plt.show()
 ```
 
-
+</br>
 
 ## _热度图_
 
