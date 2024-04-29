@@ -353,9 +353,15 @@ def func(x):
     
 
 df['LABEL'] = df.apply(func, axis=1) # 按行应用
-
+```
 
 eg. 根据 df 生成提示词：
+
+```python
+import pandas as pd
+from tqdm.auto import tqdm
+tqdm.pandas()
+
 template = "\n\nCategory:\nkaggle-{Category}\n\nQuestion:\n{Question}\n\nAnswer:\n{Answer}"
 
 df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Category,
