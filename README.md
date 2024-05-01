@@ -3,7 +3,7 @@
 这是基于 docsify 的文档，主要是简洁，目录结构清晰，知识整理方便。
 
 <div style="padding:1rem 1rem">
-<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20240411002621.png" style="zoom:40%">
+<img src="https://img-1301102143.cos.ap-beijing.myqcloud.com/20240411001107.png" style="zoom:40%">
 
 </div>
 

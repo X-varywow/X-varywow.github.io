@@ -184,13 +184,6 @@ llm, sd; blog, python-proj
 https://github.com/liguodongiot/llm-action
 
 
------------
-
-blog zhihu
-
-https://zhuanlan.zhihu.com/p/463021006
-
-
 https://sci-hub.ru/https://www.sciencedirect.com/science/article/abs/pii/030646039390038B
 
 sci-hub, 6的； ocr
