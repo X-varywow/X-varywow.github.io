@@ -267,6 +267,14 @@ seed_res = data_oldusers_test.groupby('NEXT_SEED')['bias'].agg([
 
 # 类型转化
 data['NEXT_SCORE'] = data['NEXT_SCORE'].astype('int')
+
+# 添加分类模型预测的结果
+y_test = data_test['LABEL']
+y_pred = classifier.predict(data_test[feas])
+
+data_test['PRED_LABEL'] = (y_pred >= 0.5).astype(int)
+
+y_pred_class = data_test['PRED_LABEL']
 ```
 
 

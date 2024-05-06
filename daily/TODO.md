@@ -195,3 +195,5 @@ kimi 用起来还可以
 https://zhuanlan.zhihu.com/p/659784334
 
 https://lilianweng.github.io/posts/2023-06-23-agent/
+
+wx or unity 类小丑牌小程序开发

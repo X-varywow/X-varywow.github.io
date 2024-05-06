@@ -64,17 +64,63 @@ plt.show()
 ## _热度图_
 
 ```python
-import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_theme()
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
-data = [[1,2],[2,3]]
+# 创建一个示例 DataFrame 数据
+data = {
+    '年龄': np.random.randint(18, 65, 100),
+    '收入': np.random.randint(5000, 20000, 100),
+    '消费': np.random.randint(1000, 10000, 100)
+}
+df = pd.DataFrame(data)
 
-# Draw a heatmap with the numeric values in each cell
-f, ax = plt.subplots(figsize=(9, 6))
-sns.heatmap(data, fmt='d', linewidths=.5, cmap='YlGnBu')
+# 计算相关系数矩阵
+corr = df.corr()
+
+# 设置 matplotlib 的 figure 大小
+plt.figure(figsize=(10, 8))
+
+# 绘制热力图
+ax = sns.heatmap(corr, annot=True, fmt=".2f", linewidths=.5, cmap='YlGnBu')
+
+# 将 x 轴的标签移到上方
+ax.xaxis.tick_top()  # x轴刻度线和标签移到上方
+ax.xaxis.set_label_position('top')  # x轴标签移到上方
+
+# 可选：旋转标签以改善显示效果
+# plt.xticks(rotation=45)  # 旋转 x 轴标签
+plt.yticks(rotation=0)  # 旋转 y 轴标签（如果需要）
+
+# 显示图形
+plt.show()
 ```
 
+
+
+</br>
+
+## _子图_
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_theme(style="white")
+
+fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
+
+sns.histplot(df[df['LABEL'] == 0]['SCORE'], kde=True, ax = axs[0])
+axs[0].set_title("label = 0")
+
+sns.histplot(df[df['LABEL'] == 1]['SCORE'], kde=True, ax = axs[1])
+axs[1].set_title("label = 1")
+
+# plt.tight_layout()  # 自动调整子图参数, 使之填充整个图像区域
+# plt.show()
+```
 
 
 
