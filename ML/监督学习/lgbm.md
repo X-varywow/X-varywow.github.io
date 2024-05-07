@@ -25,15 +25,41 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 - lightgbm.LGBMRanker
 
 
+--------------
 
 
+在LightGBM中，`eval_metric`参数用于评估模型的性能，而不是用来指定训练过程中使用的损失函数。
+
+模型训练时使用的损失函数是通过 `objective` 参数来指定的。
+
+因此，如果你设置了`objective`为`quantile`（分位数回归），那么无论你在`eval_metric`中指定了哪些评估指标（比如`'mae'`, `'huber'`等），模型训练时使用的损失函数都是分位数损失。
+
+--------------
+
+`eval_metric` 作用：（感觉只有观测和手动调整超参的作用）
+
+1. 性能评估
+- **监控训练过程**：`eval_metric`允许你在模型训练过程中监控一个或多个评估指标。这意味着你可以实时地看到模型在训练集和验证集上的表现，帮助你了解模型是否在学习，以及学习的速度如何。
+- **模型比较**：通过在不同模型或不同参数设置下观察这些评估指标，你可以比较哪个模型或哪组参数能够更好地解决你的问题。
+
+2. 过拟合检测
+- **早停（Early Stopping）**：当设置了`eval_metric`和验证集时，你可以利用早停机制来防止过拟合。如果在一定数量的迭代中，选定的评估指标没有改善，训练过程可以提前停止。这有助于避免浪费计算资源，并且防止模型在训练数据上过度拟合。
+
+3. 模型优化方向
+- **指导参数调优**：通过观察不同的`eval_metric`表现，你可以对模型的参数进行调整，以优化特定的性能指标。例如，如果你关注模型的准确率，你可能会优先选择使准确率最大化的参数配置。
+
+4. 适应特定任务需求
+- **灵活选择评估指标**：不同的机器学习任务可能需要不同的评估指标。例如，对于分类问题，你可能会关注准确率、召回率或AUC等；对于回归问题，你可能会关注均方误差（MSE）、平均绝对误差（MAE）或R²等。`eval_metric`允许你根据任务的特性和需求选择最合适的评估指标。
+
+5. 自定义评估指标
+- **灵活性和扩展性**：如果内置的评估指标不能满足你的需求，许多框架（包括LightGBM）允许你定义自己的评估函数。这提供了极大的灵活性，使你能够针对特定的业务问题设计和优化模型。
 
 
 
 
 </br>
 
-## _原生demo_
+## _原生方式_
 
 ```python
 import lightgbm as lgb
@@ -64,6 +90,7 @@ params = {
     'bagging_fraction': 0.8,  # 建树的样本采样比例
     'bagging_freq': 5,  # k 意味着每 k 次迭代执行bagging
     'verbose': 1  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
+    'n_estimators': 2000, # 迭代轮次，默认 100， 通常设置较大并配合早停机制
 
     # max_cat_threshold: 1024,
     # max_bin: 256,
@@ -92,6 +119,11 @@ print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
 gbm.booster_.save_model(model_name)
 model = lgb.Booster(model_file = 'model-01')
 ```
+
+多分类 objective：multiclass 需要额外设定  num_class = 5,
+
+-------------
+
 
 sklearn 接口形式，参考如下分数位回归：
 
@@ -187,48 +219,6 @@ gbm = GridSearchCV(estimator, param_grid)
 gbm.fit(X_train, y_train)
 print('Best parameters found by grid search are:', gbm.best_params_)
 ```
-
-
-</br>
-
-## _多分类_
-
-
-```python
-classifier = lgb.LGBMRegressor(
-        task = 'train',
-        objective = 'multiclass',
-        num_class = 5,
-        boosting_type = 'gbdt',
-        # metric = 'multi_logloss',
-        learning_rate = 0.01,
-        n_estimators = 2000, 
-        min_child_samples = 16, 
-        max_depth = 7,  
-        num_leaves = 32, 
-        random_state = 42,
-        max_cat_threshold = 1024,
-        max_bin = 256,
-        # class_weight = 'balanced',
-         # sample_weight=data_oldusers_train_1['weight'].values,
-    )
-
-callbacks = [log_evaluation(period=100), early_stopping(stopping_rounds=30)]
-
-classifier.fit(X_train, y_train, eval_set=[(X_train, y_train),
-                                          (X_val, y_val)],
-              # eval_metric=[
-              #     'mae','huber'
-              # ],
-              callbacks=callbacks,
-              feature_name=feas, 
-              # no log
-              # categorical_feature=categorical_features
-             )
-```
-
-
-
 
 
 </br>

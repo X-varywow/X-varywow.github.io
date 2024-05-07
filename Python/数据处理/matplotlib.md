@@ -209,6 +209,23 @@ for ball in balls:
         ax2.annotate(ball["number"], (ball["x"], ball["y"]))
 ```
 
+简单的写法：
+
+```python
+plt.figure(figsize=(10,5))
+
+plt.subplot(1,2,1) # 1row, 2col, fig1
+df[df['LABEL'] == 0]['SCORE'].hist(bins=100)
+
+plt.subplot(1,2,2)
+df[df['LABEL'] == 1]['SCORE'].hist(bins=100)
+```
+
+
+
+
+
+
 </br>
 
 ## _更多图形_

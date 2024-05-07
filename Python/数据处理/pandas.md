@@ -190,6 +190,22 @@ df.loc[df['a']>10, ['a','c']]
 df_desc = df.iloc[:, ::-1]
 ```
 
+SettingWithCopyWarning 表示不明确是对原始还是副本的修改
+
+```python
+data_test[f'pred{key}'] = MODEL[key].predict(data_test[feas])
+
+# 可变成：
+data_test.loc[:, f'pred{key}'] = MODEL[key].predict(data_test[feas])
+
+data_test_copy = data_test.copy()
+```
+
+
+
+
+
+
 其它方法：
 ```python
 # 最大、最小
@@ -377,6 +393,17 @@ df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Catego
                                                              Answer=row.Answer), axis=1)
 data = df.prompt.tolist()
 ```
+
+```python
+# 这方法很慢
+```
+
+
+
+
+
+
+
 
 </br>
 

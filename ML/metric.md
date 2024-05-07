@@ -62,6 +62,18 @@ $$L_{delta}(y, f(x)) = \begin{cases}
 
 -------------------
 
+分位数损失函数 Quantile loss function
+
+
+$$L_{delta}(y, f(x)) = \begin{cases}
+\alpha(y-f(x)) \quad \quad \quad  \quad \quad if \quad y>f(x) \\
+(1-\alpha)(f(x)-y) \quad  \quad if \quad y<=f(x)
+\end{cases}$$
+
+($\alpha$ 表示分位数)
+
+-------------------
+
 交叉熵误差 cross entropy error
 
 $$ E = -\sum_k t_k log y_k $$
@@ -139,7 +151,7 @@ def regression_metrics(ground_truth, prediction):
 ```python
 from sklearn.metrics import classification_report
 
-report = classification_report(y_test, y_pred_class)
+report = classification_report(y_true, y_pred)
 print(report)
 ```
 
@@ -150,3 +162,4 @@ print(report)
 参考资料：
 - [说一说机器学习中TP、TN 、FP 、FN](https://blog.csdn.net/qq_28834001/article/details/102922993)
 - https://zhuanlan.zhihu.com/p/353418080
+- chatgpt
