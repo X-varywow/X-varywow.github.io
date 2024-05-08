@@ -23,7 +23,6 @@ y = 2*x+5
 
 （2）画图
 ```python
-# 方式一
 plt.plot(x, y)
 plt.xlabel('combat power')
 plt.ylabel('except win rate')
@@ -32,12 +31,6 @@ plt.title('VS 1500')
 plt.xticks(np.arange(900, 2200, 100))
 plt.yticks(np.arange(0, 1.0, 0.1))
 plt.show()
-
-# 方式二
-fig, ax = plt.subplots()
-ax.plot(x, y, color = "green")
-#fig.savefig("figure.pdf")
-fig.show()
 ```
 
 （3）更多操作
@@ -119,8 +112,9 @@ axs[0].set_title('Sigmoid')
 axs[1].plot(x, tanh)
 axs[1].set_title('Tanh')
 
-# 调整subplot之间的间距
-plt.subplots_adjust(wspace=0.3)
+# wspace 调整子图之间宽度间距
+# hsapce 调整子图之间高度间距
+plt.subplots_adjust(wspace=0.3, hspace=0.3)
 
 # 显示图形
 plt.show()

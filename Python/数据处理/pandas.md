@@ -276,10 +276,6 @@ df2 = df[(20 < df['CLEAR_RATIO']) & (df['CLEAR_RATIO'] <= 75)]
 # 再复杂一点
 df['col2'] = abs(df['col1'] - 0.5)*df['col3']
 
-# 分组再统计
-seed_res = data_oldusers_test.groupby('NEXT_SEED')['bias'].agg([
-    ('win_ratio', lambda x: (x > 0).mean()), ('score_cnt', 'size')
-])
 
 # 类型转化
 data['NEXT_SCORE'] = data['NEXT_SCORE'].astype('int')
@@ -292,17 +288,6 @@ data_test['PRED_LABEL'] = (y_pred >= 0.5).astype(int)
 
 y_pred_class = data_test['PRED_LABEL']
 ```
-
-
-[groupby 官方文档](https://pandas.pydata.org/docs/user_guide/groupby.html)
-
-[Windowing operations 官方文档](https://pandas.pydata.org/docs/user_guide/window.html)
-
-```python
-for window in s.rolling(window=2):
-    print(window)
-```
-
 
 
 设置行列名称：
@@ -337,6 +322,37 @@ new_columns = ['Name', 'Age', 'City', 'Country']
 new_df = df.reindex(index=new_index, columns=new_columns, fill_value='Unknown')
 
 print(new_df)
+```
+
+
+</br>
+
+## _分组 & 开窗_
+
+[groupby 官方文档](https://pandas.pydata.org/docs/user_guide/groupby.html)
+
+[Windowing operations 官方文档](https://pandas.pydata.org/docs/user_guide/window.html)
+
+
+```python
+data_train.groupby(['group1','group2']).agg({
+    'ID':'count',
+    'NEXT_SCORE':[min,max]
+})
+
+
+# 分组再统计
+# 按 group1 分组，再聚合操作统计 bias 的 ratio 和 cnt 
+seed_res = data_oldusers_test.groupby('group1')['bias'].agg([
+    ('ratio', lambda x: (x > 0).mean()), ('cnt', 'size')
+])
+```
+
+
+
+```python
+for window in s.rolling(window=2):
+    print(window)
 ```
 
 
@@ -396,6 +412,73 @@ data = df.prompt.tolist()
 
 ```python
 # 这方法很慢
+
+# 优化前：
+import pandas as pd
+from tqdm.auto import tqdm
+tqdm.pandas()
+import lightgbm as lgb
+
+PC_MODEL = {}
+
+for per in range(100, 1000, 100):
+    PC_MODEL[per] = lgb.Booster(model_file=f'model-{int(per)}')
+
+def predict(row, debug = False):
+        
+    quantile_dict = {}
+    for per in range(100, 1000, 100):
+        score = PC_MODEL[per].predict([row[feas]])[0]
+        quantile_dict[per] = score
+        
+    if debug:
+        print(quantile_dict)
+    
+    return quantile_dict
+
+tmp_df = data_test.sample(1000)
+
+tmp_df['pred'] =  tmp_df.progress_apply(lambda row: predict(row, debug=False), axis=1)
+```
+
+优化之后：
+```python
+import pandas as pd
+from tqdm.auto import tqdm
+import lightgbm as lgb
+import numpy as np
+import concurrent
+from concurrent.futures import ThreadPoolExecutor
+
+def predict_optimized(rows):
+    quantile_dict_list = []
+    feats_matrix = rows.tolist()  # 假设rows为DataFrame按需求处理好的特征矩阵
+
+    for per in range(100, 1000, 100):
+        scores = PC_MODEL[per].predict(feats_matrix)
+        for idx, score in enumerate(scores):
+            if idx == len(quantile_dict_list):
+                quantile_dict_list.append({})
+            quantile_dict_list[idx][per] = score
+    
+    # 如果每个行就是一个独立的字典 返回列表
+    return quantile_dict_list
+
+# 并行处理示例 - 这里只是一个基本例子，详细会因实际应用的数据量和特性变化
+def main_prediction(data):
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = [executor.submit(predict_optimized, chunk) for chunk in np.array_split(data.values, 10)]
+        results = []
+        for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures)):
+            results.extend(future.result())
+            
+    return results
+
+# 示例假设tmp_df是要处理的DataFrame并且数据已经是处理好可供预测的格式
+
+tmp_df = data_test.sample(20000)
+
+tmp_df['pred'] = main_prediction(tmp_df[feas])
 ```
 
 

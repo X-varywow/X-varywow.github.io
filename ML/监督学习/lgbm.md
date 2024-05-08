@@ -91,6 +91,7 @@ params = {
     'bagging_freq': 5,  # k 意味着每 k 次迭代执行bagging
     'verbose': 1  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
     'n_estimators': 2000, # 迭代轮次，默认 100， 通常设置较大并配合早停机制
+    'nthread': -1, # 线程数量， -1 表示全部线程 
 
     # max_cat_threshold: 1024,
     # max_bin: 256,
@@ -121,6 +122,8 @@ model = lgb.Booster(model_file = 'model-01')
 ```
 
 多分类 objective：multiclass 需要额外设定  num_class = 5,
+
+其它目标函数： regression_l1, regression_l2, quantile, poisson, mape
 
 -------------
 
@@ -219,39 +222,6 @@ gbm = GridSearchCV(estimator, param_grid)
 gbm.fit(X_train, y_train)
 print('Best parameters found by grid search are:', gbm.best_params_)
 ```
-
-
-</br>
-
-## _other_
-
-更好的模型效果：
-- 常规的: 更大、更好的训练数据
-- 较大的 max_bin
-- 较小的 learning_rate
-
-
-----------------
-
-其它目标函数： regression_l1, regression_l2, quantile, poisson, mape
-
-特征工程、数据分析相关，参考：[Python/数据处理/特征工程](Python/数据处理/特征工程)
-
-
------------
-
-解释接口：
-
-```python
-!pip install graphviz
-lgb.plot_tree(model)
-
-lgb.plot_metric(model)
-
-lgb.plot_importance(model)
-```
-
-
 
 
 
@@ -431,6 +401,25 @@ model.num_feature()
 
 
 --------------------
+
+
+更好的模型效果：
+- 常规的: 更大、更好的训练数据
+- 较大的 max_bin
+- 较小的 learning_rate
+
+-----------
+
+解释接口：
+
+```python
+!pip install graphviz
+lgb.plot_tree(model)
+
+lgb.plot_metric(model)
+
+lgb.plot_importance(model)
+```
 
 相关链接
 
