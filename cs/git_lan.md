@@ -58,8 +58,9 @@ git merge origin/master
 
 最后是 `HEAD`，指向你最近一次提交后的结果。
 
-## 4.添加&提交&推送
 
+
+## 4.添加&提交&推送
 
 ```bash
 # 将其添加到缓存区
@@ -79,6 +80,25 @@ git remote add origin 'server'
 
 git push origin 'branch'
 ```
+
+--------------
+
+
+默认情况下，对文件名称大小写是不敏感的，但是有些如 docsify 对特定命名要求大写；
+
+方式1：重命名中转； 
+
+方式2：修改配置：
+
+```bash
+# 查看 True 为忽视大小写
+git config core.ignorecase
+
+git config core.ignorecase false
+```
+
+
+
 
 ## 5.分支 ⭐
 
