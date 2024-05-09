@@ -202,6 +202,22 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             print('%r page is %d bytes' % (url, len(data)))
 ```
 
+
+对于次序敏感的场景，注意并行任务合并结果时，由于 **处理时间导致错位** 的问题，即下述 res 中的顺序大概率是错的：
+
+```python
+def main(data):
+    res = []
+    with ThreadPoolExecutor(max_workers = 5) as executor:
+        futures = [executor.submit(your_func, chunk) for chunk in np.array_split(data.values, 10)]
+        for future in tqdm(as_completed(futures), total = len(futures)):
+            res.extend(future.result())
+    return res
+```
+
+
+
+
 </br>
 
 _ProcessPoolExecutor_

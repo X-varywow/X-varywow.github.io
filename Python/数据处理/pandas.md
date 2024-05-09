@@ -395,6 +395,8 @@ def func(x):
 df['LABEL'] = df.apply(func, axis=1) # 按行应用
 ```
 
+</br>
+
 eg. 根据 df 生成提示词：
 
 ```python
@@ -409,6 +411,10 @@ df["prompt"] = df.progress_apply(lambda row: template.format(Category=row.Catego
                                                              Answer=row.Answer), axis=1)
 data = df.prompt.tolist()
 ```
+
+</br>
+
+eg. 模型预测数据并附加到原 dataframe 上:
 
 ```python
 # 这方法很慢
@@ -441,44 +447,27 @@ tmp_df = data_test.sample(1000)
 tmp_df['pred'] =  tmp_df.progress_apply(lambda row: predict(row, debug=False), axis=1)
 ```
 
-优化之后：
+优化之后（减少调用 model predict 次数，可大幅减少耗时）：
+
+
 ```python
-import pandas as pd
-from tqdm.auto import tqdm
-import lightgbm as lgb
-import numpy as np
-import concurrent
-from concurrent.futures import ThreadPoolExecutor
+for per in range(100, 1000, 100):
+    data_test[f'pred{per}'] = MODEL[per].predict(data_test[feas])
 
-def predict_optimized(rows):
-    quantile_dict_list = []
-    feats_matrix = rows.tolist()  # 假设rows为DataFrame按需求处理好的特征矩阵
 
-    for per in range(100, 1000, 100):
-        scores = PC_MODEL[per].predict(feats_matrix)
-        for idx, score in enumerate(scores):
-            if idx == len(quantile_dict_list):
-                quantile_dict_list.append({})
-            quantile_dict_list[idx][per] = score
-    
-    # 如果每个行就是一个独立的字典 返回列表
-    return quantile_dict_list
-
-# 并行处理示例 - 这里只是一个基本例子，详细会因实际应用的数据量和特性变化
-def main_prediction(data):
-    with ThreadPoolExecutor(max_workers=5) as executor:
-        futures = [executor.submit(predict_optimized, chunk) for chunk in np.array_split(data.values, 10)]
-        results = []
-        for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures)):
-            results.extend(future.result())
+def find_idx(score, row):
+    res = 1
+    for pred in row:
+        if score > pred:
+            res += 1
             
-    return results
+    return res
+    
+tmp_df = data_test.sample(200000)
+tmp_df['bucket_idx'] = tmp_df.progress_apply(lambda row: find_idx(row['NEXT_SCORE'], [row[f'pred{per}'] for per in range(100, 1000, 100)]), axis=1)
 
-# 示例假设tmp_df是要处理的DataFrame并且数据已经是处理好可供预测的格式
+tmp_df['bucket_idx'].hist()
 
-tmp_df = data_test.sample(20000)
-
-tmp_df['pred'] = main_prediction(tmp_df[feas])
 ```
 
 
