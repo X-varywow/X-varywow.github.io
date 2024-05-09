@@ -162,7 +162,7 @@ trafilatura
 
 simcse
 
-
+https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web
 
 https://m.ofweek.com/ai/2024-01/ART-201712-8440-30623318.html gpt3.5 弄个 agent
 

@@ -37,10 +37,31 @@ class Hello{
 }
 ```
 
-## 类型变量
+## 变量类型
 
-.net.dib, vscode 内类似 jupyter
+（1）普通变量
 
+```cs
+int i, j, k;
+char c, ch;
+float f, salary;
+double d;
+
+
+var apples = 100m;   // Decimal value
+var oranges = 30m;   // Decimal value
+
+display(apples > oranges)
+```
+
+（2）数组
+
+```cs
+double[] balance = new double[10];
+balance[0] = 4500.0;
+```
+
+（3）字符串
 
 ```cs
 string aFriend = "Bill";
@@ -49,13 +70,11 @@ Console.WriteLine(aFriend);
 Console.WriteLine("Hello " + aFriend);
 
 Console.WriteLine($"My friends are {firstFriend}");
-
-
-var apples = 100m;   // Decimal value
-var oranges = 30m;   // Decimal value
-
-display(apples > oranges)
 ```
+
+
+
+
 
 ## 循环控制
 
@@ -112,6 +131,43 @@ do {
 } while (counter < 5);
 ```
 
+## 类
+
+
+
+|                    | 说明               |     |
+| ------------------ | ------------------ | --- |
+| public             | 所有可访问         |     |
+| private            | 对象内部可访问     |     |
+| protected          | 该对象及子类可访问 |     |
+| internal           |                    |     |
+| protected internal |                    |     |
+
+
+## other
+
+```cs
+try
+{
+   // 引起异常的语句
+}
+catch( ExceptionName e1 )
+{
+   // 错误处理代码
+}
+catch( ExceptionName e2 )
+{
+   // 错误处理代码
+}
+catch( ExceptionName eN )
+{
+   // 错误处理代码
+}
+finally
+{
+   // 要执行的语句
+}
+```
 
 
 
@@ -131,5 +187,6 @@ do {
 - [了解 .NET](https://dotnet.microsoft.com/zh-cn/learn)
 - [学习如何编写 C# 代码](https://dotnet.microsoft.com/zh-cn/learntocode)
 - [tour-of-csharp](https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/)
+- [runoob-csharp](https://www.runoob.com/csharp/csharp-tutorial.html)
 
 

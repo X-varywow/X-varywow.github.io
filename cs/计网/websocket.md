@@ -1,4 +1,8 @@
+
 WebSocket 是一种网络传输协议，可在单个TCP连接上进行全双工通信，位于应用层。
+
+>提供了浏览器和服务器之间的全双工通信能力，使得数据可以双向流动。</br>
+它允许服务器实时地向客户端推送数据，非常适合需要实时交互性的应用，比如聊天应用、多玩家在线游戏、实时交易平台等。
 
 
 </br>
@@ -10,11 +14,11 @@ WebSocket 是一种网络传输协议，可在单个TCP连接上进行全双工�
 
 `WS`（WebSocket）和 `WSS`（WebSocket Secure）是两种网络通信协议。
 
-- `WS` 是WebSocket的简写，它是一种在单个长连接上进行全双工通信的协议。它允许服务器和客户端之间发送文本和二进制消息，主要用于浏览器和服务器之间的交互。`WS`的URL格式类似于http，例如：`ws://example.com/`。
+- `WS` 是 WebSocket 的简写，它是一种在单个长连接上进行全双工通信的协议。它允许服务器和客户端之间发送文本和二进制消息，主要用于浏览器和服务器之间的交互。`WS`的URL格式类似于http，例如：`ws://example.com/`。
 
-- `WSS` 是WebSocket Secure的简写，是`WS`的扩展，它在WebSocket基础上添加了SSL/TLS加密层。这使得客户端和服务器之间的通信被加密，对抗eavesdropping（窃听）和man-in-the-middle攻击。`WSS`的URL格式类似于https，例如：`wss://example.com/`。
+- `WSS` 是 WebSocket Secure 的简写，是 `WS` 的扩展，它在 WebSocket 基础上添加了SSL/TLS加密层。这使得客户端和服务器之间的通信被加密，对抗eavesdropping（窃听）和man-in-the-middle攻击。`WSS`的URL格式类似于https，例如：`wss://example.com/`。
 
-简单来说，`WSS`比`WS`更安全，通常用于需要加密通信的场景。
+简单来说，`WSS` 比 `WS` 更安全，通常用于需要加密通信的场景。
 
 
 </br>
