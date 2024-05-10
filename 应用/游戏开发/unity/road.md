@@ -44,11 +44,6 @@ odin 插件，实现数据编辑器窗口。
 
 https://www.bilibili.com/video/BV1Py4y1q7db
 
-`day4`：
-
-在合适的动画帧中，激活子物体，并添加碰撞范围，实现多段连招，打击感，
-
-https://www.bilibili.com/video/BV1fX4y1G7tv
 
 `day5`：
 

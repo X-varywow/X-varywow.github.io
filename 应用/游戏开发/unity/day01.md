@@ -1,4 +1,4 @@
-初步学一下 unity, c#；完成[一个文字放置游戏](https://zhuanlan.zhihu.com/p/100822441)
+初步学一下 unity, c#；完成 [一个文字放置游戏](https://zhuanlan.zhihu.com/p/100822441)
 
 - 学会使用 UI，编辑器使用；
 - Btn、text 控件

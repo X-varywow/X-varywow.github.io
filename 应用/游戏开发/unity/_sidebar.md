@@ -2,5 +2,6 @@
 - [应用/游戏开发/unity](应用/游戏开发/unity/)
   - [基础术语](应用/游戏开发/unity/unity_base)
   - [day01](应用/游戏开发/unity/day01)
-  - [学习路线](应用/游戏开发/unity/road)
+  - [day02](应用/游戏开发/unity/day02)
+  - [day03](应用/游戏开发/unity/road)
   - [战棋游戏](应用/游戏开发/unity/slg)
