@@ -102,12 +102,6 @@ http://nlp.seas.harvard.edu/2018/04/03/attention.html
 https://www.cloudskillsboost.google/journeys/118
 
 
-简单的内容创作，AI 可以做太多了；
-
-github 越多 ai 相关的了，也不是很深奥的代码，常用的网络方法、领域数据处理不太熟，
-
-以及 rust 重写的工具
-
 https://github.com/MichaelCade/90DaysOfDevOps/blob/main/2023/day06.md
 
 https://openai.com/sora 质量有点好，但是再长一些的连贯，制作短片，将文本内容转视频，辅助视频制作，会很有用
@@ -117,16 +111,14 @@ https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
 vae diffusion transformer 数理基础，算子，有空补一下;
 
 
-- [ ] 整理博客
-- [ ] 整理布局
-- [ ] 图片工具
-
-
 ----------
 有意思，
 https://github.com/BAAI-Agents/Cradle
 
 llm agent, 基于大型语言模型（如GPT系列）的智能体或助手
+
+https://github.com/a-real-ai/pywinassistant
+
 
 使用 ahk 做输入控制
 
@@ -167,13 +159,7 @@ https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web
 https://m.ofweek.com/ai/2024-01/ART-201712-8440-30623318.html gpt3.5 弄个 agent
 
 
-------------
-
-https://github.com/openai/tiktoken
-
-计算token, encode 工具
-
-BPE, byte Pair Encoding; 减少了处理大词汇量时的复杂性,允许模型有效地处理未见词
+IC-Light sd 光照工具
 
 ------------
 

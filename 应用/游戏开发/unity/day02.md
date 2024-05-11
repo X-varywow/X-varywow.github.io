@@ -46,6 +46,8 @@
 
 ## _附录：代码_
 
+感觉很容易耦合在一起，，
+
 ```cs
 using System.Collections;
 using System.Collections.Generic;
@@ -74,7 +76,7 @@ public class AttackSense : MonoBehaviour
     IEnumerator Pause(int duration)
     {
         float pauseTime = duration / 60f;
-        Time.timeScale = 0;
+        Time.timeScale = 0; // 为 0 暂停运行
         yield return new WaitForSecondsRealtime(pauseTime);
         Time.timeScale = 1;
     }
@@ -133,11 +135,11 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
     public float jumpForce;
-    new private Rigidbody2D rigidbody;
-    private Animator animator;
+    new private Rigidbody2D rigidbody; // 物理模拟
+    private Animator animator;         // 动画状态控制
     private float input;
     private bool isGround;
-    [SerializeField] private LayerMask layer;
+    [SerializeField] private LayerMask layer; // 只检测特定层级的碰撞
 
     [SerializeField] private Vector3 check;
 
@@ -147,7 +149,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void Update() // 每帧调用
     {
         input = Input.GetAxisRaw("Horizontal");
         isGround = Physics2D.OverlapCircle(transform.position + new Vector3(check.x, check.y, 0), check.z, layer);
@@ -156,7 +158,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", rigidbody.velocity.y);
         animator.SetBool("isGround", isGround);
 
-        Move();
+        Move(); // 这些判定在 update 中判定
         Attack();
     }
 
@@ -165,7 +167,7 @@ public class PlayerController : MonoBehaviour
         if (!isAttack)
             rigidbody.velocity = new Vector2(input * moveSpeed, rigidbody.velocity.y);
         else
-        {
+        {   // 攻击时的移动补偿
             if (attackType == "Light")
                 rigidbody.velocity = new Vector2(transform.localScale.x * lightSpeed, rigidbody.velocity.y);
             else if (attackType == "Heavy")
@@ -185,7 +187,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Attack()
-    {
+    {   
+        // 监听键盘输入，更新攻击状态
         if (Input.GetKeyDown(KeyCode.Return) && !isAttack)
         {
             isAttack = true;
@@ -248,6 +251,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // 编辑器模式下绘制一个线框球
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position + new Vector3(check.x, check.y, 0), check.z);
