@@ -536,14 +536,11 @@ import warnings
 
 # 忽略特定的警告
 warnings.filterwarnings("ignore", category=UserWarning, message=".*weight_norm is deprecated.*")
-```
 
-
-```python
-import warnings
-
-# 忽略所有用户级别警告
+# 忽略特定类型警告
 warnings.filterwarnings("ignore", category=UserWarning)
-
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+# 忽略所有警告
+warnings.filterwarnings("ignore")
 ```

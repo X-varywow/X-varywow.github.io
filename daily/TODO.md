@@ -11,15 +11,6 @@ https://instantid.github.io/
 https://github.com/KRTirtho/spotube
 
 
-需要统筹的人，有着明确的 TODO 和 理清各部分 block 的能力，并制定团队的原则；
-
-不能以不同人完成不同事的时间，来衡量事情的容易，事情在细节上会有很大不同的。
-
-pycharm 确实不错，有空学下；命名shadow 问题;
-
-IDE 确实方便
-
-
 秋辞长离去，辗转何时归。京花入山门，落我长相思。
 
 是该写点东西了，
@@ -148,8 +139,6 @@ https://github.com/nashsu/FreeAskInternet
 
 https://github.com/PKU-YuanGroup/Open-Sora-Plan
 
-https://huggingface.co/NexaAIDev/Octopus-v2
-
 trafilatura
 
 simcse
@@ -177,9 +166,5 @@ sci-hub, 6的； ocr
 https://mp.weixin.qq.com/s/6Jn4-3KPoffsYGrrvYX6vg
 
 kimi 用起来还可以
-
-https://zhuanlan.zhihu.com/p/659784334
-
-https://lilianweng.github.io/posts/2023-06-23-agent/
 
 wx or unity 类小丑牌小程序开发

@@ -45,13 +45,7 @@ eg：请想象你是我的朋友，我会对你抱怨，希望你可以用中文
 
 [提示工程指南](https://www.promptingguide.ai/zh)
 
-**（2）Auto-GPT**
-
-让 GPT 自动完成任务，Prompt 工程的一个前沿。（2023.04.17 80k star）
-
-https://github.com/Significant-Gravitas/Auto-GPT
-
-**（3）AI 平民化**
+**（2）AI 平民化**
 
 [ColossalAI](https://github.com/hpcaitech/ColossalAI) , Making large AI models cheaper, faster and more accessible
 
@@ -59,7 +53,7 @@ https://github.com/Significant-Gravitas/Auto-GPT
 
 [教程一：DeepSpeed Chat: 一键式RLHF训练](https://zhuanlan.zhihu.com/p/621735849)
 
-**（4）ChatGPT AI 虚拟小镇**
+**（3）ChatGPT AI 虚拟小镇**
 
 [NPC 有生命了？ChatGPT AI 虚拟小镇，25 个 AI 居民的自由生活](https://www.bilibili.com/video/BV1vv4y1J7Li/)
 
@@ -71,10 +65,22 @@ https://github.com/Significant-Gravitas/Auto-GPT
 
 这要是能做成虚拟现实的游戏，绝对爆火。
 
-**（5）LLM Agent**
+**（4）LLM Agent** ⭐️
+
+[LLM-Agent原理讲解](https://zhuanlan.zhihu.com/p/659784334)
+
+langchain
+
+[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) 综述
+
+key components: planning（分解问题）, memory（短期的提示词，长期的embedding向量存储）, tool use
+
+一些问题：上下文有限，长期计划和任务分解
+
+[Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)， 让 GPT 自动完成任务，Prompt 工程的一个前沿。（2023.04.17 80k star）
 
 
-**（6）other**
+**（5）other**
 
 
 [FastGPT](https://github.com/labring/FastGPT) ，一个基于 LLM 大语言模型的知识库问答系统
