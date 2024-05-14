@@ -118,6 +118,10 @@ session.createDataFrame(data).write.save_as_table(table_name='snowflake_table_na
 snowpark_df.write.save_as_table(table_name='snowflake_table_name', mode='overwrite')
 ```
 
+mode:
+- append
+- overwrite; Overwrite the existing table by dropping old table.
+
 
 ```python
 session.close()
