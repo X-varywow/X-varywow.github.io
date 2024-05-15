@@ -12,7 +12,9 @@ curl https://www.example.com
 
 
 # -d 发送 POST 请求的数据体
-curl -d'login=emma＆password=123'-X POST https://google.com/login
+curl -d'login=emma＆password=123' -X POST https://google.com/login
+
+# -X 用于指定 HTTP 请求方法, 默认的是 GET 方法
 
 
 # -o 将服务器的回应保存成文件，等同于wget命令。

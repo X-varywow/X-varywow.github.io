@@ -425,16 +425,16 @@ from tqdm.auto import tqdm
 tqdm.pandas()
 import lightgbm as lgb
 
-PC_MODEL = {}
+MODEL = {}
 
 for per in range(100, 1000, 100):
-    PC_MODEL[per] = lgb.Booster(model_file=f'model-{int(per)}')
+    MODEL[per] = lgb.Booster(model_file=f'model-{int(per)}')
 
 def predict(row, debug = False):
         
     quantile_dict = {}
     for per in range(100, 1000, 100):
-        score = PC_MODEL[per].predict([row[feas]])[0]
+        score = MODEL[per].predict([row[feas]])[0]
         quantile_dict[per] = score
         
     if debug:
@@ -464,7 +464,7 @@ def find_idx(score, row):
     return res
     
 tmp_df = data_test.sample(200000)
-tmp_df['bucket_idx'] = tmp_df.progress_apply(lambda row: find_idx(row['NEXT_SCORE'], [row[f'pred{per}'] for per in range(100, 1000, 100)]), axis=1)
+tmp_df['bucket_idx'] = tmp_df.progress_apply(lambda row: find_idx(row['SCORE'], [row[f'pred{per}'] for per in range(100, 1000, 100)]), axis=1)
 
 tmp_df['bucket_idx'].hist()
 

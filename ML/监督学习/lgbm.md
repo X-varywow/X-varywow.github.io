@@ -384,7 +384,12 @@ lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看
 降低模型大小：
 set the histogram_pool_size parameter to the MB you want to use for LightGBM (histogram_pool_size + dataset size = approximately RAM used), lower num_leaves or lower max_bin
 
-损失函数选择：MSE 比 MAE 更加重视较大的误差，如何不想让异常值过度地影响模型，MAE 会更好。
+损失函数选择：MSE 比 MAE 更加重视较大的误差，如何不想让异常值过度地影响模型，MAE 会更好; 定好 objective 时已经指定了；
+
+如果数据中存在较多的缺失且缺失的信息对目标变量有较重要影响，则应当使用错位填充的方法。
+
+未经处理就直接喂给 LightGBM 让其自动应对缺失值，则会损失一些信息背景，从而无法最大程度提升模型的效果。
+
 
 查看模型特征：
 
