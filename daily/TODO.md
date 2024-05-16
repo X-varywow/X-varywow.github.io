@@ -168,3 +168,6 @@ https://mp.weixin.qq.com/s/6Jn4-3KPoffsYGrrvYX6vg
 kimi 用起来还可以
 
 wx or unity 类小丑牌小程序开发
+
+
+https://web.archive.org/web/20181103114010/https://mlwave.com/kaggle-ensembling-guide/

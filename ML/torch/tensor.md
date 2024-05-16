@@ -4,7 +4,7 @@ https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html
 ## 张量创建
 
 ```python
-import tensor
+import torch
 import numpy as np
 
 # 1. from list

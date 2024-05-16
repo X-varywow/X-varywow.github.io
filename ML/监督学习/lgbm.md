@@ -82,15 +82,16 @@ validation_data = lgb.Dataset(X_test, y_test)
 params = {
     'task': 'train',
     'boosting_type': 'gbdt',  # 设置提升类型
-    'objective': 'regression',  # 目标函数 poisson/quantile/quantile_l2/gamma/binary/multiclass
-    'metric': {'l2', 'auc'},  # 评估函数
+    'objective': 'multiclass',  # 目标函数 poisson/quantile/quantile_l2/gamma/binary/multiclass/regression
+    'num_class': 3,           # 类别数
+
     'num_leaves': 31,  # 叶子节点数
     'learning_rate': 0.05,  # 学习速率
     'feature_fraction': 0.9,  # 建树的特征选择比例
     'bagging_fraction': 0.8,  # 建树的样本采样比例
     'bagging_freq': 5,  # k 意味着每 k 次迭代执行bagging
-    'verbose': 1  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
-    'n_estimators': 2000, # 迭代轮次，默认 100， 通常设置较大并配合早停机制
+    'verbose': -1,  # <0 显示致命的, =0 显示错误 (警告), >0 显示信息
+
     'nthread': -1, # 线程数量， -1 表示全部线程 
 
     # max_cat_threshold: 1024,
@@ -99,22 +100,26 @@ params = {
     # 'lambda_l1': 0.1,
     # 'lambda_l2': 0.2,
     # 'max_depth': 4,
-    # 'num_class': 3,
+    
+    # 'n_estimators': 2000, # 迭代轮次，默认 100， 通常设置较大并配合早停机制
+    # 官方建议在 train 中 指定 num_boost_round
+    
+    # 'metric': {'l2', 'auc'},  # 评估函数
 
     # class_weight: 'balanced',
     # sample_weight: data_train['weight'].values,
 }
 
 # 模型训练
-gbm = lgb.train(params, train_data, valid_sets=[validation_data], early_stopping_rounds=5)
+gbm = lgb.train(params, train_data, num_boost_round=2000, valid_sets=[validation_data], callbacks=[lgb.early_stopping(5)])
 
 # 模型预测
-y_pred = gbm.predict(X_test)
-y_pred = [list(x).index(max(x)) for x in y_pred]
-print(y_pred)
+y_pred_probs = gbm.predict(X_test)
+y_pred = [np.argmax(line) for line in y_pred_probs]
 
 # 模型评估
-print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
+accuracy = accuracy_score(y_test, y_pred)
+print('The accuracy of prediction is:', accuracy)
 
 # 保存/加载
 gbm.booster_.save_model(model_name)
