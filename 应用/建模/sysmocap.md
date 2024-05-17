@@ -9,7 +9,7 @@
 
 作者 2022 年毕业的，blog 更新的少啊，摄影确实也是艺术。
 
-
+浣熊头源码：[google mediapipe demo](https://codepen.io/mediapipe-preview/pen/oNPKmEy)
 
 ## preface
 

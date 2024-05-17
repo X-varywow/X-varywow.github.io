@@ -252,14 +252,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   background-size: 17px;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-Widget, /* </DEPRECATED> */
@@ -276,14 +269,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   display: none !important;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-CommandPalette, /* </DEPRECATED> */
@@ -382,14 +368,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 	cursor: pointer;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-DockPanel, /* </DEPRECATED> */
@@ -482,14 +461,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   display: none !important;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-Menu, /* </DEPRECATED> */
@@ -556,14 +528,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   text-align: right;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-MenuBar, /* </DEPRECATED> */
@@ -601,14 +566,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   display: inline-block;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-ScrollBar, /* </DEPRECATED> */
@@ -659,14 +617,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   position: absolute;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-SplitPanel-child, /* </DEPRECATED> */
@@ -733,14 +684,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   transform: translateY(-50%);
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ .p-TabBar, /* </DEPRECATED> */
@@ -862,16 +806,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   transition: none;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
-
-
 /* <DEPRECATED> */ .p-TabPanel-tabBar, /* </DEPRECATED> */
 .lm-TabPanel-tabBar {
   z-index: 1;
@@ -883,14 +817,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   z-index: 0;
 }
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 @charset "UTF-8";
 html{
@@ -11136,14 +11063,7 @@ button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Copyright (c) 2014-2017, PhosphorJS Contributors
-|
-| Distributed under the terms of the BSD 3-Clause License.
-|
-| The full license is in the file LICENSE, distributed with this software.
-|----------------------------------------------------------------------------*/
+
 
 
 /* <DEPRECATED> */ body.p-mod-override-cursor *, /* </DEPRECATED> */
