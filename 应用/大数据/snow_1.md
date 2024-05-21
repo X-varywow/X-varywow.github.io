@@ -227,9 +227,14 @@ order by k;
 ```
 
 
+`PERCENTILE_CONT` 计算分位数时按照线性插值法来确定值。
+
+`PERCENTILE_DISC` 计算分位数时通过最接近的一个离散值来确定值。
+
+
 </br>
 
-3. 使用 row_number()
+1. 使用 row_number()
 
 Returns a unique row number for each row within a window partition.
 
