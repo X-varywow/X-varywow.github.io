@@ -214,7 +214,7 @@ pd.DataFrame({
         'importance': model.feature_importances_,
 }).sort_values(by = 'importance', ascending=False)
 
-lgb.plot_importance(model)
+lgb.plot_importance(model, max_num_features=20)
 
 
 # 网格搜索，参数优化
