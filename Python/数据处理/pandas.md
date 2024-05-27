@@ -10,6 +10,9 @@ import numpy as np
 pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', None)
 
+# 数据显示完整
+pd.set_option('display.max_colwidth', None)
+
 pd.set_option('display.float_format',lambda x : '%.4f' % x)
 ```
 
@@ -750,14 +753,20 @@ main('s1', 't1')
 
 
 ```python
+statement = """
+select count(1)
+from t1;
+"""
+
 with (
-    psycopg.connect(PG_CONFIG) as conn,
+    psycopg.connect(**PG_CONFIG) as conn,
     conn.cursor() as cur
 ):
-    cur.execute(query_match)
+    cur.execute(statement)
     res = cur.fetchall()
-    column_name_list = [desc[0].upper() for desc in cursor.description]
+    column_name_list = [desc[0].upper() for desc in cur.description]
     df = pd.DataFrame([i for i in res], columns=column_name_list)
+    df
 ```
 
 

@@ -22,6 +22,16 @@ pip install "psycopg[binary,pool]"
 
 
 
+
+```sql
+SELECT schema_name FROM information_schema.schemata
+
+SELECT table_name FROM information_schema.tables WHERE table_schema='public'
+```
+
+
+
+
 ------------
 
 

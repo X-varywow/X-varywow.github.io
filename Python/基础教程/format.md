@@ -35,7 +35,10 @@ _format_
 
 "网站名：{name}, 地址 {url}".format(name="菜鸟教程", url="www.runoob.com") # 设置参数
 
-"网站名：{name}, 地址 {url}".format(**site) # 通过字典设置参数
+"网站名：{name}, 地址 {url}".format(**d) # 通过字典设置参数
+
+"{a}".format_map(d)
+
 ```
 
 
