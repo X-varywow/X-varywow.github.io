@@ -25,10 +25,11 @@ SQL BASIC COMMAND，请参考：[cs/DATABASE/base](cs/DATABASE/base)
 ```sql
 -- query procedure...
 
-select get_ddl("procedure", procedure_name);
+select get_ddl('procedure', procedure_name);
 
-select get_ddl("table", table_name);
+select get_ddl('table', table_name);
 
+desc table table_name;
 ```
 
 ## 1 控制流

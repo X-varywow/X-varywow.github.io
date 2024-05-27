@@ -227,7 +227,23 @@ InteractiveShell.ast_node_interactivity = "all"
 !jt -t grade3
 ```
 
-（5）打通kernel, conda, !, %run {}
+
+
+（5）插件 & autoreload
+
+```python
+# 加载扩展
+%load_ext autoreload
+
+# 启用 autoreload
+%autoreload 2
+
+# 重新加载 autoreload
+%reload_ext autoreload
+```
+
+
+（6）打通kernel, conda, !, %run {}
 
 `!cmd` : 新建一个子shell 执行 cmd, cmd 执行完，这个子 shell 也就消失了
 

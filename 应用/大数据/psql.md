@@ -152,6 +152,15 @@ alter table t1 add column user_id bigint;
 
 -- 修改字段
 alter table t1 alter column col_name type text;
+ALTER TABLE table_name MODIFY COLUMN column_name DOUBLE;
+
+-- snowflake 不支持修改列类型
+create table t1
+as 
+select col::float col from t2;
+
+create or replace table t2
+as select * from t1;
 
 -- 重命名
 alter table schema_name.t1 rename to t2;
