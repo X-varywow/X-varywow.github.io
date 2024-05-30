@@ -1,16 +1,33 @@
 
 ## _preface_
 
+pydantic 是一个快速的数据验证和传递的库。
+
+```python
+from pydantic import BaseModel
+
+class ApiRequest(BaseModel):
+    user_id:int = 21172986
+    app_id:int = 1001
+    
+d = {'user_id':  123}
+
+req = ApiRequest(**d)
+  
+req.model_dump()
+```
+
+
 ```python
 from datetime import datetime
-from typing import Tuple
-
-from pydantic import BaseModel
+from pydantic import BaseModel, PositiveInt
+from typing import List, Optional,Tuple
 
 
 class Delivery(BaseModel):
     timestamp: datetime
     dimensions: Tuple[int, int]
+    arr: Optional[list] = field(default_factory=list)
 
 
 m = Delivery(timestamp='2020-01-02T03:04:05Z', dimensions=['10', '20'])
@@ -25,14 +42,6 @@ print(m.dimensions)
 
 ## _数据类型_
 
-```python
-from datetime import datetime
-from pydantic import BaseModel, PositiveInt
-from typing import List, Optional
-```
-
-
-
 - int
 - float
 - str
@@ -40,9 +49,9 @@ from typing import List, Optional
 - datetime
 - Tuple[int, int]
 - dict[str, PositiveInt]
-- Optional[str]
+- Optional[str] (支持传递 None)（默认就支持不传全部参数, 字面意思不对）
 - datetime | None
-- List[int]
+- List[int] (或者 `list = field(default_factory=list)`)
 - 支持递归 BaseModel
 
 
@@ -127,6 +136,20 @@ except ValidationError as e:
     """
 
 ```
+
+使用 field 数据验证
+
+```python
+from pydantic import BaseModel, Field
+
+class User(BaseModel):
+    name: str = Field(..., alias='username', default='Guest', title='User Name')
+    age: int = Field(..., gt=0, lt=100)
+```
+
+- Field(..., alias='username', default='Guest', title='User Name') 表示 name 字段有一个别名 username，如果没有提供 name 的值，则默认为 'Guest'。title 参数提供了一个更友好的字段名称，用于生成文档或错误消息。
+- Field(..., gt=0, lt=100) 表示 age 字段必须大于 0 且小于 100，这里使用了 gt（greater than）和 lt（less than）参数来指定验证规则。
+
 
 
 

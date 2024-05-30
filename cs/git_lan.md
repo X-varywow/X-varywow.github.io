@@ -176,13 +176,27 @@ git merge master
 git merge --squash master
 ```
 
-一般合并代码发生冲突，在编辑器中合并，接受传入
+一般合并代码发生冲突，在编辑器中合并，接受传入;
+
+------------
+
+合并冲突时，所有冲突都选择当前分支（ours）的代码
+
+```bash
+git merge -X ours <branch_name>
+```
 
 
+
+
+
+## 8.特殊
 
 </br>
 
 ### _git reset_
+
+!> 执行特殊操作先备份文件
 
 回退版本：
 
@@ -193,6 +207,15 @@ git log
 
 git reset
 ```
+
+将分支回退到上一个提交：（上一个提交后的所有更改都会丢失）
+
+```bash
+git reset --hard HEAD~1
+```
+
+--hard 选项表示重置工作目录和索引，使其与新的 HEAD 状态完全一致
+
 
 [参考资料：reset](https://www.runoob.com/git/git-reset.html)
 
