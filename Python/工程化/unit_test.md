@@ -63,6 +63,24 @@ export PYTHONPATH=$PYTHONPATH:/Users/yourname/yourpath
 在隔离环境中测试单个组件，适用于真实依赖难以构建或设置。
 
 
+**模拟对象**
+
+```python
+from unittest import mock
+
+def some_function():
+    class SomeClass:
+        def method(self):
+            return "Hello World"
+    return SomeClass().method()
+
+mocked_method = mock.Mock()
+with mock.patch('path.to.some_function.SomeClass.method', mocked_method):
+    result = some_function()
+    mocked_method.assert_called_once_with()
+```
+
+
 
 
 

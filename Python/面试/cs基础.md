@@ -87,7 +87,7 @@ git clone
 
 # 将改动添加到缓存区
 git add <filename>
-git add*
+git add *
 
 # 提交更改
 git commit -m '代码提交信息'

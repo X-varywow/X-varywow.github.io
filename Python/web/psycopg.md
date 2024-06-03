@@ -152,6 +152,11 @@ with cur.copy("COPY (VALUES (10::int, current_date)) TO STDOUT") as copy:
 
 ## _transactions_
 
+默认情况下，不会自动提交事务，即 conn.autocommit = False;
+
+设为 autocommit = True 后每次执行 SQL 语句会自动提交。
+
+执行多个操作且需要保证事务，可以使用如下：
 
 ```python 
 with pg_pool.connection() as conn:
@@ -203,7 +208,7 @@ class my_pool:
                 except:
                     error = traceback.format_exc()
                     logger.error(f"PostgresConnection _warm_up citus failed by: {error}")
-            time.sleep(1)
+            time.sleep(20)
 
     def query(self, sql, row_to_dict=False):
         res = []
@@ -232,6 +237,35 @@ def parallel_query(sqls):
             res.append(result)
     return res
 ```
+
+psycopg 源码：
+
+```python
+def check_connection(conn: CT) -> None:
+    """
+    A simple check to verify that a connection is still working.
+
+    Return quietly if the connection is still working, otherwise raise
+    an exception.
+
+    Used internally by `check()`, but also available for client usage,
+    for instance as `!check` callback when a pool is created.
+    """
+    if conn.autocommit:
+        conn.execute("SELECT 1")
+    else:
+        conn.autocommit = True
+        try:
+            conn.execute("SELECT 1")
+        finally:
+            conn.autocommit = False
+```
+
+
+
+
+
+
 
 </br>
 

@@ -1,4 +1,4 @@
-## _直线图_
+## _曲线图_
 
 ```python
 import numpy as np
@@ -14,6 +14,38 @@ data = data.rolling(7).mean()
 
 sns.lineplot(data=data, palette="tab10", linewidth=2.5)
 ```
+
+```python
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 生成数据
+x = np.linspace(32, 300, 4000)
+y1 = 30*100 / np.log2(x)
+y2 = 300*100 / np.log2(x)
+
+y3 = 300*100 / np.log2(x) **2
+
+# 将数据转换为 DataFrame
+data = pd.DataFrame({'x': x, 'y1': y1, 'y2': y2, 'y3': y3})
+
+# 绘图
+sns.set(style="whitegrid")
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='x', y='y1', data=data, label='y = 30 / log2(x)')
+sns.lineplot(x='x', y='y2', data=data, label='y = 300 / log2(x)')
+sns.lineplot(x='x', y='y3', data=data, label='y = 300*100 / np.log2(x) **2')
+
+plt.title("Curves")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.show()
+```
+
+
 
 
 </br>
