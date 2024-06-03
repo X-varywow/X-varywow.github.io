@@ -10,6 +10,102 @@ citus 常用于处理复杂查询和多种数据表关系
 
 </br>
 
+## _redis 常用命令_
+
+
+```bash
+# 连接 redis
+redis-cli -h 127.0.0.1 -p 6379 -c
+
+# 
+get a
+smembers a
+```
+
+
+### 连接和断开连接
+- `redis-cli`：启动 Redis 命令行界面。
+- `connect [hostname] [port]`：连接到指定的 Redis 服务器。
+- `quit` 或 `exit`：退出 Redis 命令行界面。
+
+### 数据类型操作
+- `set key value`：设置键值对。
+- `get key`：获取键的值。
+- `del key`：删除键。
+- `keys pattern`：查找所有匹配的键。
+- `exists key`：检查键是否存在。
+- `expire key seconds`：设置键的过期时间（秒）。
+- `ttl key`：查看键的剩余生存时间（秒）。
+
+### 字符串操作
+- `setnx key value`：如果键不存在，则设置键值对。
+- `incr key`：将键的值增加 1。
+- `decr key`：将键的值减少 1。
+- `strlen key`：返回字符串的长度。
+
+### 列表操作
+- `lpush key value`：在列表头部插入元素。
+- `rpush key value`：在列表尾部插入元素。
+- `lpop key`：从列表头部弹出元素。
+- `rpop key`：从列表尾部弹出元素。
+- `lrange key start stop`：获取列表的元素范围。
+
+### 集合操作
+- `sadd key member`：向集合添加元素。
+- `srem key member`：从集合中删除元素。
+- `smembers key`：获取集合的所有成员。
+- `sismember key member`：检查元素是否是集合的成员。
+
+### 有序集合操作
+- `zadd key score member`：向有序集合添加元素及其分数。
+- `zrem key member`：从有序集合中删除元素。
+- `zrange key start stop`：获取有序集合的元素范围。
+- `zrevrange key start stop`：获取有序集合的逆序元素范围。
+
+### 散列操作
+- `hset key field value`：在散列中设置字段的值。
+- `hget key field`：获取散列中字段的值。
+- `hdel key field`：从散列中删除字段。
+- `hgetall key`：获取散列的所有字段和值。
+
+### 发布/订阅
+- `publish channel message`：向频道发布消息。
+- `subscribe channel`：订阅频道。
+
+### 事务
+- `multi`：开始事务。
+- `exec`：执行事务中的所有命令。
+- `discard`：取消事务。
+
+### 持久化
+- `save`：同步保存数据到磁盘。
+- `bgsave`：后台异步保存数据到磁盘。
+- `rdb`：生成 RDB 快照。
+
+### 监控和统计
+- `info`：获取 Redis 服务器的信息。
+- `stats`：获取 Redis 服务器的统计信息。
+- `lastsave`：获取最后一次保存数据的时间。
+
+
+
+
+
+
+
+
+------------
+
+参考资料：
+- kimi
+
+
+
+
+
+
+</br>
+
 ## _python redis_
 
 https://www.runoob.com/w3cnote/python-redis-intro.html

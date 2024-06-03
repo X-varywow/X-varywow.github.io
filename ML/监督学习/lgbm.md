@@ -208,14 +208,6 @@ y_pred = gbm.predict(X_test, num_iteration=gbm.best_iteration_)
 # 模型评估
 print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
 
-# 特征重要度
-pd.DataFrame({
-        'column': feas,
-        'importance': model.feature_importances_,
-}).sort_values(by = 'importance', ascending=False)
-
-lgb.plot_importance(model, max_num_features=20)
-
 
 # 网格搜索，参数优化
 estimator = LGBMRegressor(num_leaves=31)
@@ -342,6 +334,31 @@ explainer = shap.Explainer(model)
 shap_values = explainer(X)
 shap.plots.bar(shap_values)
 ```
+
+
+其它方式查看特征重要性：
+
+```python
+# way 1
+pd.DataFrame({
+        'column': feas,
+        'importance': model.feature_importances_,
+}).sort_values(by = 'importance', ascending=False)
+
+# way 2
+lgb.plot_importance(model, max_num_features=20)
+
+# way 3
+# when 1 error: 'Booster' object has no attribute 'feature_importances_'
+feature_importance = lgbm_model.feature_importance(importance_type='split')
+feature_names = lgbm_model.feature_name()
+importance_data = sorted(zip(feature_names, feature_importance), key=lambda x: x[1], reverse=True)
+
+for feature, importance in importance_data:
+    print(f"Feature: {feature}, Importance: {importance}")
+```
+
+
 
 
 </br>
