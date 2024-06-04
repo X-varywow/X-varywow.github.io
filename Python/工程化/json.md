@@ -3,13 +3,13 @@
 ## _json_
 
 
-json.dump - 将Python对象按照JSON格式序列化到文件中
+`json.dump` - 将 dict 按照JSON格式序列化到文件中
 
-json.dumps - 将Python对象处理成JSON格式的字符串
+`json.dumps` - dict 转为 str
 
-json.load - 将文件中的JSON数据反序列化成对象
+`json.load` - 文件对象 f 转为 dict
 
-json.loads - 将字符串的内容反序列化成Python对象
+`json.loads` - str 转为 dict
 
 
 示例：从 json 文件中加载数据
