@@ -16,6 +16,43 @@ python -m cProfile -s tottime ZZZ_log.py > test.txt
 
 更多性能分析模块： line_profiler, pyflame
 
+-----------
+
+
+代码中使用：
+
+```python
+import cProfile
+
+cProfile.run('your_func()')
+```
+
+```python
+import cProfile
+import pstats
+
+def my_function():
+    # 你的代码逻辑
+    pass
+
+# 运行性能分析
+profiler = cProfile.Profile()
+profiler.enable()
+my_function()
+profiler.disable()
+
+# 使用 pstats 来读取和分析数据
+stats = pstats.Stats(profiler)
+
+# 按照总时间（tottime）排序并打印前30个函数
+stats.sort_stats('tottime').print_stats(30)
+```
+
+
+
+
+
+
 
 ## _测试时间_
 
@@ -139,6 +176,33 @@ def way4(cx, cy, ax, ay, bx, by):
 ```
 
 > `nopython=True` 时会脱离 python 解释器，导致调试时函数内部断点无效。
+
+## line_profiler
+
+自动生成行级代码的性能分析， [官方文档](https://kernprof.readthedocs.io/en/latest/)
+
+
+```python
+# demo_primes.py
+from line_profiler import profile
+
+@profile
+def func():
+    pass
+
+if __name__ == '__main__':
+    func()
+```
+
+
+```bash
+# 会生成 3 个文件
+LINE_PROFILE=1 python demo_primes.py
+
+# bash 中显示
+python -m kernprof -lvr demo_primes.py
+```
+
 
 
 ## other 
