@@ -120,10 +120,6 @@ GROUP BY minute
 ORDER BY minute;
 ```
 
-```sql
--- 过期旧数据
-```
-
 
 ## 5. 性能优化
 
