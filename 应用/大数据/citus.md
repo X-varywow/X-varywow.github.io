@@ -127,11 +127,38 @@ ORDER BY minute;
 
 ## 5. 性能优化
 
-explain verbose
 
-explain analyze
+查看 sql 耗时情况：
+
+`explain` 显示基本执行计划
+
+`explain analyze` 显示基本执行计划 + 耗时情况
+
+`explain verbose` 显示冗长信息
+
+```python
+sql = """
+EXPLAIN
+select * from t1 limit 100;
+"""
+
+
+with (
+    psycopg.connect(PG_CONFIG) as conn,
+    conn.cursor() as cur
+):
+    cur.execute(sql)
+    res = cur.fetchall()
+    for row in res:
+        print(row[0])
+```
+
+
+
 
 参考 [citus 性能优化 官方文档](https://docs.citusdata.com/en/stable/performance/performance_tuning.html)
+
+
 
 
 ## 6. Advanced

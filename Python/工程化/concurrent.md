@@ -288,6 +288,51 @@ wait(futures, return_when=ALL_COMPLETED, timeout=3)
 实例：[psycopg 连接池+多线程查询](/Python/web/psycopg?id=多线程amp连接池)
 
 
+奇怪，各种超时设置都不能主动退出
+
+```python
+%%time
+from concurrent.futures import ALL_COMPLETED
+from tenacity import retry, stop_after_delay, stop_after_attempt, wait
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
+
+STOP_AFTER_DELAY = 0.2  # 单位为秒
+STOP_AFTER_ATTEMPT = 2  # 尝试次数
+TIMEOUT_EXECUTION_IN_SECONDS = 1
+
+def test():
+    for i in range(999999999):
+        for j in range(999999999):
+            a = i*j
+    return 1
+
+@retry(stop=(stop_after_delay(STOP_AFTER_DELAY) | stop_after_attempt(STOP_AFTER_ATTEMPT)))
+def multiprocess_demo():
+    res = 0
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = [executor.submit(test) for _ in range(10)]
+        done, _ = wait(futures, return_when=ALL_COMPLETED, timeout=TIMEOUT_EXECUTION_IN_SECONDS)
+        try:
+            for future in done:
+                result = future.result()
+                if result:
+                    res += result
+        except TimeoutError as e:
+            print("Task timed out")
+            raise e
+        except Exception as e:
+            print(f"Task failed: {e}")
+    return res
+
+print(multiprocess_demo())
+```
+
+
+
+
+
+
 
 ## threading
 
