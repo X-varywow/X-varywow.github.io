@@ -66,6 +66,16 @@ sns.kdeplot(data=data['column_name'])
 sns.kdeplot(data=data, x='feature1', y='feature2', shade=True)
 ```
 
+
+</br>
+
+## _柱状图_
+
+```python
+sns.barplot(x=[i+2 for i in range(30)], y=pv_res['win_ratio'].head(30))
+```
+
+
 </br>
 
 ## _气泡图_

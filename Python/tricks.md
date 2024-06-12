@@ -187,7 +187,7 @@ b.py 为
 from a import main
 ```
 
-a = 1 是作为一个 <u>顶层代码行</u>，当 python 解释器在执行 `from a import main` 的时候，会执行 a.py 中的所有顶层代码，这时候 a = 1 会被执行。
+a = 1 是作为一个 <u>顶层代码行</u>，当 python 解释器在执行 `from a import main` 的时候，会执行 a.py 中的所有顶层代码，这时候 a = 1 会被执行。 函数也会被定义，接口报错会抛出，但函数内部错误只有运行时抛出。
 
 
 </br>

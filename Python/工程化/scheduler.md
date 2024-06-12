@@ -13,7 +13,29 @@ pip install apscheduler
 - 执行器
   - ThreadPoolExecutor
   - ProcessPoolExecutor
-- 调度器
+- **调度器**
+
+
+## _BackgroundScheduler_
+
+调度器在后台线程中运行，不会阻塞主线程。这种调度器适合大多数需要定时执行任务的场景。
+
+demo: 配合 fastapi 使用，定期读取配置表
+
+```python
+from apscheduler.schedulers.background import BackgroundScheduler
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.on_event('startup')
+def start_job():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(refresh_hot_config, 'interval', minutes=60)
+    scheduler.start()
+```
+
+
 
 
 ## _BlockingScheduler_
@@ -38,35 +60,6 @@ if __name__ == '__main__':
     scheduler.start()
 ```
 
-## _BackgroundScheduler_
-
-调度器在后台独立运行
-
-demo: 配合 fastapi 使用，定期读取配置表
-
-```python
-from apscheduler.schedulers.background import BackgroundScheduler
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.on_event('startup')
-def start_job():
-    scheduler.start()
-    scheduler.add_job(
-        func=refresh_hot_config,
-        trigger='interval',
-        minutes=10
-    )
-```
-
-
-
-
-
-
-
-
 
 
 
@@ -78,5 +71,6 @@ def start_job():
 -----------
 
 参考资料：
+- https://apscheduler.readthedocs.io/en/3.x/userguide.html
 - [python定时任务最强框架APScheduler详细教程](https://zhuanlan.zhihu.com/p/144506204)
 - https://juejin.cn/post/6844903823941730311

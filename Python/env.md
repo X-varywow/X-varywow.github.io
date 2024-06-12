@@ -38,10 +38,26 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 
-?> _pycharm 激活_  https://idea.javatiku.cn/ `2024.03 有效`
+?> _pycharm_  
+debug 非常方便。配置环境变量(运行符号点击后)有个 modify run configuration; 指定编译器可以 `conda env list` 查看已存在的位置， 或有个 add conda env 选项 </br></br>
+激活： https://idea.javatiku.cn/ `2024.03 有效`
 
 
-vscode, 安装 pylance 插件发现基础的语法错误
+
+vscode, 安装 pylance 插件发现基础的语法错误;
+
+---------------
+
+主题颜色等，
+
+Fira Code(editor font); 14 `brew install --cask font-fira-code`; ide font(droid sans mono; inter)
+
+主题： Dark(visual studio); Darcula(pycharm)
+
+github 同步配置
+
+
+
 
 </br>
 </br>
