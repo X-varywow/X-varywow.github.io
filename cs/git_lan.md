@@ -133,7 +133,7 @@ git push origin --delete remoteBranchName
 
 
 # 推送至远程分支，没有就创建
-git push orign branch_name
+git push origin branch_name
 ```
 
 
