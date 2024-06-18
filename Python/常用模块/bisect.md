@@ -1,5 +1,8 @@
 >数组二分查找算法
 
+注意 sort() 不要带 reverse=True, 应该是个 bug 返回都是 0
+
+
 ### bisect
 - `bisect.bisect_left(a,x,lo=0,hi=len(a))`
 1. 在 a 中找到 x 合适的插入点以**维持有序**。
