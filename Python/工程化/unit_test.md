@@ -62,23 +62,43 @@ export PYTHONPATH=$PYTHONPATH:/Users/yourname/yourpath
 
 在隔离环境中测试单个组件，适用于真实依赖难以构建或设置。
 
-
-**模拟对象**
+mock 常用场景：
+- 模拟函数调用
+- 记录在对象上的方法调用
 
 ```python
-from unittest import mock
+# calculator.py
+def add(x, y):
+    return x + y
 
-def some_function():
-    class SomeClass:
-        def method(self):
-            return "Hello World"
-    return SomeClass().method()
 
-mocked_method = mock.Mock()
-with mock.patch('path.to.some_function.SomeClass.method', mocked_method):
-    result = some_function()
-    mocked_method.assert_called_once_with()
+# test_calculator.py
+import unittest
+from unittest import TestCase
+from unittest.mock import patch
+import calculator
+
+class TestCalculator(TestCase):
+    @patch('calculator.add')
+    def test_add(self, mock_add):
+        # 设置 mock 对象的返回值
+        mock_add.return_value = 10
+        
+        # 调用被测试的函数
+        result = calculator.add(3, 4)
+        
+        # 断言函数返回了预期的结果
+        self.assertEqual(result, 10)
+        
+        # 断言 add 函数被调用了一次
+        mock_add.assert_called_once_with(3, 4)
+
+
+if __name__ == '__main__':
+    unittest.main()
 ```
+
+这里 calculator.add 并不会调用，是将设置的 return_value 返回了
 
 
 

@@ -78,7 +78,7 @@ def f(name):
 if __name__ == '__main__':
     p = Process(target=f, args=('bob',))
     p.start()
-    p.join()
+    p.join() # 等待进程 p 完成执行
 ```
 
 ```python

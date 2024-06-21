@@ -60,7 +60,64 @@ def init_TCP():
 
 def send_info_to_unity(s, args):
     msg = ''
+    s.send(bytes(msg, "utf-8"))
 ```
+
+
+unity 处起 一个监听的线程
+
+```csharp
+void Start(){
+    // local host
+    server = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
+    server.Start();
+
+    serverUp = true;
+    
+
+    // create a thread to accept client
+    receiveThread = new Thread(new ThreadStart(ReceiveData));
+    receiveThread.IsBackground = true;
+    receiveThread.Start();
+}
+
+    private void ReceiveData() {
+        try {
+            // Buffer
+            Byte[] bytes = new Byte[1024];
+
+            while(true) {
+                print("Waiting for a connection...");
+
+                client = server.AcceptTcpClient();
+                print("Connected!");
+
+                // I/O Stream for sending/ receiving to/ from client
+                NetworkStream stream = client.GetStream();
+
+                int length;
+
+                 while ((length = stream.Read(bytes, 0, bytes.Length)) != 0) {
+                    var incommingData = new byte[length];
+                    Array.Copy(bytes, 0, incommingData, 0, length);
+                    string clientMessage = Encoding.ASCII.GetString(incommingData);
+
+                    // call Hiyori Controller to update values
+                    hiyoriController.parseMessage(clientMessage);
+
+                    // print("Received message: " + clientMessage);
+
+                    // SendData(client);
+
+                }
+            }
+        }
+        catch(Exception e) {
+            print(e.ToString());
+        }
+    }
+```
+
 
 
 ### opencv

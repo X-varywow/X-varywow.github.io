@@ -137,7 +137,6 @@ pyautogui.getWindowsWithTitle(config.env_name)
 
 https://github.com/nashsu/FreeAskInternet
 
-https://github.com/PKU-YuanGroup/Open-Sora-Plan
 
 trafilatura
 
@@ -172,52 +171,9 @@ wx or unity 类小丑牌小程序开发
 
 https://web.archive.org/web/20181103114010/https://mlwave.com/kaggle-ensembling-guide/
 
-0517
-- [ ] 清旧文件
-- [ ] 100 lv
-- [ ] lf
 
-`<u>`
-
------------
-
-1 个 Token 大约相当于 1.5-2 个汉字
-
-kimi 真的可以，介绍并总结这个网页上的内容：https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
-
-直接就出来了，chatgpt 好像还不行。
-
-poe、chatgpt api 需要订阅; kimi 半免费
-
-
-[moonshot console](https://platform.moonshot.cn/console/) 新建 api
-
-如下调用即可
-
-```python
-# pip install openai
-from openai import OpenAI
- 
-client = OpenAI(
-    api_key = "。。。",
-    base_url = "https://api.moonshot.cn/v1",
-)
- 
-completion = client.chat.completions.create(
-    model = "moonshot-v1-8k",
-    messages = [
-        # {"role": "system", "content": "你是 Kimi，由 Moonshot AI 提供的人工智能助手，你更擅长中文和英文的对话。你会为用户提供安全，有帮助，准确的回答。同时，你会拒绝一切涉及恐怖主义，种族歧视，黄色暴力等问题的回答。Moonshot AI 为专有名词，不可翻译成其他语言。"},
-        {"role": "user", "content": "介绍并总结这个网页上的内容：https://mp.weixin.qq.com/s/6Jn4-3KPoffsYGrrvYX6vg"}
-    ],
-    temperature = 0.3,
-)
- 
-print(completion.choices[0].message.content)
-```
-
-api 服务不如网页服务
-
-curl https://api.moonshot.cn/v1/users/me/balance -H "Authorization: Bearer .."
-
-更多： langchain 工作流、界面/机器人
-
+技术栈：
+- c# 的内存操作， win 操作
+- 识别图形、采取决策；
+- 控制 gui
+- 通信机制
