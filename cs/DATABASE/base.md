@@ -21,7 +21,9 @@ INSERT INTO employees
   VALUES
   ('Lysandra','Reeves','1-212-759-3751','New York',10018),
   ('Michael','Arnett','1-650-230-8467','San Francisco',94116);
+```
 
+```sql
 -- 覆盖写
 INSERT overwrite INTO employees_copy
 select *
@@ -29,8 +31,21 @@ from employees;
 ```
 
 ```sql
+-- 使用 cte
+INSERT INTO t1
+with cte as (
+    ...
+)
+select *
+from cte;
+```
+
+
+```sql
 -- 删除 t1 所有数据
 delete from t1;
+
+delete from t1 where ...;
 
 
 -- truncate 通常会比 delete 更快，因为不会扫描整个表

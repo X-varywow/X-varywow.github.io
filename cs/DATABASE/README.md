@@ -48,25 +48,6 @@ from students;
 
 
 
-
-```sql
-delete from table_name where ...;
-
-insert into table_name ()
-values 
-(col1, col2, col3...),
-(),
-...
-
-```
-
-
-
-
-
-
-
-
 > 表 & 视图
 
 [Difference Between View and Table](https://www.geeksforgeeks.org/difference-between-view-and-table/)
