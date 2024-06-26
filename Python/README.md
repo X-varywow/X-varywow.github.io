@@ -15,18 +15,11 @@
 
 <br>
 
-参考资料：
+
 - [Python官方文档](https://docs.python.org/zh-cn/3/)
 - [Python-100-Days](https://github.com/jackfrued/Python-100-Days)
+- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - [Python教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1016959663602400)
 - https://realpython.com/
-
-
-<br>
-
-待学习：
-- 设计模式
-- 多线程、异步、分布式
-- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - [geeksforgeeks-Python](https://www.geeksforgeeks.org/python-programming-language/)
 - [geeksforgeeks-OpenCV Python Tutorial](https://www.geeksforgeeks.org/opencv-python-tutorial/)
