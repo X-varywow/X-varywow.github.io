@@ -42,6 +42,16 @@ echo $PATH
 export VARIABLE_NAME
 ```
 
+```bash
+# 显示所有环境变量
+env
+
+# 设置环境变量
+env VAR = 1
+```
+
+
+
 如果设置所有进程都可访问的环境变量，可以将变量添加到系统的全局配置文件中。常见的全局配置文件包括：
 
 1. `/etc/profile`：适用于所有用户的登录 shell。

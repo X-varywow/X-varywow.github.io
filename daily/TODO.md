@@ -22,11 +22,7 @@ https://github.com/KRTirtho/spotube
 
 POE 角色扮演，确实有趣
 
-https://docs.python.org/zh-cn/3/library/unittest.mock.html
-
 https://testdriven.io/blog/developing-a-single-page-app-with-fastapi-and-vuejs/
-
-https://testdriven.io/blog/fastapi-crud/
 
 
 https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA

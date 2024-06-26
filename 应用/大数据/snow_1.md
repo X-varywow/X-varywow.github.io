@@ -235,7 +235,7 @@ order by k;
 
 </br>
 
-1. 使用 row_number()
+3. 使用 row_number()
 
 Returns a unique row number for each row within a window partition.
 
@@ -324,6 +324,24 @@ SELECT ARRAY_AGG(O_ORDERKEY) WITHIN GROUP (ORDER BY O_ORDERKEY ASC)
 FROM orders 
 WHERE O_TOTALPRICE > 450000;
 ```
+
+
+</br>
+
+7. 计算数据分布
+
+ntile 会将数据尽可能均等地分散在桶中, 产生指定范围的编号。
+
+percent_rank 给出数据点在数据集中的相对位置, 产生一个浮点小数。
+
+```sql
+-- 将每个 model 内数据，按照 score 分为 10 个桶
+select 
+    *,
+    ntile(10) over(partition by model order by score) quantile
+from t1
+```
+
 
 
 
