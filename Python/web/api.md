@@ -62,6 +62,17 @@ DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
 500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
 ```
 
+--------
+
+参考资料：
+- [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+- [REST API 的关键概念](https://mp.weixin.qq.com/s/lRLhXrVN2_-2wVLD4yJ8og)
+- https://apifox.com/help/
+
+
+
+
+
 </br>
 
 ## _接口文档_
@@ -182,14 +193,3 @@ wrk -t12 -c400 -d30s http://127.0.0.1:8080/index.html
 
 参考资料：
 - [性能测试工具 wrk 使用教程](https://www.cnblogs.com/quanxiaoha/p/10661650.html)
-
-
-
-
-
---------
-
-参考资料：
-- [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
-- [REST API 的关键概念](https://mp.weixin.qq.com/s/lRLhXrVN2_-2wVLD4yJ8og)
-- https://apifox.com/help/

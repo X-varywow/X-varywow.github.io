@@ -112,6 +112,13 @@ with ThreadPoolExecutor(max_workers=4) as executor:
         future.result()
 ```
 
+- conn = pool.get_conn() 连接池中获取连接
+- pool.get_stats() 返回连接池状态
+  - pool_size, 连接池当前连接数
+  - pool_available， 连接池当前可用连接数
+  - requests_waiting, 等待连接的请求数量
+
+
 
 ConnectionPool 基于同步模型，
 

@@ -135,20 +135,21 @@ _分支规范_
 
 _Commit Message 规范_
 
-`<type>(<scope>):<subject>`, 如 fix\(a.py): divide by 0
+`<type>(<scope>):<subject>`, 如 fix(a.py): divide by 0
 
 常见 type 类型：
 - feat: 新增功能
 - fix: 修复 bug
 - refactor: 不修复 bug 不添加特性的代码更改
 - perf: 改进性能
-- test: 测试相关
-- chore: 对构建过程或辅助工具和库（如文档）的更改
 - delete
 - modify
 - revert
-- docs
+- docs: 仅文档更改
+- chore: 琐事
 - style
+- ci: 自动化流程配置更改
+- test: 测试、测试用例等
 
 
 ## gitlens 使用
