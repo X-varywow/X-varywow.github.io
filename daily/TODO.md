@@ -20,10 +20,6 @@ https://github.com/KRTirtho/spotube
 
 弄个自动化控制，强化学习工具，先把界面弄出来
 
-POE 角色扮演，确实有趣
-
-https://testdriven.io/blog/developing-a-single-page-app-with-fastapi-and-vuejs/
-
 
 https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA
 
