@@ -59,13 +59,17 @@ npm-debug.log
 简易的 Dockerfile：
 
 ```bash
+# 指定基础镜像
 FROM node:8.4
 
-# 将当前目录下的所有文件
+# 将当前目录下的所有文件复制到
 COPY . /app
 
-# 指定工作路径
+# 指定工作路径，后续指令会在这目录执行
 WORKDIR /app
+
+# 设置环境变量为当前目录
+ENV PYTHONPATH=.
 
 # 运行 npm install 安装依赖。安装后所有的依赖，都打包到 image
 RUN npm install --registry=https://registry.npm.taobao.org
@@ -99,7 +103,9 @@ docker container run -p 8000:3000 -it koa-demo /bin/bash
 定义配置文件 docker-compose.yml
 
 ```bash
-docker-compose up
+# up 启动服务，-d 表示 detached 模式，在后台运行不阻塞当前的命令行
+# --build 启动容器之前重新构建服务的镜像
+docker-compose up -d --build
 
 docker-compose stop
 ```
