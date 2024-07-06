@@ -36,6 +36,12 @@ pre {
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+```bash
+cd C:\ProgramData\anaconda3\condabin
+call conda activate base
+cd C:\Users\Administrator\jupyter
+jupyter-lab
+```
 
 
 ?> _pycharm_  
