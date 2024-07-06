@@ -242,5 +242,46 @@ git checkout feature
 git rebase master
 ```
 
+
+</br>
+
+### _git stash_
+
+存储临时代码。(当前需要切换分支且当前代码修改不像提交时)
+
+```bash
+# 保存当前未commit的代码
+git stash save "备注内容"
+
+git stash list
+
+# 应用最近一次的stash
+git stash apply
+
+# 应用对应的记录
+git stash apply stash@{1}
+```
+
+</br>
+
+### _cherry-pick_
+
+复制 commit 到另一个分支上
+
+```bash
+# 查看历史 commit 信息
+git log
+
+git cherry-pick commit-id1 commit-id2
+```
+
+
+```bash
+git revert commit-id
+```
+
+
+
+
 推荐资料：https://www.freecodecamp.org/chinese/news/the-ultimate-guide-to-git-merge-and-git-rebase/
 
