@@ -49,7 +49,7 @@ print(m.dimensions)
 - datetime
 - Tuple[int, int]
 - dict[str, PositiveInt]
-- Optional[str] (支持传递 None)（默认就支持不传全部参数, 字面意思不对）
+- Optional[str] (允许 None 作为有效输入)（默认就支持不传全部参数, 字面意思不对）
 - datetime | None
 - List[int] (或者 `list = field(default_factory=list)`)
 - 支持递归 BaseModel
