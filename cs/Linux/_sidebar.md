@@ -4,6 +4,7 @@
   - [系统用户与用户组管理](cs/Linux/user&group)
   - [空间&设备管理](cs/Linux/device)
   - [网络&API](cs/Linux/net)
+  - [netstat](cs/Linux/netstat)
   - [其它命令](cs/Linux/other)
   - [vim](cs/Linux/vim)
   - [shell脚本](cs/Linux/shell)

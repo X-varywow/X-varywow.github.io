@@ -189,3 +189,4 @@ fastapi 与 numpy 一起使用时，
 参考资料：
 - https://fastapi.tiangolo.com/zh/
 - https://juejin.cn/post/6844904051327369224
+- [fastapi-best-practices](https://github.com/zhanymkanov/fastapi-best-practices)
