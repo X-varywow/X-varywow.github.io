@@ -169,3 +169,5 @@ https://web.archive.org/web/20181103114010/https://mlwave.com/kaggle-ensembling-
 - 识别图形、采取决策；
 - 控制 gui
 - 通信机制
+
+https://huggingface.co/learn/deep-rl-course
