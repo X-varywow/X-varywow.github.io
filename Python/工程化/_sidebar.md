@@ -13,7 +13,7 @@
   - [steuptools](Python/工程化/setuptools)
   - [并发](Python/工程化/concurrent)
   - [cprofile性能分析](Python/工程化/cprofile)
-  - [memray性能分析](Python/工程化/memray)
+  - [内存分析](Python/工程化/memray)
   - [代码规范](Python/工程化/pylint)
   - [类型注解](Python/工程化/typing)
   - [高精度](Python/工程化/mpmath)

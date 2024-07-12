@@ -78,3 +78,12 @@ mprof plot
 
 参考资料：https://zhuanlan.zhihu.com/p/121003986
 
+
+## 内存泄露常见场景
+
+
+```bash
+pip install objgraph
+```
+
+
