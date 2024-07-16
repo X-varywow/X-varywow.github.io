@@ -216,6 +216,8 @@ git reset --hard HEAD~1
 
 --hard 选项表示重置工作目录和索引，使其与新的 HEAD 状态完全一致
 
+reset 之后 commits 就看不到中间的提交了
+
 
 [参考资料：reset](https://www.runoob.com/git/git-reset.html)
 
