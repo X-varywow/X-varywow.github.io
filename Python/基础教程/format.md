@@ -34,11 +34,12 @@ _format_
 "{1} {0} {1}".format("hello", "world")  # 设置指定位置
 
 "网站名：{name}, 地址 {url}".format(name="菜鸟教程", url="www.runoob.com") # 设置参数
+```
 
-"网站名：{name}, 地址 {url}".format(**d) # 通过字典设置参数
+```python
+"网站名：{name}, 地址 {url}".format(**d) # 通过字典设置参数 (实用， d 可以是所需参数的超集)
 
 "{a}".format_map(d)
-
 ```
 
 

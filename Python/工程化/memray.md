@@ -21,10 +21,10 @@ memray run tests/test_memory.py --aggregate
 
 # summary 会在 bash 生成, 好看一些
 memray summary out.bin 
+memray stats out.bin
+memray flamegraph out.bin
 memray table out.bin
 memray tree out.bin
-memray flamegraph out.bin
-memray stats out.bin
 ```
 
 但是 live 模式只能看内存个大概:
@@ -167,6 +167,17 @@ objgraph.show_most_common_types(limit=50)
 objgraph.show_growth(limit=30)
 ```
 
+## psutil
+
+```python
+import psutil
+import os
+
+process = psutil.Process()
+mem_info = process.memory_info()
+current_memory = mem_info.rss / (1024 * 1024)  # 转换为MB
+print(f"当前内存使用: {current_memory:.2f} MB")
+```
 
 
 

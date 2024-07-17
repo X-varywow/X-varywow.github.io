@@ -191,7 +191,7 @@ with pg_pool.connection() as conn:
 ```python
 import traceback
 from psycopg_pool import ConnectionPool
-from concurrent.futures import ALL_COMPLETED, ThreadPoolExecutor, wait
+from concurrent.futures import ALL_COMPLETED, ThreadPoolExecutor, wait, as_completed
 from loguru import logger
 import time
 
@@ -230,19 +230,34 @@ class my_pool:
                 logger.error(f"PostgresConnection query citus with sql: {sql} failed by: {error}")
         return res
 
-EXECUTOR = ThreadPoolExecutor(max_workers=32)
+PG_EXECUTOR = ThreadPoolExecutor(max_workers=32)
 
 pool = my_pool(**config)
 
-def parallel_query(sqls):
-    futures = [EXECUTOR.submit(pool.query, sql) for sql in sqls]
-    done, _ = wait(futures, return_when=ALL_COMPLETED, timeout=3)
-    res = []
-    for future in done:
-        res = future.result()
-        if res:
-            res.append(result)
+def multiprocess_query(sqls):
+    res = {}
+    futures = [PG_EXECUTOR.submit(pool.query, sql) for sql in sqls]
+    # done, _ = wait(futures, return_when=ALL_COMPLETED, timeout=3)
+    # res = []
+    # for future in done:
+    for future in as_completed(futures):
+        result = future.result()
+        if result:
+            res.update(result)
     return res
+
+
+query_filter = {
+    'name': 1,
+    'kind': 2
+}
+
+sqls = [
+    sqla.format(**query_filter),
+    sqlb.format(**query_filter)
+]
+
+res = multiprocess_query(sqls)
 ```
 
 psycopg 源码：
