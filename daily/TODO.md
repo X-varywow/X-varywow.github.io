@@ -173,3 +173,7 @@ https://web.archive.org/web/20181103114010/https://mlwave.com/kaggle-ensembling-
 https://huggingface.co/learn/deep-rl-course
 
 kimi css
+
+https://github.com/babalae/better-genshin-impact.git
+
+ai agent

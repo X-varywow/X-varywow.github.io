@@ -170,13 +170,41 @@ objgraph.show_growth(limit=30)
 ## psutil
 
 ```python
-import psutil
 import os
+import psutil
+from loguru import logger
 
-process = psutil.Process()
-mem_info = process.memory_info()
-current_memory = mem_info.rss / (1024 * 1024)  # 转换为MB
-print(f"当前内存使用: {current_memory:.2f} MB")
+def memory_query():
+    process = psutil.Process()
+    mem_info = process.memory_info()
+    current_memory = mem_info.rss / (1024 * 1024)  # 转换为MB
+    logger.info(f"Mem Usage: {current_memory:.2f} MB")
+```
+
+在服务中定时运行：
+
+```python
+from apscheduler.schedulers.background import BackgroundScheduler
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(memory_query, 'interval', seconds = 1)
+scheduler.start()
+```
+
+
+## gc
+
+https://docs.python.org/zh-cn/3/library/gc.html
+
+```python
+import gc
+from loguru import logger
+
+before = gc.get_count()
+# your code 
+after = gc.get_count()
+
+logger.info(f"gc count: {before} -> {after}")
 ```
 
 

@@ -216,6 +216,12 @@ git reset --hard HEAD~1
 
 --hard 选项表示重置工作目录和索引，使其与新的 HEAD 状态完全一致
 
+正常之后应该：
+
+```bash
+git push origin test -f
+```
+
 reset 之后 commits 就看不到中间的提交了
 
 

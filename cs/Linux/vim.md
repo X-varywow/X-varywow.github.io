@@ -56,6 +56,7 @@ vim filename
 | `set nonu`  |               |
 | `syntax on` | 显示语法高亮  |
 | `50`        | 移动到第50行  |
+| `%d`        | 删除全部内容  |
 
 
 
