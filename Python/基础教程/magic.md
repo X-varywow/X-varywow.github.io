@@ -12,48 +12,46 @@
 
 用于定义一个对象的字符串表示形式。
 
-str 和 repr 没啥区别，<u>str 目标是易于理解，repr 目标是准确一致</u>
+<u>str 目标是易于理解，repr 目标是准确一致</u>
 
 ```python
 class Complex:
   
     # Constructor
     def __init__(self, real, imag):
-       self.real = real
-       self.imag = imag
+        self.real = real
+        self.imag = imag
   
     # For call to repr(). Prints object's information
     def __repr__(self):
-       return 'Rational(%s, %s)' % (self.real, self.imag)    
+        return 'Rational(%s, %s)' % (self.real, self.imag)    
   
     # For call to str(). Prints readable form
     def __str__(self):
-       return '%s + i%s' % (self.real, self.imag)    
-  
-  
-# Driver program to test above
+        return '%s + i%s' % (self.real, self.imag)    
+
 t = Complex(10, 20)
-  
-# Same as "print t"
-print (str(t))  
-print (repr(t))
+
+print(str(t))   # Same as print(t)
+# 10 + i20
+
+print(repr(t))
+# Rational(10, 20)
 ```
 
 ```python
-class Cat:
+# no __str__ and  no __repr__: 
+print(t)
 
-    def __init__(self, new_name, new_age):
-        self.name = new_name
-        self.age = new_age  # 它是一个对象中的属性,在对象中存储,即只要这个对象还存在,那么这个变量就可以使用
-        # num = 100  # 它是一个局部变量,当这个函数执行完之后,这个变量的空间就没有了,因此其他方法不能使用这个变量
- 
-    def __str__(self):
-        return "名字是:%s , 年龄是:%d" % (self.name, self.age)
- 
-# 创建了一个对象
-tom = Cat("汤姆", 30)
-print(tom)
+# <__main__.Complex object at 0x7f57b9639300>
+
+# no __repr__:
+a = {'a': t}
+print(a)
+# {'a': <__main__.Complex object at 0x7f57b963b2b0>}
 ```
+
+repr 不能返回非字符串， str 可以
 
 ### item
 

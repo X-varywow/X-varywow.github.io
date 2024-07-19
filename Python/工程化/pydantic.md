@@ -28,6 +28,7 @@ class Delivery(BaseModel):
     timestamp: datetime
     dimensions: Tuple[int, int]
     arr: Optional[list] = field(default_factory=list)
+    arr_with_default: list = field(default_factory=lambda: [100]*1000000)
 
 
 m = Delivery(timestamp='2020-01-02T03:04:05Z', dimensions=['10', '20'])

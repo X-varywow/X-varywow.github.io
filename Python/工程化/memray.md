@@ -207,6 +207,28 @@ after = gc.get_count()
 logger.info(f"gc count: {before} -> {after}")
 ```
 
+## sys.getsizeof
+
+```python
+import sys
+
+# 创建一个包含1百万整数的列表
+my_list = [1] * 1000000
+
+# 使用getsizeof估算列表自身的内存占用
+list_size = sys.getsizeof(my_list)
+
+# 估算列表中所有整数的总内存占用
+int_size = sys.getsizeof(1) * len(my_list)
+
+# 总内存占用大约是列表自身的内存加上所有整数的内存
+total_memory = list_size + int_size
+
+print(f"列表自身的内存占用: {list_size} bytes")
+print(f"列表中所有整数的总内存占用: {int_size} bytes")
+print(f"总内存占用: {total_memory} bytes")
+```
+
 
 
 ## 内存泄露常见场景
@@ -261,6 +283,39 @@ thread.start()  # 线程持续运行，占用的内存无法释放
 
 未关闭连接
 
+
+
+## 记录一次内存泄露排查
+
+step1. 收集信息
+
+对比了泄露与不泄露的代码（没收获）
+
+内存增长情况（与请求数量挂钩）
+
+内存泄露常见case (循环引用，无限增长)
+
+step2. 使用包
+
+这个时候错误地估计了内存增长的量级，实际上内存增长很小，
+
+然后模拟的量级不够，再加上这些包总是算不出 lgbm model 占用内存情况；所以认为这些包没啥用
+
+step3. 手动更改代码
+
+一步步更改代码，使用 psutil 记录全局的内存占用信息。和公司的监控平台；
+
+量级、内存增长不稳定，导致没什么收获
+
+step4. 增大量级
+
+反应过来之前看的增长速度并不全是内存泄露带来的，
+
+真实观测到内存泄露所需的量级较大；
+
+使用 tracemalloc snapshot 抽离核心代码，大量请求观测 （1000 q）
+
+找到可能原因（python pydantic basemodel: a, ）, 在 a 上加一个 [100]*1000000 属性； 发现不是，，，
 
 
 
