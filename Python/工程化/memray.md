@@ -1,6 +1,6 @@
 
 
-使用 memray 分析实时内存占用（将主体程序抽出来，分析 streamlit 程序有点不好）
+分析应用内存占用
 
 github stars: [memray](https://github.com/bloomberg/memray)(11.8K), [py-spy](https://github.com/benfred/py-spy)(11.4k), [scalene](https://github.com/plasma-umass/scalene)(10.6k) memory_profiler(4.1k)
 
