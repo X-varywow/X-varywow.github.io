@@ -9,19 +9,24 @@
 
 ```python
 class MyClassA:
-    i = 12345               # 1. 这里定义了类变量
+    i = 12345               # 类属性
     
     def funcA(self):        # 2. 类的函数需要显式指明self参数
-        i=10
-        self.j=2345         # 3. 这里通过self来区分局部变量和实例变量。 
+        i = 10
+        self.j = 2345         # 实例属性
         
-        print("函数的局部变量i：",i)
-        print("类属性i：",self.i)
+        print("函数的局部变量i：", i)
+        print("类属性i：", self.i)
 
-obj = MyClassA()  #定义类的对象，对类实例化
+obj = MyClassA()  # 定义类的对象，对类实例化
 obj.funcA()
-obj.i             #类里的变量和函数，默认公开访问
+obj.i             # 类里的变量和函数，默认公开访问
+MyClassA.i        # 类属性多了一种访问方式
 ```
+
+类属性是所有实例共享的属性，改变一个会影响所有的。
+
+
 
 ```python
 class foo(object):
