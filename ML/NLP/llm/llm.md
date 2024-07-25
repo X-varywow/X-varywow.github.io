@@ -52,11 +52,6 @@ git clone https://github.com/THUDM/ChatGLM2-6B
 cd ChatGLM2-6B
 ```
 
-------------
-
-
-还有专门的处理代码的大模型：[CodeGeeX2](https://github.com/THUDM/CodeGeeX2)，在 vscode 上装个插件就行，体验也不是很好
-
 
 ## Qwen
 

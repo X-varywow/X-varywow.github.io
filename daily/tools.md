@@ -277,6 +277,20 @@ vscode:
 - tasks.json
 
 
+settings.json
+
+```json
+{
+    "window.zoomLevel": 1,
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true
+}
+```
+
+
+
+
+
 ctrl + shift + p 打开 vscode 魔法命令行， 如 `>Tasks: Run Task`
 
 

@@ -6,7 +6,7 @@ yolox + dqn
 
 图像表示，有效特征提取，就算非常难了，内存提取
 
-## YOLOX
+### YOLOX
 
 用于鱼的定位、类型识别、鱼竿落点定位，这里放弃传统了传统的 opencv 方法。
 
@@ -15,7 +15,7 @@ yolox + dqn
 这样的话，特征提取靠谱多了，自动化探索
 
 
-## autofish
+## repo1 autofish
 
 - fisher (定义 DQN 网络中 agent environment model predictor)
 - utils (键鼠操作、画图)
@@ -23,7 +23,7 @@ yolox + dqn
 
 
 
-## cv 识图
+### cv 识图
 
 
 ```python
@@ -85,9 +85,21 @@ nn.Linear(32, out_ch)
         return action
 ```
 
-## RL 理论
+### RL 理论
 
 
 DDQN（Double Deep Q-Network）是DQN（Deep Q-Network）的一种改进算法。
 
 主要的区别在于DDQN在计算目标Q值时使用了两个网络，即一个主要网络用于选择动作，另一个目标网络用于计算目标Q值。
+
+
+
+
+## repo2 assistnt
+
+https://github.com/infstellar/genshin_impact_assistant.git
+https://github.com/PyQt5/PyQt
+
+弄个 git;
+agent + local memory
+memory 共享

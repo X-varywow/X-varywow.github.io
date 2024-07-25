@@ -61,7 +61,7 @@ if __name__ == '__main__':
         uvicorn.run('main:app', host='0.0.0.0', port=8888, workers=2, reload=True)
 ```
 
-workers 会影响进程数，每个进程会使用独立的运行空间，所以对于内存占用高的服务，可以减少 workers 的数量。
+workers 会影响进程数(子进程)，每个进程会使用独立的运行空间，所以对于内存占用高的服务，可以减少 workers 的数量。
 (workers 与内存占用呈比例关系)
 
 通过 os.getpid() 查看当前进程方便区分
