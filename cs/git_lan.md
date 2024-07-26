@@ -192,6 +192,36 @@ git merge -X ours <branch_name>
 
 ## 8.特殊
 
+
+</br>
+
+### _git log_
+
+```bash
+git log
+
+git log -- file_name
+git log -- dir_name
+
+# 简化输出
+git log --oneline
+
+#查看每次提交详细差异
+git log -p
+
+# 限制输出数量
+git log -5
+
+# 
+git log --graph
+
+git log --help
+# 回车：下一行，空格：翻页
+```
+
+可以查看老早的文件夹是谁建立的
+
+
 </br>
 
 ### _git reset_
@@ -205,7 +235,7 @@ git merge -X ours <branch_name>
 git log
 
 
-git reset
+git reset <commit_hash>
 ```
 
 将分支回退到上一个提交：（上一个提交后的所有更改都会丢失）
