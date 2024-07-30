@@ -848,11 +848,11 @@ section.cover blockquote>p>a:hover {
 .markdown-section output:after,
 .markdown-section pre:after {
     color: #ccc;
-    font-size: .6rem;
+    font-size: .7rem;
     font-weight: 600;
     height: 15px;
     line-height: 15px;
-    padding: 5px 10px 0;
+    padding: 6px 10px 0;
     position: absolute;
     right: 0;
     text-align: right;
@@ -909,7 +909,7 @@ footer {
 
 /* 多样的文本类型 */
 .markdown-section pre {
-    background-color: #f7f7f7;
+    background-color: rgb(250, 250, 250);
 }
 
 .markdown-section p.pyellow {
@@ -981,8 +981,8 @@ h2>a:hover {
 }
 
 .markdown-section pre code {
-    background-color: #F7F7F7;
-    color: #222;
+    background-color: rgb(250, 250, 250);
+    color: rgb(56, 58, 66);
 }
 
 .markdown-section pre>code {
@@ -994,26 +994,26 @@ h2>a:hover {
 .token.macro-name,
 .token.class-name,
 .token.function {
-    color: #0000ff;
+    color: rgb(64, 120, 242);
 }
 
 .token.boolean,
 .token.number,
 .token.keyword {
-    color: #008000;
-    font-weight: 700;
+    color: rgb(166, 38, 164);
+    /* font-weight: 700; */
 }
 
 .token.comment {
-    color: #007979;
+    color: rgb(160, 161, 167);
 }
 
 .token.string {
-    color: #ba2121;
+    color: rgb(183, 107, 1);
 }
 
 .token.punctuation {
-    color: #222;
+    color: rgb(56, 58, 66);
 }
 
 /* 
