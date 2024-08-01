@@ -176,4 +176,6 @@ kimi css
 
 https://github.com/babalae/better-genshin-impact.git
 
+https://gitee.com/LanRenZhiNeng/ming-chao-ai
+
 公平是发挥成员积极性的保证
