@@ -4,7 +4,9 @@
 
 ## _点乘&叉乘_
 
-> 点乘，表示向量 a 在 向量 b 上的投影
+> 点乘（点积），表示向量 a 在 向量 b 上的投影；结果是一个标量
+
+在机器学习中，常用于表示向量之间的相似度；
 
 $$ a \cdot b = a_1b_1 + a_2b_2 + \cdots + a_nb_n$$
 
@@ -22,6 +24,22 @@ b_1&b_2
 = a_1b_2 - a_2b_1
 $$
 
+
+</br>
+
+## _卷积_
+
+> 卷积：通常认为是一种二维的点积，本质是对输入信号进行滑动窗口内的元素计算点积。 用于滤波和特征提取
+
+$$ (f*g)(n) = \int_{-\infty}^{\infty}f(\tau)g(n-\tau)$$
+
+$g(n-\tau)$ 核函数，卷积核
+
+</br>
+
+参考：
+- https://codec.wang/docs/opencv/basic/extra-08-padding-and-convolution
+- https://www.bilibili.com/video/BV1Ys4y1M7W5/
 
 </br>
 

@@ -15,7 +15,6 @@
   - [VITS](ML/Audio/vits)
   - [VITS-fast-finetune](ML/Audio/vfft)
   - [YourTTS](ML/Audio/yourtts)
-  - [VallE](ML/Audio/valle)
   - -------
   - [语音克隆-softvc](ML/Audio/softvc)
   - [sovits](ML/Audio/sovits)

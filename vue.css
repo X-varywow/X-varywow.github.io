@@ -848,7 +848,7 @@ section.cover blockquote>p>a:hover {
 .markdown-section output:after,
 .markdown-section pre:after {
     color: #ccc;
-    font-size: .7rem;
+    font-size: .8rem;
     font-weight: 600;
     height: 15px;
     line-height: 15px;
@@ -975,7 +975,7 @@ h2>a:hover {
 .markdown-section code {
     background-color: #fdebeb;
     color: #fa314c;
-    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-family: Fira Code, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     font-size: 14px !important;
     line-height: 20px !important;
 }
@@ -1006,6 +1006,7 @@ h2>a:hover {
 
 .token.comment {
     color: rgb(160, 161, 167);
+    font-style: italic;
 }
 
 .token.string {
