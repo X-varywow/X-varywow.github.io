@@ -998,10 +998,13 @@ h2>a:hover {
 }
 
 .token.boolean,
-.token.number,
 .token.keyword {
     color: rgb(166, 38, 164);
     /* font-weight: 700; */
+}
+
+.token.number {
+    color: rgb(80, 161, 79);
 }
 
 .token.comment {
