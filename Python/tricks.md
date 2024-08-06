@@ -316,6 +316,8 @@ print(f(3)) # -> [1, 2, 3]
 
 权限验证装饰器：
 
+> 这里多了一层函数用于传递 level 参数
+
 ```python
 def md5_decorator(level):
     def decorator(func):
@@ -332,6 +334,45 @@ def md5_decorator(level):
 def main():
     pass
 ```
+
+普通装饰器
+
+```python
+def ApiDecorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            info = traceback.format_exc()
+            return {"message": f'{info}', "code": 500}
+    return wrapper
+
+@ApiDecorator
+def your_api():
+    return 1
+```
+
+多了一层也能正常运行(装饰器使用需要加（）):
+
+```python
+def ApiDecorator():
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                info = traceback.format_exc()
+                return {"message": f'{info}', "code": 500}
+        return wrapper
+    return decorator
+
+@ApiDecorator()
+def your_api():
+    return 1
+```
+
 
 改成装饰器类：
 

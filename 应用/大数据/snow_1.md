@@ -513,14 +513,20 @@ LIMIT 10;
 - 创建临时表
 - 加载数据 https://docs.snowflake.com/en/user-guide/data-load-overview.html
 
+-------------
 
-
+几种常用的判断：
 
 - IFNULL( <expr1> , <expr2> ) -- If expr1 is NULL, returns expr2, otherwise returns expr1.
 - NULLIF( <expr1> , <expr2> ) -- Returns NULL if expr1 is equal to expr2, otherwise returns expr1.
 - count_if()/count(1)
 - IFF( <condition> , <expr1> , <expr2> ) -- If condition evaluates to TRUE, returns expr1, otherwise returns expr2.
 
+json 中的 null 值判定需要使用另外的方法：
+
+IS_NULL_VALUE(try_parse_json(json_col)['key1']), 返回 bool
+
+typeof(try_parse_json(json_col)['key1']), 查看类型 为 NULL_VALUE
 
 
 

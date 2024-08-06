@@ -179,7 +179,19 @@ fastapi 与 numpy 一起使用时，
 
 报错如下：`ValueError: [TypeError("'numpy.int64' object is not iterable"),`
 
-堆栈全是 fastapi encoder 的错误信息，最后发现：返回的元素（list中包含）了 numpy.int64 类型。
+堆栈全是 fastapi encoder 的错误信息，最后发现：api 返回的元素（list中包含）了 numpy.int64 类型。
+
+-------------------------------
+
+规范：每个路由（即每个 API 接口）都应该有一个唯一的路径和函数
+
+~~不同接口使用同名函数，只有第二个函数会被注册~~（kimi 的错误答案）
+
+实测下来即使处理函数同名，参数也相同，也能正常处理；
+
+原本报错：`500 Internal Server Error`
+
+是内部代码报错的，在外部只表现个 500；服务器的日志信息很重要。
 
 
 
