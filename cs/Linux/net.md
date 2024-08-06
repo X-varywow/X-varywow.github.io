@@ -4,17 +4,16 @@
 
 curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。
 
-它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。
+它的功能非常强大，命令行参数多达几十种。如果熟练的话，可替代 Postman 这一类的图形界面工具。
 
 ```bash
 # 普通 GET 请求
 curl https://www.example.com
 
+# -X 用于指定 HTTP 请求方法, 默认的是 GET 方法; 同 --request
 
 # -d 发送 POST 请求的数据体
-curl -d'login=emma＆password=123' -X POST https://google.com/login
-
-# -X 用于指定 HTTP 请求方法, 默认的是 GET 方法
+curl -d 'login=emma＆password=123' -X POST https://google.com/login 
 
 
 # -o 将服务器的回应保存成文件，等同于wget命令。
@@ -34,9 +33,29 @@ curl -H 'Accept-Language: en-US' https://google.com
 
 # -u 设置服务器认证的用户名和密码。
 
-# -L 指定 curl 跟随重定向，用于跳转下载且不好找下载地址的地方，救大了
+# -L 指定 curl 跟随重定向，用于跳转下载且不好找下载地址的地方; 同 --location
 curl -L https://ibm.ent.box.com/shared/static/z1wgl1stco8ffooyatzdwsqn2psd9lrr -o /content/so-vits-svc/hubert/checkpoint_best_legacy_500.pt
 ```
+
+
+其它：
+
+```bash
+# -o- 表示输出到标准输出，即 curl 不会保存文件而是将下载的数据输出到终端
+# | bash 将上层管道传过来的数据直接 bash 执行
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+```
+
+---------
+
+参考资料：
+- [curl 的用法指南](https://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
+
+
+
+
+
+
 
 
 
@@ -60,11 +79,3 @@ wget https://civitai.com/api/download/models/102236 -O ./models/Lora/cartoon_por
 | -O file | 写到file文件中           |
 | -o file | 追加写到file文件中       |
 | -P      | 指定下载文件时保存的目录 |
-
-
-
-
----------
-
-参考资料：
-- [curl 的用法指南](https://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
