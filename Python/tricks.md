@@ -342,7 +342,9 @@ def ApiDecorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         try:
-            return func(*args, **kwargs)
+            func(*args, **kwargs)
+            return {"message": 'success', "code": 200}
+            # return func(*args, **kwargs)
         except Exception as e:
             info = traceback.format_exc()
             return {"message": f'{info}', "code": 500}
@@ -350,7 +352,8 @@ def ApiDecorator(func):
 
 @ApiDecorator
 def your_api():
-    return 1
+    a = 1
+    # return 1
 ```
 
 多了一层也能正常运行(装饰器使用需要加（）):
@@ -361,16 +364,17 @@ def ApiDecorator():
         @wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                return func(*args, **kwargs)
+                func(*args, **kwargs)
+                return {"message": 'success', "code": 200}
             except Exception as e:
                 info = traceback.format_exc()
                 return {"message": f'{info}', "code": 500}
         return wrapper
     return decorator
 
-@ApiDecorator()
+@ApiDecorator
 def your_api():
-    return 1
+    a = 1
 ```
 
 

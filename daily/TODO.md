@@ -179,3 +179,8 @@ https://github.com/babalae/better-genshin-impact.git
 https://gitee.com/LanRenZhiNeng/ming-chao-ai
 
 公平是发挥成员积极性的保证
+
+
+一代人成就了一代的产业，
+
+举例房地产，人口增长、城镇化、收入、传统文化，这代人的特点就注定了这个产业。
