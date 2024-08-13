@@ -103,8 +103,6 @@ llm agent, 基于大型语言模型（如GPT系列）的智能体或助手
 https://github.com/a-real-ai/pywinassistant
 
 
-使用 ahk 做输入控制
-
 图意多模态理解，（text: ocr, 图意？？）
 
 把按键控制定义 skill
