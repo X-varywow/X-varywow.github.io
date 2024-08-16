@@ -128,6 +128,10 @@ locateFile 是一个函数名，在这里是可以省略的。
 由于箭头函数被直接传递给 Holistic 构造函数，locateFile 前不需要使用 const 或 var 来声明。
 
 
+
+
+
+
 </br>
 
 ## _浏览器插件_
@@ -140,6 +144,48 @@ locateFile 是一个函数名，在这里是可以省略的。
 [浏览器插件制作教程1](https://xieyufei.com/2021/11/09/Chrome-Plugin.html)
 
 简单样例：https://github.com/ppz-pro/chrome-filter
+
+自定义的 snowflake:
+
+```css
+.tok-comment {
+    color:red !important;
+}
+
+.cm-scroller{
+    font-size: 18px !important;
+    color: #34495e !important;
+    font-family: monospace,Courier New,Lucida Console,Consolas,Helvetica !important;
+    line-height: 20px !important;
+} 
+
+
+.tok-keyword {
+    font-weight:400;
+}
+
+/* 
+.bl.a13.b3.b4.zs.pb.dh {
+    width: 600px
+}
+
+.bl.t4.b3.b4.t6.p9.dh {
+    width: 600px
+}
+ */
+/* .bl {
+    width: 600px
+} */
+```
+
+
+
+
+
+
+
+
+
 
 
 </br>
