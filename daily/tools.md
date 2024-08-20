@@ -287,11 +287,43 @@ settings.json
 }
 ```
 
+launch.json （run & debug 相关信息）
 
-
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        }
+    ]
+}
+```
 
 
 ctrl + shift + p 打开 vscode 魔法命令行， 如 `>Tasks: Run Task`
+
+
+command + shift + p `>Open User Settings (JSON))`
+
+```json
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.lineHeight": 1.2
+```
+
+
 
 
 字体：[FiraCode](https://github.com/tonsky/FiraCode)

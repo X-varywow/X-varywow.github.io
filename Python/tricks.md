@@ -197,18 +197,21 @@ a = 1 是作为一个 <u>顶层代码行</u>，当 python 解释器在执行 `fr
 global
 
 ```python
+# 全局变量
 num = 1
+
 def fun1():
-    global num  # 需要使用 global 关键字声明
+    global num  # 声明为全局变量
     print(num) 
     num = 123
     print(num)
+
 fun1()
 print(num)
 ```
 
 
-nonlocal
+nonlocal，允许内部函数修改外部（封闭）函数的变量
 
 
 ```python
@@ -230,6 +233,13 @@ class Solution:
         return res
 ```
 
+访问变量时，解释器会 按如下顺序进行查找：
+1. 局部作用域
+2. 嵌套作用域
+3. 全局作用域
+4. 内置作用域
+
+
 
 
 
@@ -239,11 +249,21 @@ class Solution:
 
 [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 
-autopep8
-
 flake8
 
-vscode 插件：black formatter 可以 format on save
+vscode 插件：autopep8 可以 format on save
+
+command + shift + p `>Open User Settings (JSON))`
+
+```json
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
+  }
+```
+
+
+
 
 
 </br>
