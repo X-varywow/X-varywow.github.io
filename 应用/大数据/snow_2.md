@@ -92,13 +92,6 @@ CREATE TASK: https://docs.snowflake.com/en/sql-reference/sql/create-task
 
 
 
-```sql
-show tasks like 'line%' in warehouse.scheme;
-```
-
-
-
-
 
 ```sql
 create task t1
@@ -195,6 +188,20 @@ from table(
 where SCHEMA_NAME = '...' and  DATABASE_NAME = '...';
 ```
 
+
+!> task create or replace 之后要 resume，
+
+
+```sql
+-- 检查 schedule， state 是 started 就行
+SHOW TASKS LIKE 'task_name';
+
+show tasks like 'line%' in warehouse.scheme;
+
+-- % 为 通配符
+-- 匹配以 tmp 为子串的字符串
+SHOW TASKS LIKE '%tmp%';
+```
 
 
 

@@ -608,6 +608,23 @@ FROM TABLE(QUERY_HISTORY())
 WHERE QUERY_ID = '查询ID';
 ```
 
+（7）table 相关操作
+
+```sql
+create table t1 (
+    col1              int,
+    col2              string,
+    col3              number(10, 3),
+    created_at        timestamp_ntz,
+    updated_at        timestamp_ntz,
+    ext_json_content  object
+)
+
+alter t1 add column col1 number(10, 3) default 0;
+```
+
+https://docs.snowflake.com/en/sql-reference/sql/alter-table-column
+
 
 
 -----------
@@ -617,17 +634,6 @@ WHERE QUERY_ID = '查询ID';
 
 <p class = "pyellow">生产环境还是要小心，多检查 pipeline 的状态</p>
 
-
-坑， task create or replace 之后要 resume，
-
-```sql
--- 检查 schedule， state 是 started 就行
-SHOW TASKS LIKE 'task_name';
-
--- % 为 通配符
--- 匹配以 tmp 为子串的字符串
-SHOW TASKS LIKE '%tmp%';
-```
 
 -----------
 
