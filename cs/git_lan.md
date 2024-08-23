@@ -221,6 +221,21 @@ git log --help
 
 可以查看老早的文件夹是谁建立的
 
+</br>
+
+### _git blame_
+
+查看每行代码是谁写的
+
+```bash
+git blame <file-name>
+```
+
+
+
+
+
+
 
 </br>
 

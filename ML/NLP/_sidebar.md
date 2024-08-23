@@ -7,7 +7,6 @@
   - [贝叶斯人名判别](ML/NLP/贝叶斯人名判别)
   - [信息检索和全文检索](ML/NLP/信息检索和全文检索)
   - [HanLP](ML/NLP/HanLP)
-  - [课程B](ML/NLP/b)
   - [作文自动评分](ML/NLP/AES)
   - [Word2vec](ML/NLP/Word2vec)
   - [语言模型](ML/NLP/b_hw5)

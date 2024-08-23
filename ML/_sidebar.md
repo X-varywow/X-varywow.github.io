@@ -19,4 +19,3 @@
   - [Metrics](ML/metric)
   - [信息学中的熵](ML/信息学中的熵)
   - [模型部署](ML/deploy)
-  - [News](ML/News)

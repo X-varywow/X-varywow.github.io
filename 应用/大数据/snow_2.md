@@ -189,7 +189,7 @@ where SCHEMA_NAME = '...' and  DATABASE_NAME = '...';
 ```
 
 
-!> task create or replace 之后要 resume，
+!> task create or replace 之后要 resume
 
 
 ```sql
@@ -467,7 +467,7 @@ table(stock_sale_sum(symbol, quantity, price) over (partition by symbol));
 
 
 
-## 9. regexp
+## 9.regexp
 
 https://docs.snowflake.com/en/sql-reference/functions/regexp_substr
 
@@ -485,7 +485,7 @@ from t1
 
 
 
-## 10. snowflake-scripting
+## 10.snowflake-scripting
 
 [snowflake-scripting](https://docs.snowflake.com/en/developer-guide/snowflake-scripting/index)
 
@@ -506,7 +506,7 @@ END;
 
 
 
-## 11. credits
+## 11.credits
 
 [Understanding Compute Cost](https://docs.snowflake.com/en/user-guide/cost-understanding-compute)
 
