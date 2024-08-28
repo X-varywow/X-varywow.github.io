@@ -94,7 +94,7 @@ def _calc_distance(self, c, a, b):
 def target_point(dai, ball, d = R):
 
     delta_x = dai[0] - ball[0]
-    delta_y = dai[1] - ball[0]
+    delta_y = dai[1] - ball[1]
 
     d1 = dist(dai, ball)
     res = [0, 0]

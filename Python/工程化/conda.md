@@ -12,8 +12,8 @@ conda update conda
 # (2) 建立&激活&删除
 conda env list
 # --name
-conda create -n myenv python=3.5
-conda create -n myenv python=3.5 ipykernel numpy
+conda create -n py39 python=3.9
+conda create -n py39 python=3.9 ipykernel numpy
 
 # 多种方式
 activate myenv
@@ -246,13 +246,14 @@ conda-forge 是一个社区驱动的 conda 包管理器的镜像源
 
 （4）打通kernel, conda, !, %run {}
 
-!cmd 新建一个子shell 执行 cmd, cmd 执行完，这个子 shell 也就消失了
+!cmd 新建一个子 shell 执行 cmd, cmd 执行完，这个子 shell 也就消失了
 
-要想在当前的shell 生效，需要使用 %cmd
+要想在当前的 kernel 生效，需要使用 %cmd (sagemaker 已测试)
 
 ```python
-# 可以看到使用 ！的环境会有问题，而下面这行不会（中间有个自动的转魔法方法）
+# 使用 ！的环境会有问题，而下面这行不会（中间有个自动的转魔法方法）
 !pip show torch
+
 pip show torch
 ```
 
