@@ -79,6 +79,15 @@ vars()
 ```
 
 
+```python
+# 动态地引入文件，使用 getattr 获取入口函数并运行
+import importlib
+runner_module = importlib.import_module(f'cradle.runner.{runner_key}_runner')
+entry = getattr(runner_module, 'entry')
+entry()
+```
+
+
 </br>
 
 ## _传参方法_

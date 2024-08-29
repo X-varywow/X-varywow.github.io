@@ -47,7 +47,7 @@
 
 -----------
 
-OLAP & OLTP
+OLAP & OLTP （online analytical processing & online transaction processing）
 
 联机分析处理 (OLAP) 系统的主要用途是分析聚合数据，而联机事务处理 (OLTP) 系统的主要用途是处理数据库事务
 
