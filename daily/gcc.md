@@ -16,7 +16,99 @@ PipelineRunner(llm_provider_config_path=args.llmProviderConfig,
                                     task_description=task_description,
                                     use_self_reflection = True,
                                     use_task_inference = True)
+
+PipelineRunner.run():
+
+"""
+1. 用 json-kv 结构存储 memory, 
+关键字段：
+    task_description_action, skill_library, exex_info, 
+    pre_action, pre_screen_classification, pre_decision_making_reasoning, 
+    pre_self_reflection_reasoning
+"""
+memory.update_info_history(init_params)
+
+"""
+2. GameManager,, 
+self.ui_control.switch_to_game
+raise NotImplementedError； 半成品？
+类写的太多，抽象复用继承嵌套下来，感觉并不易读
+"""
+gm.switch_to_game()
+
+"""
+# 3. VideoRecordProvider
+threading.Thread(target=capture_screen, daemon=True).start()
+input:  mss.mass().grab(region)
+output: cv2.VideoWriter()
+"""
+video_recorder.start_capture()
+
+"""
+# 4. VideoClipProvider
+memory 应该记录了帧相关的信息， start_frame_id
+这里将其帧组成 clip
+"""
+video_clip(init = True)
+gm.pause_game()
+
+
+
+# 5. 循环运行
+run_information_gathering()
+run_self_reflection()
+run_task_inference()
+run_skill_curation()
+run_action_planning()
+
 ```
+
+- planner
+
+
+
+### information_gathering
+
+```python
+# 1. Prepare the parameters to call llm api
+self.information_gathering_preprocess()
+
+# 2. Call llm api for information gathering
+response = self.information_gathering()
+
+# 3. Postprocess the response
+self.information_gathering_postprocess(response)
+```
+
+```python
+self.planner = RDR2Planner(llm_provider=self.llm_provider,
+                            planner_params=config.planner_params,
+                            frame_extractor=self.frame_extractor,
+                            icon_replacer=self.icon_replacer,
+                            object_detector=self.gd_detector,
+                            use_self_reflection=True,
+                            use_task_inference=True)
+
+
+InformationGathering(input_map=self.inputs[constants.INFORMATION_GATHERING_MODULE],
+                    template=self.templates[constants.INFORMATION_GATHERING_MODULE],
+                    text_input_map=self.inputs[constants.INFORMATION_TEXT_GATHERING_MODULE],
+                    get_text_template=self.templates[constants.INFORMATION_TEXT_GATHERING_MODULE],
+                    frame_extractor=self.frame_extractor,
+                    icon_replacer=self.icon_replacer,
+                    object_detector=self.object_detector,
+                    llm_provider=self.llm_provider)
+
+
+frame_extractor_gathered_information = None
+icon_replacer_gathered_information = None
+object_detector_gathered_information = None
+llm_description_gathered_information = None
+# llm_provider.assemble_prompt(template_str=self.template, params=input)
+```
+
+
+
 
 
 
@@ -82,6 +174,12 @@ prev_dis, prev_theta = dis, theta
 - [ ] cardle rdr2
 
 
+cradle 并不涉及深度的理论知识，全是代码在和 llm 交流。
+
+语言与机器操作这个桥梁的搭建，，
+;;;
+
+服了，全是类，函数也写成 class.__call__
 
 
 

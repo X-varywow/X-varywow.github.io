@@ -193,21 +193,30 @@ my_car.start_car()
 ## 高级使用
 
 
-### 2.0 抽象类
-- 接口：若干抽象方法的集合。
-  - 作用：限制实现接口的类必须按照给定的调用方式实现这些方法，对高层模块隐藏了类的内部实现。
+### 2.0 抽象基类
+
+Abstract Base Classes（抽象基类）, 不能被实例化，可以作为其它类的基类。
+
 
 ```python
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
-class Payment(metaclass = ABCMeta):
+class LLMProvider(ABC):
+    
     @abstractmethod
-    def pay(self, money):
+    def fetch_data(self):
+        """
+        子类必须实现此方法来获取数据。
+        """
         pass
-
-# 父类，通过定义函数接口，实现抽象类
-# 子类实现该接口，不然还是抽象类，无法实例化
 ```
+
+任何继承的子类都需要实现 fetch_data 方法，不然还是抽象类
+
+
+keyword: abc abc.ABC
+
+
 
 ### 2.1 静态方法
 
