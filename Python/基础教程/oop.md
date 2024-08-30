@@ -213,8 +213,7 @@ class LLMProvider(ABC):
 
 任何继承的子类都需要实现 fetch_data 方法，不然还是抽象类
 
-
-keyword: abc abc.ABC
+keyword: abc abc.ABC 强制实现 代码复用 接口定义
 
 
 

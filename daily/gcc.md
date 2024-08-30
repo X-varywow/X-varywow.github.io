@@ -146,6 +146,8 @@ detection = matchTemplates([('', cv2.resize(template, (0, 0), fx=s, fy=s)) for s
 # match_template 还会给出 template 与当前的置信度、角度、距离
 ```
 
+mtm: https://github.com/multi-template-matching/mtm-python-oop
+
 3. move
 ```python
 # record prev_dis, prev_theta to check stuck
@@ -181,6 +183,7 @@ cradle 并不涉及深度的理论知识，全是代码在和 llm 交流。
 
 服了，全是类，函数也写成 class.__call__
 
+本身缺陷很多，llm 空间认知、非现实认知，cradle 无声音数据，llm 交互时延和花费，
 
 
 ----------

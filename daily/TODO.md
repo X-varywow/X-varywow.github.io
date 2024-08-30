@@ -94,30 +94,9 @@ https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
 vae diffusion transformer 数理基础，算子，有空补一下;
 
 
-----------
-有意思，
-https://github.com/BAAI-Agents/Cradle
-
-llm agent, 基于大型语言模型（如GPT系列）的智能体或助手
 
 https://github.com/a-real-ai/pywinassistant
 
-
-图意多模态理解，（text: ocr, 图意？？）
-
-把按键控制定义 skill
-
-- atomic_skills
-- composite_skills
-
-
-决策，控制
-
-层层抽象，
-
-cv_go_to_icon screenshot -> match(mtm, cv2.TM_CCOEFF_NORMED)
-
-https://github.com/multi-template-matching/mtm-python-oop
 
 
 https://github.com/nashsu/FreeAskInternet
@@ -146,9 +125,6 @@ https://github.com/liguodongiot/llm-action
 https://sci-hub.ru/https://www.sciencedirect.com/science/article/abs/pii/030646039390038B
 
 sci-hub, 6的； ocr
-
-https://mp.weixin.qq.com/s/6Jn4-3KPoffsYGrrvYX6vg
-
 
 
 wx or unity 类小丑牌小程序开发

@@ -150,6 +150,8 @@ select date_part('hour', t);
 -- 新增字段
 alter table t1 add column user_id bigint;
 
+alter table t1 add column user_id bigint, add column col2 int;
+
 -- 修改字段
 alter table t1 alter column col_name type text;
 ALTER TABLE table_name MODIFY COLUMN column_name DOUBLE;
