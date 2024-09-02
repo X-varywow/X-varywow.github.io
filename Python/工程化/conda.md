@@ -183,7 +183,7 @@ ipython kernel install --user --name vt
 
 方式二：
 ```bash
-conda install ipykernel
+pip install ipykernel
 python -m ipykernel install --user --name=test
 ```
 
