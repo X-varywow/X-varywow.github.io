@@ -188,6 +188,15 @@ cradle 并不涉及深度的理论知识，全是代码在和 llm 交流。
 
 ----------
 
+技术栈：
+- c# 的内存操作， win 操作
+- 识别图形、采取决策；
+- 控制 gui
+- 通信机制
+https://github.com/liguodongiot/llm-action
+
+----------
+
 参考项目：
 - https://github.com/BAAI-Agents/Cradle
 - https://github.com/babalae/better-genshin-impact.git

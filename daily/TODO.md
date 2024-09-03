@@ -96,11 +96,6 @@ IC-Light sd 光照工具
 
 https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-environments/
 
-llm, sd; blog, python-proj
-
-https://github.com/liguodongiot/llm-action
-
-
 https://sci-hub.ru/https://www.sciencedirect.com/science/article/abs/pii/030646039390038B
 
 sci-hub, 6的； ocr
@@ -110,13 +105,6 @@ wx or unity 类小丑牌小程序开发
 
 
 https://web.archive.org/web/20181103114010/https://mlwave.com/kaggle-ensembling-guide/
-
-
-技术栈：
-- c# 的内存操作， win 操作
-- 识别图形、采取决策；
-- 控制 gui
-- 通信机制
 
 https://huggingface.co/learn/deep-rl-course
 

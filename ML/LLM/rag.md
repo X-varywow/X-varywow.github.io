@@ -6,7 +6,9 @@ RAG, retrieval-augmented generation; 检索增强生成。
 
 感觉还是好难，需要调整的，面临的问题还是很多；意图识别，成分句法分析
 
+-------------
 
+[kotaemon](https://github.com/Cinnamon/kotaemon) : An open-source RAG-based tool for chatting with your documents.
 
 
 --------------
