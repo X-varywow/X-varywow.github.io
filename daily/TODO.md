@@ -85,30 +85,9 @@ http://nlp.seas.harvard.edu/2018/04/03/attention.html
 https://www.cloudskillsboost.google/journeys/118
 
 
-https://github.com/MichaelCade/90DaysOfDevOps/blob/main/2023/day06.md
-
-https://openai.com/sora 质量有点好，但是再长一些的连贯，制作短片，将文本内容转视频，辅助视频制作，会很有用
-
 https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
 
 vae diffusion transformer 数理基础，算子，有空补一下;
-
-
-
-https://github.com/a-real-ai/pywinassistant
-
-
-
-https://github.com/nashsu/FreeAskInternet
-
-
-trafilatura
-
-simcse
-
-https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web
-
-https://m.ofweek.com/ai/2024-01/ART-201712-8440-30623318.html gpt3.5 弄个 agent
 
 
 IC-Light sd 光照工具

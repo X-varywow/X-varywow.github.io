@@ -160,3 +160,6 @@ qwen 1.5
 参考资料：
 - https://github.com/QwenLM/Qwen-7B
 - [通义千问开源大模型Qwen-7B技术报告](https://zhuanlan.zhihu.com/p/648007297)
+
+前端网页：
+- https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web

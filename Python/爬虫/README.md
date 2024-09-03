@@ -15,3 +15,8 @@
 参考资料：
 - [小白如何入门 Python 爬虫？](https://www.zhihu.com/tardis/zm/art/77560712)
 - [EasySpider](https://github.com/NaiboWang/EasySpider)
+
+----------------
+
+一些仓库：
+- [trafilatura](https://github.com/adbar/trafilatura)
