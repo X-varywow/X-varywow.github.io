@@ -181,6 +181,11 @@ fastapi 与 numpy 一起使用时，
 
 堆栈全是 fastapi encoder 的错误信息，最后发现：api 返回的元素（list中包含）了 numpy.int64 类型。
 
+合理的，当 api 返回信息时，无法将 python 独有的类型送出去，如 type() 的 `<class 'type'>` 类型、numpy 类型
+
+会报错指向 encoders.py 中 jsonable_encoder
+
+
 -------------------------------
 
 规范：每个路由（即每个 API 接口）都应该有一个唯一的路径和函数

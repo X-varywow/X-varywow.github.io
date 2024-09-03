@@ -112,6 +112,9 @@ print(MyClassC.attrA)
 
 ### 1.3 继承
 
+
+demo1:
+
 ```python
 #类定义
 class people:
@@ -142,6 +145,35 @@ class student(people):
 s = student('ken',10,60,3)
 s.speak()
 ```
+
+
+demo2: 自定义配置类（继承自 dict）
+
+```python
+import json
+
+config = {}
+with open("config.json") as f:
+    config = json.load(f)
+
+
+class DynamicConfig(dict):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__dict__ = self
+
+    def __call__(self, *args, **kwargs):
+        return self.get(*args, **kwargs)
+
+
+config = DynamicConfig(config)
+
+# 如果不设定 self.__dict__ = self 会为 {}
+config.__dict__
+```
+
+
+
 
 ### 1.4 组合
 
@@ -237,6 +269,7 @@ a.f()     #也可以实例化后调用
 ```
 
 ### 2.2 类方法
+
 ##### @classmethod
 
 类方法， 不需要 `self` 参数，但第一个参数需要时表示自身类的 `cls` 参数。
@@ -253,6 +286,7 @@ class MyClassC:
 ```
 
 ### 2.3 运算符重载
+
 ```python
 class Vector:
    def __init__(self, a, b):
@@ -306,7 +340,9 @@ del a.x          #删除属性
 - 如果报错 `RecursionError: maximum recursion depth exceeded while calling a Python object`，很可能是对象属性名和 `@property` 装饰的方法名重名了，一般会在对象属性名前加一个下划线 `_` 避免重名，并且表明这是一个受保护的属性。
 
 ### 3.2 一段实例
+
 餐厅_装饰模式:
+
 ```python
 class Food:
     def __init__(self, name, cost):

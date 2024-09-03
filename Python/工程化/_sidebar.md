@@ -9,7 +9,7 @@
   - [tqdm](Python/工程化/tqdm)
   - [traceback](Python/工程化/traceback)
   - ------
-  - [包管理](Python/工程化/conda)
+  - [conda & poetry](Python/工程化/conda)
   - [steuptools](Python/工程化/setuptools)
   - [并发](Python/工程化/concurrent)
   - [cprofile性能分析](Python/工程化/cprofile)
@@ -21,4 +21,5 @@
   - [定时任务](Python/工程化/scheduler)
   - [垃圾回收](Python/工程化/gc)
   - [单元测试](Python/工程化/unit_test)
+  - [配置管理](Python/工程化/配置管理)
   - [C 扩展](Python/工程化/c_extension)
