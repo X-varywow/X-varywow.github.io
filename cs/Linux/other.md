@@ -17,3 +17,9 @@ tar -cvf archive_name.tar /path/to/directory
 # -z 表示使用 gzip 压缩
 tar -czvf archive_name.tar.gz /path/to/directory
 ```
+
+</br>
+
+## _定时任务_
+
+`crontab` 用于设置周期性执行指令， cron 是一个守护进程

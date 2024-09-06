@@ -18,7 +18,7 @@ echo $0
 
 
 
-## （1）shell基础
+## shell基础
 
 ### 1.1 简单样例
 
@@ -244,11 +244,17 @@ echo "输入的两个数字之和为 $? !"
 
 ### 1.6 重定向
 
-| 命令            | 说明                 |
-| --------------- | -------------------- |
-| command > file  | 输出重定向           |
-| command < file  | 输入重定向           |
-| command >> file | 追加方式，输出重定向 |
+| 命令            | 说明               |
+| --------------- | ------------------ |
+| command > file  | 输出重定向（覆盖） |
+| command < file  | 输入重定向         |
+| command >> file | 输出重定向（追加） |
+
+
+tee 可以同时将输出打印到标准输出和文件：
+```bash
+echo "这是一条信息" | tee -a /var/log/jupyter.log
+```
 
 
 ### 1.7 代码封装&引用
@@ -271,7 +277,7 @@ echo "$url"
 
 
 
-## （2）一些样例：
+## 一些样例：
 
 (学校的一些课程笔记)
 
@@ -362,7 +368,7 @@ echo "succeed"
 一般情况下 vim建立的文本文件属性值为`644`，需要添加`x`属性 `chmod 755 ~~~`
 
 
-## （3）构建自动化流程
+## 构建自动化流程
 
 
 参考 [stable-diffusion-webui.sh](https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/webui.sh)
@@ -371,7 +377,7 @@ echo "succeed"
 
 
 
-## （4）bash快捷键
+## bash快捷键
 
 | 快捷键   | 描述                         |
 | -------- | ---------------------------- |
@@ -386,25 +392,15 @@ echo "succeed"
 
 
 
+## other
+
+`set -e` 设置脚本在遇到任何错误时立即退出
+
+
+
+
 ----------------
 
 参考资料：
 - [shell 概述](http://kuanghy.github.io/shell-tutorial/chapter1.html)
 - https://www.runoob.com/linux/linux-shell.html
-
-
-## (5) 启服务实例
-
-```bash
-#! /bin/bash
-
-# cat 输出重定向 配合 <<EOF 写入文件
-cat >/etc/yum.repos.d/epel.repo <<EOF
-
-EOF
-
-yum -y install nginx
-
-
-```
-
