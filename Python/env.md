@@ -83,6 +83,9 @@ sys.path
 sys.path.append("..") # 使其能从父级导入模块
 ```
 
+keyword: 路径加入 加入路径 
+
+
 查看版本（控制台中）
 
 ```bash
