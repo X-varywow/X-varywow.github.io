@@ -125,7 +125,7 @@ git branch -r
 # 查看所有分支
 git branch -a
 
-# 删除本地分支
+# 删除本地分支 (-D 强制删除)
 git branch -d localBranchName
 
 # 删除远程分支
@@ -306,6 +306,7 @@ git rebase master
 # 保存当前未commit的代码
 git stash save "备注内容"
 
+# 按 q 退出
 git stash list
 
 # 应用最近一次的stash
@@ -314,6 +315,11 @@ git stash apply
 # 应用对应的记录
 git stash apply stash@{1}
 ```
+
+发生冲突时，根据提示信息即可；
+
+未跟踪文件 ---add--> 暂存区文件（向后 commit, 向前 restore --staged）
+
 
 </br>
 

@@ -193,6 +193,9 @@ df.loc[df['a']>10, ['a','c']]
 
 #将所有列倒序排列
 df_desc = df.iloc[:, ::-1]
+
+# 将col2中值为1的行的col1的值改为2
+df.loc[df['col2'] == 1, 'col1'] = 2
 ```
 
 SettingWithCopyWarning 表示不明确是对原始还是副本的修改
