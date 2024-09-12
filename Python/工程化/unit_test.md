@@ -16,7 +16,7 @@ class case1(unittest.TestCase):
 
     # setUp() 会在每个测试用例之前执行
     def setUp(selef) -> None:
-        pass
+        self.arr = [1]       # 后续每个 test 都能使用 self.arr 来访问
     
     # tearDown() 会在每个测试用例之后执行
     def tearDown(self):

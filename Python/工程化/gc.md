@@ -1,7 +1,5 @@
 
 
-当 python 程序因为 OOM Killed，就需要引入垃圾回收了。
-
 垃圾回收是一种动态存储管理技术，gc 是 python 垃圾回收器接口。
 
 
@@ -33,9 +31,16 @@ gc.collect()
 ```
 
 
+-----------
+
+内存不够用时，linux 内核会通过三种机制来处理：内存回收、内存规整，oom-kill
+
+内存回收时涉及写磁盘，导致 IO 激增
+
 
 -----------
 
 参考：
 - [gc 官方文档](https://docs.python.org/zh-cn/3/library/gc.html)
 - [GC 机制探究之 Python 篇](https://zhuanlan.zhihu.com/p/295062531)
+- [详细的底层原理：Linux内存变低会发生什么问题](https://mp.weixin.qq.com/s/c2y36IH-4mRwhR-xvvdqGw)
