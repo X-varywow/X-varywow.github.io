@@ -45,20 +45,75 @@ if __name__ == '__main__':
 
 ```
 
+
+from: boto3
+
+```python
+class BaseDynamoDBTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.session = boto3.session.Session(region_name='us-west-2')
+        cls.dynamodb = cls.session.resource('dynamodb')
+        cls.table_name = unique_id('boto3db')
+        cls.item_data = {
+            'MyHashKey': 'mykey',
+            'MyNull': None,
+            'MyBool': True,
+            'MyString': 'mystring',
+            'MyNumber': Decimal('1.25'),
+            'MyBinary': Binary(b'\x01'),
+            'MyStringSet': {'foo'},
+            'MyNumberSet': {Decimal('1.25')},
+            'MyBinarySet': {Binary(b'\x01')},
+            'MyList': ['foo'],
+            'MyMap': {'foo': 'bar'},
+        }
+        cls.table = cls.dynamodb.create_table(
+            TableName=cls.table_name,
+            ProvisionedThroughput={
+                "ReadCapacityUnits": 5,
+                "WriteCapacityUnits": 5,
+            },
+            KeySchema=[{"AttributeName": "MyHashKey", "KeyType": "HASH"}],
+            AttributeDefinitions=[
+                {"AttributeName": "MyHashKey", "AttributeType": "S"}
+            ],
+        )
+        waiter = cls.dynamodb.meta.client.get_waiter('table_exists')
+        waiter.wait(TableName=cls.table_name)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.table.delete()
+
+```
+
+
 </br>
+
+
+当无法找到正确路径时， 
+
+方法1：
 
 
 ```bash
 export PYTHONPATH=$PYTHONPATH:/Users/yourname/yourpath
 ```
 
+方法2：
+
+```python
+import sys
+sys.path.append('/path/to/module')
+```
 
 
 </br>
 
 ## _unittest.mock_
 
-允许使用模拟对象来替换受测系统的部分，并对这部分进行断言判断。
+允许测试过程中临时替换（mock）模块、类、方法、属性等
 
 在隔离环境中测试单个组件，适用于真实依赖难以构建或设置。
 
@@ -70,22 +125,25 @@ mock 常用场景：
 # calculator.py
 def add(x, y):
     return x + y
+```
 
 
+```python
 # test_calculator.py
 import unittest
-from unittest import TestCase
 from unittest.mock import patch
 import calculator
+from calculator import add
 
-class TestCalculator(TestCase):
+class TestCalculator(unittest.TestCase):
     @patch('calculator.add')
     def test_add(self, mock_add):
         # 设置 mock 对象的返回值
         mock_add.return_value = 10
         
-        # 调用被测试的函数
+        # 不会调用测试的函数
         result = calculator.add(3, 4)
+        # result = add(3, 4) 会产生真实调用
         
         # 断言函数返回了预期的结果
         self.assertEqual(result, 10)
@@ -99,6 +157,33 @@ if __name__ == '__main__':
 ```
 
 这里 calculator.add 并不会调用，是将设置的 return_value 返回了
+
+这个例子应该不太适合，指定了返回10又断言为10
+
+
+另一个例子：
+
+```python
+import unittest
+from unittest.mock import patch
+from mymodule import mul
+
+class TestMathOperations(unittest.TestCase):
+    def test_multiply(self):
+        with patch('mymodule.mul') as mock_func:
+            mock_func.return_value = 12
+            # 这个返回调用的结果
+            res = mul(2,5)
+            # 这个返回设定的结果
+            res = mock_func(2,5)
+            # 断言成功
+            self.assertEqual(res, 12)
+
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
 
 
 
