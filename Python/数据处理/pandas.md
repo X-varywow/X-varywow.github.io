@@ -150,6 +150,18 @@ df2 = df.copy()
 df['idx'] = range(len(df))
 ```
 
+**使用 query()**
+
+```python
+# 查询 col1 = 3 或 col2 = 2
+result = df.query('col1 == 3 | col2 == 2')
+
+
+df.query(f"a.isnull() & updated_at > {t}")
+```
+
+
+
 
 </br>
 

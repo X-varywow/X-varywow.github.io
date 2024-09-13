@@ -45,7 +45,6 @@ https://github.com/valinet/ExplorerPatcher/wiki/All-features
 - [ ] 更新 develop
 - [ ] 系统论的书
 - [ ] MHA
-- [ ] chatglm3
 - [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档
 
@@ -92,10 +91,6 @@ vae diffusion transformer 数理基础，算子，有空补一下;
 
 IC-Light sd 光照工具
 
-------------
-
-https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-environments/
-
 https://sci-hub.ru/https://www.sciencedirect.com/science/article/abs/pii/030646039390038B
 
 sci-hub, 6的； ocr
@@ -118,3 +113,32 @@ kimi css
 举例房地产，人口增长、城镇化、收入、传统文化，这代人的特点就注定了这个产业。
 
 辩论时, 不要自证，帽子一扣开始质问。
+
+
+https://github.com/rasbt/LLMs-from-scratch
+
+https://github.com/Kedreamix/Linly-Dubbing
+
+https://github.com/fishaudio/fish-speech
+
+团结引擎， unity 本地化的复刻
+
+想的太多，做的太少
+
+https://github.com/google-deepmind/acme
+
+
+
+
+
+--------------
+
+商君书，
+
+主农战、强法；这些思想在当时确实是最优解了，
+
+农耕者，诚实守土；商人、手工、说客，少付出而得财利，远不如农耕者健壮、爱护土地、产生基本收益；
+
+教化强民很难的，这是长久生物进化的问题；法令弱民应该会相对容易些；
+
+还有一个奇怪的观点：国强而不参与战争、毒输于内，礼乐等危害产生。

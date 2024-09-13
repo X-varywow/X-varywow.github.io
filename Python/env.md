@@ -114,6 +114,10 @@ export APP_ENV = dev
 
 # 方式2, 使用 argparse
 python script.py --env=dev
+
+# other
+import sys
+sys.path.append("path")
 ```
 
 
