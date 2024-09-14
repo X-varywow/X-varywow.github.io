@@ -3,7 +3,7 @@
   - [VAE](ML/高级/vae)
   - [BP 反向传播](ML/高级/bp)
   - [EP 期望传播](ML/高级/ep)
-  - [pso](ML/高级/pso)
+  - [启发式算法](ML/高级/启发式算法)
   - [MonteCarlo](ML/高级/MonteCarlo)
   - [搜索相关](ML/高级/搜索相关)
   - [元胞自动机](ML/高级/元胞自动机)
