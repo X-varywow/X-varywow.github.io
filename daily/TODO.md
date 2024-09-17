@@ -1,8 +1,4 @@
 
-生成式 AI,确实使游戏开发快很多；https://huggingface.co/cagliostrolab/animagine-xl-3.0
-
-语音、图片、线稿生图
-
 https://instantid.github.io/
 
 
@@ -68,10 +64,6 @@ https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandboo
 - electron开发，代替 TODO，自定义背景，等
 
 
-- [ ] 右侧添加一个单页面的 目录
-- [ ] 整理 torch 文档到 blog
-
-
 前端应用程序开发：https://github.com/Moonvy/OpenPromptStudio
 
 https://github.com/wangshub
@@ -103,17 +95,6 @@ https://web.archive.org/web/20181103114010/https://mlwave.com/kaggle-ensembling-
 
 https://huggingface.co/learn/deep-rl-course
 
-kimi css
-
-公平是发挥成员积极性的保证
-
-
-一代人成就了一代的产业，
-
-举例房地产，人口增长、城镇化、收入、传统文化，这代人的特点就注定了这个产业。
-
-辩论时, 不要自证，帽子一扣开始质问。
-
 
 https://github.com/rasbt/LLMs-from-scratch
 
@@ -126,19 +107,3 @@ https://github.com/fishaudio/fish-speech
 想的太多，做的太少
 
 https://github.com/google-deepmind/acme
-
-
-
-
-
---------------
-
-商君书，
-
-主农战、强法；这些思想在当时确实是最优解了，
-
-农耕者，诚实守土；商人、手工、说客，少付出而得财利，远不如农耕者健壮、爱护土地、产生基本收益；
-
-教化强民很难的，这是长久生物进化的问题；法令弱民应该会相对容易些；
-
-还有一个奇怪的观点：国强而不参与战争、毒输于内，礼乐等危害产生。

@@ -1016,6 +1016,10 @@ h2>a:hover {
     color: rgb(183, 107, 1);
 }
 
+.token.triple-quoted-string.string {
+    color: rgb(80, 161, 79);
+}
+
 .token.punctuation {
     color: rgb(56, 58, 66);
 }
