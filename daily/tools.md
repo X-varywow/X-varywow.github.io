@@ -311,6 +311,59 @@ launch.json （run & debug 相关信息）
 }
 ```
 
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "启动 Electron",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "windows": {
+        "runtimeExecutable": "npm.cmd"
+      },
+      "args": ["start"],
+      "outputCapture": "std"
+    }
+  ]
+}
+```
+
+
+
+tasks.json
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "启动 Electron 应用",
+      "type": "shell",
+      
+      // 执行命令，会从 package.json 定义的 start 启动
+      "command": "npm start",
+
+      // 定义为构建任务，设置为默认任务
+      "group": { 
+        "kind": "build",
+        "isDefault": true
+      },
+
+      // 展示方式；总是新启面板
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+```
+
+可使用 ctrl + shift + b 运行 task
 
 ctrl + shift + p 打开 vscode 魔法命令行， 如 `>Tasks: Run Task`
 

@@ -32,6 +32,10 @@
   - licenses.chromium.html
   - v8_context_snapshot.bin
 
+
+vscode, 迅雷，阿里云盘，米哈游启动器，感觉都是 electron 开发的
+
+
 #### 1.2 反编译
 
 安装 asar 库
