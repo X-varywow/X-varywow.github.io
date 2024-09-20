@@ -308,9 +308,10 @@ Remote Procedure Call，即远程过程调用。RPC 可以使用多种传输层�
 消息队列，是分布式系统中重要的组件。
 
 使用场景：当不需要立即获得结果，但并发量又需要进行控制的时候，如秒杀或抢购活动。
-- 限流削峰
+- 限流削峰（即缓冲，对于突发流量，消息队列可保护下游服务）
 - 异步处理
-- 减少应用耦合，避免调用接口失败导致整个过程失败
+- 解耦（上游生产消息，下游处理消息；避免调用接口失败导致整个过程失败）
+- 广播（上游生产的消息可被多个下游服务处理）
 - 消息驱动
 
 
@@ -319,13 +320,16 @@ Remote Procedure Call，即远程过程调用。RPC 可以使用多种传输层�
 - 点对点模式
 - 发布/订阅模式
 
-四种常用的消息队列：
+常用的消息队列：
+- Kafka
+- Pulsar
 - RabbitMQ
 - ActiveMQ
 - RocketMQ
-- Kafka
 
-参考：[消息队列及常见消息队列介绍](https://cloud.tencent.com/developer/article/1006035)
+参考：
+- [消息队列及常见消息队列介绍](https://cloud.tencent.com/developer/article/1006035)
+- [腾讯技术工程-消息队列](https://mp.weixin.qq.com/s/jWKHAic4Tt4Ohsj4pTmYFw)
 
 -----------------------
 

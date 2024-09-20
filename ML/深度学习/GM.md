@@ -209,6 +209,7 @@ torch.save(D.state_dict(), 'discriminator.pth')
 ---------
 参考资料：
 - [万字详解什么是生成对抗网络GAN](https://bbs.huaweicloud.com/blogs/314916) ⭐️
+- [生成模型简介](https://mp.weixin.qq.com/s/s0eOK0zKGx7qSSdu7xZOTQ) ⭐️
 - [GAN论文逐段精读【论文精读】](https://www.youtube.com/watch?v=g_0HtlrLiDo)
 - [GAN-生成对抗网络原理及代码解析](https://www.bilibili.com/video/BV1ht411c79k/)
 - chatgpt

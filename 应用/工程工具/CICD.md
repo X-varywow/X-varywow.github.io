@@ -47,9 +47,6 @@ https://yeasy.gitbook.io/docker_practice/ci/actions
 而内测是在软件开发的初期阶段，由软件开发团队内部的成员进行测试，以发现和修复软件的问题。
 
 
-## rancher
-
-Rancher 是一个开源的容器管理平台，使用户能够轻松地部署和管理容器集群，实现高效的容器化应用部署和运维。
 
 
 ## 监控
