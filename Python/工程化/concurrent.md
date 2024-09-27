@@ -173,6 +173,18 @@ _ThreadPoolExecutor_
 
 Executor 的子类，它使用线程池来异步执行调用。
 
+demo1:
+
+```python
+from concurrent.futures import ThreadPoolExecutor
+thread_pool = ThreadPoolExecutor(20)
+thread_pool.submit(func, *params)
+```
+
+
+
+demo2:
+
 ```python
 import concurrent.futures
 import urllib.request

@@ -568,6 +568,14 @@ print(df1)
 
 ## _文件读写_
 
+推荐使用 pickle 文件进行存储，csv 存储 list 会转换为 str
+
+```python
+df.to_pickle('dataframe.pkl')
+
+df_loaded = pd.read_pickle('dataframe.pkl')
+```
+
 
 ```python
 # pip install openpyxl
