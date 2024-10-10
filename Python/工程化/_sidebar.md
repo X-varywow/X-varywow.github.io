@@ -12,7 +12,7 @@
   - ------
   - [conda & poetry](Python/工程化/conda)
   - [steuptools](Python/工程化/setuptools)
-  - [并发](Python/工程化/concurrent)
+  - [并发 & 并行](Python/工程化/concurrent)
   - [cprofile性能分析](Python/工程化/cprofile)
   - [内存分析](Python/工程化/memray)
   - [代码规范](Python/工程化/pylint)

@@ -164,6 +164,7 @@ commits 历史修改对比
 
 文件行级别最近修改：右上角 file annotations
 
+default date format:  "YYYY/MM/DD HH:mm"
 
 
 ## Github

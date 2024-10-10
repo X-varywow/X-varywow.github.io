@@ -1,15 +1,13 @@
 
 利用多线程或多进程，来实现并发或并行。
 
-python 中因为 GIL 的存在，所以一般使用多进程来实现。
-
-<u>不必过早使用并发并行，需要优化时，再根据 IO密集型 或 CPU密集型 选择合适的模块</u>。
+不必过早使用并发并行，需要优化时，再根据 IO密集型 或 CPU密集型 选择合适的模块。
 
 ---------
 
-对于 CPU 密集型，建议使用进程池，加速计算（大小不超过核心数）（multiprocessing 和 ProcessPoolExecutor 都行）
+对于 CPU 密集型，建议使用进程池，并行加速计算（大小不超过核心数）（multiprocessing 和 ProcessPoolExecutor 都行）
 
-对于 IO 密集型，建议使用开销较少的线程池，增加并发（如 concurrent.futures 中的 ThreadPoolExecutor）。
+对于 IO 密集型，建议使用**开销较少**的线程池，增加并发（如 concurrent.futures 中的 ThreadPoolExecutor）。
 
 同时，不要频繁地创建销毁进程、线程池。
 
@@ -17,7 +15,7 @@ python 中因为 GIL 的存在，所以一般使用多进程来实现。
 -----------
 
 
-?>GIL 是一个防止多线程并发执行机器码的互斥锁，每个解释器进程都具有一个 GIL. </br>
+?>GIL 是一个防止多线程并行执行机器码的互斥锁，每个解释器进程都具有一个 GIL. </br>
 </br>GIL 并不是Python的特性，它是在实现Python解析器(CPython)时所引入的一个概念。</br>
 </br> 为什么 GIL 存在？</br>
 （1）历史遗留原因</br>
@@ -27,12 +25,18 @@ python 中因为 GIL 的存在，所以一般使用多进程来实现。
 </br> Python如何利用多核处理器？</br>
 使用多进程而非多线程。每个进程拥有独立的解释器、GIL 以及数据资源，多个进程之间不会再受到 GIL 的限制。
 
+对于 IO 密集型任务，即使有 GIL全局解释器锁（线程锁， 确保任何时刻只有一个线程执行 python 字节码），线程池也是有效的； 因为在执行 IO 操作的时候，线程可能处于等待状态，这时 GIL 会释放允许其他线程运行。
+
+**GIL 更多的是在多核上多线程（CPU密集型任务）效率不行。**
+
+
+</br>
 
 ## multiprocessing
 
 参考：[官方文档](https://docs.python.org/zh-cn/3/library/multiprocessing.html)
 
-提供了本地和远程并发操作，通过 **使用子进程而非线程，有效地绕过了 全局解释器锁**
+提供了本地和远程并发操作，通过 使用子进程而非线程，有效地绕过了 全局解释器锁
 
 
 （1）使用 Pool ⭐️
@@ -157,7 +161,7 @@ if __name__ == "__main__":
 
 
 
-
+</br>
 
 ## concurrent.futures
 
@@ -344,7 +348,7 @@ print(multiprocess_demo())
 
 
 
-
+</br>
 
 ## threading
 
