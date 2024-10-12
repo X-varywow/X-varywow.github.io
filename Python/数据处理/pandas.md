@@ -353,17 +353,32 @@ print(new_df)
 
 [Windowing operations 官方文档](https://pandas.pydata.org/docs/user_guide/window.html)
 
+```python
+df_group = df.groupby(['col1'])
+
+# 查看全部 group 下每列的sum
+df_group.sum()
+
+df_group.count()
+df_group.max()
+df_group.mean()
+
+df_group.first()
+df_group.last()
+```
+
+
 
 ```python
-data_train.groupby(['group1','group2']).agg({
+df_group.groupby(['group1','group2']).agg({
     'ID':'count',
-    'NEXT_SCORE':[min,max]
+    'NEXT_SCORE':["min", "max"]
 })
 
 
 # 分组再统计
 # 按 group1 分组，再聚合操作统计 bias 的 ratio 和 cnt 
-seed_res = data_oldusers_test.groupby('group1')['bias'].agg([
+df_group = df.groupby('group1')['bias'].agg([
     ('ratio', lambda x: (x > 0).mean()), ('cnt', 'size')
 ])
 ```

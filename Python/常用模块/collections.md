@@ -79,7 +79,10 @@ Counter(words).most_common(10)
 创建命名元组子类的工厂函数
 
 ## defaultdict
+
+
 字典的子类，提供了一个工厂函数，为字典查询提供一个默认值。
+
 常见用法：
 ```python
 s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
@@ -88,6 +91,13 @@ for k, v in s:
     d[k].append(v)
 sorted(d.items())  #-->[('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
 ```
+
+借助 lambda 传入自定义结构：
+```python
+data = defaultdict(lambda : [0]*8)
+```
+
+
 
 ## OrderedDict
 

@@ -16,7 +16,12 @@ tar -cvf archive_name.tar /path/to/directory
 
 # -z 表示使用 gzip 压缩
 tar -czvf archive_name.tar.gz /path/to/directory
+
+# zip
+zip -r archive_name.zip /path/to/directory
 ```
+
+keyword: linux打包 zip
 
 </br>
 
