@@ -23,6 +23,7 @@ ndarray数组可以由非同质对象构成。
 非同质ndarray元素为对象类型，`dtype('O')`
 
 ### （1）创建方法
+
 1. `np.array(list/tuple,dtype=np.float32)`
 
 ```python
@@ -62,9 +63,36 @@ np.random.uniform(low = 0.0, high = 1.0, size = 4)
 1. `a.reshape(shape)`，对a`reshape`,返回shape形状数组
 2. `a.resize(shape)`，同`reshape`，但修改原数组
 3. `a.swapaxes(ax1,ax2)`，调换维度
-4. `a.flatten()`，降维，不改变a
-5. `new_a=a.astype(new_type)`
-6. `a.tolist()`
+4. `new_a=a.astype(new_type)`
+5. `a.tolist()`
+
+
+-----------------
+
+数组压平
+
+```python
+import numpy as np
+
+# 创建一个二维数组
+X = np.array([[1, 2, 3], [4, 5, 6]])
+
+# 使用 ravel() 方法将其扁平化为一维数组
+X_flat = X.ravel()
+
+print(X_flat)  # 输出: [1 2 3 4 5 6]
+
+# 检查 X_flat 是否是 X 的视图
+print(X_flat.base is X)  # 输出: True，说明 X_flat 是 X 的视图
+
+# 修改 X_flat 也会改变 X
+X_flat[0] = 10
+print(X)  # 输出: [[10  2  3] [ 4  5  6]]
+
+```
+
+ravel() 返回的是原始数组的一个视图，flatten() 返回是原数组的一个副本。 
+
 
 
 -----------------
@@ -77,11 +105,16 @@ np.hstack(a, b)
 
 # 数组堆叠到 a 上
 np.vstack(a, b)
+
+
+x = np.linspace(-10, 10, 1000)
+y = np.linspace(-10, 10, 1000)
+
+X = np.vstack((x,y))
+print(X.shape)
+
+# (2, 1000)
 ```
-
-
-
-
 
 
 
@@ -91,6 +124,8 @@ np.vstack(a, b)
 1. 索引切片同 `list`，但：多维间用 `,` 隔开，eg: `array[i,j]`
 2. `:` 可选取整个维度
 3. 还有一种布尔索引，eg: `array[i<4]`
+
+
 
 ### （4）运算方法
 1. `a.mean()`
@@ -115,6 +150,10 @@ np.arange(5)            #-->array([0, 1, 2, 3, 4])
 np.ones([2,2])          #-->array([[1., 1.],1., 1.]])
 np.linspace(1,10,4)     #-->array([ 1.,  4.,  7., 10.])
 ```
+
+
+
+
 
 </br>
 
