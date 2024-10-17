@@ -110,3 +110,6 @@ https://github.com/google-deepmind/acme
 
 
 https://blog.csdn.net/xian0710830114/article/details/142487069
+
+
+https://github.com/microsoft/generative-ai-for-beginners
