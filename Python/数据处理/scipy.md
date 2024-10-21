@@ -30,3 +30,40 @@ opt.leastsq(func, x0)
 ```
 
 [机器量化分析（九）—— Scipy库的使用与优化问题](https://zhuanlan.zhihu.com/p/349321907)
+
+
+
+
+
+
+</br>
+
+## _lsq\_linear_
+
+求解具有变量界限的最小二乘问题
+
+minimize 0.5 * ||A x - b||**2
+subject to lb <= x <= ub
+
+demo: 3x1 + 4x2 + 5x3 = 4.8， x1+x2+x3 = 1
+
+```python
+from scipy.optimize import lsq_linear
+
+x_arr = [3,4,5]
+y = 4.8
+
+tt = [1] * len(x_arr)
+A = np.array([x_arr, tt])
+b = np.array([y, 1])
+
+bounds = (0.01, 1)
+
+# 使用lsq_linear函数求解带有范围约束的最小二乘问题
+res = lsq_linear(A, b, bounds=bounds)
+p = [round(prob, 4) for prob in res.x]
+
+res = dict(zip(x_arr, p))
+print(res)
+# {3: 0.0413, 4: 0.1174, 5: 0.8413}
+```
