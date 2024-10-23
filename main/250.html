@@ -2,717 +2,733 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>豆瓣250</title>
-	<link rel="icon" type="image/png" href="/main/img/favicon.png">
-	<style>
-		.flex-container {
-			display: -webkit-flex;
-			display: flex;
-			-webkit-justify-content: center;
-			justify-content: center;
-			min-height: 100px;
-			width: 100%;
-			background-color: #fefdca;
-		}
+    <meta charset="utf-8">
+    <title>豆瓣250</title>
+    <link rel="icon" type="image/png" href="/main/img/favicon.png">
+    <style>
+        .flex-container {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: left;
+            padding-left: 6%;
+            min-height: 100px;
+            width: 100%;
+            background-color: #fefdca;
+        }
 
-		.flex-item {
-			border-radius: 10px;
-			background-color: #a5dee5;
-			width: 8%;
-			margin: 10px;
-		}
+        .flex-item {
+            border-radius: 10px;
+            background-color: #a5dee5;
+            width: 8%;
+            margin: 10px;
+        }
 
-		.introduce {
-			padding-top: 2rem;
-			height: 10rem;
-			background-color: #fefdca;
-		}
+        .introduce {
+            padding-top: 2rem;
+            height: 10rem;
+            background-color: #fefdca;
+        }
 
-		.extra {
-			background-color: #fefdca;
-			padding-bottom: 2rem;
-		}
+        .extra {
+            background-color: #fefdca;
+            padding-bottom: 2rem;
+        }
 
-		.box1::after {
-			content: " ";
-			position: absolute;
-			background: #dcf7ad;
-			margin-top: 5px;
-			width: 17px;
-			height: 17px;
-			border-radius: 3px;
-			left: 12px;
-		}
+        .box1::after {
+            content: " ";
+            position: absolute;
+            background: #dcf7ad;
+            margin-top: 5px;
+            width: 17px;
+            height: 17px;
+            border-radius: 3px;
+            left: 12px;
+        }
 
-		.box2::after {
-			content: " ";
-			position: absolute;
-			margin-top: 5px;
-			border-radius: 3px;
-			background: #ffcfdf;
-			width: 17px;
-			height: 17px;
-			left: 12px;
-		}
+        .box2::after {
+            content: " ";
+            position: absolute;
+            margin-top: 5px;
+            border-radius: 3px;
+            background: #ffcfdf;
+            width: 17px;
+            height: 17px;
+            left: 12px;
+        }
 
-		.box3::after {
-			content: " ";
-			margin-top: 5px;
-			border-radius: 3px;
-			position: absolute;
-			background: #a5dee5;
-			width: 17px;
-			height: 17px;
-			left: 12px;
-		}
+        .box3::after {
+            content: " ";
+            margin-top: 5px;
+            border-radius: 3px;
+            position: absolute;
+            background: #a5dee5;
+            width: 17px;
+            height: 17px;
+            left: 12px;
+        }
 
-		.color-intro {
-			width: 10rem;
-			height: 10rem;
-			text-align: left;
-			position: absolute;
-			right: 3rem;
-			top: 2rem;
-		}
+        .color-intro {
+            width: 10rem;
+            height: 10rem;
+            text-align: left;
+            position: absolute;
+            right: 3rem;
+            top: 2rem;
+        }
 
-		.color1 {
-			background-color: #e0f9b5;
-		}
+        .color1 {
+            background-color: #e0f9b5;
+        }
 
-		.color0 {
-			background-color: #ffcfdf;
-		}
+        .color0 {
+            background-color: #ffcfdf;
+        }
 
-		.color2 {
-			background-color: #a5dee5;
-		}
+        .color2 {
+            background-color: #a5dee5;
+        }
 
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		p {
-			text-align: center;
-			font-family: 'SimSun', Courier, monospace;
-		}
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p {
+            text-align: center;
+            font-family: 'SimSun', Courier, monospace;
+        }
 
-		.flex-item a {
-			margin-top: .5rem;
-			display: block;
-			color: #000;
-			font-size: 1.5rem;
-			font-family: 'SimSun', Courier, monospace;
-			text-decoration: none;
-		}
-	</style>
+        .flex-item a {
+            margin-top: .5rem;
+            display: block;
+            color: #000;
+            font-size: 1.5rem;
+            font-family: 'SimSun', Courier, monospace;
+            text-decoration: none;
+        }
+    </style>
 
-	<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
 
 <body>
-	<div class="introduce">
-		<h1>公告</h1>
-		<p>这是一个豆瓣250刷电影的页面。欢迎访问</p>
-		<div class="color-intro">
-			<p class="box1">表示看过</p>
-			<p class="box2">表示没看过</p>
-			<p class="box3">表示不太清楚</p>
-		</div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">001<a href="https://movie.douban.com/subject/1292052/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='希望让人自由。' target="_blank">《肖申克的救赎》</a></div>
-		<div class="flex-item color1">002<a href="https://movie.douban.com/subject/1291546/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='风华绝代。' target="_blank">《霸王别姬》</a></div>
-		<div class="flex-item color1">003<a href="https://movie.douban.com/subject/1292720/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一部美国近现代史。' target="_blank">《阿甘正传》</a></div>
-		<div class="flex-item color1">004<a href="https://movie.douban.com/subject/1292722/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='失去的才是永恒的。 ' target="_blank">《泰坦尼克号》</a></div>
-		<div class="flex-item color1">005<a href="https://movie.douban.com/subject/1295644/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='怪蜀黍和小萝莉不得不说的故事。' target="_blank">《这个杀手不太冷》</a></div>
-		<div class="flex-item color1">006<a href="https://movie.douban.com/subject/1291561/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='最好的宫崎骏，最好的久石让。 ' target="_blank">《千与千寻》</a></div>
-		<div class="flex-item color1">007<a href="https://movie.douban.com/subject/1292063/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='最美的谎言。' target="_blank">《美丽人生》</a></div>
-		<div class="flex-item color1">008<a href="https://movie.douban.com/subject/1295124/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='拯救一个人，就是拯救整个世界。' target="_blank">《辛德勒的名单》</a></div>
-		<div class="flex-item color1">009<a href="https://movie.douban.com/subject/3541415/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='诺兰给了我们一场无法盗取的梦。' target="_blank">《盗梦空间》</a></div>
-		<div class="flex-item color1">010<a href="https://movie.douban.com/subject/3011091/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='永远都不能忘记你所爱的人。' target="_blank">《忠犬八公的故事》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">011<a href="https://movie.douban.com/subject/1889243/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱是一种力量，让我们超越时空感知它的存在。' target="_blank">《星际穿越》</a></div>
-		<div class="flex-item color1">012<a href="https://movie.douban.com/subject/1292064/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='如果再也不能见到你，祝你早安，午安，晚安。' target="_blank">《楚门的世界》</a></div>
-		<div class="flex-item color1">013<a href="https://movie.douban.com/subject/1292001/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='每个人都要走一条自己坚定了的路，就算是粉身碎骨。 ' target="_blank">《海上钢琴师》</a></div>
-		<div class="flex-item color1">014<a href="https://movie.douban.com/subject/3793023/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='英俊版憨豆，高情商版谢耳朵。' target="_blank">《三傻大闹宝莱坞》</a></div>
-		<div class="flex-item color1">015<a href="https://movie.douban.com/subject/2131459/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='小瓦力，大人生。' target="_blank">《机器人总动员》</a></div>
-		<div class="flex-item color1">016<a href="https://movie.douban.com/subject/1291549/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='天籁一般的童声，是最接近上帝的存在。 ' target="_blank">《放牛班的春天》</a></div>
-		<div class="flex-item color1">017<a href="https://movie.douban.com/subject/1307914/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='香港电影史上永不过时的杰作。' target="_blank">《无间道》</a></div>
-		<div class="flex-item color1">018<a href="https://movie.douban.com/subject/25662329/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='迪士尼给我们营造的乌托邦就是这样，永远善良勇敢，永远出乎意料。' target="_blank">《疯狂动物城》</a></div>
-		<div class="flex-item color1">019<a href="https://movie.douban.com/subject/1292213/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一生所爱。' target="_blank">《大话西游之大圣娶亲》</a></div>
-		<div class="flex-item color1">020<a href="https://movie.douban.com/subject/5912992/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='我们一路奋战不是为了改变世界，而是为了不让世界改变我们。' target="_blank">《熔炉》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">021<a href="https://movie.douban.com/subject/1291841/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='千万不要记恨你的对手，这样会让你失去理智。' target="_blank">《教父》</a></div>
-		<div class="flex-item color1">022<a href="https://movie.douban.com/subject/1849031/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='平民励志片。 ' target="_blank">《当幸福来敲门》</a></div>
-		<div class="flex-item color1">023<a href="https://movie.douban.com/subject/1291560/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人人心中都有个龙猫，童年就永远不会消失。' target="_blank">《龙猫》</a></div>
-		<div class="flex-item color1">024<a href="https://movie.douban.com/subject/1296141/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='比利·怀德满分作品。' target="_blank">《控方证人》</a></div>
-		<div class="flex-item color1">025<a href="https://movie.douban.com/subject/3319755/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='真正的幸福是来自内心深处。' target="_blank">《怦然心动》</a></div>
-		<div class="flex-item color1">026<a href="https://movie.douban.com/subject/6786002/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='满满温情的高雅喜剧。' target="_blank">《触不可及》</a></div>
-		<div class="flex-item color1">027<a href="https://movie.douban.com/subject/1293172/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='“不要跟我比惨，我比你更惨”再适合这部电影不过了。' target="_blank">《末代皇帝》</a></div>
-		<div class="flex-item color1">028<a href="https://movie.douban.com/subject/1851857/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='无尽的黑暗。' target="_blank">《蝙蝠侠：黑暗骑士》</a></div>
-		<div class="flex-item color1">029<a href="https://movie.douban.com/subject/20495023/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='死亡不是真的逝去，遗忘才是永恒的消亡。' target="_blank">《寻梦环游记》</a></div>
-		<div class="flex-item color1">030<a href="https://movie.douban.com/subject/1292365/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='张艺谋最好的电影。' target="_blank">《活着》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">031<a href="https://movie.douban.com/subject/1291552/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='史诗的终章。' target="_blank">《指环王3：王者无敌》</a></div>
-		<div class="flex-item color1">032<a href="https://movie.douban.com/subject/1295038/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='童话世界的开端。' target="_blank">《哈利·波特与魔法石》</a></div>
-		<div class="flex-item color1">033<a href="https://movie.douban.com/subject/1300267/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='Tomorrow is another day.' target="_blank">《乱世佳人》</a></div>
-		<div class="flex-item color1">034<a href="https://movie.douban.com/subject/30170448/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='凝视卑弱生命，用电影改变命运。' target="_blank">《何以为家》</a></div>
-		<div class="flex-item color1">035<a href="https://movie.douban.com/subject/21937452/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='受过伤害的人总是笑得最开心，因为他们不愿意让身边的人承受一样的痛苦。' target="_blank">《素媛》</a></div>
-		<div class="flex-item color1">036<a href="https://movie.douban.com/subject/2129039/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='最后那些最无聊的事情，才是最值得怀念的。 ' target="_blank">《飞屋环游记》</a></div>
-		<div class="flex-item color1">037<a href="https://movie.douban.com/subject/26387939/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='你不是在为你一个人战斗，你要让千千万万的女性看到女生并不是只能相夫教子。' target="_blank">《摔跤吧！爸爸》</a></div>
-		<div class="flex-item color1">038<a href="https://movie.douban.com/subject/1293182/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='1957年的理想主义。 ' target="_blank">《十二怒汉》</a></div>
-		<div class="flex-item color1">039<a href="https://movie.douban.com/subject/1308807/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='带着心爱的人在天空飞翔。' target="_blank">《哈尔的移动城堡》</a></div>
-		<div class="flex-item color1">040<a href="https://movie.douban.com/subject/1929463/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='瑰丽壮观、无人能及的冒险之旅。' target="_blank">《少年派的奇幻漂流》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">041<a href="https://movie.douban.com/subject/26752088/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='对我们国家而言，这样的电影多一部是一部。' target="_blank">《我不是药神》</a></div>
-		<div class="flex-item color1">042<a href="https://movie.douban.com/subject/1291858/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='对敌人的仁慈，就是对自己残忍。' target="_blank">《鬼子来了》</a></div>
-		<div class="flex-item color1">043<a href="https://movie.douban.com/subject/1299398/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='旷古烁今。' target="_blank">《大话西游之月光宝盒》</a></div>
-		<div class="flex-item color1">044<a href="https://movie.douban.com/subject/1291583/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='对天空的追逐，永不停止。 ' target="_blank">《天空之城》</a></div>
-		<div class="flex-item color1">045<a href="https://movie.douban.com/subject/1291828/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='那些吻戏，那些青春，都在影院的黑暗里被泪水冲刷得无比清晰。' target="_blank">《天堂电影院》</a></div>
-		<div class="flex-item color1">046<a href="https://movie.douban.com/subject/1305487/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='骗子大师和执著警探的你追我跑故事。 ' target="_blank">《猫鼠游戏》</a></div>
-		<div class="flex-item color1">047<a href="https://movie.douban.com/subject/1298624/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='史上最美的探戈。' target="_blank">《闻香识女人》</a></div>
-		<div class="flex-item color1">048<a href="https://movie.douban.com/subject/1291572/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='承前启后的史诗篇章。' target="_blank">《指环王2：双塔奇兵》</a></div>
-		<div class="flex-item color1">049<a href="https://movie.douban.com/subject/1293839/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱情哪怕只有一天。' target="_blank">《罗马假日》</a></div>
-		<div class="flex-item color1">050<a href="https://movie.douban.com/subject/1296736/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='音乐能化解仇恨。' target="_blank">《钢琴家》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">051<a href="https://movie.douban.com/subject/21937445/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='电影的现实意义大过电影本身。' target="_blank">《辩护人》</a></div>
-		<div class="flex-item color1">052<a href="https://movie.douban.com/subject/1291571/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='传说的开始。' target="_blank">《指环王1：护戒使者》</a></div>
-		<div class="flex-item color1">053<a href="https://movie.douban.com/subject/3742360/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='你给我翻译翻译，神马叫做TMD的惊喜。' target="_blank">《让子弹飞》</a></div>
-		<div class="flex-item color1">054<a href="https://movie.douban.com/subject/1418019/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='经典之作，历久弥新。' target="_blank">《大闹天宫》</a></div>
-		<div class="flex-item color1">055<a href="https://movie.douban.com/subject/1299131/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='优雅的孤独。' target="_blank">《教父2》</a></div>
-		<div class="flex-item color1">056<a href="https://movie.douban.com/subject/1301753/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='动物版《哈姆雷特》。' target="_blank">《狮子王》</a></div>
-		<div class="flex-item color1">057<a href="https://movie.douban.com/subject/1291548/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='当一个死水般的体制内出现一个活跃的变数时，所有的腐臭都站在了光明的对面。' target="_blank">《死亡诗社》</a></div>
-		<div class="flex-item color1">058<a href="https://movie.douban.com/subject/1291843/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='视觉革命。' target="_blank">《黑客帝国》</a></div>
-		<div class="flex-item color1">059<a href="https://movie.douban.com/subject/1292000/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='邪恶与平庸蛰伏于同一个母体，在特定的时间互相对峙。' target="_blank">《搏击俱乐部》</a></div>
-		<div class="flex-item color1">060<a href="https://movie.douban.com/subject/25958717/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='如果生活中有什么使你感到快乐，那就去做吧！不要管别人说什么。' target="_blank">《海蒂和爷爷》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">061<a href="https://movie.douban.com/subject/27060077/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='去除成见，需要勇气。' target="_blank">《绿皮书》</a></div>
-		<div class="flex-item color1">062<a href="https://movie.douban.com/subject/1291818/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人生不能像做菜，把所有的料都准备好了才下锅。' target="_blank">《饮食男女》</a></div>
-		<div class="flex-item color1">063<a href="https://movie.douban.com/subject/1306029/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱是一切逻辑和原由。' target="_blank">《美丽心灵》</a></div>
-		<div class="flex-item color1">064<a href="https://movie.douban.com/subject/1900841/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='别样人生。' target="_blank">《窃听风暴》</a></div>
-		<div class="flex-item color1">065<a href="https://movie.douban.com/subject/1485260/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='在时间之河里感受溺水之苦。' target="_blank">《本杰明·巴顿奇事》</a></div>
-		<div class="flex-item color1">066<a href="https://movie.douban.com/subject/1293350/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='4个臭皮匠顶个诸葛亮，盖·里奇果然不是盖的。' target="_blank">《两杆大烟枪》</a></div>
-		<div class="flex-item color1">067<a href="https://movie.douban.com/subject/1292220/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暗恋的极致。' target="_blank">《情书》</a></div>
-		<div class="flex-item color1">068<a href="https://movie.douban.com/subject/3008247/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='尽管有些不切实际的幻想，这部电影依旧是一部感人肺腑的佳作。' target="_blank">《穿条纹睡衣的男孩》</a></div>
-		<div class="flex-item color1">069<a href="https://movie.douban.com/subject/1292402/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='美丽无罪。' target="_blank">《西西里的美丽传说》</a></div>
-		<div class="flex-item color1">070<a href="https://movie.douban.com/subject/26580232/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='你以为你以为的就是你以为的。' target="_blank">《看不见的客人》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">071<a href="https://movie.douban.com/subject/1292224/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='自由万岁。' target="_blank">《飞越疯人院》</a></div>
-		<div class="flex-item color1">072<a href="https://movie.douban.com/subject/1292849/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='美利坚精神输出大片No1.' target="_blank">《拯救大兵瑞恩》</a></div>
-		<div class="flex-item color1">073<a href="https://movie.douban.com/subject/1294408/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='用音乐化解仇恨，让歌声串起美好。' target="_blank">《音乐之声》</a></div>
-		<div class="flex-item color1">074<a href="https://movie.douban.com/subject/1303021/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='奔跑的孩子是天使。' target="_blank">《小鞋子》</a></div>
-		<div class="flex-item color1">075<a href="https://movie.douban.com/subject/1652587/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='绝对意义上的美轮美奂。' target="_blank">《阿凡达》</a></div>
-		<div class="flex-item color1">076<a href="https://movie.douban.com/subject/3442220/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='海豚的微笑，是世界上最高明的伪装。' target="_blank">《海豚湾》</a></div>
-		<div class="flex-item color1">077<a href="https://movie.douban.com/subject/1780330/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='孪生蝙蝠侠大战克隆金刚狼。' target="_blank">《致命魔术》</a></div>
-		<div class="flex-item color1">078<a href="https://movie.douban.com/subject/1293544/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='安东尼·霍普金斯的顶级表演。' target="_blank">《沉默的羔羊》</a></div>
-		<div class="flex-item color1">079<a href="https://movie.douban.com/subject/1292262/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='往事如烟，无处祭奠。' target="_blank">《美国往事》</a></div>
-		<div class="flex-item color1">080<a href="https://movie.douban.com/subject/2334904/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='昔日翩翩少年，今日大腹便便。' target="_blank">《禁闭岛》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">081<a href="https://movie.douban.com/subject/3011235/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='10年的完美句点。' target="_blank">《哈利·波特与死亡圣器(下)》</a></div>
-		<div class="flex-item color1">082<a href="https://movie.douban.com/subject/1292343/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人的命运被自己瞬间的抉择改变。' target="_blank">《蝴蝶效应》</a></div>
-		<div class="flex-item color1">083<a href="https://movie.douban.com/subject/11525673/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='小清新的故事里注入了大历史的情怀。' target="_blank">《布达佩斯大饭店》</a></div>
-		<div class="flex-item color1">084<a href="https://movie.douban.com/subject/1292656/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人生中应该拥有这样的一段豁然开朗。' target="_blank">《心灵捕手》</a></div>
-		<div class="flex-item color1">085<a href="https://movie.douban.com/subject/1291832/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='故事的高级讲法。' target="_blank">《低俗小说》</a></div>
-		<div class="flex-item color1">086<a href="https://movie.douban.com/subject/1292679/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='这世界不会陪你重新来过。' target="_blank">《春光乍泄》</a></div>
-		<div class="flex-item color1">087<a href="https://movie.douban.com/subject/1292223/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='警察抓小偷，老鼠玩死猫。' target="_blank">《七宗罪》</a></div>
-		<div class="flex-item color0">088<a href="https://movie.douban.com/subject/1294371/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='大时代中的人生，小人物的悲喜。' target="_blank">《摩登时代》</a></div>
-		<div class="flex-item color0">089<a href="https://movie.douban.com/subject/1302425/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='我是一个演员。' target="_blank">《喜剧之王》</a></div>
-		<div class="flex-item color0">090<a href="https://movie.douban.com/subject/1297192/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='最不可能的那个人永远是最可能的。' target="_blank">《致命ID》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">091<a href="https://movie.douban.com/subject/1787291/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='以戏谑来戏谑戏谑。' target="_blank">《被嫌弃的松子的一生》</a></div>
-		<div class="flex-item color0">092<a href="https://movie.douban.com/subject/1300299/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='关于连环杀人悬案的集体回忆。' target="_blank">《杀人回忆》</a></div>
-		<div class="flex-item color1">093<a href="https://movie.douban.com/subject/1298070/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='约翰尼·德普的独角戏。' target="_blank">《加勒比海盗》</a></div>
-		<div class="flex-item color0">094<a href="https://movie.douban.com/subject/1292370/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='浪漫忧郁的成人童话。' target="_blank">《剪刀手爱德华》</a></div>
-		<div class="flex-item color0">095<a href="https://movie.douban.com/subject/1865703/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='梦的勾结。' target="_blank">《红辣椒》</a></div>
-		<div class="flex-item color1">096<a href="https://movie.douban.com/subject/6985810/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人言可畏。' target="_blank">《狩猎》</a></div>
-		<div class="flex-item color1">097<a href="https://movie.douban.com/subject/26799731/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='沉醉在电影的情感和视听氛围中无法自拔。' target="_blank">《请以你的名字呼唤我》</a></div>
-		<div class="flex-item color1">098<a href="https://movie.douban.com/subject/1294639/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='史诗大片的典范。' target="_blank">《勇敢的心》</a></div>
-		<div class="flex-item color1">099<a href="https://movie.douban.com/subject/10777687/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='《我是山姆》的《美丽人生》。' target="_blank">《7号房的礼物》</a></div>
-		<div class="flex-item color1">100<a href="https://movie.douban.com/subject/1418834/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='每个人心中都有一座断背山。' target="_blank">《断背山》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">101<a href="https://movie.douban.com/subject/1291543/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='警恶惩奸，维护世界和平这个任务就交给你了，好吗？' target="_blank">《功夫》</a></div>
-		<div class="flex-item color1">102<a href="https://movie.douban.com/subject/5322596/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='穷尽一生，我们要学会的，不过是彼此拥抱。' target="_blank">《超脱》</a></div>
-		<div class="flex-item color1">103<a href="https://movie.douban.com/subject/1292215/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='法式小清新。 ' target="_blank">《天使爱美丽》</a></div>
-		<div class="flex-item color1">104<a href="https://movie.douban.com/subject/1291544/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='不一样的导演，不一样的哈利·波特。' target="_blank">《哈利·波特与阿兹卡班的囚徒》</a></div>
-		<div class="flex-item color1">105<a href="https://movie.douban.com/subject/1297359/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人与自然的战争史诗。' target="_blank">《幽灵公主》</a></div>
-		<div class="flex-item color1">106<a href="https://movie.douban.com/subject/1297630/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='深入内心的恐怖，出人意料的结局。' target="_blank">《第六感》</a></div>
-		<div class="flex-item color0">107<a href="https://movie.douban.com/subject/1306249/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='华太师是黄霑，吴镇宇四大才子之一。' target="_blank">《唐伯虎点秋香》</a></div>
-		<div class="flex-item color1">108<a href="https://movie.douban.com/subject/1291999/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='寂寞没有期限。' target="_blank">《重庆森林》</a></div>
-		<div class="flex-item color1">109<a href="https://movie.douban.com/subject/25814705/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='那些静得只能听见呼吸的日子里，你明白孤独即生活。' target="_blank">《小森林 夏秋篇》</a></div>
-		<div class="flex-item color0">110<a href="https://movie.douban.com/subject/1291875/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一场华丽的意淫。' target="_blank">《阳光灿烂的日子》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">111<a href="https://movie.douban.com/subject/1296339/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='缘分是个连绵词，最美不过一瞬。' target="_blank">《爱在黎明破晓前》</a></div>
-		<div class="flex-item color0">112<a href="https://movie.douban.com/subject/1292434/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='我们都曾经是一一。' target="_blank">《一一》</a></div>
-		<div class="flex-item color1">113<a href="https://movie.douban.com/subject/3395373/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='诺兰就是保证。' target="_blank">《蝙蝠侠：黑暗骑士崛起》</a></div>
-		<div class="flex-item color1">114<a href="https://movie.douban.com/subject/1293359/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='从没见过那么流氓的温柔，从没见过那么温柔的流氓。' target="_blank">《菊次郎的夏天》</a></div>
-		<div class="flex-item color1">115<a href="https://movie.douban.com/subject/21318488/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='年度最佳date movie。' target="_blank">《消失的爱人》</a></div>
-		<div class="flex-item color0">116<a href="https://movie.douban.com/subject/1292337/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='我的平常生活就是他人的幸福。' target="_blank">《无人知晓》</a></div>
-		<div class="flex-item color1">117<a href="https://movie.douban.com/subject/25814707/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='尊敬他人，尊敬你生活的这片土地，明白孤独是人生的常态。' target="_blank">《小森林 冬春篇》</a></div>
-		<div class="flex-item color1">118<a href="https://movie.douban.com/subject/11026735/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='Balalala~~~' target="_blank">《超能陆战队》</a></div>
-		<div class="flex-item color0">119<a href="https://movie.douban.com/subject/1300992/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='坏人的好总是比好人的好来得更感人。' target="_blank">《完美的世界》</a></div>
-		<div class="flex-item color1">120<a href="https://movie.douban.com/subject/1296996/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='魔法的密室之门已打开...' target="_blank">《哈利·波特与密室》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">121<a href="https://movie.douban.com/subject/2149806/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='死可能是一道门，逝去并不是终结，而是超越，走向下一程。' target="_blank">《入殓师》</a></div>
-		<div class="flex-item color1">122<a href="https://movie.douban.com/subject/1297447/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='两张绝世的脸。 ' target="_blank">《倩女幽魂》</a></div>
-		<div class="flex-item color1">123<a href="https://movie.douban.com/subject/1297052/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='少女情怀总是诗。' target="_blank">《侧耳倾听》</a></div>
-		<div class="flex-item color1">124<a href="https://movie.douban.com/subject/1291990/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='九年后的重逢是世俗和责任的交叠，没了悸动和青涩，沧桑而温暖。' target="_blank">《爱在日落黄昏时》</a></div>
-		<div class="flex-item color0">125<a href="https://movie.douban.com/subject/4202302/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='曾经的那段美好会沉淀为一辈子的记忆。' target="_blank">《借东西的小人阿莉埃蒂》</a></div>
-		<div class="flex-item color0">126<a href="https://movie.douban.com/subject/1305164/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='相逢只要一瞬间，等待却像是一辈子。' target="_blank">《甜蜜蜜》</a></div>
-		<div class="flex-item color1">127<a href="https://movie.douban.com/subject/5989818/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='触不到的恋人。' target="_blank">《萤火之森》</a></div>
-		<div class="flex-item color1">128<a href="https://movie.douban.com/subject/2353023/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='和谐的生活离不开摸头与被摸头。' target="_blank">《驯龙高手》</a></div>
-		<div class="flex-item color1">129<a href="https://movie.douban.com/subject/1292274/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='有时候幸福需要等一等。 ' target="_blank">《幸福终点站》</a></div>
-		<div class="flex-item color0">130<a href="https://movie.douban.com/subject/3072124/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='你是我最好的朋友，你是我唯一的朋友 。' target="_blank">《玛丽和马克思》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">131<a href="https://movie.douban.com/subject/1291545/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='抱着梦想而活着的人是幸福的，怀抱梦想而死去的人是不朽的。' target="_blank">《大鱼》</a></div>
-		<div class="flex-item color1">132<a href="https://movie.douban.com/subject/10577869/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='我欣赏你所有的笨拙和疯狂。' target="_blank">《时空恋旅人》</a></div>
-		<div class="flex-item color0">133<a href="https://movie.douban.com/subject/4268598/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='没有一人完全善，也没有一人完全恶。' target="_blank">《告白》</a></div>
-		<div class="flex-item color0">134<a href="https://movie.douban.com/subject/4917726/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='再多各自牛逼的时光，也比不上一起傻逼的岁月。 ' target="_blank">《阳光姐妹淘》</a></div>
-		<div class="flex-item color2">135<a href="https://movie.douban.com/subject/1291579/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='不要给它起名字，起了名字就有感情了。' target="_blank">《怪兽电力公司》</a></div>
-		<div class="flex-item color0">136<a href="https://movie.douban.com/subject/1316510/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='百看不厌。 ' target="_blank">《射雕英雄传之东成西就》</a></div>
-		<div class="flex-item color2">137<a href="https://movie.douban.com/subject/3287562/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='Mr. I Don' t Care其实也有Care的时候。' target="_blank">《神偷奶爸》</a></div>
-		<div class="flex-item color1">138<a href="https://movie.douban.com/subject/1418200/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱是摈弃傲慢与偏见之后的曙光。' target="_blank">《傲慢与偏见》</a></div>
-		<div class="flex-item color0">139<a href="https://movie.douban.com/subject/21360417/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='恐怖分子的“秋菊打官司”。' target="_blank">《恐怖直播》</a></div>
-		<div class="flex-item color0">140<a href="https://movie.douban.com/subject/1294240/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='任何信念的力量，都无法改变命运。' target="_blank">《教父3》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">141<a href="https://movie.douban.com/subject/1858711/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='跨度十五年的欢乐与泪水。' target="_blank">《玩具总动员3》</a></div>
-		<div class="flex-item color0">142<a href="https://movie.douban.com/subject/25986180/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='揭露人性的丧尸题材力作。' target="_blank">《釜山行》</a></div>
-		<div class="flex-item color1">143<a href="https://movie.douban.com/subject/26628357/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='惠及一生的美丽。' target="_blank">《一个叫欧维的男人决定去死》</a></div>
-		<div class="flex-item color1">144<a href="https://movie.douban.com/subject/1307315/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='想你时你在闹海。' target="_blank">《哪吒闹海》</a></div>
-		<div class="flex-item color0">145<a href="https://movie.douban.com/subject/6307447/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='热血沸腾，那个低俗、性感的无耻混蛋又来了。' target="_blank">《被解救的姜戈》</a></div>
-		<div class="flex-item color0">146<a href="https://movie.douban.com/subject/26325320/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='优秀的战争片不会美化战场，不会粉饰死亡，不会矮化敌人，不会无视常识，最重要的，不会宣扬战争。'
-				target="_blank">《血战钢锯岭》</a>
-		</div>
-		<div class="flex-item color0">147<a href="https://movie.douban.com/subject/1395091/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='好的剧本是，就算你猜到了结局也猜不到全部。' target="_blank">《未麻的部屋》</a></div>
-		<div class="flex-item color1">148<a href="https://movie.douban.com/subject/4920389/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='写给影迷，动漫迷和游戏迷的一封情书。' target="_blank">《头号玩家》</a></div>
-		<div class="flex-item color0">149<a href="https://movie.douban.com/subject/1295399/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='时代悲歌。' target="_blank">《七武士》</a></div>
-		<div class="flex-item color1">150<a href="https://movie.douban.com/subject/1306861/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱并不需要智商 。' target="_blank">《我是山姆》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">151<a href="https://movie.douban.com/subject/1303037/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='中国家庭的喜怒哀乐忍。' target="_blank">《喜宴》</a></div>
-		<div class="flex-item color0">152<a href="https://movie.douban.com/subject/1417598/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='真相就在眼前。' target="_blank">《电锯惊魂》</a></div>
-		<div class="flex-item color1">153<a href="https://movie.douban.com/subject/27010768/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《寄生虫》</a></div>
-		<div class="flex-item color0">154<a href="https://movie.douban.com/subject/10437779/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='要做就做得狠一点，这样才能活下去。' target="_blank">《新世界》</a></div>
-		<div class="flex-item color1">155<a href="https://movie.douban.com/subject/10463953/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='他给机器起名“克里斯托弗”，因为这是他初恋的名字。' target="_blank">《模仿游戏》</a></div>
-		<div class="flex-item color0">156<a href="https://movie.douban.com/subject/1291822/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='当这个世界闭上双眼，他却敞开了怀抱。' target="_blank">《卢旺达饭店》</a></div>
-		<div class="flex-item color0">157<a href="https://movie.douban.com/subject/26611804/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='怼天怼地，你走后，她与世界为敌。' target="_blank">《三块广告牌》</a></div>
-		<div class="flex-item color0">158<a href="https://movie.douban.com/subject/1291557/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='偷情本没有这样美。' target="_blank">《花样年华》</a></div>
-		<div class="flex-item color0">159<a href="https://movie.douban.com/subject/1291585/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='动画片的圣经。' target="_blank">《风之谷》</a></div>
-		<div class="flex-item color2">160<a href="https://movie.douban.com/subject/1302467/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='不得不说，《黑客帝国》系列是商业片与科幻、哲学完美结合的典范。' target="_blank">《黑客帝国3：矩阵革命》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">161<a href="https://movie.douban.com/subject/1292208/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='被上帝抛弃了的上帝之城。' target="_blank">《上帝之城》</a></div>
-		<div class="flex-item color2">162<a href="https://movie.douban.com/subject/1907966/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='老少皆宜，这就是好莱坞动画的魅力。' target="_blank">《疯狂原始人》</a></div>
-		<div class="flex-item color0">163<a href="https://movie.douban.com/subject/1578507/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='像吃了苏打饼一样干脆的电影。' target="_blank">《谍影重重3》</a></div>
-		<div class="flex-item color0">164<a href="https://movie.douban.com/subject/1297574/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='英雄泪短，兄弟情长。 ' target="_blank">《英雄本色》</a></div>
-		<div class="flex-item color1">165<a href="https://movie.douban.com/subject/1309055/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《哈利·波特与火焰杯》</a></div>
-		<div class="flex-item color1">166<a href="https://movie.douban.com/subject/26683290/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='穿越错位的时空，仰望陨落的星辰，你没留下你的名字，我却无法忘记那句“我爱你”。' target="_blank">《你的名字》</a></div>
-		<div class="flex-item color0">167<a href="https://movie.douban.com/subject/10533913/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='愿我们都不用长大，每一座城堡都能永远存在。' target="_blank">《头脑特工队》</a></div>
-		<div class="flex-item color0">168<a href="https://movie.douban.com/subject/1793929/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='Jared Leto的腿比女人还美！' target="_blank">《达拉斯买家俱乐部》</a></div>
-		<div class="flex-item color0">169<a href="https://movie.douban.com/subject/1295409/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='香港浪漫主义警匪动作片的巅峰之作。' target="_blank">《纵横四海》</a></div>
-		<div class="flex-item color0">170<a href="https://movie.douban.com/subject/25917973/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='荒诞讽刺，千奇百巧，抽丝剥茧，百转千回。' target="_blank">《心迷宫》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color1">171<a href="https://movie.douban.com/subject/3792799/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='岁月流逝，来日可追。' target="_blank">《岁月神偷》</a></div>
-		<div class="flex-item color0">172<a href="https://movie.douban.com/subject/1304447/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一个针管引发的血案。' target="_blank">《记忆碎片》</a></div>
-		<div class="flex-item color0">173<a href="https://movie.douban.com/subject/1959195/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='养狗三日，便会对你终其一生。' target="_blank">《忠犬八公物语》</a></div>
-		<div class="flex-item color0">174<a href="https://movie.douban.com/subject/25895901/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='是枝裕和的家庭习作。' target="_blank">《海街日记》</a></div>
-		<div class="flex-item color0">175<a href="https://movie.douban.com/subject/24750126/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='始于荒诞，止于更荒诞。' target="_blank">《荒蛮故事》</a></div>
-		<div class="flex-item color0">176<a href="https://movie.douban.com/subject/1293181/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='故事的反转与反转，分裂电影的始祖。' target="_blank">《惊魂记》</a></div>
-		<div class="flex-item color1">177<a href="https://movie.douban.com/subject/25773932/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='这个世界从不善待努力的人，努力了也不一定会成功，但是知道自己在努力，就是活下去的动力。' target="_blank">《爆裂鼓手》</a>
-		</div>
-		<div class="flex-item color0">178<a href="https://movie.douban.com/subject/2209573/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='上帝之城+猜火车+阿甘正传+开心辞典=山寨富翁' target="_blank">《贫民窟的百万富翁》</a></div>
-		<div class="flex-item color1">179<a href="https://movie.douban.com/subject/1292401/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱，是个动词。' target="_blank">《真爱至上》</a></div>
-		<div class="flex-item color0">180<a href="https://movie.douban.com/subject/1297518/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《九品芝麻官》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">181<a href="https://movie.douban.com/subject/1292328/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='电影诗。' target="_blank">《东邪西毒》</a></div>
-		<div class="flex-item color0">182<a href="https://movie.douban.com/subject/1300374/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='天使暂时离开。' target="_blank">《绿里奇迹》</a></div>
-		<div class="flex-item color0">183<a href="https://movie.douban.com/subject/27622447/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='我们组成了家。' target="_blank">《小偷家族》</a></div>
-		<div class="flex-item color1">184<a href="https://movie.douban.com/subject/10808442/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='所谓爱情，就是话唠一路，都不会心生腻烦，彼此嫌弃。' target="_blank">《爱在午夜降临前》</a></div>
-		<div class="flex-item color0">185<a href="https://movie.douban.com/subject/6534248/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='迪士尼和皮克斯拿错剧本的产物。' target="_blank">《无敌破坏王》</a></div>
-		<div class="flex-item color0">186<a href="https://movie.douban.com/subject/1978709/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='黑暗之美。' target="_blank">《黑天鹅》</a></div>
-		<div class="flex-item color0">187<a href="https://movie.douban.com/subject/1291578/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='松鼠才是角儿。' target="_blank">《冰川时代》</a></div>
-		<div class="flex-item color0">188<a href="https://movie.douban.com/subject/4848115/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='感情不分食草或者食肉。' target="_blank">《你看起来好像很好吃》</a></div>
-		<div class="flex-item color0">189<a href="https://movie.douban.com/subject/1293318/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='幸福是生生不息，却难以触及的远。 ' target="_blank">《萤火虫之墓》</a></div>
-		<div class="flex-item color0">190<a href="https://movie.douban.com/subject/1862151/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='中国版《两杆大烟枪》。' target="_blank">《疯狂的石头》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">191<a href="https://movie.douban.com/subject/1291870/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='生活在自己的世界里，也可以让周围的人显得可笑和渺小。' target="_blank">《雨人》</a></div>
-		<div class="flex-item color0">192<a href="https://movie.douban.com/subject/1309163/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱情没有那么多借口，如果不能圆满，只能说明爱的不够。 ' target="_blank">《恋恋笔记本》</a></div>
-		<div class="flex-item color0">193<a href="https://movie.douban.com/subject/3011051/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='不要企图在重复中寻找已经失去的爱。' target="_blank">《恐怖游轮》</a></div>
-		<div class="flex-item color0">194<a href="https://movie.douban.com/subject/1293460/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='骨灰级歌舞片。' target="_blank">《雨中曲》</a></div>
-		<div class="flex-item color0">195<a href="https://movie.douban.com/subject/1828115/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='假戏真情，爱欲深海' target="_blank">《色，戒》</a></div>
-		<div class="flex-item color0">196<a href="https://movie.douban.com/subject/1307811/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='宫崎骏的电影总让人感觉世界是美好的，阳光明媚的。' target="_blank">《魔女宅急便》</a></div>
-		<div class="flex-item color0">197<a href="https://movie.douban.com/subject/1292226/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='现代科幻电影的开山之作，最伟大导演的最伟大影片。' target="_blank">《2001太空漫游》</a></div>
-		<div class="flex-item color0">198<a href="https://movie.douban.com/subject/1293908/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='永远的小人物，伟大的卓别林。' target="_blank">《城市之光》</a></div>
-		<div class="flex-item color0">199<a href="https://movie.douban.com/subject/1308857/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='坚硬的信仰。' target="_blank">《可可西里》</a></div>
-		<div class="flex-item color2">200<a href="https://movie.douban.com/subject/26430107/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='有一些东西不应该被遗忘。' target="_blank">《二十二》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">201<a href="https://movie.douban.com/subject/1296909/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='永远看不腻的喜剧。' target="_blank">《虎口脱险》</a></div>
-		<div class="flex-item color2">202<a href="https://movie.douban.com/subject/1302827/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='对爱的执着，可以超越一切。' target="_blank">《人工智能》</a></div>
-		<div class="flex-item color0">203<a href="https://movie.douban.com/subject/26787574/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='世界不完美，爱会有奇迹。' target="_blank">《奇迹男孩》</a></div>
-		<div class="flex-item color1">204<a href="https://movie.douban.com/subject/25980443/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='Just let it go' target="_blank">《海边的曼彻斯特》</a></div>
-		<div class="flex-item color0">205<a href="https://movie.douban.com/subject/4739952/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='黑小鸭速效美白记。' target="_blank">《初恋这件小事》</a></div>
-		<div class="flex-item color0">206<a href="https://movie.douban.com/subject/1867345/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='用剩余不多的时间，去燃烧整个生命。' target="_blank">《遗愿清单》</a></div>
-		<div class="flex-item color0">207<a href="https://movie.douban.com/subject/27059130/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人们可以登上月球，却永远无法探索人们内心的宇宙。' target="_blank">《大佛普拉斯》</a></div>
-		<div class="flex-item color0">208<a href="https://movie.douban.com/subject/1291879/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人生的N种可能性。' target="_blank">《罗生门》</a></div>
-		<div class="flex-item color0">209<a href="https://movie.douban.com/subject/1291844/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='少见的超越首部的续集，动作片中的经典。' target="_blank">《终结者2：审判日》</a></div>
-		<div class="flex-item color0">210<a href="https://movie.douban.com/subject/1292329/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='弱者送给弱者的一刀。' target="_blank">《牯岭街少年杀人事件》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">211<a href="https://movie.douban.com/subject/25724855/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='被偷走的岁月，被伤害的生命，被禁锢的灵魂，终将被希望和善意救赎。' target="_blank">《房间》</a></div>
-		<div class="flex-item color0">212<a href="https://movie.douban.com/subject/1303394/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='人生如此，浮生如斯。谁人言，花彼岸，此生情长意短。谁都是不懂爱的罢了。' target="_blank">《青蛇》</a></div>
-		<div class="flex-item color1">213<a href="https://movie.douban.com/subject/3075287/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='邓肯·琼斯继《月球》之后再度奉献出一部精彩绝伦的科幻佳作。' target="_blank">《源代码》</a></div>
-		<div class="flex-item color0">214<a href="https://movie.douban.com/subject/1307106/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《无间道2》</a></div>
-		<div class="flex-item color0">215<a href="https://movie.douban.com/subject/1292287/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='嬉笑怒骂，调风动月。' target="_blank">《新龙门客栈》</a></div>
-		<div class="flex-item color0">216<a href="https://movie.douban.com/subject/1310177/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《东京教父》</a></div>
-		<div class="flex-item color0">217<a href="https://movie.douban.com/subject/3592854/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='“多么美好的一天！”轰轰轰砰咚，啪哒哒哒轰隆隆，磅~' target="_blank">《疯狂的麦克斯4：狂暴之路》</a></div>
-		<div class="flex-item color0">218<a href="https://movie.douban.com/subject/5300054/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《波西米亚狂想曲》</a></div>
-		<div class="flex-item color0">219<a href="https://movie.douban.com/subject/1293964/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='中国式内在的美国电影。' target="_blank">《魂断蓝桥》</a></div>
-		<div class="flex-item color0">220<a href="https://movie.douban.com/subject/1438652/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='昆汀同学越来越变态了，比北野武还杜琪峰。' target="_blank">《无耻混蛋》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">221<a href="https://movie.douban.com/subject/2222996/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='日本的家庭电影已经是世界巅峰了，步履不停是巅峰中的佳作。' target="_blank">《步履不停》</a></div>
-		<div class="flex-item color0">222<a href="https://movie.douban.com/subject/1428175/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='每个美丽事物背后都是滴血的现实。' target="_blank">《血钻》</a></div>
-		<div class="flex-item color0">223<a href="https://movie.douban.com/subject/25807345/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='小成本大魅力。' target="_blank">《彗星来的那一夜》</a></div>
-		<div class="flex-item color0">224<a href="https://movie.douban.com/subject/1295865/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='传奇，不是每个人都可以拥有。' target="_blank">《燃情岁月》</a></div>
-		<div class="flex-item color0">225<a href="https://movie.douban.com/subject/1419936/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='做一颗让别人需要你的棋子。' target="_blank">《战争之王》</a></div>
-		<div class="flex-item color0">226<a href="https://movie.douban.com/subject/1300117/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一部能引人思考的科幻励志片。' target="_blank">《千钧一发》</a></div>
-		<div class="flex-item color0">227<a href="https://movie.douban.com/subject/1308767/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='谁说王家卫镜头很晃？' target="_blank">《谍影重重2》</a></div>
-		<div class="flex-item color0">228<a href="https://movie.douban.com/subject/1461403/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《茶馆》</a></div>
-		<div class="flex-item color0">229<a href="https://movie.douban.com/subject/3443389/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='大海啊，不全是水。' target="_blank">《海洋》</a></div>
-		<div class="flex-item color2">230<a href="https://movie.douban.com/subject/1304141/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一个精彩的世界观正在缓缓建立。' target="_blank">《黑客帝国2：重装上阵》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">231<a href="https://movie.douban.com/subject/1959877/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《崖上的波妞》</a></div>
-		<div class="flex-item color1">232<a href="https://movie.douban.com/subject/1305690/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='王家卫是一种风格，张国荣是一个代表。' target="_blank">《阿飞正传》</a></div>
-		<div class="flex-item color0">233<a href="https://movie.douban.com/subject/1937946/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱上未来的你。 ' target="_blank">《穿越时空的少女》</a></div>
-		<div class="flex-item color0">234<a href="https://movie.douban.com/subject/1304102/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='哗啦啦啦啦，天在下雨，哗啦啦啦啦，云在哭泣……找自己。' target="_blank">《谍影重重》</a></div>
-		<div class="flex-item color2">235<a href="https://movie.douban.com/subject/2363506/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='天使保护事件始末。' target="_blank">《地球上的星星》</a></div>
-		<div class="flex-item color0">236<a href="https://movie.douban.com/subject/26614893/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='来啊，互相伤害啊！' target="_blank">《完美陌生人》</a></div>
-		<div class="flex-item color0">237<a href="https://movie.douban.com/subject/1760622/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='一个单凭体香达到高潮的男人。' target="_blank">《香水》</a></div>
-		<div class="flex-item color0">238<a href="https://movie.douban.com/subject/1307856/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《背靠背，脸对脸》</a></div>
-		<div class="flex-item color1">239<a href="https://movie.douban.com/subject/6874403/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱我就给我看你的播放列表。' target="_blank">《再次出发之纽约遇见你》</a></div>
-		<div class="flex-item color0">240<a href="https://movie.douban.com/subject/5908478/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='你要相信，这世上真的有爱存在，不管在什么年纪 ' target="_blank">《我爱你》</a></div>
-	</div>
-	<div class="flex-container">
-		<div class="flex-item color0">241<a href="https://movie.douban.com/subject/2213597/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='当爱情跨越年龄的界限，它似乎能变得更久远一点，成为一种责任，一种水到渠成的相濡以沫。 ' target="_blank">《朗读者》</a>
-		</div>
-		<div class="flex-item color1">242<a href="https://movie.douban.com/subject/25934014/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《爱乐之城》</a></div>
-		<div class="flex-item color1">243<a href="https://movie.douban.com/subject/27119724/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《小丑》</a></div>
-		<div class="flex-item color0">244<a href="https://movie.douban.com/subject/25954475/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='新闻人的理性求真。' target="_blank">《聚焦》</a></div>
-		<div class="flex-item color0">245<a href="https://movie.douban.com/subject/25921812/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='过去的如果就让它过去了，未来只会越来越糟！' target="_blank">《驴得水》</a></div>
-		<div class="flex-item color1">246<a href="https://movie.douban.com/subject/2297265/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='世界离独裁只有五天。' target="_blank">《浪潮》</a></div>
-		<div class="flex-item color0">247<a href="https://movie.douban.com/subject/26393561/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='宝莱坞的萝莉与大叔。' target="_blank">《小萝莉的猴神大叔》</a></div>
-		<div class="flex-item color2">248<a href="https://movie.douban.com/subject/25864085/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='暂无简介' target="_blank">《火星救援》</a></div>
-		<div class="flex-item color0">249<a href="https://movie.douban.com/subject/1292528/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='不可猜的青春迷笛。 ' target="_blank">《猜火车》</a></div>
-		<div class="flex-item color0">250<a href="https://movie.douban.com/subject/1307394/" data-bs-toggle='tooltip'
-				data-bs-placement='top' title='爱情是一场没有尽头的虚幻追逐。' target="_blank">《千年女优》</a></div>
-	</div>
-	<div class="introduce">
-		<h1>推荐</h1>
-		<h5>《海上钢琴师》《白日梦想家》《死亡诗社》《蜘蛛侠：平行宇宙》</h5>
-	</div>
-
-	<div class="extra">
-		<h1>额外</h1>
-		<p>这是些新出现在 Top250 里的电影，或是其它比较有意思的电影</p>
-		<div class="flex-container">
-			<div class="flex-item color1">001<a href="https://movie.douban.com/subject/24733428/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='暂无简介' target="_blank">《心灵奇旅》</a></div>
-			<div class="flex-item color0">002<a href="https://movie.douban.com/subject/1291992/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='没有了退路，只好飞向自由。' target="_blank">《末路狂花》</a>
-			</div>
-			<div class="flex-item color0">003<a href="https://movie.douban.com/subject/34874432/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='暂无简介' target="_blank">《花束般的恋爱》</a></div>
-			<div class="flex-item color1">004<a href="https://movie.douban.com/subject/2051007/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='最忠于原著的一部。'
-					target="_blank">《哈利·波特与死亡圣器(上)》</a></div>
-			<div class="flex-item color0">005<a href="https://movie.douban.com/subject/1297880/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='暂无简介' target="_blank">《芙蓉镇》</a></div>
-			<div class="flex-item color0">006<a href="https://movie.douban.com/subject/3552028/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='拍掉身上的悲伤，从今天开始重新踏上追梦之旅。'
-					target="_blank">《弱点》</a></div>
-			<div class="flex-item color1">007<a href="https://movie.douban.com/subject/1457217/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='暂无简介' target="_blank">《哈利·波特与凤凰社》</a></div>
-			<div class="flex-item color1">008<a href="https://movie.douban.com/subject/4135710/"
-					data-bs-toggle='tooltip' data-bs-placement='top' title='' target="_blank">《Hello！树先生》</a></div>
-		</div>
-
-	</div>
-	<script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
-	<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"></script>
-	<script>
-		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-			return new bootstrap.Tooltip(tooltipTriggerEl)
-		})
-	</script>
+    <div class="introduce">
+        <h1>公告</h1>
+        <p>这是一个豆瓣250刷电影的页面。欢迎访问</p>
+        <div class="color-intro">
+            <p class="box1">表示看过</p>
+            <p class="box2">表示没看过</p>
+            <p class="box3">表示不太清楚</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">001<a href="https://movie.douban.com/subject/1292052/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='希望让人自由。' target="_blank">《肖申克的救赎》</a></div>
+        <div class="flex-item color1">002<a href="https://movie.douban.com/subject/1291546/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='风华绝代。' target="_blank">《霸王别姬》</a></div>
+        <div class="flex-item color1">003<a href="https://movie.douban.com/subject/1292720/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='一部美国近现代史。' target="_blank">《阿甘正传》</a></div>
+        <div class="flex-item color1">004<a href="https://movie.douban.com/subject/1292722/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='失去的才是永恒的。 ' target="_blank">《泰坦尼克号》</a></div>
+        <div class="flex-item color1">005<a href="https://movie.douban.com/subject/1291561/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='最好的宫崎骏，最好的久石让。 ' target="_blank">《千与千寻》</a></div>
+        <div class="flex-item color1">006<a href="https://movie.douban.com/subject/1292063/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='最美的谎言。' target="_blank">《美丽人生》</a></div>
+        <div class="flex-item color1">007<a href="https://movie.douban.com/subject/1295644/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='怪蜀黍和小萝莉不得不说的故事。' target="_blank">《这个杀手不太冷》</a></div>
+        <div class="flex-item color1">008<a href="https://movie.douban.com/subject/1889243/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱是一种力量，让我们超越时空感知它的存在。' target="_blank">《星际穿越》</a></div>
+        <div class="flex-item color1">009<a href="https://movie.douban.com/subject/3541415/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='诺兰给了我们一场无法盗取的梦。' target="_blank">《盗梦空间》</a></div>
+        <div class="flex-item color1">010<a href="https://movie.douban.com/subject/1292064/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='如果再也不能见到你，祝你早安，午安，晚安。' target="_blank">《楚门的世界》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">011<a href="https://movie.douban.com/subject/1295124/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='拯救一个人，就是拯救整个世界。' target="_blank">《辛德勒的名单》</a></div>
+        <div class="flex-item color1">012<a href="https://movie.douban.com/subject/3011091/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='永远都不能忘记你所爱的人。' target="_blank">《忠犬八公的故事》</a></div>
+        <div class="flex-item color1">013<a href="https://movie.douban.com/subject/1292001/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='每个人都要走一条自己坚定了的路，就算是粉身碎骨。 ' target="_blank">《海上钢琴师》</a></div>
+        <div class="flex-item color1">014<a href="https://movie.douban.com/subject/3793023/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='英俊版憨豆，高情商版谢耳朵。' target="_blank">《三傻大闹宝莱坞》</a></div>
+        <div class="flex-item color1">015<a href="https://movie.douban.com/subject/1291549/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='天籁一般的童声，是最接近上帝的存在。 ' target="_blank">《放牛班的春天》</a></div>
+        <div class="flex-item color1">016<a href="https://movie.douban.com/subject/2131459/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='小瓦力，大人生。' target="_blank">《机器人总动员》</a></div>
+        <div class="flex-item color1">017<a href="https://movie.douban.com/subject/25662329/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='迪士尼给我们营造的乌托邦就是这样，永远善良勇敢，永远出乎意料。' target="_blank">《疯狂动物城》</a></div>
+        <div class="flex-item color1">018<a href="https://movie.douban.com/subject/1307914/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='香港电影史上永不过时的杰作。' target="_blank">《无间道》</a></div>
+        <div class="flex-item color1">019<a href="https://movie.douban.com/subject/1296141/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='比利·怀德满分作品。' target="_blank">《控方证人》</a></div>
+        <div class="flex-item color1">020<a href="https://movie.douban.com/subject/1292213/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='一生所爱。' target="_blank">《大话西游之大圣娶亲》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">021<a href="https://movie.douban.com/subject/5912992/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='我们一路奋战不是为了改变世界，而是为了不让世界改变我们。' target="_blank">《熔炉》</a></div>
+        <div class="flex-item color1">022<a href="https://movie.douban.com/subject/1291841/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='千万不要记恨你的对手，这样会让你失去理智。' target="_blank">《教父》</a></div>
+        <div class="flex-item color1">023<a href="https://movie.douban.com/subject/6786002/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='满满温情的高雅喜剧。' target="_blank">《触不可及》</a></div>
+        <div class="flex-item color1">024<a href="https://movie.douban.com/subject/1849031/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='平民励志片。 ' target="_blank">《当幸福来敲门》</a></div>
+        <div class="flex-item color1">025<a href="https://movie.douban.com/subject/20495023/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='死亡不是真的逝去，遗忘才是永恒的消亡。' target="_blank">《寻梦环游记》</a></div>
+        <div class="flex-item color1">026<a href="https://movie.douban.com/subject/1293172/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='“不要跟我比惨，我比你更惨”再适合这部电影不过了。' target="_blank">《末代皇帝》</a></div>
+        <div class="flex-item color1">027<a href="https://movie.douban.com/subject/1291560/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人人心中都有个龙猫，童年就永远不会消失。' target="_blank">《龙猫》</a></div>
+        <div class="flex-item color1">028<a href="https://movie.douban.com/subject/3319755/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='真正的幸福是来自内心深处。' target="_blank">《怦然心动》</a></div>
+        <div class="flex-item color1">029<a href="https://movie.douban.com/subject/1295038/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='童话世界的开端。' target="_blank">《哈利·波特与魔法石》</a></div>
+        <div class="flex-item color1">030<a href="https://movie.douban.com/subject/1292365/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='张艺谋最好的电影。' target="_blank">《活着》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">031<a href="https://movie.douban.com/subject/1851857/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='无尽的黑暗。' target="_blank">《蝙蝠侠：黑暗骑士》</a></div>
+        <div class="flex-item color1">032<a href="https://movie.douban.com/subject/1291552/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='史诗的终章。' target="_blank">《指环王3：王者无敌》</a></div>
+        <div class="flex-item color1">033<a href="https://movie.douban.com/subject/26752088/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='对我们国家而言，这样的电影多一部是一部。' target="_blank">《我不是药神》</a></div>
+        <div class="flex-item color1">034<a href="https://movie.douban.com/subject/1300267/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='Tomorrow is another day.' target="_blank">《乱世佳人》</a></div>
+        <div class="flex-item color1">035<a href="https://movie.douban.com/subject/2129039/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='最后那些最无聊的事情，才是最值得怀念的。 ' target="_blank">《飞屋环游记》</a></div>
+        <div class="flex-item color1">036<a href="https://movie.douban.com/subject/21937452/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='受过伤害的人总是笑得最开心，因为他们不愿意让身边的人承受一样的痛苦。' target="_blank">《素媛》</a></div>
+        <div class="flex-item color1">037<a href="https://movie.douban.com/subject/1308807/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='带着心爱的人在天空飞翔。' target="_blank">《哈尔的移动城堡》</a></div>
+        <div class="flex-item color1">038<a href="https://movie.douban.com/subject/3742360/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='你给我翻译翻译，神马叫做TMD的惊喜。' target="_blank">《让子弹飞》</a></div>
+        <div class="flex-item color1">039<a href="https://movie.douban.com/subject/1293182/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='1957年的理想主义。 ' target="_blank">《十二怒汉》</a></div>
+        <div class="flex-item color1">040<a href="https://movie.douban.com/subject/30170448/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='凝视卑弱生命，用电影改变命运。' target="_blank">《何以为家》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">041<a href="https://movie.douban.com/subject/25958717/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='如果生活中有什么使你感到快乐，那就去做吧！不要管别人说什么。' target="_blank">《海蒂和爷爷》</a></div>
+        <div class="flex-item color1">042<a href="https://movie.douban.com/subject/1305487/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='骗子大师和执著警探的你追我跑故事。 ' target="_blank">《猫鼠游戏》</a></div>
+        <div class="flex-item color1">043<a href="https://movie.douban.com/subject/26387939/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='你不是在为你一个人战斗，你要让千千万万的女性看到女生并不是只能相夫教子。' target="_blank">《摔跤吧！爸爸》</a></div>
+        <div class="flex-item color1">044<a href="https://movie.douban.com/subject/1291583/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='对天空的追逐，永不停止。 ' target="_blank">《天空之城》</a></div>
+        <div class="flex-item color1">045<a href="https://movie.douban.com/subject/1291858/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='对敌人的仁慈，就是对自己残忍。' target="_blank">《鬼子来了》</a></div>
+        <div class="flex-item color1">046<a href="https://movie.douban.com/subject/1929463/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='瑰丽壮观、无人能及的冒险之旅。' target="_blank">《少年派的奇幻漂流》</a></div>
+        <div class="flex-item color1">047<a href="https://movie.douban.com/subject/1296736/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='音乐能化解仇恨。' target="_blank">《钢琴家》</a></div>
+        <div class="flex-item color1">048<a href="https://movie.douban.com/subject/1291572/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='承前启后的史诗篇章。' target="_blank">《指环王2：双塔奇兵》</a></div>
+        <div class="flex-item color1">049<a href="https://movie.douban.com/subject/1299398/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='旷古烁今。' target="_blank">《大话西游之月光宝盒》</a></div>
+        <div class="flex-item color1">050<a href="https://movie.douban.com/subject/1298624/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='史上最美的探戈。' target="_blank">《闻香识女人》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">051<a href="https://movie.douban.com/subject/1291548/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='当一个死水般的体制内出现一个活跃的变数时，所有的腐臭都站在了光明的对面。' target="_blank">《死亡诗社》</a></div>
+        <div class="flex-item color1">052<a href="https://movie.douban.com/subject/27060077/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='去除成见，需要勇气。' target="_blank">《绿皮书》</a></div>
+        <div class="flex-item color1">053<a href="https://movie.douban.com/subject/1418019/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='经典之作，历久弥新。' target="_blank">《大闹天宫》</a></div>
+        <div class="flex-item color1">054<a href="https://movie.douban.com/subject/1293839/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱情哪怕只有一天。' target="_blank">《罗马假日》</a></div>
+        <div class="flex-item color1">055<a href="https://movie.douban.com/subject/1291843/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='视觉革命。' target="_blank">《黑客帝国》</a></div>
+        <div class="flex-item color1">056<a href="https://movie.douban.com/subject/1291571/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='传说的开始。' target="_blank">《指环王1：护戒使者》</a></div>
+        <div class="flex-item color1">057<a href="https://movie.douban.com/subject/1299131/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='优雅的孤独。' target="_blank">《教父2》</a></div>
+        <div class="flex-item color1">058<a href="https://movie.douban.com/subject/1291828/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='那些吻戏，那些青春，都在影院的黑暗里被泪水冲刷得无比清晰。' target="_blank">《天堂电影院》</a></div>
+        <div class="flex-item color1">059<a href="https://movie.douban.com/subject/1301753/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='动物版《哈姆雷特》。' target="_blank">《狮子王》</a></div>
+        <div class="flex-item color1">060<a href="https://movie.douban.com/subject/21937445/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='电影的现实意义大过电影本身。' target="_blank">《辩护人》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">061<a href="https://movie.douban.com/subject/1291818/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人生不能像做菜，把所有的料都准备好了才下锅。' target="_blank">《饮食男女》</a></div>
+        <div class="flex-item color1">062<a href="https://movie.douban.com/subject/1292000/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='邪恶与平庸蛰伏于同一个母体，在特定的时间互相对峙。' target="_blank">《搏击俱乐部》</a></div>
+        <div class="flex-item color1">063<a href="https://movie.douban.com/subject/1485260/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='在时间之河里感受溺水之苦。' target="_blank">《本杰明·巴顿奇事》</a></div>
+        <div class="flex-item color1">064<a href="https://movie.douban.com/subject/1306029/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱是一切逻辑和原由。' target="_blank">《美丽心灵》</a></div>
+        <div class="flex-item color1">065<a href="https://movie.douban.com/subject/3008247/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='尽管有些不切实际的幻想，这部电影依旧是一部感人肺腑的佳作。' target="_blank">《穿条纹睡衣的男孩》</a></div>
+        <div class="flex-item color1">066<a href="https://movie.douban.com/subject/1900841/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='别样人生。' target="_blank">《窃听风暴》</a></div>
+        <div class="flex-item color1">067<a href="https://movie.douban.com/subject/1292220/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暗恋的极致。' target="_blank">《情书》</a></div>
+        <div class="flex-item color1">068<a href="https://movie.douban.com/subject/1293350/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='4个臭皮匠顶个诸葛亮，盖·里奇果然不是盖的。' target="_blank">《两杆大烟枪》</a></div>
+        <div class="flex-item color1">069<a href="https://movie.douban.com/subject/1294408/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='用音乐化解仇恨，让歌声串起美好。' target="_blank">《音乐之声》</a></div>
+        <div class="flex-item color1">070<a href="https://movie.douban.com/subject/26580232/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='你以为你以为的就是你以为的。' target="_blank">《看不见的客人》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">071<a href="https://movie.douban.com/subject/1292402/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='美丽无罪。' target="_blank">《西西里的美丽传说》</a></div>
+        <div class="flex-item color1">072<a href="https://movie.douban.com/subject/3011235/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='10年的完美句点。' target="_blank">《哈利·波特与死亡圣器(下)》</a></div>
+        <div class="flex-item color1">073<a href="https://movie.douban.com/subject/1652587/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='绝对意义上的美轮美奂。' target="_blank">《阿凡达》</a></div>
+        <div class="flex-item color1">074<a href="https://movie.douban.com/subject/1292849/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='美利坚精神输出大片No1.' target="_blank">《拯救大兵瑞恩》</a></div>
+        <div class="flex-item color0">075<a href="https://movie.douban.com/subject/1291543/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='警恶惩奸，维护世界和平这个任务就交给你了，好吗？' target="_blank">《功夫》</a></div>
+        <div class="flex-item color1">076<a href="https://movie.douban.com/subject/1303021/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='奔跑的孩子是天使。' target="_blank">《小鞋子》</a></div>
+        <div class="flex-item color1">077<a href="https://movie.douban.com/subject/1292224/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='自由万岁。' target="_blank">《飞越疯人院》</a></div>
+        <div class="flex-item color1">078<a href="https://movie.douban.com/subject/1293544/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='安东尼·霍普金斯的顶级表演。' target="_blank">《沉默的羔羊》</a></div>
+        <div class="flex-item color1">079<a href="https://movie.douban.com/subject/11525673/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='小清新的故事里注入了大历史的情怀。' target="_blank">《布达佩斯大饭店》</a></div>
+        <div class="flex-item color1">080<a href="https://movie.douban.com/subject/1291544/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='不一样的导演，不一样的哈利·波特。' target="_blank">《哈利·波特与阿兹卡班的囚徒》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">081<a href="https://movie.douban.com/subject/1292343/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人的命运被自己瞬间的抉择改变。' target="_blank">《蝴蝶效应》</a></div>
+        <div class="flex-item color1">082<a href="https://movie.douban.com/subject/2334904/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='昔日翩翩少年，今日大腹便便。' target="_blank">《禁闭岛》</a></div>
+        <div class="flex-item color1">083<a href="https://movie.douban.com/subject/1780330/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='孪生蝙蝠侠大战克隆金刚狼。' target="_blank">《致命魔术》</a></div>
+        <div class="flex-item color1">084<a href="https://movie.douban.com/subject/1292656/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人生中应该拥有这样的一段豁然开朗。' target="_blank">《心灵捕手》</a></div>
+        <div class="flex-item color1">085<a href="https://movie.douban.com/subject/5322596/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='穷尽一生，我们要学会的，不过是彼此拥抱。' target="_blank">《超脱》</a></div>
+        <div class="flex-item color1">086<a href="https://movie.douban.com/subject/1291832/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='故事的高级讲法。' target="_blank">《低俗小说》</a></div>
+        <div class="flex-item color0">087<a href="https://movie.douban.com/subject/1294371/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='大时代中的人生，小人物的悲喜。' target="_blank">《摩登时代》</a></div>
+        <div class="flex-item color0">088<a href="https://movie.douban.com/subject/1302425/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='我是一个演员。' target="_blank">《喜剧之王》</a></div>
+        <div class="flex-item color1">089<a href="https://movie.douban.com/subject/1292679/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='这世界不会陪你重新来过。' target="_blank">《春光乍泄》</a></div>
+        <div class="flex-item color1">090<a href="https://movie.douban.com/subject/3442220/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='海豚的微笑，是世界上最高明的伪装。' target="_blank">《海豚湾》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">091<a href="https://movie.douban.com/subject/1297192/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='最不可能的那个人永远是最可能的。' target="_blank">《致命ID》</a></div>
+        <div class="flex-item color0">092<a href="https://movie.douban.com/subject/1300299/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='关于连环杀人悬案的集体回忆。' target="_blank">《杀人回忆》</a></div>
+        <div class="flex-item color1">093<a href="https://movie.douban.com/subject/1292262/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='往事如烟，无处祭奠。' target="_blank">《美国往事》</a></div>
+        <div class="flex-item color1">094<a href="https://movie.douban.com/subject/1296996/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='魔法的密室之门已打开...' target="_blank">《哈利·波特与密室》</a></div>
+        <div class="flex-item color0">095<a href="https://movie.douban.com/subject/1292434/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='我们都曾经是一一。' target="_blank">《一一》</a></div>
+        <div class="flex-item color0">096<a href="https://movie.douban.com/subject/1865703/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='梦的勾结。' target="_blank">《红辣椒》</a></div>
+        <div class="flex-item color1">097<a href="https://movie.douban.com/subject/1298070/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='约翰尼·德普的独角戏。' target="_blank">《加勒比海盗》</a></div>
+        <div class="flex-item color1">098<a href="https://movie.douban.com/subject/1292223/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='警察抓小偷，老鼠玩死猫。' target="_blank">《七宗罪》</a></div>
+        <div class="flex-item color0">099<a href="https://movie.douban.com/subject/1306249/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='华太师是黄霑，吴镇宇四大才子之一。' target="_blank">《唐伯虎点秋香》</a></div>
+        <div class="flex-item color1">100<a href="https://movie.douban.com/subject/6985810/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人言可畏。' target="_blank">《狩猎》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">101<a href="https://movie.douban.com/subject/10777687/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='《我是山姆》的《美丽人生》。' target="_blank">《7号房的礼物》</a></div>
+        <div class="flex-item color1">102<a href="https://movie.douban.com/subject/3395373/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='诺兰就是保证。' target="_blank">《蝙蝠侠：黑暗骑士崛起》</a></div>
+        <div class="flex-item color0">103<a href="https://movie.douban.com/subject/1305164/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='相逢只要一瞬间，等待却像是一辈子。' target="_blank">《甜蜜蜜》</a></div>
+        <div class="flex-item color0">104<a href="https://movie.douban.com/subject/1787291/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='以戏谑来戏谑戏谑。' target="_blank">《被嫌弃的松子的一生》</a></div>
+        <div class="flex-item color1">105<a href="https://movie.douban.com/subject/1296339/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='缘分是个连绵词，最美不过一瞬。' target="_blank">《爱在黎明破晓前》</a></div>
+        <div class="flex-item color1">106<a href="https://movie.douban.com/subject/11026735/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='Balalala~~~' target="_blank">《超能陆战队》</a></div>
+        <div class="flex-item color1">107<a href="https://movie.douban.com/subject/1297630/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='深入内心的恐怖，出人意料的结局。' target="_blank">《第六感》</a></div>
+        <div class="flex-item color1">108<a href="https://movie.douban.com/subject/27010768/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《寄生虫》</a></div>
+        <div class="flex-item color1">109<a href="https://movie.douban.com/subject/1291999/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='寂寞没有期限。' target="_blank">《重庆森林》</a></div>
+        <div class="flex-item color0">110<a href="https://movie.douban.com/subject/2149806/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='死可能是一道门，逝去并不是终结，而是超越，走向下一程。' target="_blank">《入殓师》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">111<a href="https://movie.douban.com/subject/26799731/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='沉醉在电影的情感和视听氛围中无法自拔。' target="_blank">《请以你的名字呼唤我》</a></div>
+        <div class="flex-item color1">112<a href="https://movie.douban.com/subject/1291990/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='九年后的重逢是世俗和责任的交叠，没了悸动和青涩，沧桑而温暖。' target="_blank">《爱在日落黄昏时》</a></div>
+        <div class="flex-item color1">113<a href="https://movie.douban.com/subject/1297359/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人与自然的战争史诗。' target="_blank">《幽灵公主》</a></div>
+        <div class="flex-item color0">114<a href="https://movie.douban.com/subject/1292370/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='浪漫忧郁的成人童话。' target="_blank">《剪刀手爱德华》</a></div>
+        <div class="flex-item color1">115<a href="https://movie.douban.com/subject/1418834/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='每个人心中都有一座断背山。' target="_blank">《断背山》</a></div>
+        <div class="flex-item color1">116<a href="https://movie.douban.com/subject/1294639/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='史诗大片的典范。' target="_blank">《勇敢的心》</a></div>
+        <div class="flex-item color1">117<a href="https://movie.douban.com/subject/1293359/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='从没见过那么流氓的温柔，从没见过那么温柔的流氓。' target="_blank">《菊次郎的夏天》</a></div>
+        <div class="flex-item color0">118<a href="https://movie.douban.com/subject/4202302/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='曾经的那段美好会沉淀为一辈子的记忆。' target="_blank">《借东西的小人阿莉埃蒂》</a></div>
+        <div class="flex-item color0">119<a href="https://movie.douban.com/subject/1395091/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='好的剧本是，就算你猜到了结局也猜不到全部。' target="_blank">《未麻的部屋》</a></div>
+        <div class="flex-item color1">120<a href="https://movie.douban.com/subject/21318488/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='年度最佳date movie。' target="_blank">《消失的爱人》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">121<a href="https://movie.douban.com/subject/1292337/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='我的平常生活就是他人的幸福。' target="_blank">《无人知晓》</a></div>
+        <div class="flex-item color1">122<a href="https://movie.douban.com/subject/10577869/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='我欣赏你所有的笨拙和疯狂。' target="_blank">《时空恋旅人》</a></div>
+        <div class="flex-item color1">123<a href="https://movie.douban.com/subject/1309055/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《哈利·波特与火焰杯》</a></div>
+        <div class="flex-item color1">124<a href="https://movie.douban.com/subject/1297447/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='两张绝世的脸。 ' target="_blank">《倩女幽魂》</a></div>
+        <div class="flex-item color0">125<a href="https://movie.douban.com/subject/1300992/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='坏人的好总是比好人的好来得更感人。' target="_blank">《完美的世界》</a></div>
+        <div class="flex-item color0">126<a href="https://movie.douban.com/subject/1291875/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='一场华丽的意淫。' target="_blank">《阳光灿烂的日子》</a></div>
+        <div class="flex-item color0">127<a href="https://movie.douban.com/subject/1461403/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《茶馆》</a></div>
+        <div class="flex-item color1">128<a href="https://movie.douban.com/subject/25814705/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='那些静得只能听见呼吸的日子里，你明白孤独即生活。' target="_blank">《小森林 夏秋篇》</a></div>
+        <div class="flex-item color1">129<a href="https://movie.douban.com/subject/1292215/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='法式小清新。 ' target="_blank">《天使爱美丽》</a></div>
+        <div class="flex-item color1">130<a href="https://movie.douban.com/subject/1297052/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='少女情怀总是诗。' target="_blank">《侧耳倾听》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">131<a href="https://movie.douban.com/subject/2353023/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='和谐的生活离不开摸头与被摸头。' target="_blank">《驯龙高手》</a></div>
+        <div class="flex-item color0">132<a href="https://movie.douban.com/subject/10437779/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='要做就做得狠一点，这样才能活下去。' target="_blank">《新世界》</a></div>
+        <div class="flex-item color0">133<a href="https://movie.douban.com/subject/1294240/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='任何信念的力量，都无法改变命运。' target="_blank">《教父3》</a></div>
+        <div class="flex-item color0">134<a href="https://movie.douban.com/subject/10533913/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='愿我们都不用长大，每一座城堡都能永远存在。' target="_blank">《头脑特工队》</a></div>
+        <div class="flex-item color2">135<a href="https://movie.douban.com/subject/1291579/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='不要给它起名字，起了名字就有感情了。' target="_blank">《怪兽电力公司》</a></div>
+        <div class="flex-item color1">136<a href="https://movie.douban.com/subject/1292274/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='有时候幸福需要等一等。 ' target="_blank">《幸福终点站》</a></div>
+        <div class="flex-item color1">137<a href="https://movie.douban.com/subject/26628357/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='惠及一生的美丽。' target="_blank">《一个叫欧维的男人决定去死》</a></div>
+        <div class="flex-item color1">138<a href="https://movie.douban.com/subject/1418200/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱是摈弃傲慢与偏见之后的曙光。' target="_blank">《傲慢与偏见》</a></div>
+        <div class="flex-item color0">139<a href="https://movie.douban.com/subject/1858711/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='跨度十五年的欢乐与泪水。' target="_blank">《玩具总动员3》</a></div>
+        <div class="flex-item color1">140<a href="https://movie.douban.com/subject/25814707/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='尊敬他人，尊敬你生活的这片土地，明白孤独是人生的常态。' target="_blank">《小森林 冬春篇》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">141<a href="https://movie.douban.com/subject/1828115/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='假戏真情，爱欲深海' target="_blank">《色，戒》</a></div>
+        <div class="flex-item color0">142<a href="https://movie.douban.com/subject/6307447/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='热血沸腾，那个低俗、性感的无耻混蛋又来了。' target="_blank">《被解救的姜戈》</a></div>
+        <div class="flex-item color0">143<a href="https://movie.douban.com/subject/25986180/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='揭露人性的丧尸题材力作。' target="_blank">《釜山行》</a></div>
+        <div class="flex-item color2">144<a href="https://movie.douban.com/subject/3287562/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='Mr. I Don' target="_blank">《神偷奶爸》</a></div>
+        <div class="flex-item color1">145<a href="https://movie.douban.com/subject/5989818/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='触不到的恋人。' target="_blank">《萤火之森》</a></div>
+        <div class="flex-item color0">146<a href="https://movie.douban.com/subject/1297518/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《九品芝麻官》</a></div>
+        <div class="flex-item color1">147<a href="https://movie.douban.com/subject/1307315/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='想你时你在闹海。' target="_blank">《哪吒闹海》</a></div>
+        <div class="flex-item color0">148<a href="https://movie.douban.com/subject/4268598/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='没有一人完全善，也没有一人完全恶。' target="_blank">《告白》</a></div>
+        <div class="flex-item color0">149<a href="https://movie.douban.com/subject/1303037/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='中国家庭的喜怒哀乐忍。' target="_blank">《喜宴》</a></div>
+        <div class="flex-item color0">150<a href="https://movie.douban.com/subject/3072124/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='你是我最好的朋友，你是我唯一的朋友 。' target="_blank">《玛丽和马克思》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">151<a href="https://movie.douban.com/subject/10463953/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='他给机器起名“克里斯托弗”，因为这是他初恋的名字。' target="_blank">《模仿游戏》</a></div>
+        <div class="flex-item color0">152<a href="https://movie.douban.com/subject/1291557/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='偷情本没有这样美。' target="_blank">《花样年华》</a></div>
+        <div class="flex-item color1">153<a href="https://movie.douban.com/subject/4920389/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='写给影迷，动漫迷和游戏迷的一封情书。' target="_blank">《头号玩家》</a></div>
+        <div class="flex-item color1">154<a href="https://movie.douban.com/subject/1291545/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='抱着梦想而活着的人是幸福的，怀抱梦想而死去的人是不朽的。' target="_blank">《大鱼》</a></div>
+        <div class="flex-item color0">155<a href="https://movie.douban.com/subject/1316510/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='百看不厌。 ' target="_blank">《射雕英雄传之东成西就》</a></div>
+        <div class="flex-item color0">156<a href="https://movie.douban.com/subject/1295399/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='时代悲歌。' target="_blank">《七武士》</a></div>
+        <div class="flex-item color0">157<a href="https://movie.douban.com/subject/1293181/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='故事的反转与反转，分裂电影的始祖。' target="_blank">《惊魂记》</a></div>
+        <div class="flex-item color1">158<a href="https://movie.douban.com/subject/1306861/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱并不需要智商 。' target="_blank">《我是山姆》</a></div>
+        <div class="flex-item color0">159<a href="https://movie.douban.com/subject/26325320/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='优秀的战争片不会美化战场，不会粉饰死亡，不会矮化敌人，不会无视常识，最重要的，不会宣扬战争。'
+                target="_blank">《血战钢锯岭》</a></div>
+        <div class="flex-item color0">160<a href="https://movie.douban.com/subject/4917726/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='再多各自牛逼的时光，也比不上一起傻逼的岁月。 ' target="_blank">《阳光姐妹淘》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">161<a href="https://movie.douban.com/subject/21360417/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='恐怖分子的“秋菊打官司”。' target="_blank">《恐怖直播》</a></div>
+        <div class="flex-item color1">162<a href="https://movie.douban.com/subject/26683290/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='穿越错位的时空，仰望陨落的星辰，你没留下你的名字，我却无法忘记那句“我爱你”。' target="_blank">《你的名字》</a></div>
+        <div class="flex-item color2">163<a href="https://movie.douban.com/subject/1302467/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='不得不说，《黑客帝国》系列是商业片与科幻、哲学完美结合的典范。' target="_blank">《黑客帝国3：矩阵革命》</a></div>
+        <div class="flex-item color0">164<a href="https://movie.douban.com/subject/26611804/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='怼天怼地，你走后，她与世界为敌。' target="_blank">《三块广告牌》</a></div>
+        <div class="flex-item color0">165<a href="https://movie.douban.com/subject/25917973/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='荒诞讽刺，千奇百巧，抽丝剥茧，百转千回。' target="_blank">《心迷宫》</a></div>
+        <div class="flex-item color0">166<a href="https://movie.douban.com/subject/1417598/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='真相就在眼前。' target="_blank">《电锯惊魂》</a></div>
+        <div class="flex-item color0">167<a href="https://movie.douban.com/subject/1793929/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='Jared Leto的腿比女人还美！' target="_blank">《达拉斯买家俱乐部》</a></div>
+        <div class="flex-item color1">168<a href="https://movie.douban.com/subject/27119724/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《小丑》</a></div>
+        <div class="flex-item color2">169<a href="https://movie.douban.com/subject/1907966/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='老少皆宜，这就是好莱坞动画的魅力。' target="_blank">《疯狂原始人》</a></div>
+        <div class="flex-item color0">170<a href="https://movie.douban.com/subject/1578507/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='像吃了苏打饼一样干脆的电影。' target="_blank">《谍影重重3》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color1">171<a href="https://movie.douban.com/subject/24733428/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《心灵奇旅》</a></div>
+        <div class="flex-item color0">172<a href="https://movie.douban.com/subject/1307856/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《背靠背，脸对脸》</a></div>
+        <div class="flex-item color0">173<a href="https://movie.douban.com/subject/1292208/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='被上帝抛弃了的上帝之城。' target="_blank">《上帝之城》</a></div>
+        <div class="flex-item color0">174<a href="https://movie.douban.com/subject/1300374/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='天使暂时离开。' target="_blank">《绿里奇迹》</a></div>
+        <div class="flex-item color1">175<a href="https://movie.douban.com/subject/10808442/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='所谓爱情，就是话唠一路，都不会心生腻烦，彼此嫌弃。' target="_blank">《爱在午夜降临前》</a></div>
+        <div class="flex-item color0">176<a href="https://movie.douban.com/subject/25895901/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='是枝裕和的家庭习作。' target="_blank">《海街日记》</a></div>
+        <div class="flex-item color0">177<a href="https://movie.douban.com/subject/1297574/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='英雄泪短，兄弟情长。 ' target="_blank">《英雄本色》</a></div>
+        <div class="flex-item color0">178<a href="https://movie.douban.com/subject/1291585/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='动画片的圣经。' target="_blank">《风之谷》</a></div>
+        <div class="flex-item color1">179<a href="https://movie.douban.com/subject/1307106/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《无间道2》</a></div>
+        <div class="flex-item color0">180<a href="https://movie.douban.com/subject/1862151/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='中国版《两杆大烟枪》。' target="_blank">《疯狂的石头》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">181<a href="https://movie.douban.com/subject/1295409/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='香港浪漫主义警匪动作片的巅峰之作。' target="_blank">《纵横四海》</a></div>
+        <div class="flex-item color0">182<a href="https://movie.douban.com/subject/1292226/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='现代科幻电影的开山之作，最伟大导演的最伟大影片。' target="_blank">《2001太空漫游》</a></div>
+        <div class="flex-item color0">183<a href="https://movie.douban.com/subject/1293460/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='骨灰级歌舞片。' target="_blank">《雨中曲》</a></div>
+        <div class="flex-item color0">184<a href="https://movie.douban.com/subject/1291822/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='当这个世界闭上双眼，他却敞开了怀抱。' target="_blank">《卢旺达饭店》</a></div>
+        <div class="flex-item color0">185<a href="https://movie.douban.com/subject/1304447/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='一个针管引发的血案。' target="_blank">《记忆碎片》</a></div>
+        <div class="flex-item color0">186<a href="https://movie.douban.com/subject/27622447/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='我们组成了家。' target="_blank">《小偷家族》</a></div>
+        <div class="flex-item color0">187<a href="https://movie.douban.com/subject/6534248/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='迪士尼和皮克斯拿错剧本的产物。' target="_blank">《无敌破坏王》</a></div>
+        <div class="flex-item color1">188<a href="https://movie.douban.com/subject/3792799/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='岁月流逝，来日可追。' target="_blank">《岁月神偷》</a></div>
+        <div class="flex-item color0">189<a href="https://movie.douban.com/subject/1291578/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='松鼠才是角儿。' target="_blank">《冰川时代》</a></div>
+        <div class="flex-item color0">190<a href="https://movie.douban.com/subject/24750126/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='始于荒诞，止于更荒诞。' target="_blank">《荒蛮故事》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">191<a href="https://movie.douban.com/subject/1292329/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='弱者送给弱者的一刀。' target="_blank">《牯岭街少年杀人事件》</a></div>
+        <div class="flex-item color0">192<a href="https://movie.douban.com/subject/1959195/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='养狗三日，便会对你终其一生。' target="_blank">《忠犬八公物语》</a></div>
+        <div class="flex-item color0">193<a href="https://movie.douban.com/subject/3011051/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='不要企图在重复中寻找已经失去的爱。' target="_blank">《恐怖游轮》</a></div>
+        <div class="flex-item color1">194<a href="https://movie.douban.com/subject/25773932/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='这个世界从不善待努力的人，努力了也不一定会成功，但是知道自己在努力，就是活下去的动力。' target="_blank">《爆裂鼓手》</a>
+        </div>
+        <div class="flex-item color0">195<a href="https://movie.douban.com/subject/1310177/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《东京教父》</a></div>
+        <div class="flex-item color0">196<a href="https://movie.douban.com/subject/1307811/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='宫崎骏的电影总让人感觉世界是美好的，阳光明媚的。' target="_blank">《魔女宅急便》</a></div>
+        <div class="flex-item color0">197<a href="https://movie.douban.com/subject/27059130/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人们可以登上月球，却永远无法探索人们内心的宇宙。' target="_blank">《大佛普拉斯》</a></div>
+        <div class="flex-item color0">198<a href="https://movie.douban.com/subject/1291992/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='没有了退路，只好飞向自由。' target="_blank">《末路狂花》</a></div>
+        <div class="flex-item color0">199<a href="https://movie.douban.com/subject/1867345/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='用剩余不多的时间，去燃烧整个生命。' target="_blank">《遗愿清单》</a></div>
+        <div class="flex-item color0">200<a href="https://movie.douban.com/subject/2209573/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='上帝之城+猜火车+阿甘正传+开心辞典=山寨富翁' target="_blank">《贫民窟的百万富翁》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">201<a href="https://movie.douban.com/subject/1292328/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='电影诗。' target="_blank">《东邪西毒》</a></div>
+        <div class="flex-item color0">202<a href="https://movie.douban.com/subject/4848115/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='感情不分食草或者食肉。' target="_blank">《你看起来好像很好吃》</a></div>
+        <div class="flex-item color1">203<a href="https://movie.douban.com/subject/3075287/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='邓肯·琼斯继《月球》之后再度奉献出一部精彩绝伦的科幻佳作。' target="_blank">《源代码》</a></div>
+        <div class="flex-item color0">204<a href="https://movie.douban.com/subject/1308857/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='坚硬的信仰。' target="_blank">《可可西里》</a></div>
+        <div class="flex-item color0">205<a href="https://movie.douban.com/subject/3592854/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='“多么美好的一天！”轰轰轰砰咚，啪哒哒哒轰隆隆，磅~' target="_blank">《疯狂的麦克斯4：狂暴之路》</a></div>
+        <div class="flex-item color0">206<a href="https://movie.douban.com/subject/1293908/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='永远的小人物，伟大的卓别林。' target="_blank">《城市之光》</a></div>
+        <div class="flex-item color1">207<a href="https://movie.douban.com/subject/25980443/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='Just let it go' target="_blank">《海边的曼彻斯特》</a></div>
+        <div class="flex-item color0">208<a href="https://movie.douban.com/subject/1422283/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《高山下的花环》</a></div>
+        <div class="flex-item color0">209<a href="https://movie.douban.com/subject/1978709/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='黑暗之美。' target="_blank">《黑天鹅》</a></div>
+        <div class="flex-item color0">210<a href="https://movie.douban.com/subject/5300054/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《波西米亚狂想曲》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">211<a href="https://movie.douban.com/subject/1297880/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《芙蓉镇》</a></div>
+        <div class="flex-item color1">212<a href="https://movie.douban.com/subject/1292401/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱，是个动词。' target="_blank">《真爱至上》</a></div>
+        <div class="flex-item color1">213<a href="https://movie.douban.com/subject/25934014/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《爱乐之城》</a></div>
+        <div class="flex-item color0">214<a href="https://movie.douban.com/subject/1303394/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人生如此，浮生如斯。谁人言，花彼岸，此生情长意短。谁都是不懂爱的罢了。' target="_blank">《青蛇》</a></div>
+        <div class="flex-item color0">215<a href="https://movie.douban.com/subject/1291870/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='生活在自己的世界里，也可以让周围的人显得可笑和渺小。' target="_blank">《雨人》</a></div>
+        <div class="flex-item color0">216<a href="https://movie.douban.com/subject/4739952/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='黑小鸭速效美白记。' target="_blank">《初恋这件小事》</a></div>
+        <div class="flex-item color0">217<a href="https://movie.douban.com/subject/1291844/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='少见的超越首部的续集，动作片中的经典。' target="_blank">《终结者2：审判日》</a></div>
+        <div class="flex-item color0">218<a href="https://movie.douban.com/subject/34874432/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《花束般的恋爱》</a></div>
+        <div class="flex-item color2">219<a href="https://movie.douban.com/subject/1302827/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='对爱的执着，可以超越一切。' target="_blank">《人工智能》</a></div>
+        <div class="flex-item color0">220<a href="https://movie.douban.com/subject/1296909/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='永远看不腻的喜剧。' target="_blank">《虎口脱险》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">221<a href="https://movie.douban.com/subject/1438652/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='昆汀同学越来越变态了，比北野武还杜琪峰。' target="_blank">《无耻混蛋》</a></div>
+        <div class="flex-item color0">222<a href="https://movie.douban.com/subject/1309163/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱情没有那么多借口，如果不能圆满，只能说明爱的不够。 ' target="_blank">《恋恋笔记本》</a></div>
+        <div class="flex-item color0">223<a href="https://movie.douban.com/subject/1292287/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='嬉笑怒骂，调风动月。' target="_blank">《新龙门客栈》</a></div>
+        <div class="flex-item color0">224<a href="https://movie.douban.com/subject/1291879/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='人生的N种可能性。' target="_blank">《罗生门》</a></div>
+        <div class="flex-item color0">225<a href="https://movie.douban.com/subject/1959877/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《崖上的波妞》</a></div>
+        <div class="flex-item color1">226<a href="https://movie.douban.com/subject/2133323/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='去面对、去感受这个世界' target="_blank">《白日梦想家》</a></div>
+        <div class="flex-item color1">227<a href="https://movie.douban.com/subject/2051007/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='最忠于原著的一部。' target="_blank">《哈利·波特与死亡圣器(上)》</a></div>
+        <div class="flex-item color0">228<a href="https://movie.douban.com/subject/1300117/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='一部能引人思考的科幻励志片。' target="_blank">《千钧一发》</a></div>
+        <div class="flex-item color0">229<a href="https://movie.douban.com/subject/25807345/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='小成本大魅力。' target="_blank">《彗星来的那一夜》</a></div>
+        <div class="flex-item color0">230<a href="https://movie.douban.com/subject/1293318/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='幸福是生生不息，却难以触及的远。 ' target="_blank">《萤火虫之墓》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color2">231<a href="https://movie.douban.com/subject/1304141/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='一个精彩的世界观正在缓缓建立。' target="_blank">《黑客帝国2：重装上阵》</a></div>
+        <div class="flex-item color0">232<a href="https://movie.douban.com/subject/1293323/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《大红灯笼高高挂》</a></div>
+        <div class="flex-item color2">233<a href="https://movie.douban.com/subject/25864085/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《火星救援》</a></div>
+        <div class="flex-item color0">234<a href="https://movie.douban.com/subject/26787574/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='世界不完美，爱会有奇迹。' target="_blank">《奇迹男孩》</a></div>
+        <div class="flex-item color2">235<a href="https://movie.douban.com/subject/26430107/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='有一些东西不应该被遗忘。' target="_blank">《二十二》</a></div>
+        <div class="flex-item color1">236<a href="https://movie.douban.com/subject/1457217/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《哈利·波特与凤凰社》</a></div>
+        <div class="flex-item color0">237<a href="https://movie.douban.com/subject/1419936/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='做一颗让别人需要你的棋子。' target="_blank">《战争之王》</a></div>
+        <div class="flex-item color0">238<a href="https://movie.douban.com/subject/1428175/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='每个美丽事物背后都是滴血的现实。' target="_blank">《血钻》</a></div>
+        <div class="flex-item color0">239<a href="https://movie.douban.com/subject/2222996/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='日本的家庭电影已经是世界巅峰了，步履不停是巅峰中的佳作。' target="_blank">《步履不停》</a></div>
+        <div class="flex-item color0">240<a href="https://movie.douban.com/subject/1307394/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='爱情是一场没有尽头的虚幻追逐。' target="_blank">《千年女优》</a></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item color0">241<a href="https://movie.douban.com/subject/1308767/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='谁说王家卫镜头很晃？' target="_blank">《谍影重重2》</a></div>
+        <div class="flex-item color0">242<a href="https://movie.douban.com/subject/25724855/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='被偷走的岁月，被伤害的生命，被禁锢的灵魂，终将被希望和善意救赎。' target="_blank">《房间》</a></div>
+        <div class="flex-item color0">243<a href="https://movie.douban.com/subject/1293964/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='中国式内在的美国电影。' target="_blank">《魂断蓝桥》</a></div>
+        <div class="flex-item color1">244<a href="https://movie.douban.com/subject/26374197/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《蜘蛛侠：平行宇宙》</a></div>
+        <div class="flex-item color0">245<a href="https://movie.douban.com/subject/3552028/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='拍掉身上的悲伤，从今天开始重新踏上追梦之旅。' target="_blank">《弱点》</a></div>
+        <div class="flex-item color0">246<a href="https://movie.douban.com/subject/1304102/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='哗啦啦啦啦，天在下雨，哗啦啦啦啦，云在哭泣……找自己。' target="_blank">《谍影重重》</a></div>
+        <div class="flex-item color0">247<a href="https://movie.douban.com/subject/2213597/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='当爱情跨越年龄的界限，它似乎能变得更久远一点，成为一种责任，一种水到渠成的相濡以沫。 ' target="_blank">《朗读者》</a>
+        </div>
+        <div class="flex-item color0">248<a href="https://movie.douban.com/subject/26615208/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《隐藏人物》</a></div>
+        <div class="flex-item color1">249<a href="https://movie.douban.com/subject/1305690/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='王家卫是一种风格，张国荣是一个代表。' target="_blank">《阿飞正传》</a></div>
+        <div class="flex-item color1">250<a href="https://movie.douban.com/subject/4202982/" data-bs-toggle='tooltip'
+                data-bs-placement='top' title='暂无简介' target="_blank">《冰雪奇缘》</a></div>
+    </div>
+    <div class="introduce">
+        <h1>推荐</h1>
+        <h5>《海上钢琴师》《白日梦想家》《死亡诗社》《蜘蛛侠：平行宇宙》</h5>
+    </div>
+    <div class="extra">
+        <h1>额外</h1>
+        <p>历史出现在 Top250 里的电影，或其它比较有意思的电影</p>
+        <div class="flex-container">
+            <div class="flex-item color0">001<a href="https://movie.douban.com/subject/1295865/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='传奇，不是每个人都可以拥有。' target="_blank">《燃情岁月》</a>
+            </div>
+            <div class="flex-item color0">002<a href="https://movie.douban.com/subject/3443389/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='大海啊，不全是水。' target="_blank">《海洋》</a></div>
+            <div class="flex-item color0">003<a href="https://movie.douban.com/subject/1937946/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='爱上未来的你。 ' target="_blank">《穿越时空的少女》</a>
+            </div>
+            <div class="flex-item color2">004<a href="https://movie.douban.com/subject/2363506/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='天使保护事件始末。' target="_blank">《地球上的星星》</a>
+            </div>
+            <div class="flex-item color0">005<a href="https://movie.douban.com/subject/26614893/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='来啊，互相伤害啊！' target="_blank">《完美陌生人》</a></div>
+            <div class="flex-item color0">006<a href="https://movie.douban.com/subject/1760622/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='一个单凭体香达到高潮的男人。' target="_blank">《香水》</a>
+            </div>
+            <div class="flex-item color1">007<a href="https://movie.douban.com/subject/6874403/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='爱我就给我看你的播放列表。'
+                    target="_blank">《再次出发之纽约遇见你》</a></div>
+            <div class="flex-item color0">008<a href="https://movie.douban.com/subject/5908478/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='你要相信，这世上真的有爱存在，不管在什么年纪 '
+                    target="_blank">《我爱你》</a></div>
+            <div class="flex-item color0">009<a href="https://movie.douban.com/subject/25954475/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='新闻人的理性求真。' target="_blank">《聚焦》</a></div>
+            <div class="flex-item color0">010<a href="https://movie.douban.com/subject/25921812/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='过去的如果就让它过去了，未来只会越来越糟！'
+                    target="_blank">《驴得水》</a></div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item color1">011<a href="https://movie.douban.com/subject/2297265/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='世界离独裁只有五天。' target="_blank">《浪潮》</a></div>
+            <div class="flex-item color0">012<a href="https://movie.douban.com/subject/26393561/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='宝莱坞的萝莉与大叔。' target="_blank">《小萝莉的猴神大叔》</a>
+            </div>
+            <div class="flex-item color0">013<a href="https://movie.douban.com/subject/1292528/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='不可猜的青春迷笛。 ' target="_blank">《猜火车》</a></div>
+            <div class="flex-item color1">014<a href="https://movie.douban.com/subject/4135710/"
+                    data-bs-toggle='tooltip' data-bs-placement='top' title='' target="_blank">《Hello！树先生》</a></div>
+        </div>
+        <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"></script>
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        </script>
 </body>
 
 </html>
