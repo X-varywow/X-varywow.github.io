@@ -32,6 +32,9 @@ class Complex:
 
 t = Complex(10, 20)
 
+t               # use repr info
+print(t)        # use str  info
+
 print(str(t))   # Same as print(t)
 # 10 + i20
 

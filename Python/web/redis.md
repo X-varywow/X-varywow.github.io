@@ -32,9 +32,10 @@ smembers a
 - `set key value`：设置键值对。
 - `get key`：获取键的值。
 - `del key`：删除键。
+- `incrbyfloat key amount` 增加值
 - `keys pattern`：查找所有匹配的键。
 - `exists key`：检查键是否存在。
-- `expire key seconds`：设置键的过期时间（秒）。
+- `expire key 60`：设置键的过期时间60s; 默认是不会自动过期的
 - `ttl key`：查看键的剩余生存时间（秒）。
 
 ### 字符串操作
@@ -89,7 +90,7 @@ smembers a
 
 
 
-
+**Redis会将浮点数以字符串的形式存储**，因为Redis的字符串类型实际上是二进制安全的，可以包含任何数据，包括二进制数据。
 
 
 

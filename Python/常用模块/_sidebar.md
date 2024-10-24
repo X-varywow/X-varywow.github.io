@@ -12,5 +12,6 @@
   - [shutil](Python/常用模块/shutil)
   - [pillow](Python/常用模块/pillow)
   - [queue](Python/常用模块/queue)
+  - [random](Python/常用模块/random)
   - [struct](Python/常用模块/struct)
   - [sys](Python/常用模块/sys)

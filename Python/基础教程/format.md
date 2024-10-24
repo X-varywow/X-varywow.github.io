@@ -89,6 +89,17 @@ f"a is {a:.2f}"
 # -> a is 123.46
 ```
 
+eg4:
+```python
+# 先输出 k=, 再输出变量的值
+# from None 表示异常链的起点就是这里，与不写一致；from other_exception 会引用异常链
+
+raise TypeError(
+    f'The number of choices must be a keyword argument: {k=}'
+) from None
+```
+
+
 --------------
 
 参考资料：
