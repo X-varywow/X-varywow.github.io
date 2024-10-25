@@ -110,7 +110,8 @@ os.environ['APP_ENV'] = 'dev'
 
 ```bash
 # 方式 1，使用 configparser
-export APP_ENV = dev
+# linux 中设置环境变量等号两边不能空格
+export APP_ENV=dev
 
 # 方式2, 使用 argparse
 python script.py --env=dev

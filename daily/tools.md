@@ -304,7 +304,8 @@ launch.json （run & debug 相关信息）
             "console": "integratedTerminal",
             "justMyCode": true,
             "env": {
-                "PYTHONPATH": "${workspaceFolder}"
+                "PYTHONPATH": "${workspaceFolder}",
+                "APP_ENV": "test"
             }
         }
     ]
@@ -380,3 +381,22 @@ command + shift + p `>Open User Settings (JSON))`
 
 
 字体：[FiraCode](https://github.com/tonsky/FiraCode)
+
+
+## 调试
+
+`Step into`
+
+执行下一行代码，进入函数调用。
+
+
+`Step over`
+
+执行下一行代码，但不进入任何函数调用。
+
+如果当前行是一个函数调用，调试器会执行整个函数，但不进入该函数内部。
+
+
+`Step out`
+
+用于从当前函数退出，执行完当前函数的剩余部分，并停在函数的返回点上。
