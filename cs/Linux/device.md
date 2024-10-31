@@ -87,3 +87,17 @@ pip install nvitop
 
 nvitop
 ```
+
+## _资源占用情况_
+
+
+```bash
+top
+```
+
+
+```bash
+brew install htop
+
+htop
+```
