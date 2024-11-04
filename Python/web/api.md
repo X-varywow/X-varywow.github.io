@@ -157,6 +157,8 @@ apifox = postman (API开发调试) + swagger（API文档涉及）+ Mock + JMeter
 
 https://github.com/wg/wrk
 
+其它压测工具：https://github.com/hatoo/oha
+
 功能测试 -> 性能测试
 
 ```bash
