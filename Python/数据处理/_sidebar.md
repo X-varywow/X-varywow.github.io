@@ -3,6 +3,7 @@
   - [numpy](Python/数据处理/numpy)
   - [pandas](Python/数据处理/pandas)
   - [statsmodels](Python/数据处理/statsmodels)
+  - [scipy](Python/数据处理/scipy)
   - --------
   - [matplotlib](Python/数据处理/matplotlib)
   - [bokeh](Python/数据处理/bokeh)

@@ -36,6 +36,9 @@ demo: 使用远端分支创建出本地新分支
 git fetch origin 
 
 git checkout -b dev origin/dev
+
+# 更改跟踪的远端分支
+git git branch --set-upstream-to=origin/test
 ```
 
 demo: test 合并到 master 并不引起冲突
