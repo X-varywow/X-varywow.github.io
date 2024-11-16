@@ -305,6 +305,8 @@ git rebase master
 
 存储临时代码。(当前需要切换分支且当前代码修改不像提交时)
 
+比如本地调试时，经常改一些代码，这时 stash 出来，后续 stash apply 就行。
+
 ```bash
 # 保存当前未commit的代码
 git stash save "备注内容"

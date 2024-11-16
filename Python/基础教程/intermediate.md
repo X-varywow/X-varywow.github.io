@@ -44,9 +44,24 @@ def test_args_kwargs(**kwargs):
     print("arg3",  kwargs.get('arg3'))
 ```
 
-传参的时候可以少写很多
+传参的时候可以少写很多;
+
+放在类中：
+
+```python
+class People:
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            object.__setattr__(self, key, value)
+        assert self.name is not None
+```
+
+> object 是所有类的基类；始终可用，这里相当于 People(object)
 
 
+
+
+-----------------
 
 `*args` is used to send a non-keyworded variable length argument list to the function.
 
