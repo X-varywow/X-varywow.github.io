@@ -36,6 +36,9 @@ demo: 使用远端分支创建出本地新分支
 git fetch origin 
 
 git checkout -b dev origin/dev
+
+# 更改跟踪的远端分支
+git branch --set-upstream-to=origin/test
 ```
 
 demo: test 合并到 master 并不引起冲突
@@ -301,6 +304,8 @@ git rebase master
 ### _git stash_
 
 存储临时代码。(当前需要切换分支且当前代码修改不像提交时)
+
+比如本地调试时，经常改一些代码，这时 stash 出来，后续 stash apply 就行。
 
 ```bash
 # 保存当前未commit的代码

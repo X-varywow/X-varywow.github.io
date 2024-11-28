@@ -508,7 +508,16 @@ LIMIT 10;
 ```
 
 
-### 2.6 其他
+### 2.6 赋权
+
+```sql
+GRANT USAGE ON PROCEDURE mydb.myschema.myprocedure(number) TO ROLE analyst;
+
+GRANT ALL PRIVILEGES ON TABLE T1 TO ROLE analyst;
+```
+
+
+### 2.7 其他
 
 - 创建临时表
 - 加载数据 https://docs.snowflake.com/en/user-guide/data-load-overview.html

@@ -15,7 +15,7 @@ import unittest
 class case1(unittest.TestCase):
 
     # setUp() 会在每个测试用例之前执行
-    def setUp(selef) -> None:
+    def setUp(self) -> None:
         self.arr = [1]       # 后续每个 test 都能使用 self.arr 来访问
     
     # tearDown() 会在每个测试用例之后执行
@@ -184,6 +184,21 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
+
+
+## 批量测试
+
+配合 pytest 一起使用，可生成报告，插件丰富。
+
+新建 pytest.ini:
+
+```bash
+[pytest]
+testpaths = ./tests/unit
+python_files = test*.py
+```
+
+运行 `pytest` 即可测试 tests/unit 下所有 test 开头的文件
 
 
 

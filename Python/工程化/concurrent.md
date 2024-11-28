@@ -52,6 +52,32 @@ if __name__ == '__main__':
         print(p.map(f, [1, 2, 3]))
 ```
 
+----------
+
+
+每个子进程都有自己的内存空间，当在子进程中修改全局变量时，只会影响到自己内存空间中的变量副本，不会影响主进程中的原始变量。
+
+可以使用如下方式：
+
+```python
+from multiprocessing import Pool, Value
+
+def f(x, cnt):
+    cnt.value += 1
+    print(cnt.value)
+
+if __name__ == '__main__':
+    cnt = Value('i', 0)  # 'i' 表示整数类型
+    with Pool(5) as p:
+        p.starmap(f, [(1, cnt), (2, cnt), (3, cnt), (4, cnt), (5, cnt)])
+    print(cnt.value)
+```
+
+
+
+
+-----------
+
 p.map(func, iterable) 对于很长的迭代独享，会消耗很多内存。可以考虑使用 imap() 或 imap_unordered() 并且指定 chunksize 以提升效率。
 
 ```python

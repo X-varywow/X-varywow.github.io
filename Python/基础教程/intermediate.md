@@ -25,9 +25,10 @@ test_var_args('python','hello','wow')
     
 ```python
 def test_args_kwargs(arg1,arg2,arg3):
-    print("arg1:",arg1)
-    print("arg2:",arg2)
-    print("arg3",arg3)
+    print("arg1:", arg1)
+    print("arg2:", arg2)
+    print("arg3",  arg3)
+
 kwargs={"arg3":3,"arg2":"two","arg1":5}
 test_args_kwargs(**kwargs)
 
@@ -35,7 +36,33 @@ test_args_kwargs(**kwargs)
 #-->arg2: two
 #-->arg3 3
 ```
-    
+
+```python
+def test_args_kwargs(**kwargs):
+    print("arg1:", kwargs.get('arg1'))
+    print("arg2:", kwargs.get('arg2'))
+    print("arg3",  kwargs.get('arg3'))
+```
+
+传参的时候可以少写很多;
+
+放在类中：
+
+```python
+class People:
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            object.__setattr__(self, key, value)
+        assert self.name is not None
+```
+
+> object 是所有类的基类；始终可用，这里相当于 People(object)
+
+
+
+
+-----------------
+
 `*args` is used to send a non-keyworded variable length argument list to the function.
 
 `**kwargs` allows you to pass **keyworded** variable length of arguments to a function.

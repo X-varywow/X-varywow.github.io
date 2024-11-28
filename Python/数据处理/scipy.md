@@ -40,7 +40,7 @@ opt.leastsq(func, x0)
 
 ## _lsq\_linear_
 
-求解具有变量界限的最小二乘问题
+求解线性最小二乘问题
 
 minimize 0.5 * ||A x - b||**2
 subject to lb <= x <= ub
@@ -67,3 +67,43 @@ res = dict(zip(x_arr, p))
 print(res)
 # {3: 0.0413, 4: 0.1174, 5: 0.8413}
 ```
+
+</br>
+
+## _optimize.minimize_
+
+
+demo:
+
+```python
+n = len(hml)
+
+# cons1: cumulate p is 1
+
+A = np.array([
+    [WEIGHT_P for _ in range(n)],
+    [i*WEIGHT_RR for i in arr1],
+    [i*WEIGHT_MC for i in arr2],
+    [i*WEIGHT_HL for i in arr3]
+])
+b = np.array([WEIGHT_P, WEIGHT_RR, WEIGHT_MC, 0])
+# res = lsq_linear(A, b, bounds=(0,1))
+# best_x = res.x
+
+def regularization(x):
+    return np.sum((np.maximum(0.02 - x, 0))**2)
+
+def objective(x):
+    return np.linalg.norm(A @ x - b) + WEIGHT_RG*regularization(x)
+
+res = minimize(objective, x0=np.array([1/n for _ in range(n)]), method='SLSQP', bounds = [(0, 1) for _ in range(n)])
+best_x = res.x
+```
+
+
+method:
+- BFGS （拟牛顿方法，用于求解无约束优化问题，需要梯度信息）
+  - Broyden-Fletcher-Goldfarb-Shanno
+- SLSQP（一种用于求解有约束优化问题的算法，需要梯度信息）
+  - Sequential Least Squares Programming
+- Nelder-Mead （基于单纯形搜索的直接搜索方法，不需要计算目标函数的梯度）
