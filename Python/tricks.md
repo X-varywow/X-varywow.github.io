@@ -63,6 +63,12 @@ print(d)
 
 type()，dir()，getattr()，hasattr()，isinstance()
 
+- type() 检查对象的确切类型，不考虑继承关系
+- isinstance() 检查对象是否是某个类（以及子类）的实例
+
+
+-------
+
 ```python
 a = []
 
@@ -75,7 +81,6 @@ get_long??
 
 # 函数返回对象object的属性和属性值的字典对象
 vars()
-
 ```
 
 
