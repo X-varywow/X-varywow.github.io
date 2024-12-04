@@ -316,12 +316,12 @@ y_pred_class = data_test['PRED_LABEL']
 # 设置索引为 1~10
 df.set_index(pd.RangeIndex(1, 11), inplace = True)
 
-# 更改列名
+# 更改列名（简单）
 df.columns=['grammer', 'score', 'cycle']
 
 # 更改列名
-df.rename(columns={0:'var_name', 1:'mu', 2:'sigma', 3:'rank'},inplace=True)
-df.rename(columns = {df.columns[2]:'size'}, inplace=True)
+# df.rename(columns={0:'var_name', 1:'mu', 2:'sigma', 3:'rank'},inplace=True)
+# df.rename(columns = {df.columns[2]:'size'}, inplace=True)
 ```
 
 

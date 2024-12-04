@@ -34,6 +34,12 @@ kubectl describe pod pod-name -n prod
 - pod 容器组，是k8s 集群中可以运行容器的最小单位
 
 
+demo: 查找指定 ip 的 POD
+
+```bash
+kubectl get pods --all-namespaces -o wide | grep 10.210.155.155
+```
+
 
 ------------
 
