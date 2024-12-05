@@ -124,6 +124,7 @@ pool.get_stats()
 
 - connections_num: 连接池中当前的连接总数。
 - requests_num: 连接池创建以来处理的请求总数。
+- requests_queued: 连接池创建以来排队等待的请求总数。
 - pool_size: 连接池当前的大小，即当前活跃的连接数。
 - pool_min: 连接池的最小连接数。
 - pool_max: 连接池的最大连接数。

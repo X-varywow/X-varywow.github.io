@@ -1,5 +1,9 @@
 
-## _基本原理_
+## _LGBM_
+
+</br>
+
+### _基本原理_
 
 LightGBM（Light Gradient Boosting Machine）是一个 **实现GBDT算法的框架**。支持高效率的并行训练，并且具有 **更快的训练速度、更低的内存消耗**、更好的准确率、支持分布式可以快速处理海量数据等优点。
 
@@ -32,7 +36,7 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 
 模型训练时使用的损失函数是通过 `objective` 参数来指定的。
 
-因此，如果你设置了`objective`为`quantile`（分位数回归），那么无论你在`eval_metric`中指定了哪些评估指标（比如`'mae'`, `'huber'`等），模型训练时使用的损失函数都是分位数损失。
+因此，如果你设置了`objective`为`quantile`（分位数回归），那么无论你在`eval_metric`中指定了哪些 **评估指标**（比如`'mae'`, `'huber'`等），模型训练时使用的损失函数都是分位数损失。
 
 --------------
 
@@ -59,7 +63,7 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 
 </br>
 
-## _原生方式_
+### _原生方式_
 
 ```python
 import lightgbm as lgb
@@ -139,7 +143,7 @@ sklearn 接口形式，参考如下分数位回归：
 
 </br>
 
-## _分位数回归_
+### _分位数回归_
 
 quantile regression，最小化所选分位数切点产生的绝对误差之和
 
@@ -218,6 +222,30 @@ param_grid = {
 gbm = GridSearchCV(estimator, param_grid)
 gbm.fit(X_train, y_train)
 print('Best parameters found by grid search are:', gbm.best_params_)
+```
+
+
+
+</br>
+
+### _自定义目标函数_
+
+```python
+import numpy as np
+
+def median_objective(y_true, y_pred) -> (np.ndarray, np.ndarray):
+    # 计算残差
+    residual = y_true - y_pred
+    
+    # 残差的一阶导数（梯度）
+    # 对于中位数回归，梯度是残差的符号
+    grad = np.where(residual > 0, -1, 1) if residual.size else np.zeros_like(residual)
+    
+    # 残差的二阶导数（Hessian）
+    # 对于中位数回归，二阶导数是0，因为绝对值函数在任何点的曲率都是0
+    hess = np.zeros_like(residual)
+    
+    return grad, hess
 ```
 
 
