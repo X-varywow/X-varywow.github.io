@@ -3,12 +3,9 @@
 ## _preface_
 
 
-Transformer 引入的自注意力机制能够有效 <u>捕捉序列信息中长距离依赖关系</u>，相比于以往的 RNNs, 它在处理长序列时的表现更好
+相较于以前处理序列问题的网络（循环神经网络RNN）, 主要创新：
 
-
-
-- 序列处理问题，传统的循环神经网络(RNNs)、长短时记忆网络(LSTMs)等模型存在一些限制。 transformer 被设计用来解决这些问题。
-- 自注意力机制（关键创新），使得模型在处理序列数据时能够同时关注序列中的不同位置，不必像传统模型一样逐步处理
+- 自注意力机制（关键创新），使得模型在处理序列数据时能够同时关注序列中的不同位置，不必像传统模型一样逐步处理；能捕捉序列信息中长距离依赖关系， **长序列表现更好**
 - 编码器，解码器
 - 多头注意力，对注意力机制的扩展，每个头都学习关注输入序列的不同部分，然后这些不同头的输出合并起来
 - 其它基本模块：残差连接（允许信息直接通过跳跃连接传递）、层归一化（稳定训练过程）、位置编码
@@ -16,9 +13,16 @@ Transformer 引入的自注意力机制能够有效 <u>捕捉序列信息中长�
 
 </br>
 
-## _注意力机制_
+## _Encoder-Decoder_
 
-直接字面意思理解
+`Encoder-Decoder`，是一个解决问题的通用解法；如距离问题，我们可以将位置编码为坐标，运算好了之后再 decoder 出答案；在机器学习中，各种信息，如文字、图片、音频，都需要 encoder，“将现实问题转化为数学问题”。之后的 decoder，即“求解数学问题，并转化为现实世界的解决方案”
+
+
+</br>
+
+## _self-attention_
+
+Self-attention, sometimes called intra-attention is an attention mechanism **relating different positions of a single sequence** in order to compute a representation of the sequence.
 
 - Query , 是一个特征向量，描述注意的内容
 - Keys, 输入元素键向量
@@ -38,21 +42,6 @@ $$Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt d})V$$
 
 Q K V 的矩阵尺寸都是 T*d, T 为序列长度，d 为查询键的维度
 
-
-
--------------
-
-参考资料：
-- 学校课程
-- [论文原文：Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf)
-- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) ⭐️ [中文版](https://blog.csdn.net/longxinchen_ml/article/details/86533005)
-- [Transformer从零详细解读(可能是你见过最通俗易懂的讲解)](https://www.bilibili.com/video/BV1Di4y1c7Zm)
-- [在线激情讲解transformer&Attention注意力机制](https://www.bilibili.com/video/BV1y44y1e7FW)
-- [【Transformer模型】曼妙动画轻松学，形象比喻贼好记](https://www.bilibili.com/video/BV1MY41137AK)
-- [手推transformer](https://www.bilibili.com/video/BV1UL411g7aX)
-- https://blogs.nvidia.com/blog/2022/03/25/what-is-a-transformer-model/
-- https://www.zhihu.com/question/445556653/answer/3254012065
-- chatgpt
 
 
 https://mp.weixin.qq.com/s/gvL6CjQWzhI5hBclBZk2qA
@@ -237,6 +226,10 @@ class MultiHeadAttention(nn.Module):
 
 ## _MHA_
 
+Multi-Headed Attention
+
+https://nn.labml.ai/transformers/mha.html
+
 
 ## _LocalAttenation_
 
@@ -286,3 +279,20 @@ $$(softmax_1(x))_i = \frac{exp(x_i)}{1 + \sum_jexp(x_j)}$$
 
 
 
+
+
+-------------
+
+参考资料：
+- 学校课程
+- [论文原文：Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf)
+- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) ⭐️ [中文版](https://blog.csdn.net/longxinchen_ml/article/details/86533005)
+- [Transformer从零详细解读(可能是你见过最通俗易懂的讲解)](https://www.bilibili.com/video/BV1Di4y1c7Zm)
+- [在线激情讲解transformer&Attention注意力机制](https://www.bilibili.com/video/BV1y44y1e7FW)
+- [【Transformer模型】曼妙动画轻松学，形象比喻贼好记](https://www.bilibili.com/video/BV1MY41137AK)
+- [手推transformer](https://www.bilibili.com/video/BV1UL411g7aX)
+- https://blogs.nvidia.com/blog/2022/03/25/what-is-a-transformer-model/
+- [Attention 机制](https://easyai.tech/ai-definition/attention/)
+- [Encoder-Decoder 和 Seq2Seq](https://easyai.tech/ai-definition/encoder-decoder-seq2seq/)⭐
+- https://www.zhihu.com/question/445556653/answer/3254012065
+- chatgpt

@@ -40,7 +40,6 @@ https://github.com/valinet/ExplorerPatcher/wiki/All-features
 - [ ] 课程笔记整理
 - [ ] 更新 develop
 - [ ] 系统论的书
-- [ ] MHA
 - [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档
 
@@ -56,7 +55,6 @@ huawei ai tutorial
 
 https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#speed-is-your-friend
 
-- [ ] blog ML/DL/transformer 整理
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
 

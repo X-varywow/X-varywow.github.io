@@ -81,6 +81,3 @@ else:
     plt.legend()
     plt.grid()
 ```
-
-
-这就用 transformer 了， 能用和理解隔了很多
