@@ -74,7 +74,7 @@ pd.DataFrame(np.random.randn(3,4),index=dates,columns=list('abcd'))
 
 </br>
 
-## _查看&行遍历&排序_
+## _查看&遍历&选择_
 
 重要方法： head(), info(), describe()
 
@@ -160,12 +160,9 @@ result = df.query('col1 == 3 | col2 == 2')
 df.query(f"a.isnull() & updated_at > {t}")
 ```
 
+-------------
 
-
-
-</br>
-
-## _选择&常见操作_
+**选择**
 
 （1）获取单列，`df.a` 与 `df['a']` 等效
 
@@ -177,7 +174,7 @@ df['w'].unique()        # # of distinct values in a column
 （2）获取行，用 [ ] 切片行，如 `df[1:]`
 
 
-（3）`df.iloc()` 通过整数位置来访问和选择数据
+（3）`df.iloc[]` 通过整数位置来访问和选择数据
 
 ```python
 # 选取 10-20 行
@@ -225,8 +222,12 @@ data_test_copy = data_test.copy()
 
 
 
+</br>
 
-其它方法：
+## _常见处理_
+
+
+
 ```python
 # 最大、最小
 df.nlargest(n, 'value')
@@ -277,12 +278,8 @@ for i, row in online_user_df.iterrows():
         new_df = new_df.append(selected_row, ignore_index=True)
 ```
 
+-------------
 
-
-
-</br>
-
-_常见操作_
 
 ```python
 # 查看分位数 
@@ -345,6 +342,27 @@ print(new_df)
 ```
 
 
+------------
+
+`cut` , 将数据按照设定分桶
+
+```python
+import pandas as pd
+
+# 假设df是你的DataFrame，col1是你要转换的列
+# bins定义了桶的边界，labels定义了每个桶对应的标签
+bins = [0, 10, 20]
+labels = ['a', 'b']
+
+# 使用cut函数进行分桶
+df['col1_binned'] = pd.cut(df['col1'], bins=bins, labels=labels, right=False)
+
+# 查看结果
+print(df)
+```
+
+
+
 </br>
 
 ## _分组 & 开窗_
@@ -396,6 +414,7 @@ for window in s.rolling(window=2):
 
 ## _自定义函数_
 
+
 ```python
 # eg1
 df["height"] = df["height"].apply(lambda x: 2 * x)
@@ -414,7 +433,6 @@ train["Age"] = train["Age"].apply(age_fun)
 df['new_col'] = df.apply(lambda x: func(x['col1'], x['col2']))
 
 
-
 # eg3 耗时较久
 from bisect import bisect_right
 
@@ -424,11 +442,17 @@ def func(x):
         return bisect_right(score, [0, 5000, 11000, 21000, 36000])
     else:
         return bisect_right(score, [0, 5000, 18000, 30000, 56000])
-    
-    
 
 df['LABEL'] = df.apply(func, axis=1) # 按行应用
 ```
+
+
+```python
+df['new_col'] = df.progress_apply(lambda row: func(row['col1'], row['col2']), axis = 1)
+```
+
+
+
 
 </br>
 
