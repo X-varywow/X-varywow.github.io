@@ -1,7 +1,6 @@
 
 ## _LGBM_
 
-</br>
 
 ### _基本原理_
 
@@ -386,6 +385,19 @@ for feature, importance in importance_data:
     print(f"Feature: {feature}, Importance: {importance}")
 ```
 
+-----------------
+
+LightGBM的`plot_importance`函数通常使用基于模型内部的度量，例如增益（gain）或覆盖度（cover）来表示特征的重要性。增益衡量特征通过分裂增加的准确性，而覆盖度衡量该特征出现在多少样本的分布中。这些指标主要基于训练过程中树结构的信息。
+
+相较之下，SHAP值（Shapley Additive Explanations）从博弈论的角度解释模型输出。通过考虑所有可能的特征组合，SHAP值为每个特征提供了其对模型最终预测的贡献程度，更全面地研究了特征值如何影响预测结果。
+
+因此，虽然LightGBM的增益和SHAP值都用于评估特征重要性，但两者从不同的视角进行评估，可能会导致不同的重要性排名和解释。这种差异可能提供了对模型行为的更全面的理解。
+
+
+
+
+
+
 
 
 
@@ -425,6 +437,29 @@ shap.plots.beeswarm(shap_values)
 lgbm 只是对样本整体做了一个分位数回归，当样本整体需要看子样本维度的时候，如深水区、浅水区、都需要完美预测运动员的水平，但是分位数回归只是整体做了一个 50 分位的预测，
 
 虽然整体上看偏差还是正态，无太大问题， 但是各个子样本（训练与预测）的分布不同、峰度、偏度不同，大概率会产生一定问题，可以尝试：拆分样本。
+
+
+--------
+
+lgbm 14 分类模型实例：
+
+```python
+explain_df = pd.DataFrame([fixed_persona_default_values], columns=TOTAL_FEATURES)
+
+explainer = shap.Explainer(model)
+
+shap_values = explainer(explain_df)
+
+# param2 means class; cur model : 0~ 13
+shap_values = shap_values[..., 13]
+
+shap.plots.bar(shap_values, max_display=20)
+
+# help(shap.plots.bar)
+```
+
+
+
 
 
 ## other
@@ -475,6 +510,25 @@ lgb.plot_metric(model)
 
 lgb.plot_importance(model)
 ```
+
+查看树结构：
+
+```python
+num_trees = model.num_trees()
+print(num_trees)
+
+
+lgb.create_tree_digraph(model, tree_index=10)
+```
+
+
+
+
+
+
+
+-----------
+
 
 相关链接
 

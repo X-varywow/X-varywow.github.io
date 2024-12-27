@@ -111,3 +111,6 @@ https://blog.csdn.net/xian0710830114/article/details/142487069
 
 
 https://github.com/microsoft/generative-ai-for-beginners
+
+
+https://xie.infoq.cn/article/7dbe03e1912fbe9563b37b07b

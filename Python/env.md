@@ -147,17 +147,18 @@ sys.path.append("path")
 
 | 命令             | 说明                                       |
 | ---------------- | ------------------------------------------ |
-| %lsmagic         | 列出所有magics命令                         |
-| %run             | 执行脚本                                   |
-| %pwd             | 输出当前路径                               |
-| %pip             | 使用pip指令                                |
-| %env             | 列出全部环境变量                           |
-| %%latex          | 写Latex公式                                |
+| `%lsmagic`       | 列出所有magics命令                         |
+| `%run`           | 执行脚本                                   |
+| `%pwd`           | 输出当前路径                               |
+| `%pip`           | 使用pip指令                                |
+| `%env`           | 列出全部环境变量                           |
+| `%latex`         | 写Latex公式                                |
 | `%load`          | 加载指定的文件到单元格中                   |
 | `%quickref`      | 显示IPython的快速参考                      |
 | `%timeit`        | 多次运行代码并统计代码执行时间             |
 | `%prun`          | 用`cProfile.run`运行代码并显示分析器的输出 |
 | `%who` / `%whos` | 显示命名空间中的变量                       |
+| `capture`        | 不显示输出信息，常与 pip 一起              |
 
 
 ```python
