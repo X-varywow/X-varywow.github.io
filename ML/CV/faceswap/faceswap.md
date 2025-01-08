@@ -69,9 +69,6 @@ python faceswap.py gui
 
 训练需要太久了 12h ~ weeks
 
-tkinter 虽然界面丑了点，还是可以用的。
-
-
 -------------
 
 参考资料：
