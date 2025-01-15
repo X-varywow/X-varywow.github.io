@@ -1,4 +1,5 @@
 # TODO: 测一下速度vs pillow
+# ref: https://cnblogs.com/enumx/p/12342186.html
 import os
 import random
 import time
