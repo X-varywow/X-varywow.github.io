@@ -199,6 +199,19 @@ for idx in range(len(result)):
 
 
 
+ocr 还是 paddle ocr 好些；简单测了下，
+
+
+[Tesseract](https://github.com/tesseract-ocr/tesseract) 64k star 
+
+速度上慢了1/2, paddleOCR 200ms 的需要 300ms, 准确率也是比不上
+
+```
+[[('Chrome文件修改查看历史记录书签个', 0.9954605102539062)]]
+识别成：
+'Chrome 文 件 怀\n\n'
+```
+
 
 
 
