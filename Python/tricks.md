@@ -257,8 +257,6 @@ class Solution:
 
 flake8
 
-vscode 插件：autopep8 可以 format on save
-
 command + shift + p `>Open User Settings (JSON))`
 
 ```json

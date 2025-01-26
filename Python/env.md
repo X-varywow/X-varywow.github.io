@@ -50,10 +50,6 @@ debug 非常方便。配置环境变量(运行符号点击后)有个 modify run 
 
 
 
-vscode, 安装 pylance 插件发现基础的语法错误;
-
-vscode 内 Jupyter 扩展可替换 Jupyter Notebook;
-
 ---------------
 
 主题颜色等，

@@ -148,7 +148,33 @@ text_widget.delete(1.0, tk.END)  # 清空文本框
 text_widget.insert(tk.END, ocr_text.strip())  # 插入新的 OCR 结果
 ```
 
+
+
 ## 测测 OCR
+
+(1) 工具选择
+
+只测试了 Tesseract 和 paddle, 还是 paddle ocr 好些；当前需求已经够用了
+
+
+[Tesseract](https://github.com/tesseract-ocr/tesseract) 64k star 
+
+速度上慢了1/2, paddleOCR 200ms 的需要 300ms, 准确率也是比不上
+
+```
+[[('Chrome文件修改查看历史记录书签个', 0.9954605102539062)]]
+识别成：
+'Chrome 文 件 怀\n\n'
+```
+
+
+
+
+----------------
+
+
+（2）性能测试
+
 
 mac 上截图只能截到桌面的图，先测试着
 
@@ -163,7 +189,7 @@ screenshot?? # 显示详细信息
 
 pyautogui 也是直接用的这个方法，timeit 测出来耗时 150ms (mac)
 
-> windows 耗时 40ms; 扩展至 2560*1080 也才 48ms 
+> windows 耗时 40ms; 扩展至 2560*1440 也才 48ms 
 
 
 ```python
@@ -187,30 +213,7 @@ for idx in range(len(result)):
         print(line)
 ```
 
-> 识别的是准的
-
-
-识别耗时 200ms; (mac, cpu)
-
-**测测 win**
-
-
-1 s 更新两帧 就不错了；程序剩余 500 - 200 - 150 = 150ms;
-
-
-
-ocr 还是 paddle ocr 好些；简单测了下，
-
-
-[Tesseract](https://github.com/tesseract-ocr/tesseract) 64k star 
-
-速度上慢了1/2, paddleOCR 200ms 的需要 300ms, 准确率也是比不上
-
-```
-[[('Chrome文件修改查看历史记录书签个', 0.9954605102539062)]]
-识别成：
-'Chrome 文 件 怀\n\n'
-```
+(mac, cpu) 识别耗时 200ms; (windows, 4060laptop) 平均耗时 11 ms
 
 
 
