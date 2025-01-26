@@ -163,7 +163,7 @@ screenshot?? # 显示详细信息
 
 pyautogui 也是直接用的这个方法，timeit 测出来耗时 150ms (mac)
 
-**测测 win**
+> windows 耗时 40ms; 扩展至 2560*1080 也才 48ms 
 
 
 ```python
