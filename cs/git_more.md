@@ -152,20 +152,6 @@ _Commit Message 规范_
 - test: 测试、测试用例等
 
 
-## gitlens 使用
-
-vscode 安装 gitlens 插件， 关闭 Gitlens > Code Lens Enabled
-
-常用功能： 
-
-commits 历史修改对比
-
-分支对比：（gitlens inspect） -> (compare references)
-
-文件行级别最近修改：右上角 file annotations
-
-default date format:  "YYYY/MM/DD HH:mm"
-
 
 ## Github
 

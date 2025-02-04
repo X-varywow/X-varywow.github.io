@@ -7,3 +7,5 @@
   - [自动重命名](Python/项目/自动重命名)
   - [腾讯云图床管理工具](Python/项目/cos)
   - [外挂](Python/项目/外挂)
+  - [gui](Python/项目/gui)
+  - [tkinter](Python/项目/tkinter)

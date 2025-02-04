@@ -168,8 +168,6 @@ function createPdfViewerWindow(args) {
 
 .github/workflows/main.yml git打包发布自动化工作流
 
-.vscode/launch.json 配置vscode执行信息
-
 .gitignore
 
 
