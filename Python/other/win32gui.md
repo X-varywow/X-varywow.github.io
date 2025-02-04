@@ -10,6 +10,8 @@ win32的python接口， [github地址](https://github.com/mhammond/pywin32)
 
 
 ```python
+import win32gui
+
 def enum_windows_callback(hwnd, top_windows):
     if win32gui.IsWindowVisible(hwnd) and win32gui.GetWindowText(hwnd) != "":
         top_windows.append((hwnd, win32gui.GetWindowText(hwnd)))
