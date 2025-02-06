@@ -26,4 +26,5 @@ TTS, Text-To-Speech。
 -------------------
 
 参考资料：
+- [tts 综述笔记](https://mp.weixin.qq.com/s/2DIURi_baWqMLWKTmR4qRQ) ⭐️
 - [Sambert-Hifigan模型介绍](https://modelscope.cn/models/damo/speech_sambert-hifigan_nsf_tts_cally_en-us_24k/summary)

@@ -133,6 +133,17 @@ _分支规范_
 
 </br>
 
+常用环境：
+- `PRO`（Production environment）：生产环境
+- `DEV`（Development environment）：用于开发者调试使用
+- `FAT`（Feature Acceptance Test environment）：功能验收测试环境，用于测试环境下的软件测试者测试使用
+- `UAT`（User Acceptance Test environment）：用户验收测试环境，用于生产环境下的软件测试者测试使用
+
+
+
+
+</br>
+
 _Commit Message 规范_
 
 `<type>(<scope>):<subject>`, 如 fix(a.py): divide by 0
@@ -192,10 +203,49 @@ logger.addHandler kinesis language:Python
 
 >GitHub Actions is a convenient CI/CD service provided by GitHub.
 
+触发时（push, pull_request ...），自动运行事件（拉取代码，运行测试，发布服务）
+
+配置文件：.github/workflows/xxx.yaml
+
+demo:
+
+```yaml
+name: GitHub Actions Build and Deploy Demo
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        BUILD_SCRIPT: npm install && npm run build
+```
+
+1. 整个流程在master分支发生push事件时触发。
+2. 只有一个job，运行在虚拟机环境ubuntu-latest。
+3. 第一步是获取源码，使用的 action 是actions/checkout。
+4. 第二步是构建和部署，使用的 action 是JamesIves/github-pages-deploy-action。
+5. 第二步需要四个环境变量，分别为 GitHub 密钥、发布分支、构建成果所在目录、构建脚本。其中，只有 GitHub 密钥是秘密变量，需要写在双括号里面，其他三个都可以直接写在文件里。
+
+
+
+
+
+-------------
 
 参考资料：
-- [GithubAction---Workflow概念和基本操作](https://zhuanlan.zhihu.com/p/377731593)
 - [GitHub Actions 入门教程](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
+- https://docs.github.com/zh/actions
 - https://www.actionsbyexample.com/
 - https://github.com/firstcontributions/first-contributions
 

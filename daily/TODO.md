@@ -120,3 +120,6 @@ https://github.com/abi/screenshot-to-code
 
 
 66, 前端直接生成代码
+
+
+https://api-docs.deepseek.com/zh-cn/prompt-library/
