@@ -11,6 +11,3 @@
   - [Word2vec](ML/NLP/Word2vec)
   - [语言模型](ML/NLP/b_hw5)
   - [NCRF++](ML/NLP/b_hw6)
-  - ---
-  - [GPT](ML/LLM/gpt)
-  - [LLM](ML/LLM/llm)

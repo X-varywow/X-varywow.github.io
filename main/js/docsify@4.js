@@ -5022,7 +5022,7 @@
                         + (n.name ? '<h1 class="app-name"><a class="app-name-link" data-nosearch>' 
                         + (n.logo ? '<img alt="' + i + '" src=' + n.logo + ">" : i) + "</a></h1>" : "") 
                         + '<div class="sidebar-nav">\x3c!--sidebar--\x3e</div></aside>') 
-                + '<section class="content"><div id="container"><article class="markdown-section" id="main">\x3c!--main--\x3e</article><footer><p>Copyright © 2020 - 2024 将心晴 | Powered by Docsify</p></footer></div></section></main>'
+                + '<section class="content"><div id="container"><article class="markdown-section" id="main">\x3c!--main--\x3e</article><footer><p>Copyright © 2020 - 2025 将心晴 | Powered by Docsify</p></footer></div></section></main>'
                         
                         ), 
                         this._renderTo(u, f, !0)) : this.rendered = !0, e.mergeNavbar && s ? p = b(".sidebar") : (c.classList.add("app-nav"), 
