@@ -213,7 +213,7 @@ for idx in range(len(result)):
         print(line)
 ```
 
-(mac, cpu) 识别耗时 200ms; (windows, 4060laptop) 平均耗时 11 ms
+(mac, cpu) 识别耗时 200ms; (windows, 4060laptop) 平均耗时 11 ms; (windows, 4080) 平均耗时 6.2 ms
 
 
 
