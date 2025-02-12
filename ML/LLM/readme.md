@@ -18,3 +18,20 @@ llm
 | deepseek | 很好     | 一般     |
 | gpt      | 好       | 严格     |
 | kimi     | 一般     |          |
+
+
+--------
+
+
+webui:
+- https://github.com/ChatGPTNextWeb/NextChat
+- https://github.com/open-webui/open-webui
+
+https://docs.openwebui.com/
+
+```bash
+conda create -n py311 python=3.11 -y
+conda activate py311
+pip install open-webui
+
+```

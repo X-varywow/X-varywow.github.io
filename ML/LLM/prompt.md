@@ -2,6 +2,17 @@
 https://api-docs.deepseek.com/zh-cn/prompt-library/
 
 
+三个基本角色：
+
+| 角色      | 作用                      |
+| --------- | ------------------------- |
+| system    | 设定 AI 基础行为准则      |
+| user      | 用户提问/追加提问         |
+| assistant | ai 的历史回复，保持连贯性 |
+
+
+
+
 ### demo. 自动编写提示词
 
 ```python
