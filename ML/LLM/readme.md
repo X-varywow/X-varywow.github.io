@@ -26,6 +26,7 @@ llm
 webui:
 - https://github.com/ChatGPTNextWeb/NextChat
 - https://github.com/open-webui/open-webui
+- https://github.com/Bin-Huang/chatbox
 
 https://docs.openwebui.com/
 
@@ -35,3 +36,5 @@ conda activate py311
 pip install open-webui
 
 ```
+
+https://github.com/deepseek-ai/awesome-deepseek-integration/blob/main/README_cn.md

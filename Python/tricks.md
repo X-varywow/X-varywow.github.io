@@ -22,6 +22,24 @@ deco_hello("Snow")
 # 简易的装饰器思想
 ```
 
+```python
+# 改写 logger.info 使其接收额外的参数
+from loguru import logger
+
+def add_extra_info(func):
+    def wrapper(*args, extra=None, **kwargs):
+        if extra is not None:
+            # 将额外的信息添加到日志消息中
+            args = (f"{args[0]} | Extra: {extra}",) + args[1:]
+        return func(*args, **kwargs)
+    return wrapper
+
+# 给 logger.info 方法添加额外的装饰器
+logger.info = add_extra_info(logger.info)
+
+logger.info("这是一条日志消息。", extra="这是额外的信息")
+```
+
 >一切事物(无论是数据结构如：数字、字符串、函数，还是代码结构如：函数、类、模块)都是对象;</br></br>
 都可以像对象一样被赋值给变量，可以作为参数传递给函数，可以作为函数的返回值，也可以赋予属性或赋予方法。这就给Python的代码风格带来了极大的统一性和灵活性。
 
