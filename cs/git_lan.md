@@ -148,6 +148,19 @@ Tags give the ability to mark specific points in history as being important
 
 [参考](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
 
+```bash
+# 创建
+git tag <tag_name> <commit_id>
+
+# 推送远程
+git push origin <tag_name>
+git push origin --tags
+
+# 删除
+git tag -d <tag_name>
+git push origin -d <tag_name>
+```
+
 
 ## 7.更新与合并
 

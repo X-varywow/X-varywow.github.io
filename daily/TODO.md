@@ -40,7 +40,6 @@ https://github.com/valinet/ExplorerPatcher/wiki/All-features
 - [ ] 课程笔记整理
 - [ ] 更新 develop
 - [ ] 系统论的书
-- [ ] vgg 代码写法，看起来  vits 代码不够优雅
 - [ ] 多读 torch 文档
 
 
@@ -123,3 +122,9 @@ https://github.com/abi/screenshot-to-code
 
 
 https://api-docs.deepseek.com/zh-cn/prompt-library/
+
+langchain, autogpt;
+
+https://github.com/NirDiamant/GenAI_Agents?tab=readme-ov-file
+
+ban 了一条路，，
