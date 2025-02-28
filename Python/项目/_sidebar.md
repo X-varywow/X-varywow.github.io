@@ -4,6 +4,5 @@
   - [2048](Python/项目/2048)
   - [豆瓣250](Python/项目/douban250)
   - [腾讯云图床管理工具](Python/项目/cos)
-  - [外挂](Python/项目/外挂)
   - [gui](Python/项目/gui)
   - [tkinter&ocr](Python/项目/tkinter)
