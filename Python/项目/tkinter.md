@@ -173,7 +173,7 @@ text_widget.insert(tk.END, ocr_text.strip())  # 插入新的 OCR 结果
 ----------------
 
 
-（2）性能测试
+（2）截图性能测试
 
 
 mac 上截图只能截到桌面的图，先测试着
@@ -191,6 +191,39 @@ pyautogui 也是直接用的这个方法，timeit 测出来耗时 150ms (mac)
 
 > windows 耗时 40ms; 扩展至 2560*1440 也才 48ms 
 
+
+windows 有着更高效的方法：mss 只要 7ms
+
+
+```python
+%%timeit
+
+import mss
+from PIL import Image
+
+# 定义截图区域 (left, top, width, height)
+bbox = (0, 0, 300, 300)
+
+with mss.mss() as sct:
+    # 设置截图区域
+    monitor = {"top": bbox[1], "left": bbox[0], "width": bbox[2], "height": bbox[3]}
+    
+    # 截图
+    screenshot = sct.grab(monitor)
+    
+    # 将截图转换为 PIL 图像
+    img = Image.frombytes("RGB", screenshot.size, screenshot.bgra, "raw", "BGRX")
+
+# 显示截图
+# img.show()
+```
+
+
+
+
+------------
+
+（3）OCR性能测试
 
 ```python
 from paddleocr import PaddleOCR

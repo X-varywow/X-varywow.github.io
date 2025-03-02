@@ -10,7 +10,7 @@
   - [tqdm](Python/工程化/tqdm)
   - [traceback](Python/工程化/traceback)
   - ------
-  - [conda & poetry](Python/工程化/conda)
+  - [conda](Python/工程化/conda)
   - [steuptools](Python/工程化/setuptools)
   - [并发 & 并行](Python/工程化/concurrent)
   - [cprofile性能分析](Python/工程化/cprofile)

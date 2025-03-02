@@ -8,6 +8,9 @@ https://pytorch.org/tutorials/beginner/introyt/introyt1_tutorial.html
 
 ---------
 
+
+检查环境：
+
 ```python
 import torch
 print(torch.__version__)
@@ -16,6 +19,22 @@ print(torch.backends.cudnn.version())
 print(torch.cuda.is_available())
 ```
 
+---------
+
+安装torch:
+
+(pip 没找到对应的版本， nvidia-smi 可查看本机 cuda 版本)
+
+```bash
+conda create -n cu118 -y
+conda activate cu118
+
+pip install ipykernel
+python -m ipykernel install --user --name=cu118_kernel
+
+
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia -y
+```
 
 
 
