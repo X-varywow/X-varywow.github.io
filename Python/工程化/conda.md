@@ -66,11 +66,11 @@ conda config --remove channels some-channel
 
 ## _! 与 %_
 
-打通kernel, conda, !, %run {}
+打通 kernel, conda, !, %run {}
 
-`!cmd` : 新建一个子shell 执行 cmd, cmd 执行完，这个子 shell 也就消失了
+`!cmd` : 新建临时 shell 执行 cmd, cmd 执行完，这个子 shell 也就消失了
 
-要想在当前的shell 生效，需要使用 `%cmd`
+`%cmd` : 在当前的 shell 生效(所以切换路径等操作使用这个)
 
 ```python
 # 可以看到使用 ！的环境会有问题，而下面这行不会（中间有个自动的转魔法方法）
@@ -78,7 +78,7 @@ conda config --remove channels some-channel
 pip show torch
 ```
 
-https://jakevdp.github.io/PythonDataScienceHandbook/01.05-ipython-and-shell-commands.html
+-------------
 
 demo：
 
@@ -91,14 +91,21 @@ prepare_command = f"./model/stylegan/prepare_data.py --out ./data/{project_name}
 ```python
 # line mode
 %timeit func()
+```
 
+```python
 # cell mode
 %%timeit
 
 func()
 ```
 
-https://jakevdp.github.io/PythonDataScienceHandbook/01.05-ipython-and-shell-commands.html
+```python
+# ! 值可传递
+contents = !ls
+
+print(contents) # ['myproject.txt']
+```
 
 
 
