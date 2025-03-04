@@ -7,6 +7,12 @@
 subprocess 直接调用外部的二进制程序，而非代码模块，**适用于与外部进程交互**。
 
 
+</br>
+
+## _run_
+
+
+
 demo1: 常见用法
 
 ```python
@@ -15,6 +21,33 @@ import subprocess
 cmd = f"ffmpeg -y -ss 00:00:00 -i {video} -to 00:00:08 -c copy video_input.mp4"
 subprocess.run(cmd.split())
 ```
+
+
+
+```python
+import subprocess
+
+# 执行命令并等待完成
+result = subprocess.run(['ls', '-l'], capture_output=True, text=True)
+
+# 输出命令的返回码、标准输出和标准错误
+print("Return code:", result.returncode)
+print("Standard Output:", result.stdout)
+print("Standard Error:", result.stderr)
+```
+
+- capture_output=True 和 text=True，可以捕获命令的标准输出和标准错误，并将其作为字符串返回
+- shell=True 可以在 shell 中执行命令
+
+
+
+
+</br>
+
+## _check\_output_
+
+
+
 
 demo2，附带参数运行命令并返回其输出：
 
@@ -32,6 +65,12 @@ def run_ffmpeg(args : List[str]) -> bool:
 如果只需要获取命令的标准输出结果，并且不需要对异常进行处理，可以使用subprocess.check_output()函数。
 
 而如果需要更多的灵活性，并且需要对异常进行处理，可以使用subprocess.run()函数。
+
+
+</br>
+
+
+## _Popen_
 
 
 demo3: streamlit

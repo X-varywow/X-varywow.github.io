@@ -2,6 +2,7 @@
 - [Python/实践](Python/项目/)
   - [自动键鼠](Python/项目/自动键鼠)
   - [2048](Python/项目/2048)
+  - [跳一跳脚本](Python/项目/jump)
   - [豆瓣250](Python/项目/douban250)
   - [腾讯云图床管理工具](Python/项目/cos)
   - [gui](Python/项目/gui)
