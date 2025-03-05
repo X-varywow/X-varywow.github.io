@@ -157,9 +157,9 @@ def save_debug_creenshot(ts, im, piece_x, piece_y, board_x, board_y):
     draw.line((0, board_y, im.size[0], board_y), fill=(0, 0, 255))
 
 
-    draw.line((0, int(h/3),  w, int(h/3)), fill=(255, 255, 255))
-    draw.line((0, int(h/3*2),  w, int(h/3*2)), fill=(255, 255, 255))
-    draw.line((0, scan_start_y,  w, scan_start_y), fill=(255, 255, 255))
+    draw.line((0, int(h/3),  w, int(h/3)), fill=(0, 0, 0))
+    draw.line((0, int(h/3*2),  w, int(h/3*2)), fill=(0, 0, 0))
+    draw.line((0, scan_start_y,  w, scan_start_y), fill=(0, 0, 0))
 
 
     draw.ellipse((piece_x - 10, piece_y - 10, piece_x + 10, piece_y + 10), fill=(255, 0, 0))
@@ -219,8 +219,7 @@ def find_piece_and_board(im):
         for x in range(scan_x_border, w - scan_x_border):  # 横坐标方面也减少了一部分扫描开销
             pixel = im_pixel[x,y]
 
-            # 这里棋子颜色定值的判定
-            # 根据棋子的最低行的颜色判断，找最后一行那些点的平均值，这个颜色这样应该 OK，暂时不提出来
+            # 对棋子颜色定值的判定
             if (50 < pixel[0] < 60) and (53 < pixel[1] < 63) and (95 < pixel[2] < 110):
                 piece_x_sum += x
                 piece_x_c += 1

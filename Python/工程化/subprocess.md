@@ -81,15 +81,16 @@ import subprocess
 # 在后台启动 Streamlit 服务
 def run_streamlit():
     subprocess.Popen(["streamlit", "run", "app.py", "--server.baseUrlPath=front"])
-
-
-# Popen(cmd.split())
 ```
 
+
+Popen 比 run 更加底层，不自动等待执行完成，需要手动 wait 或 communicate;
+
+一般情况使用 run, 流式处理、高级需求使用 Popen
 
 
 -------------
 
 参考资料：
-- https://docs.python.org/zh-cn/3.11/library/subprocess.html
+- https://docs.python.org/zh-cn/3.12/library/subprocess.html
 

@@ -47,3 +47,10 @@
 - https://www.modelscope.cn/home
 - 原神先行展示页
 - [Nice Admin 一个较好的数据统计展示界面](https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/)
+
+
+---------------------
+
+_News_
+
+(2025.03, 69k stars)根据图片生成前端代码: https://github.com/abi/screenshot-to-code 

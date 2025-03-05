@@ -232,8 +232,6 @@ Windows 11 Classic Context Menu 使用经典右键菜单
 
 谷歌翻译，用于文档翻译
 
-飞书文档
-
 xmind
 
 微信读书，NeatReader
@@ -241,6 +239,8 @@ xmind
 多按键的鼠标，定义多个按键功能，eg. 复制、粘贴、左右删除
 
 虚拟机：Windows:VMWare, Mac: VirtualBox、Parallels Desktop 
+
+sci-hub 查看无法访问的论文
 
 
 ## IDE 通用
