@@ -97,3 +97,10 @@ https://api-docs.deepseek.com/zh-cn/prompt-library/
 langchain, autogpt;
 
 https://github.com/NirDiamant/GenAI_Agents?tab=readme-ov-file
+
+
+minimind
+
+better genshin
+
+yolo 准备图片训练

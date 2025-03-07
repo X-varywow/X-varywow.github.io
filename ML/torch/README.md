@@ -46,5 +46,6 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvi
 参考资料:
 - [视频教程1](https://www.bilibili.com/video/BV1ov411M7xL/)⭐️
 - [官网：LEARN THE BASICS](https://pytorch.org/tutorials/beginner/basics/intro.html)⭐️
+- [torch 基础语法](https://mp.weixin.qq.com/s/hJBapk-CL3x_c2pXKcJLWw)
 - [Pytorch搭建简单神经网络（一）——回归](https://zhuanlan.zhihu.com/p/114980874)
 - https://ifwind.github.io/2022/03/20/Pytorch%E6%89%8B%E5%86%8C%E6%B1%87%E6%80%BB/
