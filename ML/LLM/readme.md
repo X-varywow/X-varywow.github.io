@@ -2,6 +2,10 @@
 
 llm
 
+[llm介绍](https://mp.weixin.qq.com/s/kcGfK7ANUB2tbERjXAvbLw)
+
+
+Copilot 核心差异是 Chunk策略、Embedding模型、以及召回策略调优，基座大模型相对而言护城河不深。
 
 --------
 

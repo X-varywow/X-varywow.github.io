@@ -316,6 +316,9 @@ df.set_index(pd.RangeIndex(1, 11), inplace = True)
 # 更改列名（简单）
 df.columns=['grammer', 'score', 'cycle']
 
+# 变成大写
+df.columns = df.columns.str.upper()
+
 # 更改列名
 # df.rename(columns={0:'var_name', 1:'mu', 2:'sigma', 3:'rank'},inplace=True)
 # df.rename(columns = {df.columns[2]:'size'}, inplace=True)
