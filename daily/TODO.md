@@ -104,3 +104,30 @@ minimind
 better genshin
 
 yolo 准备图片训练
+
+
+--------
+
+整理 docs rl, todo
+
+https://github.com/liguodongiot/llm-action
+
+https://github.com/multi-template-matching/mtm-python-oop
+
+--------
+
+
+video super resolution
+
+https://github.com/JingyunLiang/RVRT
+
+https://github.com/DachunKai/EvTexture
+
+https://github.com/topics/super-resolution
+
+----------
+
+https://github.com/DLR-RM/stable-baselines3
+
+
+https://stable-baselines3.readthedocs.io/en/master/guide/quickstart.html
