@@ -10,3 +10,10 @@
 [colab demo](https://colab.research.google.com/github/snakers4/silero-models/blob/master/examples_tts.ipynb)
 
 
+------------
+
+2025-03-15
+
+https://github.com/SesameAILabs/csm
+
+多模态框架，ai 语音交互，只支持英文
