@@ -10,10 +10,6 @@ https://huggingface.co/spaces/XzJosh/LAPLACE-Bert-VITS2-2.3
 
 
 
-
-https://www.nature.com/
-
-
 https://lilianweng.github.io/
 
 
@@ -23,18 +19,11 @@ https://github.com/valinet/ExplorerPatcher/wiki/All-features
 整理 python/数据库 ./ml 面试等，补充理论即可，缺失重要
 
 
-- [ ] 课程笔记整理
-- [ ] 更新 develop
-- [ ] 系统论的书
-- [ ] 多读 torch 文档
-
-
 https://github.com/labmlai/annotated_deep_learning_paper_implementations/tree/master
 
 
 holocubic, 作用：显示时钟，图片，温度信息
 
-ML/DL/ROADMAP
 
 huawei ai tutorial
 
