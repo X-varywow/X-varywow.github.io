@@ -1,13 +1,7 @@
 
-https://instantid.github.io/
+https://github.com/m969/EGamePlay
 
 https://github.com/KRTirtho/spotube
-
-
-https://mp.weixin.qq.com/s/SZOwdrOd2CAZLrU5A12cnA
-
-https://huggingface.co/spaces/XzJosh/LAPLACE-Bert-VITS2-2.3
-
 
 
 https://lilianweng.github.io/
@@ -27,8 +21,6 @@ holocubic, 作用：显示时钟，图片，温度信息
 
 huawei ai tutorial
 
-https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#speed-is-your-friend
-
 
 [深度学习之图像翻译与风格化GAN-理论与实践](https://www.bilibili.com/video/BV1Wr4y1b77B)
 
@@ -38,9 +30,6 @@ https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandboo
 
 前端应用程序开发：https://github.com/Moonvy/OpenPromptStudio
 
-https://github.com/wangshub
-
-
 https://medium.com/dissecting-bert/dissecting-bert-part-1-d3c3d495cdb3
 
 http://nlp.seas.harvard.edu/2018/04/03/attention.html
@@ -49,8 +38,6 @@ https://www.cloudskillsboost.google/journeys/118
 
 
 https://mp.weixin.qq.com/s/WXoSnUXjrn_6EzSM1MQPTw
-
-vae diffusion transformer 数理基础，算子，有空补一下;
 
 
 IC-Light sd 光照工具
@@ -103,16 +90,6 @@ https://github.com/liguodongiot/llm-action
 
 https://github.com/multi-template-matching/mtm-python-oop
 
---------
-
-
-video super resolution
-
-https://github.com/JingyunLiang/RVRT
-
-https://github.com/DachunKai/EvTexture
-
-https://github.com/topics/super-resolution
 
 ----------
 

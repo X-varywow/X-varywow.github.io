@@ -136,7 +136,7 @@ Step 1/10 : From ubuntu:bionic-20200219
 --------------
 
 参考资料：
-- https://zhuanlan.zhihu.com/p/187505981
+- [Docker介绍.知乎](https://zhuanlan.zhihu.com/p/187505981)
 - [阮一峰 Docker 入门教程](https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 - [阮一峰 Docker 微服务教程](https://www.ruanyifeng.com/blog/2018/02/docker-wordpress-tutorial.html)
 - https://www.runoob.com/docker/docker-tutorial.html

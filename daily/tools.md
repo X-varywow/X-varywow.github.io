@@ -184,8 +184,6 @@ office 办公：libreoffice
 
 [一键自动化 下载、安装、激活 Office](https://github.com/OdysseusYuan/LKY_OfficeTools)，666
 
-stardock fences 4
-
 clash for windows
 
 https://git.crepe.moe/taiga74164/Akebi-GC/-/tree/master
@@ -210,6 +208,10 @@ epub 阅读器：justread
 ### windows美化
 
 TranslucentTB 任务栏透明
+
+stardock fences, 桌面整理工具
+
+yolo mouse, 自定义鼠标工具
 
 ExplorerPatcher
 
