@@ -75,6 +75,24 @@ function myfun(var1, var2){
 
 ## _ES6_
 
+两种引用方式区别：
+
+```html
+<script src="Scenes.js"></script>               <!-- 传统脚本加载方式 -->
+<script type="module" src="Game.js"></script>   <!-- ES6 模块加载方式 -->
+```
+
+传统脚本拥有全局作用域，可能污染全局变量；
+
+模块脚本拥有独立作用域，必须使用 export/import 语法
+
+
+
+
+
+------------
+
+
 一个简单的回调函数（将函数作为参数传递）：
 
 ```js

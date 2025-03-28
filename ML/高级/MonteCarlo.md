@@ -61,15 +61,139 @@ Monte Carlo Tree Search, 在状态树中进行搜索，逐步优化策略，可�
 - backpropagation, 回溯路径上的节点以更新统计信息
 
 
+mcts 井字棋：
+
+```python
+import random
+import math
+
+
+class TicTacToe:
+    def __init__(self):
+        self.board = [' '] * 9  # 3x3 井字棋盘
+        self.current_player = 'X'
+
+    def get_available_moves(self):
+        return [i for i in range(9) if self.board[i] == ' ']
+
+    def make_move(self, move):
+        new_state = TicTacToe()
+        new_state.board = self.board[:]
+        new_state.board[move] = self.current_player
+        new_state.current_player = 'O' if self.current_player == 'X' else 'X'
+        return new_state
+
+    def check_winner(self):
+        win_patterns = [(0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6)]
+        for (i, j, k) in win_patterns:
+            if self.board[i] == self.board[j] == self.board[k] and self.board[i] != ' ':
+                return self.board[i]  # 返回胜者 ('X' 或 'O')
+        return None if ' ' in self.board else 'Draw'  # 平局或未结束
+
+
+class Node:
+    def __init__(self, state, parent=None):
+        self.state = state  # 游戏状态
+        self.parent = parent  # 父节点
+        self.children = []  # 子节点
+        self.visits = 0   # 访问次数
+        self.wins = 0     # 胜利次数
+
+    # is_leaf     
+    def is_fully_expanded(self):
+        return len(self.children) == len(self.state.get_available_moves())
+
+    def best_child(self, exploration_weight=1.41):
+        return max(self.children, key=lambda child: (child.wins / (child.visits + 1e-6)) + 
+                   exploration_weight * math.sqrt(math.log(self.visits + 1) / (child.visits + 1e-6)))
+
+
+class MCTS:
+    def __init__(self, iterations=1000):
+        self.iterations = iterations
+
+    def search(self, initial_state):
+        root = Node(initial_state)
+        for _ in range(self.iterations):
+            node = self._select(root)
+            winner = self.a(node.state)
+            self._backpropagate(node, winner)
+        return root.best_child(exploration_weight=0).state
+
+    def _select(self, node):
+        """选择最优路径中的叶节点"""
+        while node.is_fully_expanded() and node.children:
+            node = node.best_child()
+        if not node.is_fully_expanded():
+            return self._expand(node)
+        return node
+
+    def _expand(self, node):
+        """扩展一个子节点"""
+        available_moves = node.state.get_available_moves()
+        tried_moves = {tuple(child.state.board) for child in node.children}  # 使用 tuple 作为哈希
+        for move in available_moves:
+            new_state = node.state.make_move(move)
+            if tuple(new_state.board) not in tried_moves:
+                child = Node(new_state, parent=node)
+                node.children.append(child)
+                return child
+        return node
+
+
+    def _simulate(self, state):
+        """随机模拟直到终局并返回奖励"""
+        current_state = state
+        while True:
+            winner = current_state.check_winner()
+            if winner:
+                return winner
+            move = random.choice(current_state.get_available_moves())
+            current_state = current_state.make_move(move)
+
+    def _backpropagate(self, node, winner):
+        """回溯更新节点统计信息"""
+        while node:
+            node.visits += 1
+            if winner == node.state.current_player:  # 反向奖励
+                node.wins += 1
+            node = node.parent
+
+# 测试 MCTS 井字棋
+if __name__ == "__main__":
+    game = TicTacToe()
+    mcts = MCTS(iterations=1000)
+    while True:
+        if game.current_player == 'X':  # 让 MCTS 作为 X 玩
+            game = mcts.search(game)
+        else:
+            move = int(input("Enter your move (0-8): "))
+            game = game.make_move(move)
+        print("\nBoard:")
+        print(game.board[:3])
+        print(game.board[3:6])
+        print(game.board[6:])
+        winner = game.check_winner()
+        if winner:
+            print("Winner:", winner)
+            break
+
+```
 
 
 
 
-------------
+
+
+
+</br>
+
+## _Alpha0_
 
 AlphaZero_Gomoku 训练了一个策略价值模型，然后 放入 MCTS
 
-
+- https://github.com/junxiaosong/AlphaZero_Gomoku
+- https://zhuanlan.zhihu.com/p/32089487
 
 
 
@@ -78,5 +202,4 @@ AlphaZero_Gomoku 训练了一个策略价值模型，然后 放入 MCTS
 参考资料：
 - https://www.bilibili.com/video/BV1hV4y1Q7TR/
 - [如何理解先验概率与后验概率](https://zhuanlan.zhihu.com/p/26464206)评论区
-- [预测消除类游戏的关卡难度](https://zhuanlan.zhihu.com/p/432513987)
-- https://github.com/junxiaosong/AlphaZero_Gomoku
+- chatgpt

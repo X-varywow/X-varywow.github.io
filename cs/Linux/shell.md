@@ -277,56 +277,9 @@ echo "$url"
 
 
 
-## 一些样例：
+## demo
 
-(学校的一些课程笔记)
-
-一、写出在Linux终端下，如下操作序列的命令行
-
-（1）回到家目录
-
-`cd /home`
-
-（2）在家目录下建立test目录
-
-`mkdir test`
-
-（3）在其中建立t.txt文件（touch   t.txt），建立目录m
-
-`touch t.txt && mkdir m`
-
-（4）将t.txt复制5份到m中，分别命名为t1.txt~t5.txt
-
-```bash
-cp t.txt m/t1.txt && cp t.txt m/t2.txt && cp t.txt m/t3.txt && cp t.txt m/t4.txt &&cp t.txt m/t5.txt
-
-# tee指令会从标准输入设备读取数据，将其内容输出到标准输出设备，同时保存成文件。
-cat t.txt | tee t{1..5}.txt
-```
-
-（5）复制m目录为n目录
-
-`cp -r m n`
-
-（6）去掉m目录的三个x属性，出现什么情况？描述一下，再修改回来
-
-`chmod 644 m` 文件无法打开
-`chmod 755 m` 说明：`rwxr-xr-x`的755变成644 
-
-（7）修改n目录属性，使其及其下面的所有文件均具有最大权限（777）。
-
-`chmod -R 777 n` 注意：那个R区分大小写
-
-（8）进入/tmp目录，选取一个文件，cp到你的m目录
-
-`cp /tmp/temp.txt m`
-
-------------------------
-二、用shell写一个猜价格脚本
-
-提示用户输入一个价格上限，然后根据上限数值产生一个合适的随机数价格。
-
-然后提示用户输入猜测值。提示用户输入的猜测值与真实值的高低，直到用户猜中为止。
+demo. 猜数字
 
 注：shell中，可以使用$RANDOM获得一个随机整数。
 
@@ -356,6 +309,24 @@ echo "succeed"
 - shell算术运算符有`==`，没有`>` `<`
 
 
+-----------
+
+demo. enter docker container
+
+```bash
+#!/bin/bash
+
+# 判断脚本参数个数
+if [ "$#" == 0 ]; then
+    # 将当前目录挂载到容器的/home/Solvitaire
+    # --rm ：容器退出后自动删除容器
+    docker run -it -v$(pwd):/home/Solvitaire --rm \
+    joshstoneback/modified-solvitaire:latest
+else
+    docker run -it -v$(pwd):/home/Solvitaire --rm \
+    joshstoneback/modified-solvitaire:latest bash -c "$*"
+fi
+```
 
 
 
@@ -404,3 +375,5 @@ echo "succeed"
 参考资料：
 - [shell 概述](http://kuanghy.github.io/shell-tutorial/chapter1.html)
 - https://www.runoob.com/linux/linux-shell.html
+
+

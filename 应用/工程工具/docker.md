@@ -1,18 +1,17 @@
 
 
-容器，轻量级实现环境打包隔离。
+容器，用于实现环境打包隔离。
 
-Docker 是一个用 Go语言实现的开源项目，
-
-Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口。
+Docker 是一个用 Go语言实现的开源项目，对 Linux 容器的一种封装（虚拟化），提供简单易用的容器使用接口。
 
 
-## 基础
+</br>
 
+## _基础_
 
 - dockerfile（配置文件）
 - image （镜像文件，包含应用程序及其依赖）
-- container (容器实例)
+- container (容器实例) (**拉取 image 创建 container 实例**)
 
 
 ```bash
@@ -26,18 +25,56 @@ docker run
 docker ps -a
 ```
 
+</br>
 
-## 实例：hello world
+demo: hello world
 
 ```bash
 docker image pull library/hello-world
 
 docker image ls
 
-docker container runc hello-world
+docker container run hello-world
 ```
 
-## 制作 Docker 容器
+> run 会比 runc 多出自动拉取、创建容器的步骤
+
+
+</br>
+
+其它命令：
+
+```bash
+# 列出本机正在运行的容器
+docker container ls
+
+# 列出本机所有容器，包括终止运行的容器
+docker container ls --all
+
+# run 总是新建容器，start 启动存在的容器
+docker container start
+```
+
+
+查看源码：
+```bash
+# 容器内源码地址
+docker run -it --rm --entrypoint /bin/sh thecharlesblake/solvitaire:1.0
+
+# 新起shell, 查看容器id
+docker ps
+
+# 将 /bin/sh 复制到本地
+docker cp 836b933a810c:/home/Solvitaire ./empty
+```
+
+
+
+
+
+</br>
+
+## _制作 Docker 容器_
 
 ```bash
 git clone https://github.com/ruanyf/koa-demos.git
@@ -46,7 +83,7 @@ cd koa-demos
 
 
 
-### 编写 Dockerfile
+**1. 编写 Dockerfile**
 
 .dockerignore 包含被忽视的文件
 
@@ -80,7 +117,7 @@ EXPOSE 3000
 CMD node demos/01.js
 ```
 
-### 创建 image
+**2. 创建 image**
 
 ```bash
 docker image build -t koa-demo .
@@ -88,7 +125,7 @@ docker image build -t koa-demo .
 docker image ls
 ```
 
-### 生成容器
+**3. 生成容器**
 
 ```bash
 # 从 image 文件生成容器
@@ -96,7 +133,9 @@ docker image ls
 docker container run -p 8000:3000 -it koa-demo /bin/bash
 ```
 
-## Docker Compose
+</br>
+
+## _Docker Compose_
 
 > 管理多个容器的联动
 
@@ -108,26 +147,6 @@ docker container run -p 8000:3000 -it koa-demo /bin/bash
 docker-compose up -d --build
 
 docker-compose stop
-```
-
-## milvus 流程
-
-```bash
-Step 1/17 : FROM node:14.16-alpine as builder
-
-Step 4/17 : RUN yarn
-[1/4] Resolving packages...
-[4/4] Building fresh packages... 69s
-
-
-RUN apt-get update && apt-get install -y    python3         python3-pip     gunicorn3 
-
-然后一直 apt -get
-```
-
-
-```bash
-Step 1/10 : From ubuntu:bionic-20200219
 ```
 
 
