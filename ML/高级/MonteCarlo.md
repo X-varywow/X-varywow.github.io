@@ -54,14 +54,30 @@ $$UCT = \frac{w_i}{n_i} + C \sqrt{\frac{ln(N)}{n_i}}$$
 
 Monte Carlo Tree Search, 在状态树中进行搜索，逐步优化策略，可适用于状态空间巨大的问题。
 
-步骤：
-- selection, 从根节点开始，选择要扩展的节点
-- expansion, 不是终止状态时，生成一个或多个子节点
-- simulation, 选定节点随机进行模拟直到游戏结束
-- backpropagation, 回溯路径上的节点以更新统计信息
 
 
-mcts 井字棋：
+| 主要步骤      | 说明                                                                          |
+| ------------- | ----------------------------------------------------------------------------- |
+| select        | 在当前节点上，将子节点的 value & visits 带入 uct 得出概率组，选择最大的       |
+| expand        | 在当前节点上，扩展一个尚未探索（未在 children 中）的动作，**这里可插入价值网络** |
+| simulate      | 选定节点随机进行模拟直到游戏结束                                              |
+| backpropagate | 得到模拟结果后，往前更新路径节点的参数（visits, value）                       |
+
+
+流程伪代码：
+```python
+for iter:
+    root.select 走到叶子结点
+    if 正常：
+        new_node = node.expand()
+        if new_node:
+            reward = new_node.simulate()
+            new_node.backpropagate()
+```
+
+----------
+
+demo. mcts 井字棋：
 
 ```python
 import random
@@ -184,16 +200,36 @@ if __name__ == "__main__":
 
 
 
-
-
 </br>
 
 ## _Alpha0_
 
-AlphaZero_Gomoku 训练了一个策略价值模型，然后 放入 MCTS
+> 以一个项目为例子看看
+> - https://github.com/junxiaosong/AlphaZero_Gomoku
+> - https://zhuanlan.zhihu.com/p/32089487
 
-- https://github.com/junxiaosong/AlphaZero_Gomoku
-- https://zhuanlan.zhihu.com/p/32089487
+
+AlphaZero_Gomoku 使用 mcts_pure 和 mcts_alpha0 对弈获取训练数据，
+
+训练更新 mcts_alpha0 的策略价值模型（PolicyValueNet），在单次模拟动作的时候用到;
+
+记录每个格子的空位 availables，用于 get_moves
+
+
+---------
+
+
+单步模拟动作：先 UCB 走状态树（select 操作，根据 ucb 平衡探索与奖励计算出 概率，然后选取最大的child）走到叶子结点，根据 policy net 确定下一步，模拟出结果回溯更新所有父节点;
+
+
+
+
+
+</br>
+
+mcts_pure 和 mcts_alpha0 不同处：
+- mcts_pure 使用默认策略价值函数，等概率
+
 
 
 
