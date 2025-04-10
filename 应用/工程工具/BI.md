@@ -30,7 +30,9 @@ Traffic 流量
 CRM 客户关系管理，对客户分群等操作，定制化广告投放
 
 
-`DAU` daily active user, 日活跃用户数量
+`DAU` daily active users, 日活跃用户数量
+
+`DAP` daily active paying users, 日活跃付费用户数量
 
 
 `ARPU` average revenue per user, 每用户平均收入
