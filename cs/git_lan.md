@@ -1,6 +1,6 @@
 
 
-!>推荐阅读：[git 简易指南](https:#www.bootcss.com/p/git-guide/)
+!>推荐阅读：[git 简易指南](https://www.bootcss.com/p/git-guide/)
 
 说明：环境为 `Windows 10`，代码中 `' '` 仅用于表征，实际输入时不用带。
 
@@ -57,7 +57,7 @@ git merge origin/master
 
 第一个是你的 `工作目录`，它持有实际文件；
 
-第二个是 `缓存区（Index）`，它像个缓存区域，临时保存你的改动；
+第二个是 `缓存区（Index）`，临时保存你的改动；
 
 最后是 `HEAD`，指向你最近一次提交后的结果。
 
@@ -140,29 +140,8 @@ git push origin branch_name
 ```
 
 
-## 6.tag
 
-Tags give the ability to mark specific points in history as being important
-
-使用 tag 可以保存重要版本的代码
-
-[参考](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
-
-```bash
-# 创建
-git tag <tag_name> <commit_id>
-
-# 推送远程
-git push origin <tag_name>
-git push origin --tags
-
-# 删除
-git tag -d <tag_name>
-git push origin -d <tag_name>
-```
-
-
-## 7.更新与合并
+## 6.更新与合并
 
 
 ```bash
@@ -203,6 +182,28 @@ git merge -X ours <branch_name>
 ```
 
 
+
+
+## 7.tag
+
+Tags give the ability to mark specific points in history as being important
+
+使用 tag 可以保存重要版本的代码
+
+[参考](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
+
+```bash
+# 创建
+git tag <tag_name> <commit_id>
+
+# 推送远程
+git push origin <tag_name>
+git push origin --tags
+
+# 删除
+git tag -d <tag_name>
+git push origin -d <tag_name>
+```
 
 
 
