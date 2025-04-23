@@ -1,4 +1,7 @@
 
+## preface
+
+
 利用多线程或多进程，来实现并发或并行。
 
 不必过早使用并发并行，需要优化时，再根据 IO密集型 或 CPU密集型 选择合适的模块。
@@ -12,7 +15,11 @@
 同时，不要频繁地创建销毁进程、线程池。
 
 
------------
+
+
+</br>
+
+## GIL
 
 
 ?>GIL 是一个防止多线程并行执行机器码的互斥锁，每个解释器进程都具有一个 GIL. </br>
@@ -38,8 +45,10 @@
 
 提供了本地和远程并发操作，通过 使用子进程而非线程，有效地绕过了 全局解释器锁
 
+> jupyter 执行会有些问题，使用其它解释器执行；</br>
+> 其它注意问题：避免传递大量数据，参数可序列化，join 避免僵尸，[官方编程指导](https://docs.python.org/zh-cn/3/library/multiprocessing.html#multiprocessing-programming)
 
-（1）使用 Pool ⭐️
+### Pool
 
 ```python
 from multiprocessing import Pool
@@ -52,28 +61,8 @@ if __name__ == '__main__':
         print(p.map(f, [1, 2, 3]))
 ```
 
-----------
-
 
 每个子进程都有自己的内存空间，当在子进程中修改全局变量时，只会影响到自己内存空间中的变量副本，不会影响主进程中的原始变量。
-
-可以使用如下方式：
-
-```python
-from multiprocessing import Pool, Value
-
-def f(x, cnt):
-    cnt.value += 1
-    print(cnt.value)
-
-if __name__ == '__main__':
-    cnt = Value('i', 0)  # 'i' 表示整数类型
-    with Pool(5) as p:
-        p.starmap(f, [(1, cnt), (2, cnt), (3, cnt), (4, cnt), (5, cnt)])
-    print(cnt.value)
-```
-
-
 
 
 -----------
@@ -97,7 +86,7 @@ if __name__ == '__main__':
 
 
 
-（2）Process
+### Process
 
 ```python
 from multiprocessing import Process
@@ -134,7 +123,7 @@ if __name__ == '__main__':
 
 
 
-（3）进程之间交换对象
+### 进程之间交换对象
 
 - Queue
 - Pipe
@@ -159,15 +148,16 @@ if __name__ == "__main__":
 
 
 
-（4）更多
+### 共享状态
 
 - Value
 - Array
 - Lock
 
-```python
-# 使用同步锁
 
+使用同步锁: 
+
+```python
 from multiprocessing import Process, Lock
 
 def f(l, i):
@@ -181,9 +171,29 @@ if __name__ == "__main__":
     lock = Lock()
     for num in range(10):
         Process(target=f, args=(lock, num)).start()
-
 ```
 
+共享内存：
+
+```python
+from multiprocessing import Process, Value, Array
+
+def f(n, a):
+    n.value = 3.1415927
+    for i in range(len(a)):
+        a[i] = -a[i]
+
+if __name__ == '__main__':
+    num = Value('d', 0.0)
+    arr = Array('i', range(10))
+
+    p = Process(target=f, args=(num, arr))
+    p.start()
+    p.join()
+
+    print(num.value)
+    print(arr[:])
+```
 
 
 

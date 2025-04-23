@@ -27,6 +27,18 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 参考：https://docs.python.org/zh-cn/3/extending/index.html
 
+`.pyi` 文件是类型存根文件（Type Stub），省略号表示该方法/函数在二进制模块中已实现
+
+```python
+# 定义来自Cython编译生成的二进制模块（如.pyd或.so文件）
+def click(self, *args, **kwargs): ...
+```
+
+
+
+
+
+
 
 </br>
 
