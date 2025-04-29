@@ -35,11 +35,8 @@ export PATH=/usr/local/bin:$PATH
 
 export PYTHONPATH=$PYTHONPATH:/Users/filename
 
-
+# 打印环境变量
 echo $PATH
-
-# 导出变量
-export VARIABLE_NAME
 ```
 
 ```bash

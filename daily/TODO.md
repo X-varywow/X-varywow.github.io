@@ -79,9 +79,6 @@ minimind
 
 better genshin
 
-yolo 准备图片训练
-
-
 --------
 
 整理 docs rl, todo

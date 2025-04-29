@@ -12,7 +12,6 @@ https://huggingface.co/spaces/abhishek/first-order-motion-model
 
 ## 改进
 
-作者 Aliaksandr Siarohin
 
 [Motion Representations for Articulated Animation](https://snap-research.github.io/articulated-animation/)
 
@@ -93,8 +92,5 @@ reader.close()
 # 每张图片都变成 256, 256
 
 make_animation
-
-
-
 
 ```

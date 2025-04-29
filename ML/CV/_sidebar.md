@@ -11,9 +11,8 @@
   - [animatediff](ML/CV/sd/animatediff)
   - ---
   - [CLIP](ML/CV/CLIP)
-  - [first-order-model](ML/CV/FOMM)
   - [VGG](ML/CV/vgg)
-  - [yolo](ML/CV/yolo)
+  - [YOLO](ML/CV/yolo)
   - [faceswap](ML/CV/faceswap/)
   - [OCR](ML/CV/ocr)
   - ---
