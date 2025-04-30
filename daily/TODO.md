@@ -56,8 +56,6 @@ https://github.com/Kedreamix/Linly-Dubbing
 
 https://github.com/fishaudio/fish-speech
 
-https://github.com/google-deepmind/acme
-
 
 https://blog.csdn.net/xian0710830114/article/details/142487069
 
