@@ -302,15 +302,3 @@ cv2.destroyAllWindows()
 
 
 
-
-
-
-
---------------
-
-
-explorer, 与 llm 结合一起了
-
-https://colab.research.google.com/github/ultralytics/ultralytics/blob/main/docs/en/datasets/explorer/explorer.ipynb
-
-

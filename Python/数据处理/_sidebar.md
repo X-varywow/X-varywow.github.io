@@ -2,6 +2,7 @@
 - [Python/数据处理](Python/数据处理/)
   - [numpy](Python/数据处理/numpy)
   - [pandas](Python/数据处理/pandas)
+  - [polars](Python/数据处理/polars)
   - [statsmodels](Python/数据处理/statsmodels)
   - [scipy](Python/数据处理/scipy)
   - --------

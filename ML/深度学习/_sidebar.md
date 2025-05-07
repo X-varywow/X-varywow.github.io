@@ -10,8 +10,6 @@
   - [生成模型](ML/深度学习/GM)
   - [AutoEncoder](ML/深度学习/autoencoder)
   - [transformer](ML/深度学习/transformer)
-  - [强化学习](ML/深度学习/rl)
-  - [PPO](ML/深度学习/gym)
   - ------
   - [分布规整](ML/深度学习/分布规整)
   - [other](ML/深度学习/other)
