@@ -156,3 +156,9 @@ command + shift + p `>Open User Settings (JSON))`
 
 
 字体：[FiraCode](https://github.com/tonsky/FiraCode)
+
+
+
+## trae
+
+解决与 vscode 颜色不一致: 关闭 Semantic Highlighting
