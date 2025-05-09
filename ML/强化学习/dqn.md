@@ -161,10 +161,13 @@ $max_{a'}Q(s',a')$  新状态$s'$下所有可能动作最大 Q 值（最优未�
 这样先用着，贝尔曼详细推导有些麻烦
 
 
-## DQN
+
+</br>
+
+## demo.2048
 
 
-demo. 2048
+### part1. 2048
 
 ```python
 import numpy as np
@@ -179,6 +182,7 @@ class Game2048:
     def __init__(self, size=4):
         self.size = size
         self.reset()
+        print(self.board)
     
     def reset(self):
         """重置游戏状态"""
@@ -202,16 +206,16 @@ class Game2048:
         log_board = np.log2(self.board + 1)  # +1 避免log(0)
         return log_board / np.max(log_board) if np.max(log_board) > 0 else log_board
     
-    def move(self, direction):
+    def move(self, direction, mode = 'train'):
         """
         移动方块
-        方向: 0:上, 1:右, 2:下, 3:左
         返回: (新状态, 获得的分数, 游戏是否结束)
         """
         old_board = self.board.copy()
         reward = 0
         
         # 旋转棋盘使移动方向统一为向左移动
+        # 0 左移； 1 上移； 2 右移； 3 下移
         rotated_board = np.rot90(self.board, direction)
         
         # 移动和合并方块
@@ -245,7 +249,11 @@ class Game2048:
             self.add_random_tile()
         
         done = self.is_game_over()
-        return self.get_state(), reward, done
+        if mode == 'train':
+            return self.get_state(), reward, done
+        else:
+            print(self.board)
+            print(f"SCORE: {self.score}")
     
     def is_game_over(self):
         """检查游戏是否结束"""
@@ -264,7 +272,37 @@ class Game2048:
         return True
 ```
 
-DQN 部分：
+
+get_state() 中 将棋盘转换为对数尺度并归一化，原因：
+- 关键信息在于数字的相对大小关系，2048 与 4096 指数级关系难以学习，更新幅度不均匀
+- 归一化避免梯度爆炸/消失
+
+后续，可以试一下数据变换
+
+
+-------------
+
+
+```python
+env = Game2048()
+
+while True:
+    action = input()
+    if action == 'q':
+        break
+    arr = ['a', 'w', 'd', 's']
+    if action not in arr:
+        env.move(arr.index(action), mode='play')
+```
+
+随便 5k 分， 出现2048，至少 2048 x (11-1) 分，ai 要 2w 分才合格，现在才 1000 分，，，
+
+
+
+
+
+
+### part2. dqn
 
 ```python
 # 这里需要对应调整 batch_size 128?
@@ -299,6 +337,8 @@ class DQN(nn.Module):
         x = F.relu(self.conv2(x))
         x = x.view(x.size(0), -1)  # 展平
         x = F.relu(self.fc1(x))
+        
+        # 这里输出 1*4 的tensor, 代表状态下每个 action 的 q 值
         return self.fc2(x)
 
 
@@ -371,6 +411,9 @@ class DQNAgent:
         self.model.load_state_dict(torch.load(filename))
         self.update_target_model()
 ```
+
+
+### part3. train
 
 ```python
 episodes = 1000
