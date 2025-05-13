@@ -1,11 +1,40 @@
 
 
-速度会更快，自用的时候可以替代 pandas.
+
+## preface
+
+速度会快很多，自用的时候可以替代 pandas.
 
 https://github.com/pola-rs/polars
 
 
+--------------
 
+`性能测试`
+
+```python
+%%timeit
+
+import polars as pl
+
+seed_cols = ['col1', 'col2']
+
+seed_df = pl.read_csv('aaa.csv', has_header=False, new_columns=seed_cols)
+```
+
+pandas 28 ms ± 154 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+
+polars 2.43 ms ± 21.3 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+
+**耗时仅为 8.68%**
+
+
+
+</br>
+
+## demo1
+
+`官方 demo`
 
 ```python
 >>> import polars as pl
@@ -82,3 +111,87 @@ shape: (3, 2)
 ```
 
 
+</br>
+
+## demo2
+
+`自用 demo`
+
+
+demo1. json.loads() 扩充 df
+
+```python
+df = df.with_columns(
+    pl.col("features").str.json_decode().alias("parsed")
+).unnest("parsed")
+```
+
+
+------------
+
+demo2. 读取csv，连接df 等
+
+```python
+import polars as pl
+
+null_vals = ["\\N", "NA", "null"]
+
+# 1. 读取，特殊值处理
+df = pl.read_csv(
+    'tmp.csv',
+    has_header=False,
+    new_columns=user_cols,
+    null_values=null_vals
+)
+
+# 2. 将每列的值全部改成3
+df = df.with_columns([
+    pl.lit(3).alias('col1')
+])
+
+# 3. 列名大写
+df = df.rename({col: col.upper() for col in df.columns})
+
+# 4. 字符串去多余引号
+df = df.with_columns([
+    pl.col('col2').str.strip_chars('"').alias("col2")
+])
+
+# 5. 连接
+df = df1.join(
+    df2,
+    left_on = ['col1', 'col2'],
+    right_on = ['col3', 'col4'],
+    how="inner"
+)
+
+# 6. 列转换，重命名
+df = df.with_columns([
+    pl.col("CREATED_AT").str.strptime(pl.Datetime).alias("CREATED_AT")
+])
+
+df = df.with_columns([
+    pl.col("col1").str.strip_chars('"').cast(pl.Int64)
+])
+
+df = df.rename({"col1": "col2"})
+
+
+# 7. 时间 filter
+split_date = pl.date(2025, 5, 10)
+
+data_train = df.filter(pl.col("CREATED_AT") < split_date)
+
+
+# 8. 转成 pands; lightgbm 不知道为啥
+data_train = data_train.to_pandas()
+```
+
+
+
+
+-------------
+
+参考资料：
+- https://docs.pola.rs/
+- gpt
