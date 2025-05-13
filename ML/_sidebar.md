@@ -4,12 +4,12 @@
   - [基本概念](ML/基本概念)
   - [暂时笔记](ML/tmp_note/)
   - [高级算法](ML/高级/)
+  - [torch&tools](ML/torch/)
   - ---
   - [监督学习](ML/监督学习/)
   - [非监督学习](ML/非监督学习/)
   - [深度学习](ML/深度学习/)
   - [强化学习](ML/强化学习/)
-  - [torch&tools](ML/torch/)
   - ---
   - [NLP](ML/NLP/)
   - [LLM](ML/LLM/)
