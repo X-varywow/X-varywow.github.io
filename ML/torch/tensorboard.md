@@ -1,9 +1,12 @@
 
-tensorboard 是一个可视化工具，依赖于日志文件。可以查看：模型的结构、损失函数变化等。
+tensorboard 是一个 **利用日志构建图像前端的包**, 常用于模型训练过程
 
-</br>
 
-_使用方法_
+```bash
+pip install tensorboard 
+```
+
+## 使用方法
 
 （1）在 jupyter 中使用：
 
@@ -26,15 +29,14 @@ tensorboard --logdir=logs
 ```
 
 
-</br>
+## 访问方式
 
-_访问方式_
-
-访问 http://localhost:6006/ 或 jupyter 应该可以;
+访问 http://localhost:6006/ 或 jupyter 就可以;
 
 
+----------
 
-sagemaker 是另外一种访问方法：
+sagemaker 中：
 
 如笔记本实例的 url 为：`https://your_note_book_name.notebook.us-east-1.sagemaker.aws/lab/tree/`
 
