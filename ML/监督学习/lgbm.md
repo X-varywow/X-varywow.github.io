@@ -60,7 +60,6 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 
 
 
-</br>
 
 ### _原生方式_
 
@@ -140,7 +139,6 @@ sklearn 接口形式，参考如下分数位回归：
 
 
 
-</br>
 
 ### _分位数回归_
 
@@ -225,7 +223,6 @@ print('Best parameters found by grid search are:', gbm.best_params_)
 
 
 
-</br>
 
 ### _自定义目标函数_
 
@@ -249,10 +246,7 @@ def median_objective(y_true, y_pred) -> (np.ndarray, np.ndarray):
 
 
 
-
-</br>
-
-## _使用 optuna_
+## 使用 optuna
 
 超参数自动化调整
 
@@ -320,9 +314,8 @@ study.optimize(objective, n_trials=100)
 
 
 
-</br>
 
-## _使用 shap_
+## 使用 shap
 
 对机器学习黑盒模型进行解释，给出特征的贡献值等
 
@@ -400,11 +393,7 @@ LightGBM的`plot_importance`函数通常使用基于模型内部的度量，例�
 
 
 
-
-</br>
-
-
-## _demo: lgbm&shap_
+## demo: lgbm&shap
 
 ```python
 import lightgbm as lgb
@@ -521,10 +510,15 @@ print(num_trees)
 lgb.create_tree_digraph(model, tree_index=10)
 ```
 
+-----------
 
+!>当测试集的数据分布发生大幅变化时，如值域改变，模型是不适用的。
 
+树模型分裂点完全基于训练数据中观察到的范围，如果测试集中某个值超出范围，将无法做出有意义的判断；
 
+值域改变问题中，刻度尺是基于训练数据的，学习到的特征重要性、树子节点、shap加加减减是拉不回结果的值域的。
 
+许多机器学习模型（包括LightGBM）隐式或显式地假设训练数据和测试数据来自相同的或相似的概率分布 P(X, Y)
 
 
 -----------

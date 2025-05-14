@@ -53,6 +53,12 @@ $kernel = \begin{bmatrix}
 -1&0&1
 \end{bmatrix}$ 会提取图像的 垂直边缘信息
 
+demo:
+`nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3, stride=1, padding=1)` 
+
+表示用 32 个 3×3 的卷积核 对 单通道输入 进行扫描，步长1，填充1，使输出尺寸和输入相同，并提取 32 种不同的特征。（卷积核的权重会在训练过程中被不断更新, nn.Conv2d.weight 查看）
+
+$$输出尺寸 = [\frac{输入尺寸 + 2*padding - kernel\_size}{stride}]+1$$
 
 
 </br>
