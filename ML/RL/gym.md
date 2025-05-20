@@ -8,38 +8,63 @@ Gym is a standard API for reinforcement learning, and a diverse collection of re
 
 
 
-```python
-!pip install gym
-!pip install gym[box2d]
+```bash
+pip install gymnasium
+pip install swig
+pip install "gymnasium[box2d]"
 ```
 
 
 ## base
 
-
+demo: 控制物体降落到合适位置，一次降落具有多帧（多个连续的 action, obs ...）
 
 ```python
 import gymnasium as gym
-env = gym.make("LunarLander-v2", render_mode="human")
-observation, info = env.reset()
+
+# Initialise the environment
+env = gym.make("LunarLander-v3", render_mode="human")
+
+# Reset the environment to generate the first observation
+observation, info = env.reset(seed=42)
 
 for _ in range(1000):
-    action = env.action_space.sample()  # agent policy that uses the observation and info
+    # this is where you would insert your policy
+    action = env.action_space.sample()
+
     observation, reward, terminated, truncated, info = env.step(action)
 #     print(observation, reward, terminated, truncated, info)
 #              list(8),    1.1,      false,    false,     {}
 
+    # If the episode has ended then we can reset to start a new episode
     if terminated or truncated:
         observation, info = env.reset()
 
 env.close()
 ```
 
-一个完整的过程，通常叫 episod，整个生命周期的奖励 $R = \sum_{t=1}^Tr_t$
 
 
-- on plicy，训练数据由当前 agent 不断环境交互得到
-- off plicy，找个代练
+
+## envs
+
+```python
+env = gym.make("LunarLander-v3", render_mode="human")
+
+```
+
+
+### 内置 env
+
+
+
+
+
+### 自定义 env
+
+
+## action
+
 
 
 ---------

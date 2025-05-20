@@ -40,47 +40,12 @@ $$\frac{\partial V_\pi(s_t)}{\partial \theta} = E_{A_t \sim \pi}[Q_\pi (s_t, A_t
 
 
 
-</br>
 
-## _A3C_
-
-每个进程分别与环境进行交互学习；异步并行训练框架；
-
-解决单个智能体与环境交互收集速度慢，训练难以收敛的问题；
-
-[参考](https://authoring-modelarts-cnnorth4.huaweicloud.com/console/lab?share-url-b64=aHR0cHM6Ly9tb2RlbGFydHMtbGFicy1iajQtdjIub2JzLmNuLW5vcnRoLTQubXlodWF3ZWljbG91ZC5jb20vY291cnNlL21vZGVsYXJ0cy9yZWluZm9yY2VtZW50X2xlYXJuaW5nL3BvbmdfQTNDL1BvbmctQTNDLmlweW5i)
+一个完整的过程，通常叫 episod，整个生命周期的奖励 $R = \sum_{t=1}^Tr_t$
 
 
-</br>
-
-## _PPO_
-
-proximal policy optimization, 近端策略优化。(OpenAI 2017)
-
-PPO的主要特点是尝试保持新旧策略之间的差异适度，即它限制了策略更新过程中策略变化的幅度以避免过于激烈的调整导致性能下降。它通过截断的策略梯度或裁剪（clipping）约束来实现。
-
-具体地，PPO定义了一个“剪切”目标函数，用来维持两个连续策略之间的一个预设界限，如果实际的策略变动超过这个界限，该目标函数会限制该变动，从而提高算法的稳定性。
-
-
-
-
-
-
-</br>
-
-## _DDPG_
-
-Deterministic Policy Gradient, 适用于 连续动作空间，使用 actor-critic 架构。
-
------------
-
-D4PG 是 DeepMind 提出的一个强化学习算法，属于 离策略、连续动作空间 的强化学习方法, 在 DDPG 基础上改进而来。
-
-- 更稳定、收敛更快：分布式 Q 值和 n-step return 带来更丰富的训练信号。
-- 更高的数据利用效率：并行采样 + 离策略学习。
-- 适用于高维连续控制问题：如 MuJoCo（一个物理模拟引擎）、机器人控制等。
-
-
+- on plicy，训练数据由当前 agent 不断环境交互得到
+- off plicy，找个代练
 
 
 
