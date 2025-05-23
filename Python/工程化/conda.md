@@ -19,11 +19,13 @@ activate myenv
 source activate
 conda activate myenv
 source activate myenv
-# 
+
 deactivate
 source deactivate
-conda env remove --name myenv
-conda remove -n myenv --all
+
+# 删除整个环境
+conda remove --all
+conda remove -n myenv --all -y
 
 
 # (3) 包管理
@@ -33,10 +35,8 @@ conda list -n env_name
 conda install numpy
 conda install -n env_name numpy
 
-conda remove --name myenv numpy
-
-# 删除整个环境
-conda remove --name myenv --all -y
+conda remove numpy
+conda remove -n env_name numpy
 
 
 # (4) requirements.txt环境导出&创建

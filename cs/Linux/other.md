@@ -21,7 +21,7 @@ tar -czvf archive_name.tar.gz /path/to/directory
 zip -r archive_name.zip /path/to/directory
 ```
 
-keyword: linux打包 zip
+keyword: linux 打包 zip
 
 </br>
 

@@ -48,19 +48,20 @@ env.close()
 
 ## envs
 
+
+### 内置 env
+
 ```python
 env = gym.make("LunarLander-v3", render_mode="human")
 
 ```
 
 
-### 内置 env
-
-
-
 
 
 ### 自定义 env
+
+
 
 
 ## action
