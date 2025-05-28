@@ -62,6 +62,17 @@ env = gym.make("LunarLander-v3", render_mode="human")
 ### 自定义 env
 
 
+## spaces
+
+环境需包含：`action_space`, `observation_space`
+
+```python
+# {0,1,2}
+# two-dimensional unit cube
+self.action_space = spaces.Discrete(3)
+self.observation_space = spaces.Box(0, 1, shape=(2,))
+```
+
 
 
 ## action
@@ -73,7 +84,3 @@ env = gym.make("LunarLander-v3", render_mode="human")
 参考资料：
 - https://www.bilibili.com/video/BV1yP4y1X7xF?p=7
 - https://gymnasium.farama.org/content/basic_usage/
-
-其他项目：
-- [snake-ai](https://github.com/linyiLYi/snake-ai)
-

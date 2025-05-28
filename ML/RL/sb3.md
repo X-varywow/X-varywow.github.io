@@ -9,6 +9,7 @@
 pip install stable-baselines3
 ```
 
+其它集成包：[torch-rl](https://github.com/pytorch/rl)
 
 ## base
 
