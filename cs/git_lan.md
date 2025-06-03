@@ -181,7 +181,32 @@ git merge --squash master
 git merge -X ours <branch_name>
 ```
 
+------------
 
+同时有 incoming 和 outgoing 变更，并且提示分支分叉(divergent branches)时，
+
+合并方式 1. merge
+
+```bash
+git pull --no-rebase
+
+# 或先设置默认行为再pull：
+git config pull.rebase false
+git pull
+```
+
+
+合并方式 2. rebase
+
+```bash
+git pull --rebase
+
+# 或先设置默认行为再pull：
+git config pull.rebase true
+git pull
+```
+
+rebase 会有着更干净的线性历史
 
 
 ## 7.tag

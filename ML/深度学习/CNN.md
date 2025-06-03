@@ -27,4 +27,3 @@
 参考资料：
 - [卷积神经网络 – CNN](https://easyai.tech/ai-definition/cnn/)
 - [wiki - 卷积神经网络](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)
-- [CNN基础知识——池化（pooling）](https://zhuanlan.zhihu.com/p/78760534)

@@ -162,3 +162,10 @@ command + shift + p `>Open User Settings (JSON))`
 ## trae
 
 解决与 vscode 颜色不一致: 关闭 Semantic Highlighting
+
+
+## 快捷键
+
+| 按键     | 说明         |
+| -------- | ------------ |
+| ctrl + ` | 打开terminal |
