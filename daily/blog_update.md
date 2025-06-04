@@ -50,7 +50,9 @@ cdn.jsdelivr.net/npm -> fastly.jsdelivr.net/npm
 
 增加目录划线，美化目录条目过多的情况。
 
+`2025.05.13`
 
+更改 h2 目录样式，间距
 
 
 
