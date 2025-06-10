@@ -636,6 +636,21 @@ https://docs.snowflake.com/en/sql-reference/sql/alter-table-column
 
 
 
+（8）col1,col2 分组，统计每列在 同 col1 中的占比
+
+```sql
+SELECT
+    col1,
+    col2,
+    COUNT(*) AS group_count,
+    SUM(COUNT(*)) OVER (PARTITION BY col1) AS col1_total_count,
+    ROUND(COUNT(*) * 1.0 / SUM(COUNT(*)) OVER (PARTITION BY col1), 4) AS ratio
+FROM your_table
+GROUP BY col1, col2
+ORDER BY col1, col2;
+```
+
+
 -----------
 
 > sql 中 group by 1 表示按第一列进行分组

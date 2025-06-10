@@ -12,12 +12,12 @@
 
 对于 IO 密集型，建议使用**开销较少**的线程池，增加并发（如 concurrent.futures 中的 ThreadPoolExecutor）。
 
-同时，不要频繁地创建销毁进程、线程池。
+---------
 
+可能风险：
+- 不要频繁地创建销毁进程、线程池。
+- 对于 CPU 密集型任务，增加线程数可能会导致更多线程竞争CPU 资源，频繁上下文切换使耗时增多
 
-
-
-</br>
 
 ## GIL
 
@@ -36,8 +36,6 @@
 
 **GIL 更多的是在多核上多线程（CPU密集型任务）效率不行，把资源锁成1核的**
 
-
-</br>
 
 ## multiprocessing
 
@@ -195,9 +193,6 @@ if __name__ == '__main__':
     print(arr[:])
 ```
 
-
-
-</br>
 
 ## concurrent.futures
 
@@ -382,9 +377,6 @@ print(multiprocess_demo())
 
 
 
-
-
-</br>
 
 ## threading
 

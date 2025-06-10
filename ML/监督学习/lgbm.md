@@ -1,8 +1,6 @@
 
-## _LGBM_
 
-
-### _基本原理_
+## 基本原理
 
 LightGBM（Light Gradient Boosting Machine）是一个 **实现GBDT算法的框架**。支持高效率的并行训练，并且具有 **更快的训练速度、更低的内存消耗**、更好的准确率、支持分布式可以快速处理海量数据等优点。
 
@@ -61,7 +59,7 @@ GBDT (Gradient Boosting Decision Tree) 是机器学习中一个长盛不衰的�
 
 
 
-### _原生方式_
+## 原生方法
 
 ```python
 import lightgbm as lgb
@@ -128,19 +126,12 @@ gbm.booster_.save_model(model_name)
 model = lgb.Booster(model_file = 'model-01')
 ```
 
-多分类 objective：multiclass 需要额外设定  num_class = 5,
-
-其它目标函数： regression_l1, regression_l2, quantile, poisson, mape
-
--------------
-
-
 sklearn 接口形式，参考如下分数位回归：
 
 
 
 
-### _分位数回归_
+## demo.分位数回归
 
 quantile regression，最小化所选分位数切点产生的绝对误差之和
 
@@ -153,7 +144,7 @@ from lightgbm import log_evaluation, early_stopping
 model = lgb.LGBMRegressor(
     task = 'train',
     objective = 'quantile',
-    alpha = 0.5,  # 指定关心的分数位
+    alpha = 0.5,  # 指定目标分数位
     boosting_type = 'gbdt',
     learning_rate = 0.01,
     n_estimators = 2000,
@@ -170,78 +161,12 @@ callbacks = [log_evaluation(period=100), early_stopping(stopping_rounds=30)]
 model.fit(
     X_train, 
     y_train, 
-    eval_set = [(X_train, y_train),(X_val, _val)],
+    eval_set = [(X_val, _val)],
     eval_metric = ['rmse', 'mape', 'huber'],
     callbacks = callbacks,
     feature_nmae = ,
     categorical_feature = 
 )
-```
-
-```python
-from lightgbm import LGBMRegressor
-from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import GridSearchCV
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.externals import joblib
-
-# 加载数据
-iris = load_iris()
-data = iris.data
-target = iris.target
-
-# 划分训练数据和测试数据
-X_train, X_test, y_train, y_test = train_test_split(data, target, test_size=0.2)
-
-# 模型训练
-gbm = LGBMRegressor(objective='regression', num_leaves=31, learning_rate=0.05, n_estimators=20)
-gbm.fit(X_train, y_train, eval_set=[(X_test, y_test)], eval_metric='l1', early_stopping_rounds=5)
-
-# 模型存储
-joblib.dump(gbm, 'loan_model.pkl')
-# 模型加载
-gbm = joblib.load('loan_model.pkl')
-
-# 模型预测
-y_pred = gbm.predict(X_test, num_iteration=gbm.best_iteration_)
-
-# 模型评估
-print('The rmse of prediction is:', mean_squared_error(y_test, y_pred) ** 0.5)
-
-
-# 网格搜索，参数优化
-estimator = LGBMRegressor(num_leaves=31)
-param_grid = {
-    'learning_rate': [0.01, 0.1, 1],
-    'n_estimators': [20, 40]
-}
-gbm = GridSearchCV(estimator, param_grid)
-gbm.fit(X_train, y_train)
-print('Best parameters found by grid search are:', gbm.best_params_)
-```
-
-
-
-
-### _自定义目标函数_
-
-```python
-import numpy as np
-
-def median_objective(y_true, y_pred) -> (np.ndarray, np.ndarray):
-    # 计算残差
-    residual = y_true - y_pred
-    
-    # 残差的一阶导数（梯度）
-    # 对于中位数回归，梯度是残差的符号
-    grad = np.where(residual > 0, -1, 1) if residual.size else np.zeros_like(residual)
-    
-    # 残差的二阶导数（Hessian）
-    # 对于中位数回归，二阶导数是0，因为绝对值函数在任何点的曲率都是0
-    hess = np.zeros_like(residual)
-    
-    return grad, hess
 ```
 
 
@@ -380,7 +305,7 @@ for feature, importance in importance_data:
 
 -----------------
 
-LightGBM的`plot_importance`函数通常使用基于模型内部的度量，例如增益（gain）或覆盖度（cover）来表示特征的重要性。增益衡量特征通过分裂增加的准确性，而覆盖度衡量该特征出现在多少样本的分布中。这些指标主要基于训练过程中树结构的信息。
+LightGBM的 `plot_importance` 函数通常使用基于模型内部的度量，例如增益（gain）或覆盖度（cover）来表示特征的重要性。增益衡量特征通过分裂增加的准确性，而覆盖度衡量该特征出现在多少样本的分布中。这些指标主要基于训练过程中树结构的信息。
 
 相较之下，SHAP值（Shapley Additive Explanations）从博弈论的角度解释模型输出。通过考虑所有可能的特征组合，SHAP值为每个特征提供了其对模型最终预测的贡献程度，更全面地研究了特征值如何影响预测结果。
 
@@ -452,6 +377,16 @@ shap.plots.bar(shap_values, max_display=20)
 
 
 ## other
+
+
+
+多分类 objective：multiclass ，改用 `LGBMClassifier`， 额外设定类别数 `num_class`
+
+`LGBMClassifier.predict_proba` 与 `LGBMRegressor.predict` 返回结构可以做到类似，，
+
+其它目标函数： regression_l1, regression_l2, quantile, poisson, mape
+
+---------
 
 模型加载时间：14mb model 一次加载 90ms
 
