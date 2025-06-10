@@ -180,12 +180,30 @@ command + shift + p `>Open User Settings (JSON))`
 解决与 vscode 颜色不一致: 关闭 Semantic Highlighting
 
 
+line-height: 0
+
+
+右键属性 -> 管理员身份运行， 防止特殊操作（python 移动鼠标不生效）
+
+
 ## 快捷键
 
-| 按键     | 说明         |
-| -------- | ------------ |
-| ctrl + ` | 打开terminal |
+| 按键         | 说明           |
+| ------------ | -------------- |
+| ctrl + `     | 打开terminal   |
+| ctrl + enter | 快速开启下一行 |
 
+
+
+
+
+| 快捷键           | 说明                     |
+| ---------------- | ------------------------ |
+| cmd + D          | 选定一个单词             |
+| cmd + C, cmd + V |                          |
+| cmd + X          | 删除行                   |
+| cmd + Z          |                          |
+| cmd + click      | 查看函数定义，被引用位置 |
 
 
 ## 调试
@@ -205,3 +223,12 @@ command + shift + p `>Open User Settings (JSON))`
 `Step out`
 
 用于从当前函数退出，执行完当前函数的剩余部分，并停在函数的返回点上。
+
+
+
+
+
+--------------
+
+参考资料：
+- [PyCharm 中文指南(Win版)](https://pycharm.iswbm.com/)

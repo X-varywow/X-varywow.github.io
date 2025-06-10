@@ -5,7 +5,6 @@
 Docker 是一个用 Go语言实现的开源项目，对 Linux 容器的一种封装（虚拟化），提供简单易用的容器使用接口。
 
 
-</br>
 
 ## _基础_
 
@@ -72,7 +71,6 @@ docker cp 836b933a810c:/home/Solvitaire ./empty
 
 
 
-</br>
 
 ## _制作 Docker 容器_
 
@@ -133,7 +131,6 @@ docker image ls
 docker container run -p 8000:3000 -it koa-demo /bin/bash
 ```
 
-</br>
 
 ## _Docker Compose_
 
@@ -150,6 +147,36 @@ docker-compose stop
 ```
 
 
+## _other_
+
+
+**Vagrant 和 Docker的使用场景和区别?**
+
+|            | Vagrant                                        | Docker                                  |
+| ---------- | ---------------------------------------------- | --------------------------------------- |
+| 核心理念   | 提供一致的虚拟机开发环境（基于 VirtualBox 等） | 提供轻量级的容器环境（基于容器虚拟化）  |
+| 底层技术   | 使用虚拟机（VirtualBox、VMware、Hyper-V）      | 使用容器（Linux 内核命名空间、cgroups） |
+| 启动速度   | 慢（完整虚拟机）                               | 快（容器共享主机内核）                  |
+| 系统隔离性 | 完整操作系统，隔离性强                         | 共享主机内核，隔离性较弱（但轻量）      |
+
+
+| 使用场景                             | 选择 Vagrant             | 选择 Docker                                  |
+| ------------------------------------ | ------------------------ | -------------------------------------------- |
+| 开发跨平台项目（如 Windows + Linux） | ✅ 更适合                 | ⛔ Windows 容器支持较差                       |
+| 模拟生产环境（如完整 OS）            | ✅ 适合                   | ⛔ 容器不是完整操作系统                       |
+| 构建和部署微服务应用                 | ⛔ 过重                   | ✅ 非常适合（如 Docker Compose + Kubernetes） |
+| 快速迭代和自动化 CI/CD 流程          | ⛔ 不够灵活               | ✅ 容器启动快，易集成                         |
+| 操作系统内核级别开发、内核模块测试   | ✅ 虚拟机可以定制内核     | ⛔ 容器不支持更换内核                         |
+| 学习/测试不同版本的 Linux 发行版     | ✅ 每个 VM 可安装不同系统 | ⛔ 容器一般依赖宿主机内核                     |
+| 资源占用和启动速度要求较高           | ⛔ 虚拟机重、慢           | ✅ 容器轻量、快                               |
+
+
+
+- 如果你正在开发微服务应用、注重部署效率和资源利用，首选 Docker。
+- 如果你需要模拟完整的 OS 环境或运行多平台测试，选择 Vagrant 更合适。
+- 总结：Vagrant是“环境即代码”，Docker是“应用即代码”。根据隔离需求和性能要求权衡选择。
+
+
 
 
 --------------
@@ -159,3 +186,4 @@ docker-compose stop
 - [阮一峰 Docker 入门教程](https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 - [阮一峰 Docker 微服务教程](https://www.ruanyifeng.com/blog/2018/02/docker-wordpress-tutorial.html)
 - https://www.runoob.com/docker/docker-tutorial.html
+- gpt

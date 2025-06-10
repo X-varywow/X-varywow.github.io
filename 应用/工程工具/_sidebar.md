@@ -7,4 +7,5 @@
   - [EKS](应用/工程工具/EKS)
   - [jumpserver](应用/工程工具/jumpserver)
   - [nginx](应用/工程工具/nginx)
+  - [ffmpeg](应用/工程工具/ffmpeg)
   - [工程文档](应用/工程工具/工程文档)

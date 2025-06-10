@@ -11,3 +11,6 @@
   - [Git 语法](cs/git_lan)
   - [Git 相关](cs/git_more)
   - [Database](cs/DATABASE/)
+  - ---
+  - [tools 相关](cs/tools)
+  - [vscode 相关](cs/vscode)

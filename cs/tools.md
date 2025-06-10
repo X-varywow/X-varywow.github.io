@@ -243,17 +243,3 @@ xmind
 虚拟机：Windows:VMWare, Mac: VirtualBox、Parallels Desktop 
 
 sci-hub 查看无法访问的论文
-
-
-## IDE 通用
-
-[anaconda 镜像下载](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)
-
-
-| 快捷键           | 说明                     |
-| ---------------- | ------------------------ |
-| cmd + D          | 选定一个单词             |
-| cmd + C, cmd + V |                          |
-| cmd + X          | 删除行                   |
-| cmd + Z          |                          |
-| cmd + click      | 查看函数定义，被引用位置 |

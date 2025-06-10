@@ -17,11 +17,3 @@
 | [CS-Notes](https://github.com/CyC2018/CS-Notes)                                           | 139k  |      | 技术面试必备基础知识                                            |
 | [papers-we-love](https://github.com/papers-we-love/papers-we-love)                        | 60k   |      | Papers from the computer science community to read and discuss. |
 
-
-
----------------
-
-未放在目录中：
-- [tools 相关](cs/tools)
-- [vscode 相关](cs/vscode)
-
