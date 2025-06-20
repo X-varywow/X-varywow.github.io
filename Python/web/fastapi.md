@@ -1,6 +1,6 @@
 
 
-## _preface_
+## preface
 
 fastapi 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。
 
@@ -47,9 +47,8 @@ def update_item(item_id: int, item: Item):
 
 
 
-</br>
 
-## _lifespan_
+## lifespan
 
 ```python
 from contextlib import asynccontextmanager
@@ -66,9 +65,12 @@ ml_models = {}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # startup part
     # Load the ML model
     ml_models["answer_to_everything"] = fake_answer_to_everything_ml_model
     yield
+    
+    # shutdown part; eg. close db
     # Clean up the ML models and release the resources
     ml_models.clear()
 
@@ -81,6 +83,10 @@ async def predict(x: float):
     result = ml_models["answer_to_everything"](x)
     return {"result": result}
 ```
+
+> [contextlib](https://docs.python.org/zh-cn/3.13/library/contextlib.html), with语句或函数的 上下文工具
+
+
 
 deprecated:
 
@@ -97,36 +103,9 @@ def shutdown_event():
         log.write("Application shutdown")
 ```
 
-demo, 使用监控：
-
-```bash
-pip install prometheus-fastapi-instrymentator
 
 
-mkdir "monitor"
-export prometheus_multiproc_dir="monitor"
-```
-
-```python
-from prometheus_fastapi_instrumentator import Instrumentator
-
-@app.on_event('startup')
-def start_prometheus():
-    Instrumentator().instrument(app).expose(
-        app,
-        endpoint=f'{app_name}/metrics',
-        tags=['system']
-    )
-
-
-# 引入 grafana 的接口： /{app_name}/metrics
-# curl http://0.0.0.0:8888/{app_name}/metrics
-```
-
-
-</br>
-
-## _response_
+## response
 
 
 返回 html
@@ -170,9 +149,8 @@ return HTMLResponse(content)
 
 
 
-</br>
 
-## _other_
+## other
 
 
 fastapi 与 numpy 一起使用时，
@@ -198,6 +176,34 @@ fastapi 与 numpy 一起使用时，
 
 是内部代码报错的，在外部只表现个 500；服务器的日志信息很重要。
 
+
+-----------
+
+demo, 使用监控：
+
+```bash
+pip install prometheus-fastapi-instrymentator
+
+
+mkdir "monitor"
+export prometheus_multiproc_dir="monitor"
+```
+
+```python
+from prometheus_fastapi_instrumentator import Instrumentator
+
+@app.on_event('startup')
+def start_prometheus():
+    Instrumentator().instrument(app).expose(
+        app,
+        endpoint=f'{app_name}/metrics',
+        tags=['system']
+    )
+
+
+# 引入 grafana 的接口： /{app_name}/metrics
+# curl http://0.0.0.0:8888/{app_name}/metrics
+```
 
 
 
