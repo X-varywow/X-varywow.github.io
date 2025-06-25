@@ -38,6 +38,21 @@ print(m.dimensions)
 #> (10, 20)
 ```
 
+> 默认不支持未定义的参数
+
+```python
+from pydantic import BaseModel
+
+class Fea(BaseModel):
+    class Config:
+        extra = "allow"  # 允许未定义的属性
+
+fea = Fea()
+fea.a = 1  # 现在不会报错
+print(fea.a)  # 输出: 1
+```
+
+
 
 </br>
 

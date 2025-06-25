@@ -6,6 +6,8 @@
   - [statsmodels](Python/数据处理/statsmodels)
   - [scipy](Python/数据处理/scipy)
   - --------
+  - [shapely](Python/数据处理/shapely)
+  - --------
   - [matplotlib](Python/数据处理/matplotlib)
   - [bokeh](Python/数据处理/bokeh)
   - [pyecharts](Python/数据处理/pyecharts)
