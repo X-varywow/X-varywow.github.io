@@ -149,6 +149,60 @@ return HTMLResponse(content)
 
 
 
+## CORS & API_KEY
+
+跨域限制 `CORS` 是浏览器的一项安全机制, 限定 前端网页只能访问和自己 同源（相同协议 + 域名 + 端口） 的服务器。
+
+这是限制是有浏览器实施的，
+
+
+去掉所有来源的 cors:
+
+```python
+from fastapi.middleware.cors import CORSMiddleware
+
+...
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 允许所有来源
+    allow_credentials=False,  # 必须是 False 才能和 "*" 一起使用
+    allow_methods=["*"],  # 允许所有 HTTP 方法
+    allow_headers=["*"],  # 允许所有请求头
+)
+```
+
+
+-----------
+
+
+
+```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import APIKeyHeader
+
+
+# API Token验证配置
+API_KEY = os.environ.get("API_KEY")
+if not API_KEY:
+    raise ValueError("API_KEY environment variable not set")
+
+API_KEY_NAME = "X-API-Key"
+api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
+
+async def get_api_key(api_key: str = Depends(api_key_header)):
+    if api_key == API_KEY:
+        return api_key
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail="Invalid or missing API Key"
+    )
+
+app.include_router(router=dol_router, prefix=PREFIX, tags=["service"], dependencies=[Depends(get_api_key)])
+# 系统路由无需token验证
+app.include_router(router=sys_router, prefix=PREFIX, tags=["system"])
+```
+
 
 ## other
 
@@ -205,6 +259,11 @@ def start_prometheus():
 # curl http://0.0.0.0:8888/{app_name}/metrics
 ```
 
+--------------
+
+异步（async def），基于 asyncio 协程机制，使用 事件循环 驱动。适合 IO 密集型任务（如：数据库、HTTP 调用）并发执行。
+
+CPU 密集型任务推荐 同步 或 后台线程。
 
 
 -------------------------------

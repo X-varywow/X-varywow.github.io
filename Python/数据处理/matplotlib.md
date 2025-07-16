@@ -280,11 +280,6 @@ ax.xaxis.set_major_formatter(formatter)
 
 
 
-</br>
-
-## _May.2021_
-
-
 
 ```python
 #感知机中画图
@@ -362,6 +357,24 @@ def vis(self):
             
     plt.show()
 ```
+
+
+--------------
+
+设置后端
+
+Agg后端（非交互式，只生成静态图像，完全线程安全，可在任何线程使用）；使用场景：服务器端、后台任务、无GUI环境
+
+```python
+import matplotlib
+matplotlib.use('Agg')  # 必须在导入pyplot之前调用
+import matplotlib.pyplot as plt
+```
+
+
+
+
+
 
 ------------
 

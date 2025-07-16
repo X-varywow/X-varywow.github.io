@@ -16,10 +16,6 @@ vscode:
 
 ## _插件_
 
-
-gitlens, source control panel and detach commits view;
-
-
 pylance 插件发现基础的语法错误;
 
 Jupyter 扩展可替换 Jupyter Notebook;
@@ -29,7 +25,7 @@ autopep8 可以 format on save
 
 -----------------
 
-gitlens
+gitlens, source control panel and detach commits view;
 
 commits 历史修改对比
 
@@ -39,6 +35,7 @@ commits 历史修改对比
 
 default date format:  "YYYY/MM/DD HH:mm"
 
+diff 比较时没显示行首的空格差异：右上角有个图标可开启这个功能
 
 
 ## _.vscode 文件夹_

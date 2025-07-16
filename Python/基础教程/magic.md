@@ -62,6 +62,50 @@ repr 不能返回非字符串， str 可以
 
 `__getitem__` : 按照索引获取值
 
+### get set
+
+
+`__get__` : 获取属性
+
+`__set__` : 设置属性
+
+`__delete__` : 删除属性
+
+
+```python
+class Descriptor:
+    def __set__(self, instance, value):
+        if value < 0:
+            raise ValueError("Value cannot be negative")
+        instance._value = value
+
+    def __get__(self, instance, owner):
+        print(f"Getting value from {instance} of {owner}")
+        return instance._value
+
+# Descriptor 作为类属性被赋给 MyClass.attr，而不是实例属性
+# 当访问 obj.attr 时，Python 首先检查 obj.__dict__ 中是否有 'attr' 这个键
+# 自然触发了 __get__ 方法
+
+class MyClass:
+    attr = Descriptor()  # 类属性是一个描述符
+    
+    def __init__(self, value):
+        self._value = value
+
+obj = MyClass(42)
+print(obj.attr)  # 会触发 __get__ 方法
+
+obj.attr = 20    # 正常
+obj.attr = -5    # 抛出 ValueError
+```
+
+
+使用场景：属性验证、延迟计算...
+
+
+
+
 ### len 
 
 `__len__` : 获得长度
