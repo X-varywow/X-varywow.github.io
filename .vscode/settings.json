@@ -1,8 +1,39 @@
 {
-    "window.zoomLevel": 0.6,
-    "editor.fontSize": 15,
+    // "window.zoomLevel": 0.6,
+    // "editor.fontSize": 15,
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
+    // "python.languageServer": "None"
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "black-formatter.args": [
+        "--line-length",
+        "120",
+        "--experimental-string-processing",
+        "--skip-magic-trailing-comma"
+    ],
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    // pylance pylint 都提供基本代码检查，pylance 提供风格检查
+    "pylint.enabled": false,
+    "pylint.args": [
+        "--disable=C0116",
+        "--disable=C0115",
+        "--disable=C0114",
+        "--disable=C0303",
+        "--disable=C0112",
+        "--disable=W0611",
+        "--disable=W0621",
+        "--disable=W0702",
+        "--disable=W0718",
+    ],
     // use ai complete, colse it
     "editor.suggestOnTriggerCharacters": false
 }

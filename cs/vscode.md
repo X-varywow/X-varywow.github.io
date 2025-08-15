@@ -182,6 +182,10 @@ line-height: 0
 
 右键属性 -> 管理员身份运行， 防止特殊操作（python 移动鼠标不生效）
 
+## cursor
+
+workbench.activityBar.orientation
+
 
 ## 快捷键
 

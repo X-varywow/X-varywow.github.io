@@ -243,3 +243,5 @@ xmind
 虚拟机：Windows:VMWare, Mac: VirtualBox、Parallels Desktop 
 
 sci-hub 查看无法访问的论文
+
+翻译：https://github.com/immersive-translate/immersive-translate

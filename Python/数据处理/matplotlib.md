@@ -1,4 +1,5 @@
 ﻿
+> 用 ai 来编码，这种逻辑清晰的工作。
 
 ### _简单示例_
 
@@ -53,8 +54,8 @@ plt.xticks(rotation=-60)
 # 绘制网格
 plt.grid(True)
 
-# 保存图片，默认 png
-plt.savefig('foo',dpi=600)
+# 保存图片，默认 png； bbox_inches 参数去掉白边
+plt.savefig('foo', dpi=600, bbox_inches='tight')
 
 
 # 调高分辨率，将默认的 100dpi 调为 300dpi
