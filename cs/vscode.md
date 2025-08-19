@@ -16,12 +16,9 @@ vscode:
 
 ## _插件_
 
-pylance 插件发现基础的语法错误;
+ruff / pylance 插件发现基础的语法错误;
 
 Jupyter 扩展可替换 Jupyter Notebook;
-
-autopep8 可以 format on save
-
 
 -----------------
 
@@ -38,7 +35,7 @@ default date format:  "YYYY/MM/DD HH:mm"
 diff 比较时没显示行首的空格差异：右上角有个图标可开启这个功能
 
 
-## _.vscode 文件夹_
+## _.vscode_
 
 .vscode 下会有各项的 json 配置
 - extensions.json
@@ -51,32 +48,57 @@ diff 比较时没显示行首的空格差异：右上角有个图标可开启这
 
 ```json
 {
-    "window.zoomLevel": 0.3,
+    // "window.zoomLevel": 0.3,
     // "editor.fontSize": 15,
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
-    // "python.languageServer": "None"
+    "notebook.formatOnSave.enabled": true,
+    "python.languageServer": "None", // 禁用 Pylance
+    // cursor 卸载自带的 python 扩展，可取消 basedpyright 检查
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.organizeImports": "explicit",
+            "source.fixAll": "explicit"
         }
     },
+    "black-formatter.args": [
+        "--line-length",
+        "120",
+        "--experimental-string-processing",
+        "--skip-magic-trailing-comma"
+    ],
     "isort.args": [
         "--profile",
         "black"
     ],
+    // ruff 替代 pylint
+    "ruff.lint.enable": true,
+    "ruff.nativeServer": "on",
+    // "ruff.format.args": [
+    //     "--line-length",
+    //     "120",
+    //     "--experimental-string-processing",
+    //     "--skip-magic-trailing-comma"
+    // ],
     // pylance pylint 都提供基本代码检查，pylance 提供风格检查
-    "pylint.enabled": true,
+    "pylint.enabled": false,
     "pylint.args": [
         "--disable=C0116",
-        "--disable=C0115"
-    ],
+        "--disable=C0115",
+        "--disable=C0114",
+        "--disable=C0303",
+        "--disable=C0112",
+        "--disable=W0611",
+        "--disable=W0621",
+        "--disable=W0702",
+        "--disable=W0718",
+    ]
 }
 ```
 
-大概就是这个样例，eg. 看 pylint 扩展的介绍可以了解到对应设置
+看明细扩展的介绍可以了解到对应设置
 
 
 ### launch.json 

@@ -9,57 +9,6 @@ snowpark提供了一个直观的 API，用于查询和处理数据管道中的�
 - not require a separate cluster outside of Snowflake for computations. All of the computations are done within Snowflake.
 
 
-</br>
-
-## _构建流程_
-
-本地构建：
-
-```bash
-# 使用官方文档中的 3.8 会有个 cffi 报错
-conda create --name py310_env --override-channels -c https://repo.anaconda.com/pkgs/snowflake python=3.10 numpy pandas
-
-conda activate py310_env
-
-pip install snowflake-snowpark-python
-
-pip install "snowflake-snowpark-python[pandas]"
-
-pip install notebook
-
-jupyter notebook
-```
-
-sagemaker 中构建：
-
-```bash
-source activate
-
-conda create --name py310_env --override-channels -c https://repo.anaconda.com/pkgs/snowflake python=3.10 numpy pandas
-
-conda activate py310_env
-
-pip install snowflake-snowpark-python
-
-pip install "snowflake-snowpark-python[pandas]"
-
-
-# 有个 LibraryNotFoundError: Error detecting the version of libcrypto 报错，，
-
-# 参考：https://github.com/wbond/oscrypto/issues/75
-pip uninstall oscrypto -y
-
-pip install git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895ae1edd9e503cfb352e635a8
-
-pip install ipykernel
-
-# 完成
-python -m ipykernel install --user --name=snow_park_env
-```
-
-
-
-
 
 </br>
 
