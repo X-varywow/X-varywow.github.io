@@ -54,8 +54,7 @@ diff 比较时没显示行首的空格差异：右上角有个图标可开启这
     "editor.formatOnSave": true,
     "notebook.formatOnSave.enabled": true,
     // "python.languageServer": "None", // 禁用 Pylance, 会导致无法跳转
-    // cursor 卸载自带的 python 扩展，可取消 basedpyright 检查
-    "python.analysis.typeCheckingMode": "off",
+    // cursor 自带的 python 扩展，可支持跳转，同时 basedpyright 检查
     "[python]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "ms-python.black-formatter",
