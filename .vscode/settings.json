@@ -27,6 +27,9 @@
     // ruff 替代 pylint
     "ruff.lint.enable": true,
     "ruff.nativeServer": "on",
+    "ruff.lint.ignore": [
+        "F401",
+    ],
     // "ruff.format.args": [
     //     "--line-length",
     //     "120",
