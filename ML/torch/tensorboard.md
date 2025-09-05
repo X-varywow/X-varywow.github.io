@@ -47,7 +47,6 @@ sagemaker 中：
 
 
 参考资料：
-- [SpeechT5:Unified-Modal Encoder-Decoder Pre-training for Spoken](https://www.bilibili.com/read/cv14105591)
 - [Tensorboard 详解](https://zhuanlan.zhihu.com/p/36946874)
 - [如何使用 TensorBoard](https://dl.ypw.io/how-to-use-tensorboard/)
 

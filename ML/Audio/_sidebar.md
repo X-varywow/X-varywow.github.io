@@ -13,7 +13,6 @@
   - -------
   - [SpeechT5](ML/Audio/speecht5)
   - [VITS](ML/Audio/vits)
-  - [VITS-fast-finetune](ML/Audio/vfft)
   - [YourTTS](ML/Audio/yourtts)
   - -------
   - [语音克隆-softvc](ML/Audio/softvc)
