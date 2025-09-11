@@ -106,14 +106,20 @@ git config core.ignorecase false
 ## 5.分支 ⭐
 
 ```bash
-#创建一个叫做“feature_x”的分支，并切换过去：
+# 创建一个叫做“feature_x”的分支，并切换过去：
 git checkout -b feature_x
 
-#切换回主分支：
+# 切换回主分支：
 git checkout master
 
-#再把新建的分支删掉：
+# 再把新建的分支删掉：
 git branch -d feature_x
+
+# -D 强制删除
+git branch -D localBranchName
+
+# 删除远程分支
+git push origin --delete remoteBranchName
 ```
 
 
@@ -124,16 +130,8 @@ git branch
 # 查看远程分支
 git branch -r
 
-
 # 查看所有分支
 git branch -a
-
-# 删除本地分支 (-D 强制删除)
-git branch -d localBranchName
-
-# 删除远程分支
-git push origin --delete remoteBranchName
-
 
 # 推送至远程分支，没有就创建
 git push origin branch_name
@@ -141,7 +139,7 @@ git push origin branch_name
 
 
 
-## 6.更新与合并
+## 6.更新 pull
 
 
 ```bash
@@ -152,6 +150,8 @@ git pull
 #更新本地仓库至最新改动
 git pull orgin branch_name
 ```
+
+## 7.合并 merge
 
 将远端不同分支合并到本地当前分支：
 
@@ -209,7 +209,44 @@ git pull
 rebase 会有着更干净的线性历史
 
 
-## 7.tag
+### rebase
+
+- 优点
+  - 可以将多个小提交合并成一个大的提交，使提交历史更加清晰
+  - 通过 rebase 拉取最新代码，避免合并冲突
+  - 可以调整提交的顺序
+- 缺点
+  - 如果分支共享，rebase 改变提交历史，可能导致他人工作出现问题
+  - 导致历史追溯问题
+
+
+场景：两个分支 master 和 feature，
+
+```bash
+# 将 master 上的改动拉到本地 feature 分支
+git checkout feature
+
+git rebase master
+```
+
+### cherry-pick
+
+复制 commit 到另一个分支上
+
+```bash
+# 查看历史 commit 信息
+git log
+
+git cherry-pick commit-id1 commit-id2
+```
+
+
+```bash
+git revert commit-id
+```
+
+
+## 8.tag
 
 Tags give the ability to mark specific points in history as being important
 
@@ -232,16 +269,16 @@ git push origin -d <tag_name>
 
 
 
-## 8.特殊
+## 9.other
 
 
-</br>
 
-### _git log_
+### git log
 
 ```bash
 git log
 
+# 注意 -- 后有空格
 git log -- file_name
 git log -- dir_name
 
@@ -263,9 +300,9 @@ git log --help
 
 可以查看老早的文件夹是谁建立的
 
-</br>
 
-### _git blame_
+
+### git blame
 
 查看每行代码是谁写的
 
@@ -275,13 +312,7 @@ git blame <file-name>
 
 
 
-
-
-
-
-</br>
-
-### _git reset_
+### git reset
 
 !> 执行特殊操作先备份文件
 
@@ -315,34 +346,10 @@ reset 之后 commits 就看不到中间的提交了
 [参考资料：reset](https://www.runoob.com/git/git-reset.html)
 
 
-</br>
 
-### _git rebase_
+### git stash ⭐️
 
-- 优点
-  - 可以将多个小提交合并成一个大的提交，使提交历史更加清晰
-  - 通过 rebase 拉取最新代码，避免合并冲突
-  - 可以调整提交的顺序
-- 缺点
-  - 如果分支共享，rebase 改变提交历史，可能导致他人工作出现问题
-  - 导致历史追溯问题
-
-
-场景：两个分支 master 和 feature，
-
-```bash
-# 将 master 上的改动拉到本地 feature 分支
-git checkout feature
-
-git rebase master
-```
-
-
-</br>
-
-### _git stash_
-
-存储临时代码。(当前需要切换分支且当前代码修改不像提交时)
+存储临时代码。(当前需要切换分支且当前代码修改不像提交时)，**在 ide 中使用很便捷**
 
 比如本地调试时，经常改一些代码，这时 stash 出来，后续 stash apply 就行。
 
@@ -363,26 +370,6 @@ git stash apply stash@{1}
 发生冲突时，根据提示信息即可；
 
 未跟踪文件 ---add--> 暂存区文件（向后 commit, 向前 restore --staged）
-
-
-</br>
-
-### _cherry-pick_
-
-复制 commit 到另一个分支上
-
-```bash
-# 查看历史 commit 信息
-git log
-
-git cherry-pick commit-id1 commit-id2
-```
-
-
-```bash
-git revert commit-id
-```
-
 
 
 

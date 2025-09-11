@@ -8,7 +8,8 @@ REST, Representational State Transfer，是一种软件架构风格。
 - 按需编码
 - 统一接口
 
-## _restful api_
+## restful api
+
 
 一种通用的 API 风格
 
@@ -73,18 +74,13 @@ DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
 
 
 
-</br>
-
-## _接口文档_
 
 
 
 
 
 
-</br>
-
-## _api 功能测试_
+## api 功能测试
 
 DEMO, 使用 curl 测试 api:
 
@@ -149,9 +145,18 @@ apifox = postman (API开发调试) + swagger（API文档涉及）+ Mock + JMeter
 
 ```
 
-</br>
 
-## _wrk 性能测试_
+## 压测基础
+
+非功能测试，**测试系统在不同压力下的表现**
+
+常见测试情况：（并发数，请求量）-> （平均响应时间，QPS, 成功（超时）率， P99）
+
+并发数（同一时段有几个用户在连续发请求， 代码实现中是 线程池 workers）
+
+
+
+## wrk 性能测试
 
 > Modern HTTP benchmarking tool
 
