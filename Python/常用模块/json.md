@@ -44,6 +44,8 @@ with open('data.json', 'w', encoding='utf-8') as f:
 
 ## _other_
 
+使用 orjson 替代 json 会**快很多**（rust 编写）， 耗时只有 1/3
+
 [pickle --- Python 对象序列化](https://docs.python.org/zh-cn/3.10/library/pickle.html)
 
 [shelve --- Python 对象持久化](https://docs.python.org/zh-cn/3.10/library/shelve.html)

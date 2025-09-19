@@ -25,7 +25,7 @@
         "black"
     ],
     // ruff 替代 pylint
-    "ruff.lint.enable": true,
+    "ruff.lint.enable": false,
     "ruff.nativeServer": "on",
     "ruff.lint.ignore": [
         "F401",
