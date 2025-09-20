@@ -1,6 +1,6 @@
 ZZZ/
 WORK/
-
+tmp/
 **/.DS_Store
 *.pth
 *.zip

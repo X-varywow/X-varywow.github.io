@@ -1,5 +1,5 @@
 {
-    // "window.zoomLevel": 0.3,
+    "window.zoomLevel": 0.5,
     // "editor.fontSize": 15,
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
