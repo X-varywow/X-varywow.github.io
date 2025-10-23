@@ -6,11 +6,11 @@ Docker 是一个用 Go语言实现的开源项目，对 Linux 容器的一种封
 
 
 
-## _基础_
+## 基础
 
+- image （镜像，一个只读的模板，包含应用程序及其依赖，用来创建容器）
+- container (容器实例， 独立的应用运行环境) (**拉取 image 创建 container 实例**)
 - dockerfile（配置文件）
-- image （镜像文件，包含应用程序及其依赖）
-- container (容器实例) (**拉取 image 创建 container 实例**)
 
 
 ```bash
@@ -26,7 +26,7 @@ docker ps -a
 
 </br>
 
-demo: hello world
+### 1.1 demo: hello
 
 ```bash
 docker image pull library/hello-world
@@ -41,9 +41,43 @@ docker container run hello-world
 
 </br>
 
-其它命令：
+
+
+### 1.2 run
 
 ```bash
+# 最基本运行（前台运行）
+docker run <镜像名>
+
+# 后台运行容器，并指定名称
+docker run -d --name my_container <镜像名>
+
+# 运行并进入容器的交互式终端（退出终端容器会停止）
+docker run -it --name my_container <镜像名> /bin/bash
+
+# 运行容器并映射端口（主机端口:容器端口）
+docker run -d -p 8080:80 --name my_web nginx
+
+# 运行容器并挂载数据卷（主机目录:容器目录）
+docker run -d -v /host/data:/container/data --name my_app <镜像名>
+
+# 运行容器并设置环境变量
+docker run -d -e "ENV_VAR=value" --name my_app <镜像名>
+```
+
+### 1.3 查看
+
+```bash
+# 查看正在运行的容器
+docker ps
+
+# 查看所有容器（包括已停止的）
+docker ps -a
+
+# 查看最近创建的容器
+docker ps -l
+
+
 # 列出本机正在运行的容器
 docker container ls
 
@@ -53,6 +87,7 @@ docker container ls --all
 # run 总是新建容器，start 启动存在的容器
 docker container start
 ```
+
 
 
 查看源码：
@@ -69,10 +104,34 @@ docker cp 836b933a810c:/home/Solvitaire ./empty
 
 
 
+### 1.4 源
+
+
+正常配置位置：/etc/docker/daemon.json
+
+```bash
+# 创建或编辑 Docker daemon 配置
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+    "registry-mirrors": [
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://hub-mirror.c.163.com"
+    ]
+}
+EOF
+
+# 重启 Docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+> 对应客户端设置中的 Docker Engine, 直接新增 registry-mirrors 项即可
 
 
 
-## _制作 Docker 容器_
+
+## 制作 Docker 容器
 
 ```bash
 git clone https://github.com/ruanyf/koa-demos.git
@@ -132,7 +191,7 @@ docker container run -p 8000:3000 -it koa-demo /bin/bash
 ```
 
 
-## _Docker Compose_
+## Docker Compose
 
 > 管理多个容器的联动
 
@@ -147,7 +206,7 @@ docker-compose stop
 ```
 
 
-## _other_
+## other
 
 
 **Vagrant 和 Docker的使用场景和区别?**
