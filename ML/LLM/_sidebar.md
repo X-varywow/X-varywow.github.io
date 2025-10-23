@@ -3,3 +3,4 @@
   - [GPT](ML/LLM/gpt)
   - [prompt](ML/LLM/prompt)
   - [LLM](ML/LLM/llm)
+  - [rag](ML/LLM/rag)
