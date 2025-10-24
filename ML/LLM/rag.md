@@ -168,6 +168,10 @@ device = embeddings.client.device
 print(f"📱 HuggingFaceEmbeddings device: {device}")
 ```
 
+注意索引在 from_documents 建立了，**会将所有文本块的向量，连同它们的元数据（如来源文件、页码、章节标题等），存储到向量数据库中**。 同时可选 关键词索引（为文本块构建一个传统的倒排索引）
+
+而后面 retrieve_context 称为检索， 使用后 向量相似度搜索，关键词搜索等
+
 ```python
 # way2. 使用 FAISS 向量存储
 

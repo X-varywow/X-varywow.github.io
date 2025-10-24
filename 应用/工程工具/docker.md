@@ -49,7 +49,7 @@ docker container run hello-world
 # 最基本运行（前台运行）
 docker run <镜像名>
 
-# 后台运行容器，并指定名称
+# -d 后台运行容器
 docker run -d --name my_container <镜像名>
 
 # 运行并进入容器的交互式终端（退出终端容器会停止）
@@ -58,11 +58,14 @@ docker run -it --name my_container <镜像名> /bin/bash
 # 运行容器并映射端口（主机端口:容器端口）
 docker run -d -p 8080:80 --name my_web nginx
 
-# 运行容器并挂载数据卷（主机目录:容器目录）
-docker run -d -v /host/data:/container/data --name my_app <镜像名>
+# -v 载数据卷（主机目录:容器目录）
+docker run -v /host/data:/container/data <镜像名>
 
 # 运行容器并设置环境变量
 docker run -d -e "ENV_VAR=value" --name my_app <镜像名>
+
+# -i 保持标准输入打开，允许与容器交互
+# --rm 容器退出后自动删除容器文件系统
 ```
 
 ### 1.3 查看
