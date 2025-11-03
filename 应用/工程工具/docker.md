@@ -201,8 +201,10 @@ docker container run -p 8000:3000 -it koa-demo /bin/bash
 定义配置文件 docker-compose.yml
 
 ```bash
-# up 启动服务，-d 表示 detached 模式，在后台运行不阻塞当前的命令行
+# up 创建并启动容器
+# -d 表示 detached 模式，在后台运行不阻塞当前的命令行
 # --build 启动容器之前重新构建服务的镜像
+# -f docker-compose.yml
 docker-compose up -d --build
 
 docker-compose stop
