@@ -1,1 +1,0 @@
-[大模型相关技术原理以及实战经验](https://github.com/liguodongiot/llm-action)
