@@ -3,6 +3,18 @@
 
 其它范式：面向切面编程（AOP, 关注模块化）、反应式编程（事件驱动，循环从事件队列取数）、
 
+</br>
+</br>
+
+<p class="pyellow">什么时候使用类, 常见场景：</p>
+
+- 有状态要保存（配置、网络连接、 ML 模型等）
+- 多个函数共享一份数据（如果不同函数之间, 传递着一堆参数， 用类组织起来）
+- 需要可扩展性或多态
+
+
+
+
 ## 基本使用
 
 ### 1.0 定义与调用
@@ -473,5 +485,6 @@ hot(c)
 
 参考资料：
 - 学校课程
+- gpt
 - [实例讲解Python中的魔法函数（高级语法）](https://zhuanlan.zhihu.com/p/344951719)
 - [runoob python oop](https://www.runoob.com/python/python-object.html)

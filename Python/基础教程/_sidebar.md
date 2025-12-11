@@ -3,8 +3,11 @@
   - [基本数据类型](Python/基础教程/基本数据类型)
   - [字符串格式化](Python/基础教程/format)
   - [正则表达式](Python/基础教程/re)
+  - ---
   - [面向对象](Python/基础教程/oop)
+  - [设计模式](Python/基础教程/设计模式)
   - [魔法方法](Python/基础教程/magic)
+  - ---
   - [Intermediate Python](Python/基础教程/intermediate)
   - [What's New](Python/基础教程/new)
   - [other](Python/基础教程/other)
