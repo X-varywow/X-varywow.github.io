@@ -43,8 +43,6 @@ npx electron-forge import
 npm run make
 ```
 
-!> 报错： authors is required，配置文件中添加即可
-
 ## 代码分析
 
 entry point: main.js
