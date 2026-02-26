@@ -25,13 +25,3 @@ sudo
 # 切换到 user2 并使用其环境变量
 su - user2
 ```
-
-[添加环境变量](https://blog.51cto.com/u_14782715/5082236)
-
-```bash
-​​$PATH="$PATH":YOUR_PATH​​
-```
-
-```bash
-​​export PATH="$PATH:YOUR_PATH"​​
-```
