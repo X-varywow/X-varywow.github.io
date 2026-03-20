@@ -175,6 +175,19 @@ docsify 扩展了一些 Markdown 语法，可以让文档更易读。
 
 [参考文档](https://docsify.js.org/#/zh-cn/helpers)
 
+
+#### 2.6 忽略副标题
+
+
+
+```md
+# Getting Started <!-- {docsify-ignore-all} -->
+
+## Header <!-- {docsify-ignore} -->
+```
+
+
+
 ### 3. Katex 语法
 
 #### 3.1 显示方式
