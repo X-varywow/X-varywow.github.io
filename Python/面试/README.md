@@ -21,7 +21,6 @@
 
 [bili_面试通用技巧](https://www.bilibili.com/video/BV1aD4y187gj/)
 
-https://osjobs.net/topk/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/
 
 --------------------------
 
