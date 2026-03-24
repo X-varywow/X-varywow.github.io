@@ -5,5 +5,6 @@
   - [LLM](ML/LLM/llm)
   - [rag](ML/LLM/rag)
   - ------
-  - [agent](ML/LLM/agent)
   - [vibe_coding](ML/LLM/agent_code)
+  - [agent](ML/LLM/agent)
+  - [agent_project](ML/LLM/agent_project)
