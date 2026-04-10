@@ -20,6 +20,8 @@ Kubernetes 提供了一个可弹性运行分布式系统的框架。便于 **管
 
 ------------
 
+kubectl 是你和 Kubernetes 集群之间的“控制台”。
+
 ```bash
 # 若找不到需要 -n <namespace>
 kubectl get pods
@@ -75,6 +77,8 @@ keyword: 问题排查, eks
 Cluster -> nodes 输入 10-210-999-999 ip 可找到对应的机器；或 pod 搜
 
 kubectl shell 在右上角
+
+
 
 ## 机器资源
 
