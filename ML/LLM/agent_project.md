@@ -26,12 +26,24 @@ https://github.com/n8n-io/n8n
 
 ## automation
 
+### page-agent
+
 repo1. https://github.com/alibaba/page-agent
 
 基于 dom 结构树，转化为文本数据然后通过（观察， 思考（拼接提示词）， 行动）操控浏览器。
 
+------------
 
-IIFE 书签注入 （将立即执行函数表达式， 写入浏览器书签，点击书签时即可完成脚本注入）
+核心设计：
+1. **Schema 约束**：`AgentOutput` 工具的 Zod schema 将反思字段与 action 放在同一结构中
+2. **System Prompt 引导**：`<reasoning_rules>` 部分明确要求模型评估上步效果、检测循环、规划下步
+3. **历史上下文**：每步的 `evaluation`、`memory`、`next_goal` 都被记录并在后续步骤中传递给 LLM
+
+
+
+------------
+
+IIFE 书签注入 （将立即执行函数表达式写入浏览器书签，点击书签时即可完成脚本注入）
 
 常用于加载外部脚本(应用时压缩成一行):
 
@@ -43,7 +55,8 @@ javascript:(function(){
 })();
 ```
 
--------------
+
+### UI-TARS
 
 repo2. https://github.com/bytedance/UI-TARS-desktop
 
