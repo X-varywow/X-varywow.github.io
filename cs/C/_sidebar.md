@@ -2,6 +2,6 @@
 - [cs/C语言](cs/C/)
   - [单链表逆置](cs/C/单链表逆置)
 - [IDE](cs/C/ide)
-- [csharp_day1](cs/C/csharp)
-- [csharp_day2](cs/C/net_core_app_develop)
+- [csharp_day1](cs/C/csharp_day1)
+- [csharp_day2](cs/C/csharp_day2)
 - [win_ui3_day1](cs/C/winui3)
