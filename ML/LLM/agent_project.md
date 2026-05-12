@@ -1,6 +1,8 @@
 
 主要记录一下 agent 相关的高星项目
 
+https://github.com/topics/ai
+
 
 ## dify
 
