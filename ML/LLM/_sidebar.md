@@ -9,3 +9,4 @@
   - [agent_project](ML/LLM/agent_project)
   - ------
   - [vibe_coding](ML/LLM/agent_code)
+  - [hermes agent](ML/LLM/hermes)
