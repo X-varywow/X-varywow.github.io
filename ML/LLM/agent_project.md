@@ -25,6 +25,28 @@ https://github.com/n8n-io/n8n
 
 ## openclaw
 
+https://github.com/openclaw/openclaw
+
+
+
+## hermes
+
+The agent that grows with you
+
+https://github.com/NousResearch/hermes-agent
+
+- 社区评价（gpt）：适合长期保存上下文，累积知识库
+- 能从成功任务自动生成 skill
+
+--------
+
+
+特别结构：SOUL.md（人格），MEMORY.md（长期知识），USER.md（你的画像），
+
+适合个人知识管理，记录读书、总结思考等；
+
+
+
 
 ## automation
 
