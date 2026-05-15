@@ -82,6 +82,14 @@ hermes gateway      #Start messaging gateway
 hermes doctor       #Check for issues
 ```
 
+## TODO
+
+- [ ] Windows 切到 wsl
+
+
+
+
+
 ## other
 
 刷新了 soul, 但是微信机器人没有生效：session 里的 system prompt 是旧版的

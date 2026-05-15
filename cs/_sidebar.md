@@ -13,4 +13,5 @@
   - [Database](cs/DATABASE/)
   - ---
   - [tools 相关](cs/tools)
+  - [wsl](cs/wsl)
   - [vscode 相关](cs/vscode)
