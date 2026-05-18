@@ -2,20 +2,15 @@
 
 ## windows 安装
 
+windows 版本：（gpt: 不推荐， 适用性上 agent 是基于 linux 子系统设计的）
+
+> 个人目前用着比 wsl 要舒服简单一些
 
 ```bash
 # 走本地代理端口加速，这边是通过 _clash 启动了命令行；下载速度大提升
 git clone https://github.com/NousResearch/hermes-agent.git
 
 
-# 安装 适用于 Linux 的 Windows 子系统（WSL）
-wsl --install
-
-# 在 wsl 中运行 或 cmd 中输入 wsl 进入
-cd /mnt/c/Users/Administrator/Desktop/hermes-agent
-
-
-# 有点麻烦，要装完全版 wsl; 换 Windows cmd 了
 python -m venv .venv
 .\.venv\Scripts\activate.bat
 conda deactivate
@@ -25,28 +20,32 @@ pip install -e ".[all]"
 
 
 wsl 版本：
+
 ```bash
+# 安装 适用于 Linux 的 Windows 子系统（WSL）
+wsl --install
 wsl --install -d Ubuntu-22.04
+
+# 在 wsl 中运行 或 cmd 中输入 wsl 进入
+cd /mnt/c/Users/Administrator/Desktop/hermes-agent
+
+# 复制或 clone 项目
+# 正常 windows 桌面对应地址: /mnt/c/Users/Administrator/Desktop
+cd ~
+mkdir projects
+cp -r /mnt/c/Users/Administrator/Desktop/hermes-agent ~/projects/
+cd ~/projects/hermes-agent
+
 
 wsl -l -v
 # 进入 ubuntu
 wsl -d Ubuntu-22.04
-
-# 设置默认 wsl
-wsl --set-default Ubuntu-22.04
 
 # windows 建立的不会兼容
 rm -rf .venv
 
 sudo apt update
 sudo apt install -y python3-venv
-
-
-cd ~
-mkdir projects
-cp -r /mnt/c/Users/Administrator/Desktop/hermes-agent ~/projects/
-cd ~/projects/hermes-agent
-
 
 sudo apt install -y python3.11 python3.11-venv python3.11-dev
 
@@ -61,12 +60,39 @@ vim ~/.pip/pip.conf
 
 python3.11 -m venv .venv
 source .venv/bin/activate
+
+sudo apt install python3-pip
 pip install -e ".[all]"
 
 hermes
 hermes update 
-
 ```
+
+
+版本2，前面到 安装所需 pip 那里进行不下去了，网络实在下载太慢了
+
+(**这里严重需要网络代理**)
+
+```bash
+# C:\Users\你的Windows用户名\.wslconfig
+# 新增文件加入如下内容
+[wsl2]
+networkingMode=mirrored
+dnsTunneling=true
+firewall=true
+autoProxy=true
+
+
+# 启动 _clash vpn 代理端口的命令行
+# 重启 wsl
+wsl --shutdown
+wsl
+
+cd ~/projects/
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+```
+
+
 
 
 
@@ -82,10 +108,27 @@ hermes gateway      #Start messaging gateway
 hermes doctor       #Check for issues
 ```
 
-## TODO
+自用 windows 启动脚本：
 
-- [ ] Windows 切到 wsl
+```bash
+cd C:\Users\Administrator\Desktop\hermes-agent
+call .\.venv\Scripts\activate.bat
+hermes gateway
+pause
+```
 
+`call` 确保激活脚本在当前上下文中执行，而不是启动子进程
+
+没有的话，父进程会被替换为子加成，activate.bat 执行完毕后整个脚本终止
+
+
+
+## 常用命令
+
+| 命令   | 作用                |
+| ------ | ------------------- |
+| /new   | strat a new session |
+| /usage | token usage         |
 
 
 

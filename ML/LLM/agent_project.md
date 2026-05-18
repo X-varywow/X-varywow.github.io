@@ -48,11 +48,9 @@ https://github.com/NousResearch/hermes-agent
 
 
 
-## automation
+## page-agent
 
-### page-agent
-
-repo1. https://github.com/alibaba/page-agent
+automation repo1. https://github.com/alibaba/page-agent
 
 基于 dom 结构树，转化为文本数据然后通过（观察， 思考（拼接提示词）， 行动）操控浏览器。
 
@@ -80,8 +78,8 @@ javascript:(function(){
 ```
 
 
-### UI-TARS
+## UI-TARS
 
-repo2. https://github.com/bytedance/UI-TARS-desktop
+automation repo2. https://github.com/bytedance/UI-TARS-desktop
 
 基于图像理解

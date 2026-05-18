@@ -40,8 +40,22 @@ wsl --set-default Ubuntu-22.04
 
 
 ```bash
+# 进入&退出
+wsl
+exit
+
+# 更新版本
+wsl -v
+wsl --update
+
+# 升级包
 sudo apt update && sudo apt upgrade
 ```
+
+WSL 版本: 2.7.3.0
+
+
+## 特殊
 
 
 
