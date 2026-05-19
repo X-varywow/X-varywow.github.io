@@ -123,12 +123,38 @@ pause
 
 
 
-## 常用命令
+## 基础
 
-| 命令   | 作用                |
-| ------ | ------------------- |
-| /new   | strat a new session |
-| /usage | token usage         |
+| 常用命令               | 作用                       |
+| ------------------ | -------------------------- |
+| `/new` or `/reset` | Start a fresh conversation |
+| `/usage`           | token usage                |
+| `/status`          | Show session info          |
+| `/help`            |                            |
+
+
+- Secrets and tokens → `~/.hermes/.env`
+- Non-secret settings → `~/.hermes/config.yaml`
+
+--------
+
+`~/.herms/SOUL.md`  default personality.
+
+Use `/personality` only when you want a temporary mode shift
+
+目前第一个 够用了
+
+--------
+
+定时任务
+
+```bash
+/cron add 30m "Remind me to check the build"
+/cron add "every 2h" "Check server status"
+/cron add "every 1h" "Summarize new feed items" --skill blogwatcher
+/cron add "every 1h" "Use both skills and combine the result" --skill blogwatcher --skill maps
+```
+
 
 
 
@@ -147,6 +173,6 @@ pause
 hermes memory reset --yes 
 # 在清理 /.hermes/sessions/ 下的文件
 ```
-清memory, sessions, 微信记录都试了没有；
+清memory, sessions, 微信记录都试了没用；
 
 最后 保留 `.env` `SOUL.md` 清理掉 `.hermes`
