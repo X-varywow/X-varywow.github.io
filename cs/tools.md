@@ -75,7 +75,6 @@ office 办公：libreoffice
 
 [一键自动化 下载、安装、激活 Office](https://github.com/OdysseusYuan/LKY_OfficeTools)，666
 
-clash for windows
 
 https://git.crepe.moe/taiga74164/Akebi-GC/-/tree/master
 
@@ -136,3 +135,33 @@ xmind
 sci-hub 查看无法访问的论文
 
 翻译：https://github.com/immersive-translate/immersive-translate
+
+
+
+## vpn
+
+目前使用的是 **clash**
+
+(1) 教程，流程上通用
+
+https://help.ghelper.net/shou-ji-dai-li/clash-for-windows
+
+印象中，中间漏了一步：右键 profile -> run script，才会出现 proxies
+
+
+(2) 代理端口
+
+clash 界面端口编号那里可以直接打开代理过的端口，git 等操作会加速很多
+
+
+(3) 如何让 vscode, cursor 使用代理？
+
+对于单个项目，新建 settings.json
+
+```json
+{
+  "http.proxy": "http://127.0.0.1:7890",
+  "http.proxySupport": "override",
+  "http.systemCertificates": true
+}
+```

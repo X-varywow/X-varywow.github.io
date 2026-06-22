@@ -111,7 +111,15 @@ hermes doctor       #Check for issues
 自用 windows 启动脚本：
 
 ```bash
+@echo off
 cd C:\Users\Administrator\Desktop\hermes-agent
+
+:: 设置代理环境变量
+set HTTP_PROXY=http://127.0.0.1:7890
+set HTTPS_PROXY=http://127.0.0.1:7890
+:: 如果需要绕过某些地址，可以设置 NO_PROXY（可选）
+set NO_PROXY=localhost,127.0.0.1
+
 call .\.venv\Scripts\activate.bat
 hermes gateway
 pause
@@ -125,7 +133,7 @@ pause
 
 ## 基础
 
-| 常用命令               | 作用                       |
+| 常用命令           | 作用                       |
 | ------------------ | -------------------------- |
 | `/new` or `/reset` | Start a fresh conversation |
 | `/usage`           | token usage                |
