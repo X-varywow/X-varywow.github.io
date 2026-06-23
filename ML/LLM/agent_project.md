@@ -4,7 +4,7 @@
 https://github.com/topics/ai
 
 
-## dify
+## dify 146k
 
 应用层，用于快速构建 llm 应用
 
@@ -12,7 +12,7 @@ https://github.com/langgenius/dify
 
 
 
-## n8n
+## n8n 194k
 
 workflow 层，用于快速构建一个任务流程;
 
@@ -23,13 +23,17 @@ workflow 层，用于快速构建一个任务流程;
 https://github.com/n8n-io/n8n
 
 
-## openclaw
+## openclaw 380k
 
 https://github.com/openclaw/openclaw
 
 
+## opencode 177k
 
-## hermes
+https://github.com/anomalyco/opencode
+
+
+## hermes 200k
 
 The agent that grows with you
 

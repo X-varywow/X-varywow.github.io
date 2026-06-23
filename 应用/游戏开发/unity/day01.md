@@ -32,20 +32,30 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;  // 先关垂直同步，否则 targetFrameRate 无效
+        Application.targetFrameRate = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-         float FPS = 1 / Time.deltaTime;
-         Text_FPS.text = "FPS: " + FPS;
-         PuTao ++;
+        float FPS = 1 / Time.deltaTime;
+        int fpsNum = Mathf.RoundToInt(cur_p);
+        Text_FPS.text = "FPS: " + fpsNum;
 
-         Text_News_Gain.text = "当前拥有葡萄：" + PuTao;
+        PuTao ++;
+        Text_News_Gain.text = "当前拥有葡萄：" + PuTao;
 
     }
 }
 ```
 
 在 start 中 添加 Application.targetFrameRate = 60; 限定帧率为 60
+
+注意如果使用 text mesh pro ，修改 cs 代码：
+
+```cs
+using TMPro;
+
+public TMP_Text ...;
+```

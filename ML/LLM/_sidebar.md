@@ -10,3 +10,4 @@
   - ------
   - [vibe_coding](ML/LLM/agent_code)
   - [hermes agent](ML/LLM/hermes)
+  - [opencode](ML/LLM/opencode)
