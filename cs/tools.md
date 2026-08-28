@@ -1,141 +1,134 @@
 
-## mac 
-
-| 快捷键                           | 说明     |
-| -------------------------------- | -------- |
-| `command` + `shift` + `3`        | 截全屏   |
-| `command` + `shift` + `4`        | 截屏     |
-| `command` + `shift` + `5`        |          |
-| `command` + `space`              | 聚焦搜索 |
-| `command` + `m`, `command` + `w` |          |
-
-搜狗输入法
-
-窗口管理软件 magnet
-
-显示器排列
-
-iterm2 + zsh + [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) + [nerd fonts](https://github.com/ryanoasis/nerd-fonts) + [dracula-theme](https://github.com/dracula/dracula-theme) 配色
-
-```zsh
-vim ~/.zshrc
-```
-ZSH_THEME="agnoster"
-
-
----------
-
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-export PATH=/opt/homebrew/bin:$PATH
-```
-
-在 `~/.zshrc` 中添加 export, 然后 `source ~/.zshrc`
-
-
-
-
-------------
-
-
-brew 安装一些奇奇怪怪的东西：
-
-- [trippy](https://trippy.cli.rs/), 一个命令行工具，可以代替 traceroute 查看互联网通信的路径，分析网络状况
-
-
-
-iterm2 快捷键：
-
-| 快捷键      | 说明    |
-| ----------- | ------- |
-| command + T | new tab |
-
-
-
-
-office 办公：libreoffice
-
-
-
-
->mac 确实不好用，系统限制多，软件兼容性没 windows, 卡卡的关闭还要好久。m1 弄个 live2d 打开模型直接CPU吃满；只是下限高，所以很多人说 mac 好，
-
---------------------
-
-
-
-更多资料：
-- [mac怎么快速回到桌面 隐藏所有窗口](https://www.cnblogs.com/guchunchao/p/9771548.html)
-
 
 ## windows
 
-[系统激活](https://github.com/TGSAN/CMWTAT_Digital_Edition)
+#### 系统工具
 
-[一键自动化 下载、安装、激活 Office](https://github.com/OdysseusYuan/LKY_OfficeTools)，666
+| 用途                | 工具                                                                         |
+| ------------------- | ---------------------------------------------------------------------------- |
+| 系统激活            | [CMWTAT_Digital_Edition](https://github.com/TGSAN/CMWTAT_Digital_Edition)    |
+| Office 一键安装激活 | [LKY_OfficeTools](https://github.com/OdysseusYuan/LKY_OfficeTools)           |
+| 卸载 / 注册表清理   | [Geek Uninstaller](https://geekuninstaller.com/)                             |
+| 右键菜单管理        | [ContextMenuManager](https://github.com/BluePointLilac/ContextMenuManager) ⭐ |
+| 经典右键菜单        | Windows 11 Classic Context Menu                                              |
+| 自动登录 Win11      | [修改注册表方式](https://zhuanlan.zhihu.com/p/411167130)                     |
+
+#### 日常软件
+
+| 用途          | 工具                                     |
+| ------------- | ---------------------------------------- |
+| 视频播放      | [PotPlayer](https://potplayer.daum.net)  |
+| EPUB 阅读     | JustRead                                 |
+| 游戏帧率监控  | Afterburner / Xbox Game Bar              |
+| 游戏画质优化  | NVIDIA GeForce Experience                |
+| Switch 模拟器 | [YUZU](https://github.com/yuzu-emu/yuzu) |
+
+#### 快捷键
+
+| 快捷键          | 说明         |
+| --------------- | ------------ |
+| `Win` + `Space` | 切换美式键盘 |
+
+> 文件管理器地址栏可直接输入 `cmd` 打开终端。
+
+#### 美化
+
+| 用途           | 工具                                                           |
+| -------------- | -------------------------------------------------------------- |
+| 任务栏透明     | TranslucentTB                                                  |
+| 桌面整理       | [Stardock Fences](https://www.stardock.com/products/fences/)   |
+| 自定义鼠标     | Yolo Mouse                                                     |
+| 任务栏增强     | ExplorerPatcher                                                |
+| 系统字体更换   | [noMeiryoUI](https://github.com/Tatsu-syo/noMeiryoUI)          |
+| 右键菜单自定义 | [教程](https://shliang.blog.csdn.net/article/details/89286118) |
+
+**字体推荐：**
+- 系统字体：微软雅黑 9pt
+- 浏览器字体：苹方 / SF Pro（苹果字体风格）
+- 衬线字体：[思源宋体](https://source.typekit.com/source-han-serif/cn/)
+- [修改系统字体教程](https://zhuanlan.zhihu.com/p/601288823)
 
 
-https://git.crepe.moe/taiga74164/Akebi-GC/-/tree/master
-
-potplayer 播放器
-
-文件管理器 path 里可直接 cmd
-
-epub 阅读器：justread
-
-[YUZU switch 模拟器](https://github.com/yuzu-emu/yuzu)
-
-> Afterburner 或 xbox game bar 查看游戏帧率，开销等
-
-> NVIDIA Gefore experience 进行游戏画面设置调整
 
 
-`Win` + `space` 切换美式键盘
+## mac
 
---------------------
+#### 快捷键
 
-### windows美化
+| 快捷键                | 说明            |
+| --------------------- | --------------- |
+| `Cmd` + `Shift` + `3` | 截全屏          |
+| `Cmd` + `Shift` + `4` | 区域截图        |
+| `Cmd` + `Shift` + `5` | 录屏 / 截图选项 |
+| `Cmd` + `Space`       | 聚焦搜索        |
+| `Cmd` + `M`           | 最小化窗口      |
+| `Cmd` + `W`           | 关闭窗口        |
 
-TranslucentTB 任务栏透明
+#### 推荐软件
 
-stardock fences, 桌面整理工具
+| 用途     | 软件                                       |
+| -------- | ------------------------------------------ |
+| 输入法   | 搜狗输入法                                 |
+| 窗口管理 | [Magnet](https://magnet.crowdcafe.com)     |
+| 办公     | [LibreOffice](https://www.libreoffice.org) |
 
-yolo mouse, 自定义鼠标工具
+#### 终端配置
 
-ExplorerPatcher
+**核心组合**：iTerm2 + zsh + Oh My Zsh + Nerd Fonts + Dracula 配色
 
-系统字体还是 微软雅黑   9pt， 浏览器的改一改，改成苹果字体
+- [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+- [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+- [Dracula Theme](https://github.com/dracula/dracula-theme)
 
-[修改系统字体](https://zhuanlan.zhihu.com/p/601288823)
+```zsh
+# 编辑配置
+vim ~/.zshrc
+# 主题设置
+ZSH_THEME="agnoster"
+```
 
-[思源宋体](https://source.typekit.com/source-han-serif/cn/)
+#### Homebrew
 
-- [字体更换工具](https://github.com/Tatsu-syo/noMeiryoUI)
-- [纯粹的Windows右键菜单管理程序](https://github.com/BluePointLilac/ContextMenuManager)⭐
-- [自定义右键菜单](https://shliang.blog.csdn.net/article/details/89286118)
-- [win 11 自动登录](https://zhuanlan.zhihu.com/p/411167130)，修改注册表方式，adminstrator 可使用 windows 的密码自动登录
+```bash
+# 安装
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 在 ~/.zshrc 中添加，然后 source ~/.zshrc
+export PATH=/opt/homebrew/bin:$PATH
+```
 
 
-Windows 11 Classic Context Menu 使用经典右键菜单
+iTerm2 快捷键
+
+| 快捷键      | 说明       |
+| ----------- | ---------- |
+| `Cmd` + `T` | 新建标签页 |
+
+
+
+
+
+
 
 
 ## common
 
-谷歌翻译，用于文档翻译
+#### 效率工具
 
-xmind
+| 用途     | 工具                                                                              |
+| -------- | --------------------------------------------------------------------------------- |
+| 文档翻译 | 谷歌翻译                                                                          |
+| 网页翻译 | [Immersive Translate](https://github.com/immersive-translate/immersive-translate) |
+| 思维导图 | Xmind                                                                             |
+| 阅读     | 微信读书 / NeatReader                                                             |
+| 论文下载 | Sci-Hub                                                                           |
 
-微信读书，NeatReader
+#### 硬件
 
-多按键的鼠标，定义多个按键功能，eg. 复制、粘贴、左右删除
-
-虚拟机：Windows:VMWare, Mac: VirtualBox、Parallels Desktop 
-
-sci-hub 查看无法访问的论文
-
-翻译：https://github.com/immersive-translate/immersive-translate
-
+| 用途     | 说明                                                     |
+| -------- | -------------------------------------------------------- |
+| 多键鼠标 | 自定义按键映射，如：复制、粘贴、左右删除                 |
+| 虚拟机   | Windows 用 VMWare；Mac 用 VirtualBox / Parallels Desktop |
 
 
 ## vpn
