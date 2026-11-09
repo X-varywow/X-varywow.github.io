@@ -12,7 +12,7 @@ ai 编码指南，在对话中，自动追加到当前的上下文信息中，�
 
 核心内容：项目结构、规范， 对具体业务还应该包含：业务流程、业务（代码）术语
 
-> 坚持原则：一切问 ai, 然后手动提示。让 ai 编写，让 ai 问询关键信息，让 ai 评价， 让 ai 改进 AGENTS.md
+> 方法论变动：多提问，尽量问 ai, 然后手动提示。让 ai 编写，让 ai 问询关键信息，让 ai 评价， 让 ai 改进 AGENTS.md
 
 
 --------
@@ -82,6 +82,48 @@ my-skill/
 - 自定义 `/session:logger` `/session:restorer` 来将本次对话上下文存储和读取，用于跨对话上下文传递。
 - 自定义 `/requirement:new` `/requirement:save` `/requirement:list` 进行需求管理。
 - 自定义 `/solo` （根据代码或提示）快速构建业务中可独立运行的代码，如查库（让 ai 拼接出上下文）用于快速 debug，文档中追加一些示例和错误示例。
+
+
+## mcp
+
+Model Context Protocol，模型上下文协议。
+
+即 AI 大模型与 外部工具等 通信的一种协议。
+
+------
+
+如 unity-mcp, 在 code IDE 中通过 mcp服务 发送指令，unity 编辑器在收到后可以执行 操控场景布局等命令。
+
+配置 code IDE 的 mcp.json 很关键。踩坑：godot-ai 自动配置的这个修起来很麻烦，
+
+
+```json
+// mcp.json
+{
+	"mcpServers": {
+		"godot-ai": {
+			"command": "C:\\Users\\Administrator\\.local\\bin\\uvx.exe",
+			"args": [
+				"--link-mode",
+				"copy",
+				"--from",
+				"godot-ai==4.4.1",
+				"godot-ai",
+				"attach",
+				"--port",
+				"8000",
+				"--ws-port",
+				"9500"
+			],
+			"type": "stdio"
+		}
+	}
+}
+```
+
+
+
+
 
 
 

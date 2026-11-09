@@ -4,5 +4,8 @@
   - [IDE](cs/C/ide)
   - [c# day1](cs/C/csharp_day1)
   - [c# day2](cs/C/csharp_day2)
-  - [c# ggpk](cs/C/csharp_ggpk)
   - [win_ui3_day1](cs/C/winui3)
+  - ---
+  - [逆向](cs/C/re)
+  - [c# ggpk](cs/C/csharp_ggpk)
+  - [内存操作](cs/C/mem_op)
