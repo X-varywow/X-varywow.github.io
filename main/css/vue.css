@@ -836,8 +836,8 @@ body {
 .sidebar li hr {
     display: block;
     height: .4rem;
-    margin: 10px 35px 10px 20px;
-    background-color: #42506608;
+    margin: 10px 20px 10px 6px;
+    background-color: #42506610;
     border-radius: .5rem;
     border: none;
 }
