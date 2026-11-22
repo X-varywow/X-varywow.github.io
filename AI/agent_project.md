@@ -23,12 +23,16 @@ workflow 层，用于快速构建一个任务流程;
 https://github.com/n8n-io/n8n
 
 
-## openclaw 380k
+## openclaw 395k
+
+The AI that really does things.
 
 https://github.com/openclaw/openclaw
 
 
-## opencode 177k
+## opencode 228k
+
+The open source coding agent.
 
 https://github.com/anomalyco/opencode
 

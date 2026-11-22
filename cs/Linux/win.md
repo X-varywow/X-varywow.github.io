@@ -25,14 +25,6 @@
 
 
 
----------------
-
-参考资料：
-- [纯粹的Windows右键菜单管理程序](https://github.com/BluePointLilac/ContextMenuManager)⭐
-- [Win10管理右键新建菜单](https://blog.csdn.net/weixin_44811846/article/details/103288139)
-- [自定义右键菜单](https://shliang.blog.csdn.net/article/details/89286118)
-
-
 ## _windows命令_
 
 | 命令             | 描述                  |

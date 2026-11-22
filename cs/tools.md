@@ -10,7 +10,6 @@
 | Office 一键安装激活 | [LKY_OfficeTools](https://github.com/OdysseusYuan/LKY_OfficeTools)           |
 | 卸载 / 注册表清理   | [Geek Uninstaller](https://geekuninstaller.com/)                             |
 | 右键菜单管理        | [ContextMenuManager](https://github.com/BluePointLilac/ContextMenuManager) ⭐ |
-| 经典右键菜单        | Windows 11 Classic Context Menu                                              |
 | 自动登录 Win11      | [修改注册表方式](https://zhuanlan.zhihu.com/p/411167130)                     |
 
 #### 日常软件
@@ -33,14 +32,13 @@
 
 #### 美化
 
-| 用途           | 工具                                                           |
-| -------------- | -------------------------------------------------------------- |
-| 任务栏透明     | TranslucentTB                                                  |
-| 桌面整理       | [Stardock Fences](https://www.stardock.com/products/fences/)   |
-| 自定义鼠标     | Yolo Mouse                                                     |
-| 任务栏增强     | ExplorerPatcher                                                |
-| 系统字体更换   | [noMeiryoUI](https://github.com/Tatsu-syo/noMeiryoUI)          |
-| 右键菜单自定义 | [教程](https://shliang.blog.csdn.net/article/details/89286118) |
+| 用途         | 工具                                                         |
+| ------------ | ------------------------------------------------------------ |
+| 任务栏透明   | TranslucentTB                                                |
+| 桌面整理     | [Stardock Fences](https://www.stardock.com/products/fences/) |
+| 自定义鼠标   | Yolo Mouse                                                   |
+| 任务栏增强   | ExplorerPatcher                                              |
+| 系统字体更换 | [noMeiryoUI](https://github.com/Tatsu-syo/noMeiryoUI)        |
 
 **字体推荐：**
 - 系统字体：微软雅黑 9pt

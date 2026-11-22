@@ -959,9 +959,9 @@ body {
 }
 
 /* 链接样式 */
-.markdown-section a {
+/* .markdown-section a {
     font-weight: 400;
-}
+} */
 
 .markdown-section a:hover {
     color: #008000;

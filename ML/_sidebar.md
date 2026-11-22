@@ -12,7 +12,6 @@
   - [强化学习](ML/RL/)
   - ---
   - [NLP](ML/NLP/)
-  - [LLM](ML/LLM/)
   - [CV](ML/CV/)
   - [Audio](ML/Audio/)
   - ---
