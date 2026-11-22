@@ -13,7 +13,6 @@
   - [CLIP](ML/CV/CLIP)
   - [VGG](ML/CV/vgg)
   - [YOLO](ML/CV/yolo)
-  - [faceswap](ML/CV/faceswap/)
   - [OCR](ML/CV/ocr)
   - ---
   - [mediapipe](ML/CV/mediapipe)
